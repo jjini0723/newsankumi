@@ -41,5 +41,10 @@ public class HomeController {
 		return "newSiteTest2";
 	}
 	
-	
+	@RequestMapping(value="test123", method=RequestMethod.GET)
+	public String test123(){
+		
+		return "test123";
+	}
+
 }

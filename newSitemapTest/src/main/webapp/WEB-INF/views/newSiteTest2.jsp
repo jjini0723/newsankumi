@@ -7,7 +7,7 @@
 
 <!-- jquery-3.1.1.js -->
 <script src="./resources/js/jquery-3.1.1.js"></script>
-
+<script src="./resources/js/test123.js"></script>
 <script type="text/javascript">
 
 //check box 클릭시 radio box 활성화
@@ -669,7 +669,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         
         <h4 class="category">결과보기</h4>
 		<div class="sidebar-block text-center">
-			<a data-toggle="sidebar-menu" href="#sidebar-map1" class="btn btn-primary btn-block toggle ">          
+			<a data-toggle="sidebar-menu" href="#sidebar-map" class="btn btn-primary btn-block toggle ">          
 				<strong>NEXT page</strong>
 			</a>
         </div>
@@ -680,8 +680,10 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!-- 오른쪽 사이드바 시작-->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
     <aside class="sidebar right sidebar-size-xs-2 sidebar-size-lg-30pc sidebar-size-25pc sidebar-offset-0 sidebar-skin-white" 
-    	id="sidebar-map1" data-toggle-layout=sidebar-r-30pc-lg,sidebar-r-25pc data-toggle-bar=true data-overlay=false>
-      <div data-scrollable>
+    	id="sidebar-map" data-toggle-layout=sidebar-r-30pc-lg,sidebar-r-25pc data-toggle-bar=true data-overlay=false>
+      <input type = "button" onclick = "boardList();"value = "test">
+      <div id = "test123"></div>
+      <!-- <div data-scrollable id="sidebar-map1">
 		<h4 class="category">검색결과</h4>
 			<div class="sidebar-block padding-none">
 				<div data-toggle="gridalicious" data-width="400">
@@ -702,8 +704,8 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 			<li><a href="#sidebar-map2">다음페이지</a></li>
 			<li><a href="#">&raquo;</a></li>
           </ul>
-        </div>			
-      </div>
+        </div>			 
+      </div>-->
     </aside>
 
 
@@ -722,7 +724,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
     <aside class="sidebar right sidebar-size-xs-2 sidebar-size-lg-30pc sidebar-size-25pc sidebar-offset-0 sidebar-skin-white" 
     	id="sidebar-map2" data-toggle-layout=sidebar-r-30pc-lg,sidebar-r-25pc data-toggle-bar=true data-overlay=false
     	style="visibility: hidden;">
-      <div data-scrollable>
+     <div data-scrollable id="sidebar-map2">
 		<h4 class="category">검색결과2222222</h4>
 			<div class="sidebar-block padding-none">
 				<div data-toggle="gridalicious" data-width="400">
@@ -740,11 +742,8 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 			</div>	
 		<div class="sidebar-block equal-padding">
 			<ul class="pagination margin-none">
-			<li class="disabled"><a href="#">&laquo;</a></li>
-			<li class="active"><a href="#sidebar-map1">1</a></li>
-			<li><a href="#sidebar-map2">2 다음페이지</a></li>
-			<li><a href="#sidebar-map3">3</a></li>
-			<li><a href="#">&raquo;</a></li>
+			<li><a href="#sidebar-map1">이전페이지</a></li>
+			<li><a href="#sidebar-map3">다음페이지</a></li>
           </ul>
         </div>			
       </div>
@@ -767,7 +766,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
     <aside class="sidebar right sidebar-size-xs-2 sidebar-size-lg-30pc sidebar-size-25pc sidebar-offset-0 sidebar-skin-white" 
     	id="sidebar-map3" data-toggle-layout=sidebar-r-30pc-lg,sidebar-r-25pc data-toggle-bar=true data-overlay=false
     	style="visibility: hidden;">
-      <div data-scrollable>
+     <div data-scrollable id="sidebar-map3">
 		<h4 class="category">검색결과33333333</h4>
 			<div class="sidebar-block padding-none">
 				<div data-toggle="gridalicious" data-width="400">
@@ -784,12 +783,10 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
           		</div>
 			</div>	
 		<div class="sidebar-block equal-padding">
+		
 			<ul class="pagination margin-none">
 			<li class="disabled"><a href="#">&laquo;</a></li>
-			<li class="active"><a href="#">1</a></li>
-			<li><a href="#">2 다음페이지</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">&raquo;</a></li>
+			<li><a href="#sidebar-map1">이전페이지</a></li>
           </ul>
         </div>			
       </div>
