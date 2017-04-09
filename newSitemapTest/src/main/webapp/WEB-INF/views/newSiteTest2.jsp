@@ -24,8 +24,16 @@ $(document).ready(function(){
 		}
 		
 	});
-}); 
 
+	 
+}); 
+	 
+/* 
+function removeList(str){
+	console.log(str);
+	$(this).parent().remove();
+	$("input:radio[name='" + str+ "']").removeAttr("checked");
+} */
 //체크박스 선택 개수 제한 (6개)
 function checkboxSelect(obj,cnt) {
 	var i, sum=1;
@@ -230,7 +238,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 				<span class="hml" id="welfare_sports">
 					<input type="radio" id="rd_welfare_sports1" name="rd_welfare_sports" value="1.2" >
 					<label for="rd_welfare_sports1">상</label>
-					<input type="radio" id="rd_welfare_sports2" name="rd_welfare_sports"value="1.1" >
+					<input type="radio" id="rd_welfare_sports2" name="rd_welfare_sports" value="1.1" >
 					<label for="rd_welfare_sports2">중</label>
 					<input type="radio" id="rd_welfare_sports3" name="rd_welfare_sports" value="1.0">
 					<label for="rd_welfare_sports3">하</label>
@@ -247,7 +255,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 				<span class="hml" id="welfare_culture">
 					<input type="radio" id="rd_welfare_culture1" name="rd_welfare_culture" value="high">
 					<label for="rd_welfare_culture1">상</label>
-					<input type="radio" id="rd_welfare_culture2" name="rd_welfare_culture"value="mid">
+					<input type="radio" id="rd_welfare_culture2" name="rd_welfare_culture" value="mid">
 					<label for="rd_welfare_culture2">중</label>
 					<input type="radio" id="rd_welfare_culture3" name="rd_welfare_culture" value="low">
 					<label for="rd_welfare_culture3">하</label>
@@ -264,7 +272,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 				<span class="hml" id="welfare_salon">
 					<input type="radio" id="rd_welfare_salon1" name="rd_welfare_salon" value="high">
 					<label for="rd_welfare_salon1">상</label>
-					<input type="radio" id="rd_welfare_salon2" name="rd_welfare_salon"value="mid">
+					<input type="radio" id="rd_welfare_salon2" name="rd_welfare_salon" value="mid">
 					<label for="rd_welfare_salon2">중</label>
 					<input type="radio" id="rd_welfare_salon3" name="rd_welfare_salon" value="low">
 					<label for="rd_welfare_salon3">하</label>
@@ -281,7 +289,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 				<span class="hml" id="welfare_society">
 					<input type="radio" id="rd_welfare_society1" name="rd_welfare_society" value="high">
 					<label for="rd_welfare_society1">상</label>
-					<input type="radio" id="rd_welfare_society2" name="rd_welfare_society"value="mid">
+					<input type="radio" id="rd_welfare_society2" name="rd_welfare_society" value="mid">
 					<label for="rd_welfare_society2">중</label>
 					<input type="radio" id="rd_welfare_society3" name="rd_welfare_society" value="low">
 					<label for="rd_welfare_society3">하</label>
@@ -298,7 +306,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 				<span class="hml" id="welfare_medical">
 					<input type="radio" id="rd_welfare_medical1" name="rd_welfare_medical" value="high">
 					<label for="rd_welfare_medical1">상</label>
-					<input type="radio" id="rd_welfare_medical2" name="rd_welfare_medical"value="mid">
+					<input type="radio" id="rd_welfare_medical2" name="rd_welfare_medical" value="mid">
 					<label for="rd_welfare_medical2">중</label>
 					<input type="radio" id="rd_welfare_medical3" name="rd_welfare_medical" value="low">
 					<label for="rd_welfare_medical3">하</label>
@@ -652,9 +660,9 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
  -->        
         
         <h4 class="category">선택한 조건</h4>
-        <div class="sidebar-block" id = "sList">
-				<!-- <ul class = "seletedList" id = "selectedList">
-				</ul>  -->
+        <div class="sidebar-block" id = "sList" >
+				<ul class = "selectedList" id = "selectedList">
+				</ul>  
         </div>
         
      </form>   
