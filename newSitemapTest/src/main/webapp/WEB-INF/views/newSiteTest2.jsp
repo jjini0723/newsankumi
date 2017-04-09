@@ -5,14 +5,45 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+<link rel="stylesheet" href="./resources/css/avgrund.css"> <!-- 첫번째 팝업 style -->
+
 <!-- jquery-3.1.1.js -->
 <script src="./resources/js/jquery-3.1.1.js"></script>
 <script src="./resources/js/test123.js"></script>
 <script src="./resources/js/radioToList.js"></script>
-<script type="text/javascript">
+<script src="./resources/js/jquery.avgrund.min.js"></script>
+<script src="./resources/js/selectThis.js"></script> <!-- 기준 지역 선택 -->
+<script src="./resources/js/Chart.js"></script><!-- 차트 라이브러리 -->
+<script src="./resources/js/graph.js"></script><!-- 차트 라이브러리 -->
+<script src="./resources/js/addAddress.js"></script><!-- 추천지역 리스트에 주소추가 -->
+<script src="./resources/js/resultList.js"></script><!-- 추천지역 리스트 출력 -->
 
+<script type='text/javascript'>
+$(document).avgrund({
+	    openOnEvent: false
+	}); 
+	
 //check box 클릭시 radio box 활성화
-$(document).ready(function(){ 
+$(function() {
+	/* 
+	$('#show').avgrund({
+		height: 350,
+		width: 640,
+		holderClass: 'custom',
+		showClose: true,
+		showCloseText: 'X',
+		enableStackAnimation: true,
+		closeByDocument: true, 
+	    openOnEvent: false,
+		onBlurContainer: '.container',
+		template: '<p>So implement your design and place content here! If you want to close modal, please hit "Esc", click somewhere on the screen or use special button.</p>' +
+		'<div>' +
+		'<a href="http://github.com/voronianski/jquery.avgrund.js" target="_blank" class="github">ㅇㅅㅇ</a>' +
+		'<a href="http://twitter.com/voronianski" target="_blank" class="twitter">Twitter</a>' +
+		'<a href="http://dribbble.com/voronianski" target="_blank" class="dribble">Dribbble</a>' +
+		'</div>'
+	});
+ */
 	$('input:checkbox').click(function(e){
 		var id = e.target.getAttribute('id');
 		if ( ( id != '') && (id != null)) {
@@ -24,16 +55,13 @@ $(document).ready(function(){
 		}
 		
 	});
-
 	 
 }); 
-	 
-/* 
-function removeList(str){
-	console.log(str);
-	$(this).parent().remove();
-	$("input:radio[name='" + str+ "']").removeAttr("checked");
-} */
+
+function checkSelected(){
+	var click = document.getElementByID("selectedList").value;
+	console.log(click);
+}
 //체크박스 선택 개수 제한 (6개)
 function checkboxSelect(obj,cnt) {
 	var i, sum=1;
@@ -48,6 +76,8 @@ function checkboxSelect(obj,cnt) {
 }
 
 </script>
+
+
 <title>두번째 도전하는 테스트닷 호랏!</title>
 	
  <!-- Vendor CSS BUNDLE
@@ -123,7 +153,32 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 
 
 <body>
+<script type="text/javascript">
 
+$(function() {
+
+$('#show').avgrund({
+	height: 350,
+	width: 640,
+	holderClass: 'custom',
+	showClose: true,
+	showCloseText: 'X',
+	enableStackAnimation: true,
+	closeByDocument: true, 
+    openOnEvent: false,
+	onBlurContainer: '.container',
+	template: '<p>So implement your design and place content here! If you want to close modal, please hit "Esc", click somewhere on the screen or use special button.</p>' +
+	'<div>' +
+	'<a href="http://github.com/voronianski/jquery.avgrund.js" target="_blank" class="github">ㅇㅅㅇ</a>' +
+	'<a href="http://twitter.com/voronianski" target="_blank" class="twitter">Twitter</a>' +
+	'<a href="http://dribbble.com/voronianski" target="_blank" class="dribble">Dribbble</a>' +
+	'</div>'
+});
+
+});
+</script>
+<!--  팝업1-->
+<a href="#" id="show" class="button left"></a>
   <!-- Wrapper required for sidebar transitions -->
   <div class="st-container">
 
@@ -204,6 +259,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 				<!-- 구 셀렉트 삽입 우선 위에 스타일로 구 스타일 적용해줌 -->
 					<h4 class="category">기준지역선택</h4>
 	            	<li>
+	            	
 						<div class="cd-select" style="margin: 14px">
 							<select class="select1" name="selectThis1" id="mp_addcd_sido" onchange="searchThis(this)">
 								<option value="">시/도</option>
@@ -667,7 +723,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         
      </form>   
         <h4 class="category">결과보기</h4>
-		<div class="sidebar-block text-center">
+		<div class="sidebar-block text-center" onclick = "checkSelected();">
 			<a data-toggle="sidebar-menu" href="#sidebar-map" class="btn btn-primary btn-block toggle ">          
 				<strong>NEXT PAGE</strong>
 			</a>
