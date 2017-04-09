@@ -7059,6 +7059,7 @@ html.app-mobile #content .container-fluid .sidebar {
 }
 .sidebar .sidebar-block > *:last-child {
   margin-bottom: 0;
+  color : white;
 }
 .sidebar .sidebar-block .activity-feed ul {
   list-style: none;
@@ -8267,3 +8268,4 @@ html.st-layout .st-content {
 .sidebar .sidebar-block-full > .panel:last-child {
   border-bottom: none;
 }
+

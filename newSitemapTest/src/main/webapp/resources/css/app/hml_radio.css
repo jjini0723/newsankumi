@@ -3,6 +3,8 @@
   Hide radio button (the round disc)
   we will use just the label to create pushbutton effect
 */
+
+
 input[type=radio] {
     display:none; 
     margin:10px;
@@ -16,7 +18,8 @@ input[type=radio] + label {
     display:inline-block;
     margin:-2px;
     padding: 1px 10px;
-    background-color: #e7e7e7;
+    /* background-color: #e7e7e7; */
+    color : #EAEAEA;
     border-color: #ddd;
 }
 /*
@@ -25,7 +28,9 @@ input[type=radio] + label {
 */
 input[type=radio]:checked + label { 
    background-image: none;
-	background-color:#22958A;
+   color: #22958A;
+   /* opacity : 0; */
+	/* background-color:#22958A; */
 }
 
 /*상중하hml 관련 스타일*/

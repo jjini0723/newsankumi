@@ -83,6 +83,7 @@ h6 small,
 }
 .sidebar .sidebar-block.property-meta {
   padding: 0;
+  
 }
 #content .property-meta {
   background-color: #fff;
@@ -122,4 +123,9 @@ h6 small,
 }
 .page-section {
   padding: 30px 0;
+}
+.seletedList {
+	z-index: 800;
+	color : white;
+	
 }

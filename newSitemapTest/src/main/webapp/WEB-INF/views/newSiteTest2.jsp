@@ -8,6 +8,7 @@
 <!-- jquery-3.1.1.js -->
 <script src="./resources/js/jquery-3.1.1.js"></script>
 <script src="./resources/js/test123.js"></script>
+<script src="./resources/js/radioToList.js"></script>
 <script type="text/javascript">
 
 //check box 클릭시 radio box 활성화
@@ -182,8 +183,10 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 
 <!-- 왼쪽 사이드바 시작 -->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
+    <form name = "myselection" onchange="getRadios(document.myselection)">
     <aside class="sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-dark sidebar-visible-desktop" id=sidebar-menu data-type=collapse>
-      <div data-scrollable>
+      <div data-scrollable >
+      <!-- onclick ='getRadios(document.myselection)' -->
         <ul class="sidebar-menu sm-bordered sm-icons-block sm-icons-right">
           
 	<!-- 1차선택 -->
@@ -506,7 +509,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<input class="ck" type="checkbox" id="life_shopping" name="ck" onclick="checkboxSelect('ck',6)">
 					<label for="life_shopping">쇼핑시설</label>
 				<!-- 상중하 라디오 -->
-				<span class="hml" id="life_shopping">
+				<span class="hml" id="life_shopping" >
 					<input type="radio" id="rd_life_shopping1" name="rd_life_shopping" value="high">
 					<label for="rd_life_shopping1">상</label>
 					<input type="radio" id="rd_life_shopping2" name="rd_life_shopping"value="mid">
@@ -554,13 +557,6 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 	</li>
 
 
-
-
-
-
-
-
-
 <!-- 교육 -->
 	<li class="hasSubmenu">
 	<a href="#people"><i class="fa fa-list"></i><span>지역인구</span></a>
@@ -572,7 +568,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<input class="ck" type="checkbox" id="people_foreign" name="ck" onclick="checkboxSelect('ck',6)">
 					<label for="people_foreign">외국인거주비율</label>
 				<!-- 상중하 라디오 -->
-				<span class="hml" id="people_foreign">
+				<span class="hml" id="people_foreign" class = "hml_list">
 					<input type="radio" id="rd_people_foreign1" name="rd_people_foreign" value="high">
 					<label for="rd_people_foreign1">상</label>
 					<input type="radio" id="rd_people_foreign2" name="rd_people_foreign"value="mid">
@@ -589,12 +585,12 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<input class="ck" type="checkbox" id="people_density" name="ck" onclick="checkboxSelect('ck',6)">
 					<label for="people_density">인구밀도</label>
 				<!-- 상중하 라디오 -->
-				<span class="hml" id="people_density">
-					<input type="radio" id="rd_people_density1" name="rd_people_density" value="high">
+				<span class="hml" id="people_density"class = "hml_list">
+					<input type="radio" id="rd_people_density1" name="rd_people_density"  value="high" class ="rd_people_density"  >
 					<label for="rd_people_density1">상</label>
-					<input type="radio" id="rd_people_density2" name="rd_people_density"value="mid">
+					<input type="radio" id="rd_people_density2" name="rd_people_density"value="mid" class ="rd_people_density">
 					<label for="rd_people_density2">중</label>
-					<input type="radio" id="rd_people_density3" name="rd_people_density" value="low">
+					<input type="radio" id="rd_people_density3" name="rd_people_density" value="low" class ="rd_people_density">
 					<label for="rd_people_density3">하</label>
 				</span>	
 				</a>
@@ -614,7 +610,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<input class="ck" type="checkbox" id="nature_park" name="ck" onclick="checkboxSelect('ck',6)">
 					<label for="nature_park">공원</label>
 				<!-- 상중하 라디오 -->
-				<span class="hml" id="nature_park">
+				<span class="hml" id="nature_park" class = "hml_list">
 					<input type="radio" id="rd_nature_park1" name="rd_nature_park" value="high">
 					<label for="rd_nature_park1">상</label>
 					<input type="radio" id="rd_nature_park2" name="rd_nature_park"value="mid">
@@ -631,12 +627,12 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<input class="ck" type="checkbox" id="nature_pollution" name="ck" onclick="checkboxSelect('ck',6)">
 					<label for="nature_pollution">미세먼지</label>
 				<!-- 상중하 라디오 -->
-				<span class="hml" id="nature_pollution">
-					<input type="radio" id="rd_nature_pollution1" name="rd_nature_pollution" value="high">
+				<span class="hml" id="nature_pollution" >
+					<input type="radio" id="rd_nature_pollution1" name="rd_nature_pollution" value="rd_nature_pollution high">
 					<label for="rd_nature_pollution1">상</label>
-					<input type="radio" id="rd_nature_pollution2" name="rd_nature_pollution"value="mid">
+					<input type="radio" id="rd_nature_pollution2" name="rd_nature_pollution" value="rd_nature_pollution mid">
 					<label for="rd_nature_pollution2">중</label>
-					<input type="radio" id="rd_nature_pollution3" name="rd_nature_pollution" value="low">
+					<input type="radio" id="rd_nature_pollution3" name="rd_nature_pollution" value="rd_nature_pollution low">
 					<label for="rd_nature_pollution3">하</label>
 				</span>	
 				</a>
@@ -655,22 +651,17 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         </ul>
  -->        
         
-        <h4 class="category">선택조건</h4>
-        <div class="sidebar-block">
-       <!--    <ul class="list-group list-group-menu">
-            <li class="list-group-item"><a href="front-home-slider.html">Home + Slider</a></li>
-            <li class="list-group-item"><a href="front-home-map.html">Home + Map</a></li>
-            <li class="list-group-item"><a href="front-listing-list.html">Listing - List</a></li>
-            <li class="list-group-item"><a href="front-listing-grid.html">Listing - Grid</a></li>
-            <li class="list-group-item"><a href="front-property.html">Property</a></li>
-          </ul> -->
+        <h4 class="category">선택한 조건</h4>
+        <div class="sidebar-block" >
+				<ul class = "seletedList">
+				</ul>
         </div>
         
-        
+     </form>   
         <h4 class="category">결과보기</h4>
 		<div class="sidebar-block text-center">
 			<a data-toggle="sidebar-menu" href="#sidebar-map" class="btn btn-primary btn-block toggle ">          
-				<strong>NEXT page</strong>
+				<strong>NEXT PAGE</strong>
 			</a>
         </div>
       </div>
@@ -791,14 +782,6 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         </div>			
       </div>
     </aside>
-
-
-
-
-
-
-
-
 
 
 

@@ -22,6 +22,11 @@ section,
 summary {
   display: block;
 }
+.seletedList {
+	z-index: 800;
+	color : white;
+	
+}
 audio,
 canvas,
 progress,
