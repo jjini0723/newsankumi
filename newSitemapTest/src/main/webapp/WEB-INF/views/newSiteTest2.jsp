@@ -228,11 +228,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="welfare_sports"><span>스포츠</span></label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_sports">
-					<input type="radio" id="rd_welfare_sports1" name="rd_welfare_sports" value="high">
+					<input type="radio" id="rd_welfare_sports1" name="rd_welfare_sports" value="1.2" >
 					<label for="rd_welfare_sports1">상</label>
-					<input type="radio" id="rd_welfare_sports2" name="rd_welfare_sports"value="mid">
+					<input type="radio" id="rd_welfare_sports2" name="rd_welfare_sports"value="1.1" >
 					<label for="rd_welfare_sports2">중</label>
-					<input type="radio" id="rd_welfare_sports3" name="rd_welfare_sports" value="low">
+					<input type="radio" id="rd_welfare_sports3" name="rd_welfare_sports" value="1.0">
 					<label for="rd_welfare_sports3">하</label>
 				</span>	
 				</a>
@@ -310,16 +310,16 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 			<!-- 유치원 -->
 			<li>
 				<a href="#">
-					<input class="ck" type="checkbox" id="welfare_childCare" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="welfare_childCare">유치원</label>
+					<input class="ck" type="checkbox" id="welfare_childcare" name="ck" onclick="checkboxSelect('ck',6)">
+					<label for="welfare_childcare">유치원</label>
 				<!-- 상중하 라디오 -->
-				<span class="hml" id="welfare_childCare">
-					<input type="radio" id="rd_welfare_childCare1" name="rd_welfare_childCare" value="high">
-					<label for="rd_welfare_childCare1">상</label>
-					<input type="radio" id="rd_welfare_childCare2" name="rd_welfare_childCare"value="mid">
-					<label for="rd_welfare_childCare2">중</label>
-					<input type="radio" id="rd_welfare_childCare3" name="rd_welfare_childCare" value="low">
-					<label for="rd_welfare_childCare3">하</label>
+				<span class="hml" id="welfare_childcare">
+					<input type="radio" id="rd_welfare_childcare1" name="rd_welfare_childcare" value="high">
+					<label for="rd_welfare_childcare1">상</label>
+					<input type="radio" id="rd_welfare_childcare2" name="rd_welfare_childcare"value="mid">
+					<label for="rd_welfare_childcare2">중</label>
+					<input type="radio" id="rd_welfare_childcare3" name="rd_welfare_childcare" value="low">
+					<label for="rd_welfare_childcare3">하</label>
 				</span>	
 				</a>
 			</li>
@@ -652,9 +652,9 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
  -->        
         
         <h4 class="category">선택한 조건</h4>
-        <div class="sidebar-block" >
-				<ul class = "seletedList">
-				</ul>
+        <div class="sidebar-block" id = "sList">
+				<!-- <ul class = "seletedList" id = "selectedList">
+				</ul>  -->
         </div>
         
      </form>   

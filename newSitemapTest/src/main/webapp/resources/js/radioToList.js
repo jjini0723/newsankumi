@@ -1,10 +1,11 @@
 /**
  * 라디오버튼에서 선택 된 값 리스트에 넣기
  */
-
+var items = [];
 function getRadios(selected) {
-	
 	console.log(selected);
+	var html = "";
+	
 	//스포츠
 	var welfare_sports = "";
 	
@@ -13,8 +14,10 @@ function getRadios(selected) {
 		  welfare_sports = selected.rd_welfare_sports[i].value; 
 	}
 	if (welfare_sports != '') {
-		html += "<li value = " + welfare_sports + ">" + 스포츠시설 + "</li>";
+		items.push("스포츠시설");
+		setList(items);
 	}
+	
 	
 	//문화시설
 	var welfare_culture = "";
@@ -22,9 +25,9 @@ function getRadios(selected) {
 		if(selected.rd_welfare_culture[i].checked) 
 			welfare_culture = selected.rd_welfare_culture[i].value; 
 	}
-	
 	if (welfare_culture != '') {
-		html += "<li>" + welfare_culture + "</li>";
+		html += "<li id = 'welfare_sports' value = " + welfare_sports + ">" + '문화시설' 
+		+'<a href="#" onclick="removeList(' + i + ');">   x   </a> '+ "</li>";
 	}
 	
 	//미용
@@ -35,7 +38,8 @@ function getRadios(selected) {
 	}
 	
 	if (welfare_salon != '') {
-		html += "<li>" + welfare_salon + "</li>";
+		html += "<li id = 'welfare_salon' value = " + welfare_salon + ">" + '미/이용 시설' 
+		+'<a href="#" onclick="removeList(' + i + ');">   x   </a> '+ "</li>";
 	}
 	
 	//사회복지시설
@@ -46,7 +50,8 @@ function getRadios(selected) {
 	}
 	
 	if (welfare_society != '') {
-		html += "<li>" + welfare_society + "</li>";
+		html += "<li id = 'welfare_society' value = " + welfare_society + ">" + '미/이용 시설' 
+		+'<a href="#" onclick="removeList(' + i + ');">   x   </a> '+ "</li>";
 	}
 	
 	//의료시설
@@ -57,7 +62,8 @@ function getRadios(selected) {
 	}
 	
 	if (welfare_medical != '') {
-		html += "<li>" + welfare_medical + "</li>";
+		html += "<li id = 'welfare_medical' value = " + welfare_medical + ">" + '미/이용 시설' 
+		+'<a href="#" onclick="removeList(' + i + ');">   x   </a> '+ "</li>";
 	}
 	
 	
@@ -69,7 +75,8 @@ function getRadios(selected) {
 	}
 	
 	if (welfare_childcare != '') {
-		html += "<li>" + welfare_childcare + "</li>";
+		html += "<li id = 'welfare_childcare' value = " + welfare_childcare + ">" + '미/이용 시설' 
+		+'<a href="#" onclick="removeList(' + i + ');">   x   </a> '+ "</li>";
 	}
 	
 	//1인당 교원수
@@ -80,7 +87,8 @@ function getRadios(selected) {
 	}
 	
 	if (education_student != '') {
-		html += "<li>" + education_student + "</li>";
+		html += "<li id = 'education_student' value = " + education_student + ">" + '미/이용 시설' 
+		+'<a href="#" onclick="removeList(' + i + ');">   x   </a> '+ "</li>";
 	}
 	
 	//학원수
@@ -91,7 +99,8 @@ function getRadios(selected) {
 	}
 	
 	if (education_academy != '') {
-		html += "<li>" + education_academy + "</li>";
+		html += "<li id = 'education_academy' value = " + education_academy + ">" + '미/이용 시설' 
+		+'<a href="#" onclick="removeList(' + i + ');">   x   </a> '+ "</li>";
 	}
 	
 	//안전_화재
@@ -141,30 +150,51 @@ function getRadios(selected) {
 	var people_foreign = "";
 	var people_density = "";
 	var nature_park = "";
-	var nature_pollution = "";
 
-	var html = "";
-	//
-	for (var i = 0; i < selected.rd_welfare_sports.length; i++) {
-		if(selected.rd_welfare_sports[i].checked) 
-		  welfare_sports = selected.rd_welfare_sports[i].value; 
-	}
 	
-	if (welfare_sports != '') {
-		html += "<li>" + welfare_sports + "</li>"
-	}
-	 
-	
+	//미세먼지
+	var nature_pollution = "";
 	for (var i = 0; i < selected.rd_nature_pollution.length; i++) {
 		if (selected.rd_nature_pollution[i].checked)
 			nature_pollution = selected.rd_nature_pollution[i].value;
-		console.log(nature_pollution);
 	}
-	
 	if (nature_pollution != '') {
 		html += "<li>" + nature_pollution + "</li>"
 	}
 	
-	
 	$(".seletedList").html(html);
+}	
+/*
+
+function setList(items) {
+	var html = "";
+	html += '<ul class = "seletedList" id = "selectedList">';
+		for (var i = 0; i < items.length; i++) {
+			html += '<li> ' + items[i] + '<a href="#" onclick="removeList(' + i + ');">   x   </a> '+ '</li>' ;
+		};
+	
+	html += '</ul>';
+	$('#sList').html(html);
 }
+*/
+
+function setList(items) {
+	var html = "";
+	html += '<ul class = "seletedList" id = "selectedList">';
+		for (var i = 0; i < items.length; i++) {
+			html += '<li> ' + items[i] + '<a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
+		};
+	
+	html += '</ul>';
+	$('#sList').html(html);
+}
+
+function removeList(index) {
+		console.log(index);
+		var list = 	$("#selectedList").val();
+		console.log(list);
+		splice(index, 1);
+		setList(items);
+}
+
+
