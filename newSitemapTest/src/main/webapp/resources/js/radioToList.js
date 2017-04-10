@@ -14,6 +14,7 @@ function getRadios(selected) {
 		if (selected.rd_welfare_sports[i].checked)
 			welfare_sports = selected.rd_welfare_sports[i].value;
 	}
+	console.log(welfare_sports);
 	if (welfare_sports != '') {
 		html += "<li id = 'welfare_sports' value = "
 				+ welfare_sports
@@ -347,7 +348,6 @@ function getRadios(selected) {
 	// 미세먼지
 	var nature_pollution = "";
 	var np = "rd_nature_pollution";
-	console.log(selected.rd_nature_pollution);
 	for (var i = 0; i < selected.rd_nature_pollution.length; i++) {
 		if (selected.rd_nature_pollution[i].checked)
 			nature_pollution = selected.rd_nature_pollution[i].value;

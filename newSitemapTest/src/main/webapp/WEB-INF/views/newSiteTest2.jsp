@@ -25,25 +25,7 @@ $(document).avgrund({
 	
 //check box 클릭시 radio box 활성화
 $(function() {
-	/* 
-	$('#show').avgrund({
-		height: 350,
-		width: 640,
-		holderClass: 'custom',
-		showClose: true,
-		showCloseText: 'X',
-		enableStackAnimation: true,
-		closeByDocument: true, 
-	    openOnEvent: false,
-		onBlurContainer: '.container',
-		template: '<p>So implement your design and place content here! If you want to close modal, please hit "Esc", click somewhere on the screen or use special button.</p>' +
-		'<div>' +
-		'<a href="http://github.com/voronianski/jquery.avgrund.js" target="_blank" class="github">ㅇㅅㅇ</a>' +
-		'<a href="http://twitter.com/voronianski" target="_blank" class="twitter">Twitter</a>' +
-		'<a href="http://dribbble.com/voronianski" target="_blank" class="dribble">Dribbble</a>' +
-		'</div>'
-	});
- */
+	
 	$('input:checkbox').click(function(e){
 		var id = e.target.getAttribute('id');
 		if ( ( id != '') && (id != null)) {
@@ -58,23 +40,48 @@ $(function() {
 	 
 }); 
 
-function checkSelected(){
-	var click = document.getElementByID("selectedList").value;
-	console.log(click);
-}
-//체크박스 선택 개수 제한 (6개)
-function checkboxSelect(obj,cnt) {
-	var i, sum=1;
-	var chk = document.getElementsByName(obj);
-	var tot = chk.length;
-	for (i = 0; i < tot; i++) if(chk[i].checked == true) sum++;
-	if(sum > cnt) {
-	    for (i = 0; i < tot; i++) if(chk[i].checked == false) chk[i].disabled = true;
-	} else {
-	    for (i = 0; i < tot; i++) chk[i].disabled = false;
-	}
-}
+//팝업
+	/* $(function() {
 
+		$('#show')
+				.avgrund(
+						{
+							height : 350,
+							width : 640,
+							holderClass : 'custom',
+							showClose : true,
+							showCloseText : 'X',
+							enableStackAnimation : true,
+							closeByDocument : true,
+							openOnEvent : false,
+							onBlurContainer : '.container',
+							template : '<p>So implement your design and place content here! If you want to close modal, please hit "Esc", click somewhere on the screen or use special button.</p>'
+									+ '<div>'
+									+ '<a href="http://github.com/voronianski/jquery.avgrund.js" target="_blank" class="github">ㅇㅅㅇ</a>'
+									+ '<a href="http://twitter.com/voronianski" target="_blank" class="twitter">Twitter</a>'
+									+ '<a href="http://dribbble.com/voronianski" target="_blank" class="dribble">Dribbble</a>'
+									+ '</div>'
+						});
+	}); */
+	
+	//체크박스 선택 개수 제한 (6개)
+	function checkboxSelect(obj, cnt) {
+		var i, sum = 1;
+		var chk = document.getElementsByName(obj);
+		var tot = chk.length;
+		for (i = 0; i < tot; i++)
+			if (chk[i].checked == true)
+				sum++;
+		if (sum > cnt) {
+			for (i = 0; i < tot; i++)
+				if (chk[i].checked == false)
+					chk[i].disabled = true;
+			alert("6개까지만 선택 가능하십니다.");
+		} else {
+			for (i = 0; i < tot; i++)
+				chk[i].disabled = false;
+		}
+	}
 </script>
 
 
@@ -136,7 +143,6 @@ This variant is to be used when loading the separate styling modules -->
 	<link href="./resources/css/app/maps.css" rel="stylesheet" />
 	<link href="./resources/css/app/colors-buttons.css" rel="stylesheet" />
 	<link href="./resources/css/app/colors-text.css" rel="stylesheet" />
-
 	<link href="./resources/css/app/hml_radio.css" rel="stylesheet" />
 	
 	
@@ -153,30 +159,6 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 
 
 <body>
-<script type="text/javascript">
-
-$(function() {
-
-$('#show').avgrund({
-	height: 350,
-	width: 640,
-	holderClass: 'custom',
-	showClose: true,
-	showCloseText: 'X',
-	enableStackAnimation: true,
-	closeByDocument: true, 
-    openOnEvent: false,
-	onBlurContainer: '.container',
-	template: '<p>So implement your design and place content here! If you want to close modal, please hit "Esc", click somewhere on the screen or use special button.</p>' +
-	'<div>' +
-	'<a href="http://github.com/voronianski/jquery.avgrund.js" target="_blank" class="github">ㅇㅅㅇ</a>' +
-	'<a href="http://twitter.com/voronianski" target="_blank" class="twitter">Twitter</a>' +
-	'<a href="http://dribbble.com/voronianski" target="_blank" class="dribble">Dribbble</a>' +
-	'</div>'
-});
-
-});
-</script>
 <!--  팝업1-->
 <a href="#" id="show" class="button left"></a>
   <!-- Wrapper required for sidebar transitions -->
@@ -249,7 +231,6 @@ $('#show').avgrund({
     <form name = "myselection" onchange="getRadios(document.myselection)">
     <aside class="sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-dark sidebar-visible-desktop" id=sidebar-menu data-type=collapse>
       <div data-scrollable >
-      <!-- onclick ='getRadios(document.myselection)' -->
         <ul class="sidebar-menu sm-bordered sm-icons-block sm-icons-right">
           
 	<!-- 1차선택 -->
@@ -803,13 +784,6 @@ $('#show').avgrund({
         </div>			
       </div>
     </aside>
-
-
-
-
-
-
-
 
 
 

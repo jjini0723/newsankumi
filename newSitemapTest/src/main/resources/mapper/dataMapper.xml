@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 회원정보 처리 SQL -->
+<mapper namespace="com.newsite.maptest01.DAO.DataMapper">
+	
+	<select id="selectGungu" parameterType = "String" resultType="String">
+		select
+			distinct(mp_addcd_gg) 
+			from MP_ADDCD where mp_addcd_sido = #{0}
+			order by mp_addcd_gg
+	</select>
+	
+	<select id="selectDong" parameterType = "String" resultType="String" >
+		select
+			mp_addcd_dong, mp_addcd_dong_cd
+			from MP_ADDCD where mp_addcd_gg = #{0}
+			order by mp_addcd_dong
+	</select>
+	
+	
+</mapper>
