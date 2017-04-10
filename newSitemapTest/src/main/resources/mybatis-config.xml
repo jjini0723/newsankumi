@@ -4,6 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	
+	<typeAliases>
+		<typeAlias type="com.newsite.maptest01.vo.ConditionResult" alias="ConditionResult" />
+	</typeAliases>	
+		
 	<mappers>
 		<mapper resource="mapper/dataMapper.xml" />
 	</mappers>

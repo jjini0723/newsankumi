@@ -1,3 +1,4 @@
+<%@page import="com.newsite.maptest01.vo.SelectConditions"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -38,6 +39,49 @@ $(function() {
 	});
 	 
 }); 
+
+//라디오버튼 값 보내기
+function conditionSelect(){
+		
+	var arr = new Array();	
+	var hml = $(".hml");
+	
+	$.each(hml, function(index,item){
+		if($(this).children("input[type=radio]:checked").val() != null){//여기 조건 찾기..
+			console.log($(this).children("input[type=radio]:checked").val());
+			var flagValue = $(this).attr("id");
+			var radioValue = $(this).children("input[type=radio]:checked").val();
+			alert(flagValue);
+			alert(radioValue);
+			var obj = {
+				condition : flagValue,
+				level : radioValue
+			};					
+			arr.push(obj);
+		}
+	})				
+	
+	$.ajax({
+		type : "post",
+		url : "selectConditions",
+		contentType : "application/json; charset=utf-8",
+		data : JSON.stringify({
+			list : arr
+		}),
+		success : function(data){
+			console.log(data);
+//					var html = "";
+//					$.each(data, function(index,item){
+//						html += item;
+//					})
+//					$("#resultDiv").html(html);
+		},
+		error : function(e){
+			console.log(e);
+		}
+	})
+}
+
 
 //팝업
 	 $(function() {
@@ -282,11 +326,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="welfare_sports"><span>체육시설</span></label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_sports">
-					<input type="radio" id="rd_welfare_sports1" name="rd_welfare_sports" value="1.2" >
+					<input type="radio" id="rd_welfare_sports1" name="rd_welfare_sports" value="<%=SelectConditions.high %>" >
 					<label for="rd_welfare_sports1">상</label>
-					<input type="radio" id="rd_welfare_sports2" name="rd_welfare_sports" value="1.1" >
+					<input type="radio" id="rd_welfare_sports2" name="rd_welfare_sports" value="<%=SelectConditions.mid %>" >
 					<label for="rd_welfare_sports2">중</label>
-					<input type="radio" id="rd_welfare_sports3" name="rd_welfare_sports" value="1.0">
+					<input type="radio" id="rd_welfare_sports3" name="rd_welfare_sports" value="<%=SelectConditions.low %>">
 					<label for="rd_welfare_sports3">하</label>
 				</span>	
 				</a>
@@ -299,11 +343,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="welfare_culture">문화시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_culture">
-					<input type="radio" id="rd_welfare_culture1" name="rd_welfare_culture" value="high">
+					<input type="radio" id="rd_welfare_culture1" name="rd_welfare_culture" value="<%=SelectConditions.high %>">
 					<label for="rd_welfare_culture1">상</label>
-					<input type="radio" id="rd_welfare_culture2" name="rd_welfare_culture" value="mid">
+					<input type="radio" id="rd_welfare_culture2" name="rd_welfare_culture" value="<%=SelectConditions.mid %>">
 					<label for="rd_welfare_culture2">중</label>
-					<input type="radio" id="rd_welfare_culture3" name="rd_welfare_culture" value="low">
+					<input type="radio" id="rd_welfare_culture3" name="rd_welfare_culture" value="<%=SelectConditions.low %>">
 					<label for="rd_welfare_culture3">하</label>
 				</span>	
 				</a>
@@ -316,11 +360,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="welfare_salon">미/이용 시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_salon">
-					<input type="radio" id="rd_welfare_salon1" name="rd_welfare_salon" value="high">
+					<input type="radio" id="rd_welfare_salon1" name="rd_welfare_salon" value="<%=SelectConditions.high %>">
 					<label for="rd_welfare_salon1">상</label>
-					<input type="radio" id="rd_welfare_salon2" name="rd_welfare_salon" value="mid">
+					<input type="radio" id="rd_welfare_salon2" name="rd_welfare_salon" value="<%=SelectConditions.mid %>">
 					<label for="rd_welfare_salon2">중</label>
-					<input type="radio" id="rd_welfare_salon3" name="rd_welfare_salon" value="low">
+					<input type="radio" id="rd_welfare_salon3" name="rd_welfare_salon" value="<%=SelectConditions.low %>">
 					<label for="rd_welfare_salon3">하</label>
 				</span>	
 				</a>
@@ -333,11 +377,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="welfare_society">사회복지시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_society">
-					<input type="radio" id="rd_welfare_society1" name="rd_welfare_society" value="high">
+					<input type="radio" id="rd_welfare_society1" name="rd_welfare_society" value="<%=SelectConditions.high %>">
 					<label for="rd_welfare_society1">상</label>
-					<input type="radio" id="rd_welfare_society2" name="rd_welfare_society" value="mid">
+					<input type="radio" id="rd_welfare_society2" name="rd_welfare_society" value="<%=SelectConditions.mid %>">
 					<label for="rd_welfare_society2">중</label>
-					<input type="radio" id="rd_welfare_society3" name="rd_welfare_society" value="low">
+					<input type="radio" id="rd_welfare_society3" name="rd_welfare_society" value="<%=SelectConditions.low %>">
 					<label for="rd_welfare_society3">하</label>
 				</span>	
 				</a>
@@ -350,11 +394,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="welfare_medical">의료시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_medical">
-					<input type="radio" id="rd_welfare_medical1" name="rd_welfare_medical" value="high">
+					<input type="radio" id="rd_welfare_medical1" name="rd_welfare_medical" value="<%=SelectConditions.high %>">
 					<label for="rd_welfare_medical1">상</label>
-					<input type="radio" id="rd_welfare_medical2" name="rd_welfare_medical" value="mid">
+					<input type="radio" id="rd_welfare_medical2" name="rd_welfare_medical" value="<%=SelectConditions.mid %>">
 					<label for="rd_welfare_medical2">중</label>
-					<input type="radio" id="rd_welfare_medical3" name="rd_welfare_medical" value="low">
+					<input type="radio" id="rd_welfare_medical3" name="rd_welfare_medical" value="<%=SelectConditions.low %>">
 					<label for="rd_welfare_medical3">하</label>
 				</span>	
 				</a>
@@ -368,11 +412,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="welfare_childcare">보육시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_childcare">
-					<input type="radio" id="rd_welfare_childcare1" name="rd_welfare_childcare" value="high">
+					<input type="radio" id="rd_welfare_childcare1" name="rd_welfare_childcare" value="<%=SelectConditions.high %>">
 					<label for="rd_welfare_childcare1">상</label>
-					<input type="radio" id="rd_welfare_childcare2" name="rd_welfare_childcare"value="mid">
+					<input type="radio" id="rd_welfare_childcare2" name="rd_welfare_childcare"value="<%=SelectConditions.mid %>">
 					<label for="rd_welfare_childcare2">중</label>
-					<input type="radio" id="rd_welfare_childcare3" name="rd_welfare_childcare" value="low">
+					<input type="radio" id="rd_welfare_childcare3" name="rd_welfare_childcare" value="<%=SelectConditions.low %>">
 					<label for="rd_welfare_childcare3">하</label>
 				</span>	
 				</a>
@@ -394,11 +438,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="education_student">1인당 교원수</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="education_student">
-					<input type="radio" id="rd_education_student1" name="rd_education_student" value="high">
+					<input type="radio" id="rd_education_student1" name="rd_education_student" value="<%=SelectConditions.high %>">
 					<label for="rd_education_student1">상</label>
-					<input type="radio" id="rd_education_student2" name="rd_education_student"value="mid">
+					<input type="radio" id="rd_education_student2" name="rd_education_student"value="<%=SelectConditions.mid %>">
 					<label for="rd_education_student2">중</label>
-					<input type="radio" id="rd_education_student3" name="rd_education_student" value="low">
+					<input type="radio" id="rd_education_student3" name="rd_education_student" value="<%=SelectConditions.low %>">
 					<label for="rd_education_student3">하</label>
 				</span>	
 				</a>
@@ -411,11 +455,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="education_academy">학원수</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="education_academy">
-					<input type="radio" id="rd_education_academy1" name="rd_education_academy" value="high">
+					<input type="radio" id="rd_education_academy1" name="rd_education_academy" value="<%=SelectConditions.high %>">
 					<label for="rd_education_academy1">상</label>
-					<input type="radio" id="rd_education_academy2" name="rd_education_academy"value="mid">
+					<input type="radio" id="rd_education_academy2" name="rd_education_academy"value="<%=SelectConditions.mid %>">
 					<label for="rd_education_academy2">중</label>
-					<input type="radio" id="rd_education_academy3" name="rd_education_academy" value="low">
+					<input type="radio" id="rd_education_academy3" name="rd_education_academy" value="<%=SelectConditions.low %>">
 					<label for="rd_education_academy3">하</label>
 				</span>	
 				</a>
@@ -437,11 +481,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="safety_fire">화재안전사고</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_fire">
-					<input type="radio" id="rd_safety_fire1" name="rd_safety_fire" value="high">
+					<input type="radio" id="rd_safety_fire1" name="rd_safety_fire" value="<%=SelectConditions.high %>">
 					<label for="rd_safety_fire1">상</label>
-					<input type="radio" id="rd_safety_fire2" name="rd_safety_fire"value="mid">
+					<input type="radio" id="rd_safety_fire2" name="rd_safety_fire"value="<%=SelectConditions.mid %>">
 					<label for="rd_safety_fire2">중</label>
-					<input type="radio" id="rd_safety_fire3" name="rd_safety_fire" value="low">
+					<input type="radio" id="rd_safety_fire3" name="rd_safety_fire" value="<%=SelectConditions.low %>">
 					<label for="rd_safety_fire3">하</label>
 				</span>	
 				</a>
@@ -454,11 +498,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="safety_traffic">교통안전사고</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_traffic">
-					<input type="radio" id="rd_safety_traffic1" name="rd_safety_traffic" value="high">
+					<input type="radio" id="rd_safety_traffic1" name="rd_safety_traffic" value="<%=SelectConditions.high %>">
 					<label for="rd_safety_traffic1">상</label>
-					<input type="radio" id="rd_safety_traffic2" name="rd_safety_traffic"value="mid">
+					<input type="radio" id="rd_safety_traffic2" name="rd_safety_traffic"value="<%=SelectConditions.mid %>">
 					<label for="rd_safety_traffic2">중</label>
-					<input type="radio" id="rd_safety_traffic3" name="rd_safety_traffic" value="low">
+					<input type="radio" id="rd_safety_traffic3" name="rd_safety_traffic" value="<%=SelectConditions.low %>">
 					<label for="rd_safety_traffic3">하</label>
 				</span>	
 				</a>
@@ -471,11 +515,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="safety_crime">범죄사고</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_crime">
-					<input type="radio" id="rd_safety_crime1" name="rd_safety_crime" value="high">
+					<input type="radio" id="rd_safety_crime1" name="rd_safety_crime" value="<%=SelectConditions.high %>">
 					<label for="rd_safety_crime1">상</label>
-					<input type="radio" id="rd_safety_crime2" name="rd_safety_crime"value="mid">
+					<input type="radio" id="rd_safety_crime2" name="rd_safety_crime"value="<%=SelectConditions.mid %>">
 					<label for="rd_safety_crime2">중</label>
-					<input type="radio" id="rd_safety_crime3" name="rd_safety_crime" value="low">
+					<input type="radio" id="rd_safety_crime3" name="rd_safety_crime" value="<%=SelectConditions.low %>">
 					<label for="rd_safety_crime3">하</label>
 				</span>	
 				</a>
@@ -488,11 +532,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="safety_safety">안전사고</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_safety">
-					<input type="radio" id="rd_safety_safety1" name="rd_safety_safety" value="high">
+					<input type="radio" id="rd_safety_safety1" name="rd_safety_safety" value="<%=SelectConditions.high %>">
 					<label for="rd_safety_safety1">상</label>
-					<input type="radio" id="rd_safety_safety2" name="rd_safety_safety"value="mid">
+					<input type="radio" id="rd_safety_safety2" name="rd_safety_safety"value="<%=SelectConditions.mid %>">
 					<label for="rd_safety_safety2">중</label>
-					<input type="radio" id="rd_safety_safety3" name="rd_safety_safety" value="low">
+					<input type="radio" id="rd_safety_safety3" name="rd_safety_safety" value="<%=SelectConditions.low %>">
 					<label for="rd_safety_safety3">하</label>
 				</span>	
 				</a>
@@ -505,11 +549,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="safety_infection">전염병</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_infection">
-					<input type="radio" id="rd_safety_infection1" name="rd_safety_infection" value="high">
+					<input type="radio" id="rd_safety_infection1" name="rd_safety_infection" value="<%=SelectConditions.high %>">
 					<label for="rd_safety_infection1">상</label>
-					<input type="radio" id="rd_safety_infection2" name="rd_safety_infection"value="mid">
+					<input type="radio" id="rd_safety_infection2" name="rd_safety_infection"value="<%=SelectConditions.mid %>">
 					<label for="rd_safety_infection2">중</label>
-					<input type="radio" id="rd_safety_infection3" name="rd_safety_infection" value="low">
+					<input type="radio" id="rd_safety_infection3" name="rd_safety_infection" value="<%=SelectConditions.low %>">
 					<label for="rd_safety_infection3">하</label>
 				</span>	
 				</a>
@@ -523,11 +567,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="safety_nature">자연재해</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_nature">
-					<input type="radio" id="rd_safety_nature1" name="rd_safety_nature" value="high">
+					<input type="radio" id="rd_safety_nature1" name="rd_safety_nature" value="<%=SelectConditions.high %>">
 					<label for="rd_safety_nature1">상</label>
-					<input type="radio" id="rd_safety_nature2" name="rd_safety_nature"value="mid">
+					<input type="radio" id="rd_safety_nature2" name="rd_safety_nature"value="<%=SelectConditions.mid %>">
 					<label for="rd_safety_nature2">중</label>
-					<input type="radio" id="rd_safety_nature3" name="rd_safety_nature" value="low">
+					<input type="radio" id="rd_safety_nature3" name="rd_safety_nature" value="<%=SelectConditions.low %>">
 					<label for="rd_safety_nature3">하</label>
 				</span>	
 				</a>
@@ -547,11 +591,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="life_convenient">편의시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="life_convenient">
-					<input type="radio" id="rd_life_convenient1" name="rd_life_convenient" value="high">
+					<input type="radio" id="rd_life_convenient1" name="rd_life_convenient" value="<%=SelectConditions.high %>">
 					<label for="rd_life_convenient1">상</label>
-					<input type="radio" id="rd_life_convenient2" name="rd_life_convenient"value="mid">
+					<input type="radio" id="rd_life_convenient2" name="rd_life_convenient"value="<%=SelectConditions.mid %>">
 					<label for="rd_life_convenient2">중</label>
-					<input type="radio" id="rd_life_convenient3" name="rd_life_convenient" value="low">
+					<input type="radio" id="rd_life_convenient3" name="rd_life_convenient" value="<%=SelectConditions.low %>">
 					<label for="rd_life_convenient3">하</label>
 				</span>	
 				</a>
@@ -564,11 +608,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="life_shopping">쇼핑시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="life_shopping" >
-					<input type="radio" id="rd_life_shopping1" name="rd_life_shopping" value="high">
+					<input type="radio" id="rd_life_shopping1" name="rd_life_shopping" value="<%=SelectConditions.high %>">
 					<label for="rd_life_shopping1">상</label>
-					<input type="radio" id="rd_life_shopping2" name="rd_life_shopping"value="mid">
+					<input type="radio" id="rd_life_shopping2" name="rd_life_shopping"value="<%=SelectConditions.mid %>">
 					<label for="rd_life_shopping2">중</label>
-					<input type="radio" id="rd_life_shopping3" name="rd_life_shopping" value="low">
+					<input type="radio" id="rd_life_shopping3" name="rd_life_shopping" value="<%=SelectConditions.low %>">
 					<label for="rd_life_shopping3">하</label>
 				</span>	
 				</a>
@@ -581,11 +625,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="life_restaurant">외식시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="life_restaurant">
-					<input type="radio" id="rd_life_restaurant1" name="rd_life_restaurant" value="high">
+					<input type="radio" id="rd_life_restaurant1" name="rd_life_restaurant" value="<%=SelectConditions.high %>">
 					<label for="rd_life_restaurant1">상</label>
-					<input type="radio" id="rd_life_restaurant2" name="rd_life_restaurant"value="mid">
+					<input type="radio" id="rd_life_restaurant2" name="rd_life_restaurant"value="<%=SelectConditions.mid %>">
 					<label for="rd_life_restaurant2">중</label>
-					<input type="radio" id="rd_life_restaurant3" name="rd_life_restaurant" value="low">
+					<input type="radio" id="rd_life_restaurant3" name="rd_life_restaurant" value="<%=SelectConditions.low %>">
 					<label for="rd_life_restaurant3">하</label>
 				</span>	
 				</a>
@@ -598,11 +642,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="life_publicTraffic">대중교통이용률</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="life_publicTraffic">
-					<input type="radio" id="rd_life_publicTraffic1" name="rd_life_publicTraffic" value="high">
+					<input type="radio" id="rd_life_publicTraffic1" name="rd_life_publicTraffic" value="<%=SelectConditions.high %>">
 					<label for="rd_life_publicTraffic1">상</label>
-					<input type="radio" id="rd_life_publicTraffic2" name="rd_life_publicTraffic"value="mid">
+					<input type="radio" id="rd_life_publicTraffic2" name="rd_life_publicTraffic"value="<%=SelectConditions.mid %>">
 					<label for="rd_life_publicTraffic2">중</label>
-					<input type="radio" id="rd_life_publicTraffic3" name="rd_life_publicTraffic" value="low">
+					<input type="radio" id="rd_life_publicTraffic3" name="rd_life_publicTraffic" value="<%=SelectConditions.low %>">
 					<label for="rd_life_publicTraffic3">하</label>
 				</span>	
 				</a>
@@ -623,11 +667,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="people_foreign">외국인거주비율</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="people_foreign" class = "hml_list">
-					<input type="radio" id="rd_people_foreign1" name="rd_people_foreign" value="high">
+					<input type="radio" id="rd_people_foreign1" name="rd_people_foreign" value="<%=SelectConditions.high %>">
 					<label for="rd_people_foreign1">상</label>
-					<input type="radio" id="rd_people_foreign2" name="rd_people_foreign"value="mid">
+					<input type="radio" id="rd_people_foreign2" name="rd_people_foreign"value="<%=SelectConditions.mid %>">
 					<label for="rd_people_foreign2">중</label>
-					<input type="radio" id="rd_people_foreign3" name="rd_people_foreign" value="low">
+					<input type="radio" id="rd_people_foreign3" name="rd_people_foreign" value="<%=SelectConditions.low %>">
 					<label for="rd_people_foreign3">하</label>
 				</span>	
 				</a>
@@ -640,11 +684,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="people_density">인구밀도</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="people_density"class = "hml_list">
-					<input type="radio" id="rd_people_density1" name="rd_people_density"  value="high" class ="rd_people_density"  >
+					<input type="radio" id="rd_people_density1" name="rd_people_density"  value="<%=SelectConditions.high %>" class ="rd_people_density"  >
 					<label for="rd_people_density1">상</label>
-					<input type="radio" id="rd_people_density2" name="rd_people_density"value="mid" class ="rd_people_density">
+					<input type="radio" id="rd_people_density2" name="rd_people_density"value="<%=SelectConditions.mid %>" class ="rd_people_density">
 					<label for="rd_people_density2">중</label>
-					<input type="radio" id="rd_people_density3" name="rd_people_density" value="low" class ="rd_people_density">
+					<input type="radio" id="rd_people_density3" name="rd_people_density" value="<%=SelectConditions.low %>" class ="rd_people_density">
 					<label for="rd_people_density3">하</label>
 				</span>	
 				</a>
@@ -665,11 +709,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="nature_park">주변 공원 수</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="nature_park" class = "hml_list">
-					<input type="radio" id="rd_nature_park1" name="rd_nature_park" value="high">
+					<input type="radio" id="rd_nature_park1" name="rd_nature_park" value="<%=SelectConditions.high %>">
 					<label for="rd_nature_park1">상</label>
-					<input type="radio" id="rd_nature_park2" name="rd_nature_park"value="mid">
+					<input type="radio" id="rd_nature_park2" name="rd_nature_park"value="<%=SelectConditions.mid %>">
 					<label for="rd_nature_park2">중</label>
-					<input type="radio" id="rd_nature_park3" name="rd_nature_park" value="low">
+					<input type="radio" id="rd_nature_park3" name="rd_nature_park" value="<%=SelectConditions.low %>">
 					<label for="rd_nature_park3">하</label>
 				</span>	
 				</a>
@@ -682,11 +726,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<label for="nature_pollution">미세먼지</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="nature_pollution" >
-					<input type="radio" id="rd_nature_pollution1" name="rd_nature_pollution" value="rd_nature_pollution high">
+					<input type="radio" id="rd_nature_pollution1" name="rd_nature_pollution" value="<%=SelectConditions.high %>">
 					<label for="rd_nature_pollution1">상</label>
-					<input type="radio" id="rd_nature_pollution2" name="rd_nature_pollution" value="rd_nature_pollution mid">
+					<input type="radio" id="rd_nature_pollution2" name="rd_nature_pollution" value="<%=SelectConditions.mid %>">
 					<label for="rd_nature_pollution2">중</label>
-					<input type="radio" id="rd_nature_pollution3" name="rd_nature_pollution" value="rd_nature_pollution low">
+					<input type="radio" id="rd_nature_pollution3" name="rd_nature_pollution" value="<%=SelectConditions.low %>">
 					<label for="rd_nature_pollution3">하</label>
 				</span>	
 				</a>
@@ -713,7 +757,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         
      </form>   
         <h4 class="category">결과보기</h4>
-		<div class="sidebar-block text-center" onclick = "checkSelected();">
+		<div class="sidebar-block text-center" onclick = "conditionSelect();">
 			<a data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList();" class="btn btn-primary btn-block toggle ">          
 				<!-- test123.js 연결 -->
 				<strong>NEXT PAGE</strong>

@@ -6,6 +6,26 @@
 <!-- 회원정보 처리 SQL -->
 <mapper namespace="com.newsite.maptest01.DAO.DataMapper">
 	
+	<!-- 조건 -->
+	<select id="selectCondition" resultType="ConditionResult">
+		select
+			citycode, si, dong, gu,		 
+			<foreach collection="list" item="list" separator=",">
+				${list}
+			</foreach>
+		from
+			mp_data
+	</select>
+	
+	<select id="selectAllInfo" resultType="ConditionResult">
+		select
+			conditionName, si, gu, dong, citycode, value
+		from
+			table
+	</select>
+	
+	
+	
 	<select id="selectGungu" parameterType = "String" resultType="String">
 		select
 			distinct(mp_addcd_gg) 
