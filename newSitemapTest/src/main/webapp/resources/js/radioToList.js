@@ -22,7 +22,6 @@ function getRadios(selected) {
 				+ '스포츠시설'
 				+ '<a href="#" class = "remove" onclick="removeList1();">   x   </a> '
 				+ "</li>";
-
 	}
 
 	// 문화시설
@@ -116,7 +115,7 @@ function getRadios(selected) {
 		html += "<li id = 'education_student' value = "
 				+ education_student
 				+ ">"
-				+ '미/이용 시설'
+				+ '1인당 교원수'
 				+ '<a href="#" class = "remove" onclick="removeList7();">   x   </a> '
 				+ "</li>";
 	}
@@ -132,7 +131,7 @@ function getRadios(selected) {
 		html += "<li id = 'education_academy' value = "
 				+ education_academy
 				+ ">"
-				+ '미/이용 시설'
+				+ '학원수'
 				+ '<a href="#" class = "remove" onclick="removeList8();">   x   </a> '
 				+ "</li>";
 	}
@@ -180,7 +179,7 @@ function getRadios(selected) {
 		html += "<li id = 'safety_crime' value = "
 				+ safety_crime
 				+ ">"
-				+ '교통안전사고'
+				+ '범죄사고'
 				+ '<a href="#" class = "remove" onclick="removeList11();">   x   </a> '
 				+ "</li>";
 	}
@@ -292,7 +291,7 @@ function getRadios(selected) {
 		html += "<li id = 'life_publicTraffic' value = "
 				+ life_publicTraffic
 				+ ">"
-				+ '외식시설'
+				+ '대중교통 이용률'
 				+ '<a href="#" class = "remove" onclick="removeList18();">   x   </a> '
 				+ "</li>";
 	}

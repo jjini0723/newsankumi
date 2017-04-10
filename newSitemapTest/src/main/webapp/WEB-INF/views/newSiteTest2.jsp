@@ -17,7 +17,6 @@
 <script src="./resources/js/graph.js"></script><!-- 차트 라이브러리 -->
 <script src="./resources/js/addAddress.js"></script><!-- 추천지역 리스트에 주소추가 -->
 <script src="./resources/js/resultList.js"></script><!-- 추천지역 리스트 출력 -->
-
 <script type='text/javascript'>
 $(document).avgrund({
 	    openOnEvent: false
@@ -184,7 +183,6 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
         </div>
 		
 		
-		
 	<!-- 오른쪽 상단 네비게이션 -->
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="main-nav">
@@ -228,6 +226,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 
 <!-- 왼쪽 사이드바 시작 -->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
+    <form name = "myselection" onchange="getRadios(document.myselection)">
     <aside class="sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-dark sidebar-visible-desktop" id=sidebar-menu data-type=collapse>
       <div data-scrollable>
         <ul class="sidebar-menu sm-bordered sm-icons-block sm-icons-right">
