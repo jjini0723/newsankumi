@@ -40,7 +40,7 @@ $(function() {
 }); 
 
 //팝업
-	/* $(function() {
+	 $(function() {
 
 		$('#show')
 				.avgrund(
@@ -61,7 +61,7 @@ $(function() {
 									+ '<a href="http://dribbble.com/voronianski" target="_blank" class="dribble">Dribbble</a>'
 									+ '</div>'
 						});
-	}); */
+	}); 
 	
 	//체크박스 선택 개수 제한 (6개)
 	function checkboxSelect(obj, cnt) {
@@ -235,7 +235,7 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<li class="hasSubmenu open active">
 			<a><i class="fa fa-home"></i><span>1차 선택</span></a>
 		<!-- 구 셀렉트 삽입 우선 위에 스타일로 구 스타일 적용해줌 -->
-			<!--	<ul id="#" class="in">
+				<ul id="#" class="in">
 					 <h4 class="category">기준지역선택</h4>
 	            	<li>
 						<div class="cd-select" style="margin: 14px">
@@ -250,11 +250,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 							</select>
 						</div>
 					</li> 
-            </ul> -->
+            </ul> 
           </li>
     <!-- 1차선택 끝 -->
     <!-- 기준지역선택 -->
-		<h4 class="category">기준지역선택</h4>
+		<!-- <h4 class="category">기준지역선택</h4>
 		<div class="sidebar-block">
 			<div class="cd-select" style="margin: 14px">
 					<select class="select1" name="selectThis1" id="mp_addcd_sido" onchange="searchThis(this)">
@@ -266,8 +266,8 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 					<select class="select2" name="selectThis2" id="mp_addcd_gg">
 							<option value="">구/군</option>
 					</select>
-			</div> <!-- cd-select -->
-        </div>  
+			</div> cd-select
+        </div>   -->
           
 <!-- 복지문화 -->
 	<li class="hasSubmenu">
