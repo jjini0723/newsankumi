@@ -848,12 +848,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 
 <!-- Vendor Scripts Standalone Libraries-->  
 
-	<script src="./resources/js/vendor/core/all.js"></script>
-	<!-- <script src="./resources/js/vendor/core/jquery.js"></script> -->
+	<!-- <script src="./resources/js/vendor/core/all.js"></script> -->
 	<script src="./resources/js/vendor/core/bootstrap.js"></script>
 	<script src="./resources/js/vendor/core/breakpoints.js"></script>
 	<script src="./resources/js/vendor/core/jquery.nicescroll.js"></script>
-	<script src="./resources/js/vendor/core/isotope.pkgd.js"></script>
+	<!-- <script src="./resources/js/vendor/core/isotope.pkgd.js"></script> -->
 	<script src="./resources/js/vendor/core/packery-mode.pkgd.js"></script>
 	<script src="./resources/js/vendor/core/jquery.grid-a-licious.js"></script>
 	<script src="./resources/js/vendor/core/jquery.cookie.js"></script>
@@ -863,31 +862,14 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<script src="./resources/js/vendor/core/jquery.hotkeys.js"></script>
 	<script src="./resources/js/vendor/core/load_image.js"></script>
 	<script src="./resources/js/vendor/core/jquery.debouncedresize.js"></script>
-<!-- 	<script src="./resources/js/vendor/forms/all.js"></script> -->
 	<script src="./resources/js/vendor/media/all.js"></script>
 
-  <!-- App Scripts Bundle
-    Includes Custom Application JavaScript used for the current theme/module;
-    Do not use it simultaneously with the standalone modules below. -->
-<!--    <script src="./resources/js/app/app.js"></script>
- -->
-  <!-- App Scripts Standalone Modules
-    As a convenience, we provide the entire UI framework broke down in separate modules
-    Some of the standalone modules may have not been used with the current theme/module
-    but ALL the modules are 100% compatible -->
 
  	<!-- <script src="./resources/js/app/essentials.js"></script> -->
 	<script src="./resources/js/app/layout.js"></script>
 	<script src="./resources/js/app/sidebar.js"></script>
 	<script src="./resources/js/app/media.js"></script>
 
-  <!-- App Scripts CORE [html]:
-        Includes the custom JavaScript for this theme/module;
-        The file has to be loaded in addition to the UI modules above;
-        app.js already includes main.js so this should be loaded
-        ONLY when using the standalone modules; -->
-<!-- 	<script src="./resources/js/app/main.js"></script>
- -->	
 
 
 
