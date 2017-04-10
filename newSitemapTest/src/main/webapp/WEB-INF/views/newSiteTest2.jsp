@@ -198,18 +198,17 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
                 <form>
                   <div class="form-group">
                     <div class="input-group">
-                      <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                      <input type="text" class="form-control" placeholder="Username">
+                    	결과 저장시 이메일로 부여받았던 코드를 입력해주세요
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="fa fa-shield"></i></span>
-                      <input type="password" class="form-control" placeholder="Password">
+                      <input type="password" class="form-control" placeholder="code">
                     </div>
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Login <i class="fa fa-sign-in"></i></button>
+                    <button type="submit" class="btn btn-primary">코드불러오기 <i class="fa fa-sign-in"></i></button>
                   </div>
                 </form>
               </div>
@@ -274,13 +273,13 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<a href="#welfare"><i class="fa fa-list"></i><span>복지문화</span></a>
 		<ul id="welfare" class="sidebar-menu sm-icons-block sm-active-item-bg sm-icons-right">
 		
-		<!-- 스포츠 -->
+		<!-- 체육시설 -->
 		<div class="condition">
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_sports" name="ck" onclick="checkboxSelect('ck',6)">
 					<!-- 수정필요 -->
-					<label for="welfare_sports"><span>스포츠</span></label>
+					<label for="welfare_sports"><span>체육시설</span></label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_sports">
 					<input type="radio" id="rd_welfare_sports1" name="rd_welfare_sports" value="1.2" >
@@ -310,11 +309,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 				</a>
 			</li>
 			
-			<!-- 미용실 -->
+			<!-- 미/이용 시설 -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_salon" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="welfare_salon">미용실</label>
+					<label for="welfare_salon">미/이용 시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_salon">
 					<input type="radio" id="rd_welfare_salon1" name="rd_welfare_salon" value="high">
@@ -327,11 +326,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 				</a>
 			</li>
 			
-			<!-- 사회복지 -->
+			<!-- 사회복지시설 -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_society" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="welfare_society">사회복지</label>
+					<label for="welfare_society">사회복지시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_society">
 					<input type="radio" id="rd_welfare_society1" name="rd_welfare_society" value="high">
@@ -344,11 +343,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 				</a>
 			</li>
 			
-			<!-- 병원 -->
+			<!-- 의료시설 -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_medical" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="welfare_medical">병원</label>
+					<label for="welfare_medical">의료시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_medical">
 					<input type="radio" id="rd_welfare_medical1" name="rd_welfare_medical" value="high">
@@ -362,11 +361,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 			</li>
 			
 			
-			<!-- 유치원 -->
+			<!-- 보육시설 -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_childcare" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="welfare_childcare">유치원</label>
+					<label for="welfare_childcare">보육시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_childcare">
 					<input type="radio" id="rd_welfare_childcare1" name="rd_welfare_childcare" value="high">
@@ -388,11 +387,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<a href="#education"><i class="fa fa-list"></i><span>교육</span></a>
 		<ul id="education" class="sidebar-menu sm-icons-block sm-active-item-bg sm-icons-right">
 		
-		<!-- 교원1인당학생수 -->
+		<!-- 1인당 교원수 -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="education_student" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="education_student">교원1인당 학생수</label>
+					<label for="education_student">1인당 교원수</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="education_student">
 					<input type="radio" id="rd_education_student1" name="rd_education_student" value="high">
@@ -431,11 +430,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<a href="#safety"><i class="fa fa-list"></i><span>안전</span></a>
 		<ul id="safety" class="sidebar-menu sm-icons-block sm-active-item-bg sm-icons-right">
 		
-		<!-- 화재 -->
+		<!-- 화재안전사고 -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="safety_fire" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="safety_fire">화재</label>
+					<label for="safety_fire">화재안전사고</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_fire">
 					<input type="radio" id="rd_safety_fire1" name="rd_safety_fire" value="high">
@@ -448,11 +447,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 				</a>
 			</li>
 			
-			<!-- 교통 -->
+			<!-- 교통안전사고 -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="safety_traffic" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="safety_traffic">교통</label>
+					<label for="safety_traffic">교통안전사고</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_traffic">
 					<input type="radio" id="rd_safety_traffic1" name="rd_safety_traffic" value="high">
@@ -465,11 +464,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 				</a>
 			</li>
 			
-			<!-- 범죄 -->
+			<!-- 범죄사고 -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="safety_crime" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="safety_crime">범죄</label>
+					<label for="safety_crime">범죄사고</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_crime">
 					<input type="radio" id="rd_safety_crime1" name="rd_safety_crime" value="high">
@@ -659,11 +658,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<a href="#nature"><i class="fa fa-list"></i><span>자연</span></a>
 		<ul id="nature" class="sidebar-menu sm-icons-block sm-active-item-bg sm-icons-right">
 		
-		<!-- 공원 -->
+		<!-- 주변 공원 수 -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="nature_park" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="nature_park">공원</label>
+					<label for="nature_park">주변 공원 수</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="nature_park" class = "hml_list">
 					<input type="radio" id="rd_nature_park1" name="rd_nature_park" value="high">
