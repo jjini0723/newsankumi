@@ -914,14 +914,6 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<script src="./resources/js/app/layout.js"></script>
 	<script src="./resources/js/app/sidebar.js"></script>
 	<script src="./resources/js/app/media.js"></script>
-	
-
-<div>
-
-
-
-</div>
-
 
 </body>
 </html>
