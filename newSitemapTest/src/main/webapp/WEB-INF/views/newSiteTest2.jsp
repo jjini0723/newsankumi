@@ -18,6 +18,9 @@
 <script src="./resources/js/graph.js"></script><!-- 차트 라이브러리 -->
 <script src="./resources/js/addAddress.js"></script><!-- 추천지역 리스트에 주소추가 -->
 <script src="./resources/js/resultList.js"></script><!-- 추천지역 리스트 출력 -->
+<script src="./resources/js/mapShowResult.js"></script><!-- 추천지역 리스트 출력 -->
+<script src="./resources/js/la.js"></script><!-- 영석이 시간계산 로직 -->
+<script src="./resources/js/searchDestination.js"></script><!-- 희망목적지 관련 js -->
 <script type='text/javascript'>
 $(document).avgrund({
 	    openOnEvent: false
@@ -912,7 +915,11 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<script src="./resources/js/app/sidebar.js"></script>
 	<script src="./resources/js/app/media.js"></script>
 
+<div>
 
+
+
+</div>
 
 
 </body>
