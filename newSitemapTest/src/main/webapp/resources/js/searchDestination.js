@@ -1,15 +1,9 @@
 /**
- * 
+ * 희망 목적지를 검색 후 등록한다.
  */
 
 // 마커를 담을 배열입니다
 var markers = [];
-
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-    mapOption = {
-        center: new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-        level: 6 // 지도의 확대 레벨
-    };
 
 // 장소 검색 객체를 생성합니다
 var ps = new daum.maps.services.Places();
@@ -129,16 +123,19 @@ function getListItem(index, places) {
                 '   <h5>' + places.title + '</h5>';
 
     if (places.newAddress) {
-        itemStr += '    <span>' + places.newAddress + '</span>' +
-                    '   <span class="jibun gray">' +  places.address  + '</span>';
+        itemStr += '    <span>' + places.newAddress + '</span><br>' +
+                    '   <span class="jibun gray">' +  places.address  + '</span><br>';
     } else {
-        itemStr += '    <span>' +  places.address  + '</span>'; 
+        itemStr += '    <span>' +  places.address  + '</span><br>'; 
     }
                  
-      itemStr += '  <span class="tel">' + places.phone  + '</span>' +
-      '<select id="transport"><option value="0">이동수단</option><option value="1">자동차</option>' +
-      '<option value="2">도보</option><option value="3">대중교통</option></select>' +
-                '<input type="submit" value="등록" onclick="hoi('+places.latitude+','+places.longitude+')"></div>';
+      itemStr += '  <span class="tel">' + places.phone  + '</span><br>' ;
+      
+      itemStr += '<select id="transport" name="transport"><option value="0">이동수단</option>' +
+                 '<option value="1">자동차</option>' +
+                 '<option value="2">도보</option><option value="3">대중교통</option></select>' +
+                 '<input type="button" value="등록" onclick="hoi('+places.latitude+','+places.longitude+','+index+')"></div>';
+                
 
     el.innerHTML = itemStr;
     el.className = 'item';
@@ -222,21 +219,13 @@ function removeAllChildNods(el) {
     }
 }
 
-function hoi(lat, lng) {
-	/*
-	removeMarker(); // 등록버튼을 누르면 키워드로 검색된 장소의 리스트를 모두 지운다.
-	*/
-	// 등록버튼을 누른 희망목적지만 지도에 마커 표시.
-	/*
-	var placePosition = new daum.maps.LatLng(lat, lng),
-    marker = addMarker(placePosition, 0); 
-	*/
-
+function hoi(lat, lng, index) {
 	
 	alert(lat+", "+lng);
-	var obj1 = document.getElementById("transport");
-	var idx1 = obj1.options.selectedIndex; // 해당 selectbox index 구하기
-	var transport = obj1.options[idx1].value; // 선택된 selectbox의 value값 가져오기
+	var obj1 = document.getElementsByName("transport");
+	var idx1 = obj1[index].options.selectedIndex; // 해당 selectbox index 구하기
+
+	var transport = obj1[index].options[idx1].value; // 선택된 selectbox의 value값 가져오기
 	if(transport == 0) {
 		alert('이동수단을 선택해주세요.');
 	}
@@ -252,6 +241,5 @@ function hoi(lat, lng) {
 		var tradi = { x : lat, y :  lng};
 		tradiArray.push(tradi);
 	}
-	alert(transport);
 	dfa(carArray, walkArray, tradiArray); // dfa()에  carArray, walkArray, tradiArray를 보내서 dfa에서 각 Array의 length를 체크해보는 건 어떨까?
 }
