@@ -1,17 +1,18 @@
-<%@page import="com.newsite.maptest01.vo.SelectConditions"%>
+<%@ page import="com.newsite.maptest01.vo.SelectConditions"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link rel="stylesheet" href="./resources/css/avgrund.css"> <!-- 첫번째 팝업 style -->
+<link rel="stylesheet" href="./resources/css/sweetalert.css"> <!-- sweetalert/email 보내기 팝업 관련 style -->
 
-<!-- jquery-3.1.1.js -->
-<script type="text/javascript" src="http://apis.daum.net/maps/maps3.js?apikey=e5f9cd760a5dedf9f84cc76d41a6decd&libraries=services"></script><!-- daum api -->
-<script src="./resources/js/jquery-3.1.1.js"></script>
+<script src="./resources/js/jquery-3.1.1.js"></script> <!-- jquery-3.1.1.js -->
 <script src="./resources/js/test123.js"></script>
+<script src="./resources/js/2ndBoardList.js"></script>
 <script src="./resources/js/radioToList.js"></script>
 <script src="./resources/js/jquery.avgrund.min.js"></script>
 <script src="./resources/js/selectThis.js"></script> <!-- 기준 지역 선택 -->
@@ -22,14 +23,13 @@
 <script src="./resources/js/mapShowResult.js"></script><!-- 추천지역 리스트 출력 -->
 <script src="./resources/js/la.js"></script><!-- 영석이 시간계산 로직 -->
 <script src="./resources/js/searchDestination.js"></script><!-- 희망목적지 관련 js -->
-<script src="./resources/js/2ndBoardList.js"></script>
+<script src="./resources/js/sweetalert.min.js"></script><!-- sweetalert/email 보내기 팝업 관련 js -->
+<script src="//apis.daum.net/maps/maps3.js?apikey=e5f9cd760a5dedf9f84cc76d41a6decd&libraries=services"></script> <!-- daum api -->
+
+
+
+
 <script type='text/javascript'>
-var coords2 = new Array();
-var perfect = new Array();
-var yebi ='';
-var carArray = new Array(); // 희망목적지 이동수단 자동차인 경우의 좌표를 저장하는 배열
-var walkArray = new Array(); // 희망목적지 이동수단 도보인 경우의 좌표를 저장하는 배열
-var tradiArray = new Array(); // 희망목적지 이동수단 대중교통인 경우의 좌표를 저장하는 배열
 $(document).avgrund({
 	    openOnEvent: false
 	}); 
@@ -166,18 +166,6 @@ function conditionSelect(){
 	<link href="./resources/css/vendor/jquery.bootstrap-touchspin.css" rel="stylesheet">
 	<link href="./resources/css/vendor/select2.css" rel="stylesheet">
   
-  <!-- APP CSS BUNDLE [css/app/app.css]
-INCLUDES:
-    - The APP CSS CORE styling required by the "html" module, also available with main.css - see below;
-    - The APP CSS STANDALONE modules required by the "html" module;
-NOTE:
-    - This bundle may NOT include ALL of the available APP CSS STANDALONE modules;
-      It was optimised to load only what is actually used by the "html" module;
-      Other APP CSS STANDALONE modules may be available in addition to what's included with this bundle.
-      See src/less/themes/html/app.less
-TIP:
-    - Using bundles will improve performance by greatly reducing the number of network requests the client needs to make when loading the page. -->
-	<link href="./resources/css/app/app.css" rel="stylesheet">
 
   <!-- App CSS CORE
 This variant is to be used when loading the separate styling modules -->
@@ -198,15 +186,6 @@ This variant is to be used when loading the separate styling modules -->
 	<link href="./resources/css/app/colors-buttons.css" rel="stylesheet" />
 	<link href="./resources/css/app/colors-text.css" rel="stylesheet" />
 	<link href="./resources/css/app/hml_radio.css" rel="stylesheet" />
-	
-	
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
-WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!-- If you don't need support for Internet Explorer <= 8 you can safely remove these -->
-  <!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
 
 </head>
 
@@ -215,6 +194,8 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 <body>
 <!--  팝업1-->
 <a href="#" id="show" class="button left"></a>
+
+
   <!-- Wrapper required for sidebar transitions -->
   <div class="st-container">
 
@@ -280,17 +261,18 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 
 <!-- 왼쪽 사이드바 시작 -->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
-    <form name = "myselection" onchange="getRadios(document.myselection)">
-    <aside class="sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-dark sidebar-visible-desktop" id=sidebar-menu data-type=collapse>
-      <div data-scrollable>
-        <ul class="sidebar-menu sm-bordered sm-icons-block sm-icons-right">
-          
+	<aside class="sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-dark sidebar-visible-desktop" id=sidebar-menu data-type=collapse>
+	<div data-scrollable>
+	
+	<!-- 폼시작 -->
+	<form name = "myselection" onchange="getRadios(document.myselection)">
+	
 	<!-- 1차선택 -->
+	<ul class="sidebar-menu sm-bordered sm-icons-block sm-icons-right">
 		<li class="hasSubmenu open active">
 			<a><i class="fa fa-home"></i><span>1차 선택</span></a>
-		<!-- 구 셀렉트 삽입 우선 위에 스타일로 구 스타일 적용해줌 -->
-				<ul id="#" class="in">
-					 <h4 class="category">기준지역선택</h4>
+				<ul class="in">
+					<h4 class="category">기준지역선택</h4>
 	            	<li>
 						<div class="cd-select" style="margin: 14px">
 							<select class="select1" name="selectThis1" id="mp_addcd_sido" onchange="searchThis(this)">
@@ -304,25 +286,12 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 							</select>
 						</div>
 					</li> 
-            </ul> 
-          </li>
-    <!-- 1차선택 끝 -->
-    <!-- 기준지역선택 -->
-		<!-- <h4 class="category">기준지역선택</h4>
-		<div class="sidebar-block">
-			<div class="cd-select" style="margin: 14px">
-					<select class="select1" name="selectThis1" id="mp_addcd_sido" onchange="searchThis(this)">
-							<option value="">시/도</option>
-							<option value="서울특별시">서울특별시</option>
-							<option value="인천광역시">인천광역시</option>
-							<option value="경기도">경기도</option>
-					</select>
-					<select class="select2" name="selectThis2" id="mp_addcd_gg">
-							<option value="">구/군</option>
-					</select>
-			</div> cd-select
-        </div>   -->
-          
+				</ul>
+			</li>
+		</ul>
+
+<!-- 조건 카테고리 시작 -->
+	<ul class="sidebar-menu sm-bordered sm-icons-block sm-icons-right">
 <!-- 복지문화 -->
 	<li class="hasSubmenu">
 	<a href="#welfare"><i class="fa fa-list"></i><span>복지문화</span></a>
@@ -750,33 +719,27 @@ WARNING: Respond.js doesn't work if you view the page via file:// -->
 	</li>
 
 </ul>
-        
-<!--         
-        <h4 class="category">Map features</h4>
-        <ul class="sidebar-menu sm-icons-block sm-active-item-bg sm-icons-right">
-          <li><a href="map-filters.html"><i class="fa fa-search"></i><span>Map Filters</span></a></li>
-          <li><a href="map-themes.html"><i class="fa fa-eyedropper"></i><span>Map Themes</span></a></li>
-          <li><a href="map-markers.html"><i class="fa fa-map-marker"></i><span>Map Markers</span></a></li>
-        </ul>
- -->        
-        
-        <h4 class="category">선택한 조건</h4>
+<!-- //조건 카테고리 끝 -->
+	
+	<!-- 선택한 조건 -->
+	<h4 class="category">선택한 조건</h4>
         <div class="sidebar-block" id = "sList" >
 				<ul class = "selectedList" id = "selectedList">
 				</ul>  
         </div>
-        
-     </form>   
-        <h4 class="category">결과보기</h4>
+	</form>
+<!-- 폼 끝 (조건 카테고리, 선택한 조건 포함) -->
+	
+	<h4 class="category">결과보기</h4>
 		<div class="sidebar-block text-center" onclick = "conditionSelect();">
 			<a data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList();" class="btn btn-primary btn-block toggle ">          
-				<!-- test123.js 연결 -->
-				<strong>NEXT PAGE</strong>
+				<strong>NEXT PAGE</strong> <!-- test123.js 연결 -->
 			</a>
-        </div>
-      </div>
-    </aside>
-
+		</div>
+		
+		</div><!-- <div data-scrollable> -->
+	</aside>
+<!-- 왼쪽 사이드바 끝 -->
 
 <!-- 오른쪽 사이드바 시작-->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
