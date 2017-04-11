@@ -8,7 +8,7 @@ $(document).on("click", ".remove", function() {
 function getRadios(selected) {
 	var html = "";
 
-	// 체육시설
+	// 스포츠
 	var welfare_sports = "";
 	for (var i = 0; i < selected.rd_welfare_sports.length; i++) {
 		if (selected.rd_welfare_sports[i].checked)
@@ -19,7 +19,7 @@ function getRadios(selected) {
 		html += "<li id = 'welfare_sports' value = "
 				+ welfare_sports
 				+ ">"
-				+ '체육시설'
+				+ '스포츠시설'
 				+ '<a href="#" class = "remove" onclick="removeList1();">   x   </a> '
 				+ "</li>";
 	}
@@ -39,7 +39,7 @@ function getRadios(selected) {
 				+ "</li>";
 	}
 
-	// 미/이용 시설
+	// 미용
 	var welfare_salon = "";
 	for (var i = 0; i < selected.rd_welfare_salon.length; i++) {
 		if (selected.rd_welfare_salon[i].checked)
@@ -136,7 +136,7 @@ function getRadios(selected) {
 				+ "</li>";
 	}
 
-	// 화재안전사고
+	// 안전_화재
 	var safety_fire = "";
 	for (var i = 0; i < selected.rd_safety_fire.length; i++) {
 		if (selected.rd_safety_fire[i].checked)
@@ -152,7 +152,7 @@ function getRadios(selected) {
 				+ "</li>";
 	}
 
-	// 교통안전사고
+	// 교통사고
 	var safety_traffic = "";
 	for (var i = 0; i < selected.rd_safety_traffic.length; i++) {
 		if (selected.rd_safety_traffic[i].checked)
@@ -168,7 +168,7 @@ function getRadios(selected) {
 				+ "</li>";
 	}
 
-	// 범죄사고
+	// 범죄
 	var safety_crime = "";
 	for (var i = 0; i < selected.rd_safety_crime.length; i++) {
 		if (selected.rd_safety_crime[i].checked)
@@ -296,7 +296,7 @@ function getRadios(selected) {
 				+ "</li>";
 	}
 
-	// 외국인거주비율
+	// 외국인비율
 	var people_foreign = "";
 	for (var i = 0; i < selected.rd_people_foreign.length; i++) {
 		if (selected.rd_people_foreign[i].checked)
@@ -307,7 +307,7 @@ function getRadios(selected) {
 		html += "<li id = 'people_foreign' value = "
 				+ people_foreign
 				+ ">"
-				+ '외국인거주비율'
+				+ '외국인비율'
 				+ '<a href="#" class = "remove" onclick="removeList19();">   x   </a> '
 				+ "</li>";
 	}
@@ -328,7 +328,7 @@ function getRadios(selected) {
 				+ "</li>";
 	}
 
-	// 주변 공원 수
+	// 공원수
 	var nature_park = "";
 	for (var i = 0; i < selected.rd_nature_park.length; i++) {
 		if (selected.rd_nature_park[i].checked)
@@ -368,6 +368,11 @@ function getRadios(selected) {
 
 	$(".selectedList").html(html);
 }
+/*
+function removeList(){
+	
+	
+}*/
 
 function removeList1() {
 	$("input:radio[name='rd_welfare_sports']").removeAttr("checked");
