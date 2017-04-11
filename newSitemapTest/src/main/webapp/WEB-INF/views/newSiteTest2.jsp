@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <link rel="stylesheet" href="./resources/css/avgrund.css"> <!-- 첫번째 팝업 style -->
+<link rel="stylesheet" href="./resources/css/sweetalert.css"> <!-- sweetalert/email 보내기 팝업 관련 style -->
 
 <script src="./resources/js/jquery-3.1.1.js"></script> <!-- jquery-3.1.1.js -->
 <script src="./resources/js/test123.js"></script>
@@ -23,6 +24,10 @@
 <script src="./resources/js/mapShowResult.js"></script><!-- 추천지역 리스트 출력 -->
 <script src="./resources/js/la.js"></script><!-- 영석이 시간계산 로직 -->
 <script src="./resources/js/searchDestination.js"></script><!-- 희망목적지 관련 js -->
+<script src="./resources/js/sweetalert.min.js"></script><!-- sweetalert/email 보내기 팝업 관련 js -->
+
+
+
 
 <script type='text/javascript'>
 $(document).avgrund({
@@ -189,6 +194,8 @@ This variant is to be used when loading the separate styling modules -->
 <body>
 <!--  팝업1-->
 <a href="#" id="show" class="button left"></a>
+
+
   <!-- Wrapper required for sidebar transitions -->
   <div class="st-container">
 
