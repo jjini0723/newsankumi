@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="./resources/css/avgrund.css"> <!-- 첫번째 팝업 style -->
 <link rel="stylesheet" href="./resources/css/sweetalert.css"> <!-- sweetalert/email 보내기 팝업 관련 style -->
 
+<script src="//apis.daum.net/maps/maps3.js?apikey=e5f9cd760a5dedf9f84cc76d41a6decd&libraries=services"></script> <!-- daum api -->
 <script src="./resources/js/jquery-3.1.1.js"></script> <!-- jquery-3.1.1.js -->
 <script src="./resources/js/test123.js"></script>
 <script src="./resources/js/2ndBoardList.js"></script>
@@ -24,7 +25,6 @@
 <script src="./resources/js/la.js"></script><!-- 영석이 시간계산 로직 -->
 <script src="./resources/js/searchDestination.js"></script><!-- 희망목적지 관련 js -->
 <script src="./resources/js/sweetalert.min.js"></script><!-- sweetalert/email 보내기 팝업 관련 js -->
-<script src="//apis.daum.net/maps/maps3.js?apikey=e5f9cd760a5dedf9f84cc76d41a6decd&libraries=services"></script> <!-- daum api -->
 
 
 

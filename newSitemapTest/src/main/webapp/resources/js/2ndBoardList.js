@@ -56,6 +56,7 @@ function boardList2() {
 			}
 		});
 	});
+	
 }
 
 function boardList3() {
