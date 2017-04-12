@@ -6,9 +6,14 @@
 	
 	<typeAliases>
 		<typeAlias type="com.newsite.maptest01.vo.ConditionResult" alias="ConditionResult" />
+		<typeAlias type="com.newsite.maptest01.vo.bjdJuso" alias="bjdJuso" />
+		<typeAlias type="com.newsite.maptest01.vo.bjdName" alias="bjdName" />
+		<typeAlias type="com.newsite.maptest01.vo.doroCode" alias="doroCode" />
+		<typeAlias type="com.newsite.maptest01.vo.kaptCode" alias="kaptCode" />
 	</typeAliases>	
 		
 	<mappers>
 		<mapper resource="mapper/dataMapper.xml" />
+		<mapper resource="mapper/mapMapper.xml" />
 	</mappers>
 </configuration>

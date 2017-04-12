@@ -8,7 +8,6 @@ function boardList2() {
 		$.ajax({
 			type : "get",
 			success : function(data) {
-				console.log(data);
 				var html = "";
 				html += '<div data-scrollable id="sidebar-map1">';
 				html += '<h4 class="category">희망위치추가</h4>';
@@ -22,7 +21,7 @@ function boardList2() {
 			    html += '<div class="option">';
 			    html += '<div>';        
 			    html += '<form onsubmit="searchPlaces(); return false;">';
-			    html += '키워드 : <input type="text" value="이태원 맛집" id="keyword" size="15">'; 
+			    html += '키워드 : <input type="text" value="이태원 맛집" id="keyword" size="12">'; 
 			    html += '<button type="submit">검색하기</button>'; 
 			    html += '</form>';
 			    html += '</div>';
@@ -45,7 +44,7 @@ function boardList2() {
 				html += '<ul class="pagination margin-none">';
 				html += '<li class="disabled"><a href="#">&laquo;</a></li>';
 				html += '<li><a href="#" onclick = "boardList();">이전단계</a></li>';
-				html += '<li><a href="#" onclick = "boardList3();">최적의 주거공간 찾기</a></li>';
+				html += '<li><a href="#" onclick = "boardList3(); searchBestLoc();">최적의 주거공간 찾기</a></li>';
 				html += '<li class="disabled"><a href="#">&raquo;</a></li>';
 				html += '</ul></div></div>';
 
@@ -64,7 +63,6 @@ function boardList3() {
 		$.ajax({
 			type : "get",
 			success : function(data) {
-				console.log(data);
 				var html = "";
 				html += '<div data-scrollable id="sidebar-map1">';
 				html += '<h4 class="category">주거지역 검색 결과</h4>';

@@ -23,6 +23,10 @@ function dfa(carArray, walkArray, tradiArray){
 	tradi.push(tradi1);*/
 ////////////////////////////////수동으로 자동차1,도보1,대중교통1 선택 가정해서 좌표 객체화 해서 배열에 집어넣음
 	
+	alert('호잇');
+	console.log(carArray);
+	console.log(walkArray);
+	console.log(tradiArray);
 	
 	
 	

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 회원정보 처리 SQL -->
+ <mapper namespace="com.newsite.maptest01.DAO.mapMapper">
+
+	
+	
+	<select id="getDoroCD" parameterType="bjdName" resultType="String">
+		select distinct(doro_cd) from mp_loc_info where emd_nm=#{bjdName1}
+	</select> 
+	
+	<insert id="kaptcode" parameterType="kaptCode">
+		insert into mp_kaptcode(emd_nm,kaptcode) values(#{emd_nm},#{kaptcode})
+	</insert>
+	<select id="emdList" resultType="String">
+		select distinct(emd_nm) from mp_loc_info order by emd_nm asc
+	</select>
+	
+	<select id="loadKaptCode" parameterType="String" resultType="kaptCode">
+		select kaptcode from mp_kaptcode where emd_nm=#{0}
+	</select>
+</mapper>

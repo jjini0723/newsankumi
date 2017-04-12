@@ -241,5 +241,13 @@ function hoi(lat, lng, index) {
 		var tradi = { x : lat, y :  lng};
 		tradiArray.push(tradi);
 	}
+	console.log(transport);
+	console.log(carArray);
+	console.log(walkArray);
+	console.log(tradiArray);
+	
+	
+}
+function searchBestLoc() {
 	dfa(carArray, walkArray, tradiArray); // dfa()에  carArray, walkArray, tradiArray를 보내서 dfa에서 각 Array의 length를 체크해보는 건 어떨까?
 }

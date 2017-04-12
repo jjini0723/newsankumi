@@ -7,7 +7,6 @@ function boardList() {
 						$.ajax({
 									type : "get",
 									success : function(data) {
-										console.log(data);
 										var html = "";
 
 										html += '<h4 class="category">검색결과</h4>';
@@ -40,7 +39,7 @@ function boardList() {
 										html += '</div>';
 										html += '<div class="sidebar-block equal-padding">';
 										html += '<ul class="pagination margin-none">';
-										html += '<li><a href="#" onclick = "boardList2();">다음단계</a></li>';
+										html += '<li><a href="#" onclick = "boardList2();call("삼성동,역삼동");">다음단계</a></li>';
 										html += '<li class="disabled"><a href="#">&raquo;</a></li>';
 										html += '</ul></div></div>';
 
