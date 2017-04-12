@@ -4,6 +4,8 @@
 
 
 function boardList2() {
+	emdName = "삼성동,역삼동";
+	call(emdName);
 	$(document).ready(function() {
 		$.ajax({
 			type : "get",
