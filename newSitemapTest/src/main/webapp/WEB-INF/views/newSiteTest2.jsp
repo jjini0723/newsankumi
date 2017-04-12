@@ -30,6 +30,14 @@
 
 
 <script type='text/javascript'>
+var coords2 = new Array();
+var perfect = new Array();
+var yebi ='';
+var carArray = new Array(); // 희망목적지 이동수단 자동차인 경우의 좌표를 저장하는 배열
+var walkArray = new Array(); // 희망목적지 이동수단 도보인 경우의 좌표를 저장하는 배열
+var tradiArray = new Array(); // 희망목적지 이동수단 대중교통인 경우의 좌표를 저장하는 배열
+var emdName = null;
+
 $(document).avgrund({
 	    openOnEvent: false
 	}); 

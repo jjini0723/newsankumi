@@ -37,7 +37,7 @@ function placesSearchCB(status, data, pagination) {
         displayPlaces(data.places);
         
         // 태훈추가
-        console.log(data.places);
+        console.log('data.places : '+data.places[5].newAddress);
         console.log(pagination);
 
         // 페이지 번호를 표출합니다
@@ -111,7 +111,7 @@ function displayPlaces(places) {
     menuEl.scrollTop = 0;
 
     // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-    map.setBounds();
+    map.setBounds(bounds);
 }
 
 // 검색결과 항목을 Element로 반환하는 함수입니다
@@ -134,7 +134,7 @@ function getListItem(index, places) {
       itemStr += '<select id="transport" name="transport"><option value="0">이동수단</option>' +
                  '<option value="1">자동차</option>' +
                  '<option value="2">도보</option><option value="3">대중교통</option></select>' +
-                 '<input type="button" value="등록" onclick="hoi('+places.latitude+','+places.longitude+','+index+')"></div>';
+                 '<input type="button" value="등록" onclick="hoi('+places.latitude+','+places.longitude+','+index+');getItem('+index+','+places+');"></div>';
                 
 
     el.innerHTML = itemStr;
@@ -143,13 +143,41 @@ function getListItem(index, places) {
     return el;
 }
 
+
+function getItem(index, places) {
+	alert('헤헷');
+    var el = document.getElementById('getItem'),
+    itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
+                '<div class="info">' +
+                '   <h5>' + places[index].title + '</h5>';
+
+    if (places.newAddress) {
+        itemStr += '    <span>' + places[index].newAddress + '</span><br>' +
+                    '   <span class="jibun gray">' +  places.address  + '</span><br>';
+    } else {
+        itemStr += '    <span>' +  places[index].address  + '</span><br>'; 
+    }
+                 
+      itemStr += '  <span class="tel">' + places[index].phone  + '</span><br>' ;
+      
+      itemStr += '<input type="button" value="삭제" onclick="getItem('+index+','+places+');"></div>';
+
+    el.innerHTML = itemStr;
+    el.className = 'item';
+
+    return el;
+}
+
+
+
+
 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 function addMarker(position, idx, title) {
-    var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-        imageSize = new daum.maps.Size(36, 37),  // 마커 이미지의 크기
+    var imageSrc = './resources/images/markers/user-01.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+        imageSize = new daum.maps.Size(41, 40),  // 마커 이미지의 크기
         imgOptions =  {
-            spriteSize : new daum.maps.Size(36, 691), // 스프라이트 이미지의 크기
-            spriteOrigin : new daum.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+            spriteSize : new daum.maps.Size(41, 40), // 스프라이트 이미지의 크기
+            spriteOrigin : new daum.maps.Point(0, 0), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
             offset: new daum.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
         },
         markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imgOptions),
@@ -171,6 +199,17 @@ function removeMarker() {
     }   
     markers = [];
 }
+
+// 등록한 마커를 제외하고 삭제
+function removeOtherMarker(index) {
+	for ( var i = 0; i < markers.length; i++) {
+		if(index != i) {
+			markers[i].setMap(null);
+		}
+	}
+	markers = [];
+}
+
 
 // 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
 function displayPagination(pagination) {
@@ -220,8 +259,12 @@ function removeAllChildNods(el) {
 }
 
 function hoi(lat, lng, index) {
-	
+	var listEl = document.getElementById('placesList');
 	alert(lat+", "+lng);
+	removeOtherMarker(index); // 등록된 희망위치를 제외하고 나머지 마커들을 지우는 메소드.
+	removeAllChildNods(listEl); // 등록 버튼 클릭시 리스트 reset하는 메소드.
+	document.getElementById("keyword").value = "";
+	getListItem(index, places);
 	var obj1 = document.getElementsByName("transport");
 	var idx1 = obj1[index].options.selectedIndex; // 해당 selectbox index 구하기
 
@@ -241,5 +284,13 @@ function hoi(lat, lng, index) {
 		var tradi = { x : lat, y :  lng};
 		tradiArray.push(tradi);
 	}
+	console.log(transport);
+	console.log(carArray);
+	console.log(walkArray);
+	console.log(tradiArray);
+	
+	
+}
+function searchBestLoc() {
 	dfa(carArray, walkArray, tradiArray); // dfa()에  carArray, walkArray, tradiArray를 보내서 dfa에서 각 Array의 length를 체크해보는 건 어떨까?
 }

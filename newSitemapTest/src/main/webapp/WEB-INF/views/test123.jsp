@@ -11,7 +11,6 @@
 <body>
 
 <div id = "test123"></div>
-dfdfafdafadf
 <input type = "button" onclick = "boardList();" value = "dd">
 
 

@@ -7,7 +7,6 @@ function boardList() {
 						$.ajax({
 									type : "get",
 									success : function(data) {
-										console.log(data);
 										var html = "";
 
 										html += '<h4 class="category">검색결과</h4>';
