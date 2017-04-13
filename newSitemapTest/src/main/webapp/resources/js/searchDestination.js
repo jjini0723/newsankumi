@@ -134,7 +134,7 @@ function getListItem(index, places) {
       itemStr += '<select id="transport" name="transport"><option value="0">이동수단</option>' +
                  '<option value="1">자동차</option>' +
                  '<option value="2">도보</option><option value="3">대중교통</option></select>' +
-                 '<input type="button" value="등록" onclick="hoi('+places.latitude+','+places.longitude+','+index+');getItem('+index+','+places+');"></div>';
+                 '<input type="button" value="등록" onclick="hoi('+places.latitude+','+places.longitude+','+index+');"></div>';
                 
 
     el.innerHTML = itemStr;
@@ -284,10 +284,12 @@ function hoi(lat, lng, index) {
 		var tradi = { x : lat, y :  lng};
 		tradiArray.push(tradi);
 	}
+	
 	console.log(transport);
 	console.log(carArray);
 	console.log(walkArray);
 	console.log(tradiArray);
+	
 	
 	
 }

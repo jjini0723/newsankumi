@@ -95,10 +95,20 @@ function call(emdName){
 			//주소로 좌표를 검색합니다
 			var kaptAddr = new Array();
  			var kaptName = new Array();
+ 			var codeHeatNm = new Array();
+   			var kaptDongCnt = new Array();
+			var kaptdaCnt = new Array();
+			var kaptBcompany = new Array();
+			var kaptTel = new Array();
 			var coordsList = [];
 			for(var i in data) {
 				kaptAddr.push(data[i].kaptAddr);
 				kaptName.push(data[i].kaptName);
+				codeHeatNm.push(data[i].codeHeatNm);
+       			kaptDongCnt.push(data[i].kaptDongCnt);
+				kaptdaCnt.push(data[i].kaptdaCnt);
+				kaptBcompany.push(data[i].kaptBcompany);
+				kaptTel.push(data[i].kaptTel);
 				//alert('주소 : '+kaptAddr[i]+' 아파트이름 : '+kaptName[i]);
 			}
 			$.each(kaptAddr,function(index,item) {
@@ -114,6 +124,12 @@ function call(emdName){
 	    						x : result.addr[0].lng,//x좌표
 	    						kaptAddr : kaptAddr[index],//아파트주소
 	    						kaptName : kaptName[index],//아파트이름
+	    						changepoint : '',
+	    						codeHeatNm : codeHeatNm[index],
+    			       			kaptDongCnt : kaptDongCnt[index],
+		    					kaptdaCnt : kaptdaCnt[index],
+		    					kaptBcompany : kaptBcompany[index],
+		    					kaptTel : kaptTel[index],
 	    						car1 : '',//자동차로 3곳을 설정할 경우를 대비해서 아예 1,2,3번만듬
 	    						car2 : '',
 	    						car3 : '',
@@ -161,6 +177,7 @@ function call(emdName){
 	    						tradi5point : 0,
 	    						totalpoint : ''
 	    				};
+    			       perfect.push(perfect2);
     				}
     				// 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
     				var iwContent = '<div style="padding:5px; color:black;">'+item+'</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다

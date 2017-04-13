@@ -38,7 +38,7 @@ function dfa(carArray, walkArray, tradiArray){
 				$.ajax({
 					type : "POST",	
 					 async: false,
-					 url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.x+"&endY="+item.y+"&appKey=5466b076-3f62-3faf-ac9d-c3002f0fec2d",
+					 url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=2bb28cd1-f268-3af6-8329-e6b49122331b",
 					 success : function(data){
 						 yebi = data.features[0].properties.totalTime//시간만 빼온다
 						 if(item1.car1==''){//소요 시간을 1번부터 돌면서 빈곳에 집어넣음, 만약 자동차로 3개가 골라졌으면 1,2,3번 다 찬다
@@ -108,9 +108,10 @@ function dfa(carArray, walkArray, tradiArray){
 				$.ajax({
 					type : "POST",		
 					 async: false,
-					 url : "https://apis.skplanetx.com/tmap/routes/pedestrian?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item.x+"&startY="+item.y+"&startName=a&endName=b&endX="+item1.x+"&endY="+item1.y+"&appKey=5466b076-3f62-3faf-ac9d-c3002f0fec2d",
+					 url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=2bb28cd1-f268-3af6-8329-e6b49122331b",
 					 success : function(data){
 						 yebi = data.features[0].properties.totalTime//총 시간만 출력
+						 console.log(data)
 						 if(item1.walk1==''){//빈곳 찾아 가기
 							 item1.walk1=yebi;
 							 avg1=avg1+yebi;
@@ -181,7 +182,7 @@ function dfa(carArray, walkArray, tradiArray){
 					async: false,
 					contentType : "application/json;charset=utf-8",
 					dataType : "json",
-					url:"https://maps.googleapis.com/maps/api/directions/json?origin="+item1.y+","+item1.x+"&destination="+item.y+","+item.x+"&mode=transit&key=AIzaSyCY7dyy4vD8x7q9Is03binfIE9TgEoVA5w",
+					url:"https://maps.googleapis.com/maps/api/directions/json?origin="+item1.y+","+item1.x+"&destination="+item.x+","+item.y+"&mode=transit&key=AIzaSyCY7dyy4vD8x7q9Is03binfIE9TgEoVA5w",
 					success:function(data){
 						yebi = data.routes[0].legs[0].duration.value;//소요시간만 뺀다
 						if(item1.tradi1==''){// 자리에 찾아 들어간다
@@ -268,7 +269,26 @@ function dfa(carArray, walkArray, tradiArray){
 		return 0;
 	})
 	
+	var changepoint = 0;
+	var percent=0;
+	changepoint = parseFloat(perfect[0].totalpoint);
+	if(changepoint>5){
+		percent=parseFloat(changepoint/5);
+		$.each(perfect,function(index,item){
+			item.changepoint = (item.totalpoint/percent).toFixed(2);
+		})
+	}else if(changepoint<5){
+		percent=parseFloat(5/changepoint);
+		$.each(perfect,function(index,item){
+			item.changepoint = ((parseFloat(item.totalpoint))*percent).toFixed(2);
+		})
+	}
 	console.log(perfect);
+	
+	
+	var perfect2 = new Array();
+	var perfect3 = new Array();
+	var save=0;
 	
 	
 //	for(var i=perfect2.length;i=0;i--){
