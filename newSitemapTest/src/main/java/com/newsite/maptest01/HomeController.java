@@ -270,6 +270,11 @@ public class HomeController {
 				String kaptMparea_60= null;
 				String kaptMparea_85= null;
 				String kaptUsedate= null;
+				String codeHeatNm = null;
+				String kaptDongCnt = null;
+				String kaptdaCnt = null;
+				String kaptBcompany = null;
+				String kaptTel = null;
 				
 				int event_type = xpp.getEventType();
 				String kaptCode = null;
@@ -302,10 +307,25 @@ public class HomeController {
 						if(tag.equals("kaptUsedate")){
 							kaptUsedate = xpp.getText();
 						}
+						if(tag.equals("codeHeatNm")){
+							codeHeatNm = xpp.getText();
+						}
+						if(tag.equals("kaptDongCnt")){
+							kaptDongCnt = xpp.getText();
+						}
+						if(tag.equals("kaptdaCnt")){
+							kaptdaCnt = xpp.getText();
+						}
+						if(tag.equals("kaptBcompany")){
+							kaptBcompany = xpp.getText();
+						}
+						if(tag.equals("kaptTel")){
+							kaptTel = xpp.getText();
+						}
 						}else if(event_type == XmlPullParser.END_TAG){
 							tag = xpp.getName();
 							if(tag.equals("item")){
-								aptInfo aptinfo = new aptInfo(kaptAddr, doroJuso, codeHallNm, kaptName, kaptMparea_135, kaptMparea_60, kaptMparea_85, kaptUsedate);
+								aptInfo aptinfo = new aptInfo(kaptAddr, doroJuso, codeHallNm, kaptName, kaptMparea_135, kaptMparea_60, kaptMparea_85, kaptUsedate, codeHeatNm, kaptDongCnt, kaptdaCnt, kaptBcompany, kaptTel);
 								aptAddr.add(aptinfo);
 							}
 					}
