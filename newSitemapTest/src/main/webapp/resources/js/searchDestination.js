@@ -14,6 +14,12 @@ var infowindow = new daum.maps.InfoWindow({zIndex:1});
 // 키워드로 장소를 검색합니다
 searchPlaces();
 
+// pagination div를 가지고 있는 변수
+var paginationEl;
+
+// 페이지 번호 변수
+var i;
+
 // 키워드 검색을 요청하는 함수입니다
 function searchPlaces() {
 
@@ -36,9 +42,6 @@ function placesSearchCB(status, data, pagination) {
         // 검색 목록과 마커를 표출합니다.
         displayPlaces(data.places);
         
-        // 태훈추가
-        console.log('data.places : '+data.places[5].newAddress);
-        console.log(pagination);
 
         // 페이지 번호를 표출합니다
         displayPagination(pagination);
@@ -58,7 +61,7 @@ function placesSearchCB(status, data, pagination) {
 
 // 검색 결과 목록과 마커를 표출하는 함수입니다
 function displayPlaces(places) {
-
+    // itemEl 검색결과 저장 -> itemEl을 fragment의 child로 저장 -> fragment를  id가 placesList의 div태그 listEl의 child로 저장.
     var listEl = document.getElementById('placesList'), 
     menuEl = document.getElementById('menu_wrap'),
     fragment = document.createDocumentFragment(), 
@@ -105,6 +108,11 @@ function displayPlaces(places) {
 
         fragment.appendChild(itemEl);
     }
+    // 수정부분
+    //console.log('되니?'+$("#places").val(JSON.stringify(places)));
+    //alert($("#places").val(JSON.stringify(places)));
+    alert(JSON.stringify(places));
+    $("#places").val(JSON.stringify(places));
 
     // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
     listEl.appendChild(fragment);
@@ -116,7 +124,9 @@ function displayPlaces(places) {
 
 // 검색결과 항목을 Element로 반환하는 함수입니다
 function getListItem(index, places) {
-
+	var p = encodeURIComponent(places);
+	console.log(places);
+	console.log(JSON.stringify(places));
     var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
                 '<div class="info">' +
@@ -134,41 +144,72 @@ function getListItem(index, places) {
       itemStr += '<select id="transport" name="transport"><option value="0">이동수단</option>' +
                  '<option value="1">자동차</option>' +
                  '<option value="2">도보</option><option value="3">대중교통</option></select>' +
-                 '<input type="button" value="등록" onclick="hoi('+places.latitude+','+places.longitude+','+index+');getItem('+index+','+places+');"></div>';
-                
+                 '<input type="submit" value="등록" onclick="confirm('+places.latitude+','+places.longitude+','+index+');"></div>';
 
     el.innerHTML = itemStr;
     el.className = 'item';
-
     return el;
+    /*
+     * 희망목적지 등록 hoi('+places.latitude+','+places.longitude+','+index+');
+     * confirm('+places.title+','+places.newAddress+','+places.address+','+places.phone+','+places.latitude+','+places.longitude+','+index+');
+     */
+    
 }
 
+function displayPlace(index) {
+    // itemEl 검색결과 저장 -> itemEl을 fragment의 child로 저장 -> fragment를  id가 placesList의 div태그 listEl의 child로 저장.
+    var listEl = document.getElementById('getItem'), 
+    menuEl = document.getElementById('menu_wrap'),
+    fragment = document.createDocumentFragment(), 
+    listStr = '';
+    
+    var itemEl = getItem(index); // 검색 결과 항목 Element를 생성합니다
 
-function getItem(index, places) {
-	alert('헤헷');
-    var el = document.getElementById('getItem'),
+    fragment.appendChild(itemEl);
+
+    // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
+    listEl.appendChild(fragment);
+    menuEl.scrollTop = 0;
+}
+
+function getItem(index) {
+	var places = JSON.parse($("#places").val());
+	console.log(places[index].address);
+	var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
                 '<div class="info">' +
                 '   <h5>' + places[index].title + '</h5>';
 
     if (places.newAddress) {
         itemStr += '    <span>' + places[index].newAddress + '</span><br>' +
-                    '   <span class="jibun gray">' +  places.address  + '</span><br>';
+                    '   <span class="jibun gray">' +  places[index].address  + '</span><br>';
     } else {
         itemStr += '    <span>' +  places[index].address  + '</span><br>'; 
     }
                  
-      itemStr += '  <span class="tel">' + places[index].phone  + '</span><br>' ;
+      itemStr += '  <span class="tel">' + places[index].phone  + '</span>' ;
       
-      itemStr += '<input type="button" value="삭제" onclick="getItem('+index+','+places+');"></div>';
+      itemStr += '<input type="button" value="삭제" onclick=""></div><br>';
+                
 
     el.innerHTML = itemStr;
-    el.className = 'item';
-
+    el.className = 'item2';
     return el;
+    /*fragment = document.createDocumentFragment();
+    fragment.appendChild(el2);
+    var el2List = document.getElementById('getItem');
+    el2List.appendChild(fragment);*/
+    /*
+     * 희망목적지 등록 hoi('+places.latitude+','+places.longitude+','+index+');
+     * confirm('+places.latitude+','+places.longitude+','+index+','+places+');
+     */
+    
 }
 
-
+function confirm(lat, lng, index) {
+	hoi(lat, lng, index);
+	displayPlace(index);
+}
 
 
 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
@@ -213,9 +254,9 @@ function removeOtherMarker(index) {
 
 // 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
 function displayPagination(pagination) {
-    var paginationEl = document.getElementById('pagination'),
-        fragment = document.createDocumentFragment(),
-        i; 
+	paginationEl = document.getElementById('pagination'),
+    fragment = document.createDocumentFragment(),
+    i; 
 
     // 기존에 추가된 페이지번호를 삭제합니다
     while (paginationEl.hasChildNodes()) {
@@ -258,13 +299,22 @@ function removeAllChildNods(el) {
     }
 }
 
+// 검색결과 목록의 페이지 번호 삭제하는 함수입니다.
+function removeAllpaginationChildNods(paginationEl) {
+	while (paginationEl.hasChildNodes()) {
+		paginationEl.removeChild (paginationEl.lastChild);
+    }
+	// i에 1을 설정해주지 않으면 검색결과 삭제 후 i가 undefined라는 에러 발생.
+	i = 1;
+}
+
 function hoi(lat, lng, index) {
 	var listEl = document.getElementById('placesList');
 	alert(lat+", "+lng);
-	removeOtherMarker(index); // 등록된 희망위치를 제외하고 나머지 마커들을 지우는 메소드.
-	removeAllChildNods(listEl); // 등록 버튼 클릭시 리스트 reset하는 메소드.
+	var places = JSON.parse($("#places").val());
 	document.getElementById("keyword").value = "";
-	getListItem(index, places);
+	//getItem(index, places);
+	
 	var obj1 = document.getElementsByName("transport");
 	var idx1 = obj1[index].options.selectedIndex; // 해당 selectbox index 구하기
 
@@ -284,13 +334,14 @@ function hoi(lat, lng, index) {
 		var tradi = { x : lat, y :  lng};
 		tradiArray.push(tradi);
 	}
-	console.log(transport);
-	console.log(carArray);
-	console.log(walkArray);
-	console.log(tradiArray);
-	
-	
+	if(transport != 0) {
+		removeOtherMarker(index); // 등록된 희망위치를 제외하고 나머지 마커들을 지우는 메소드.
+		removeAllChildNods(listEl); // 등록 버튼 클릭시 리스트 reset하는 메소드.
+		removeAllpaginationChildNods(paginationEl);
+	}
 }
+
+
 function searchBestLoc() {
 	dfa(carArray, walkArray, tradiArray); // dfa()에  carArray, walkArray, tradiArray를 보내서 dfa에서 각 Array의 length를 체크해보는 건 어떨까?
 }

@@ -894,5 +894,8 @@ This variant is to be used when loading the separate styling modules -->
 	<script src="./resources/js/app/sidebar.js"></script>
 	<script src="./resources/js/app/media.js"></script>
 
+
+	<!-- 검색목록의 hidden form으로 전송 -->
+	<input type="hidden" id="places">
 </body>
 </html>
