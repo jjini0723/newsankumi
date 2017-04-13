@@ -16,7 +16,7 @@ function boardList2() {
 				html += '<div class="sidebar-block padding-none" id = "req_loc1">';
 				html += '<div data-toggle="gridalicious" data-width="400">';
 				
-				///////추가하는 부분
+				/////// 희망목적지 검색 및 검색결과 리스트 출력부분
 				html += '<div class="map_wrap padding-none" style="color:black">';
 			    html += '<div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>';
 			    html += '<div id="menu_wrap" class="bg_white">';
@@ -42,8 +42,10 @@ function boardList2() {
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400">';
 				
-				///////////// 추가될 부분
-				html += '<div id="getItem"></div>'; 
+				///////////// 등록된 희망목적지가 추가될 부분
+				html += '<div class="map_wrap padding-none" style="color:black">';
+				html += '<ul id="getItem"></ul>';
+				html += '</div>';
 				/////////////
 				
 				html += '</div></div>';
@@ -62,6 +64,7 @@ function boardList2() {
 			}
 		});
 	});
+	
 }
 
 function boardList3() {
