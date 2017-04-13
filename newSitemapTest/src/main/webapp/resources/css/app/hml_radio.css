@@ -43,7 +43,7 @@ visibility: visible;
 
 
 /*체크박스 숨기기*/
-input[type=checkbox] {
+input[type=checkbox].ck {
     display:none; 
     margin:10px;
 }

@@ -26,6 +26,9 @@
 <script src="./resources/js/searchDestination.js"></script><!-- 희망목적지 관련 js -->
 <script src="./resources/js/sweetalert.min.js"></script><!-- sweetalert/email 보내기 팝업 관련 js -->
 
+<!-- 필터링 관련 -->
+<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
+<script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 
 
@@ -144,6 +147,24 @@ function conditionSelect(){
 				chk[i].disabled = false;
 		}
 	}
+	
+
+	//필터링용
+	   $(function() {
+            $( "#slider-3" ).slider({
+               range:true,
+               min: 1970,
+               max: 2017,
+               values: [ 1991, 2010 ],
+               slide: function( event, ui ) {
+                  $( "#price" ).val(  ui.values[ 0 ]+"년 -" + ui.values[ 1 ] +"년");
+               }
+            });
+            $( "#price" ).val( $( "#slider-3" ).slider( "values", 0 ) +
+               "년 - " + $( "#slider-3" ).slider( "values", 1 ) +  "년");
+         });
+
+
 </script>
 
 
@@ -258,7 +279,54 @@ This variant is to be used when loading the separate styling modules -->
               </div>
             </li>
             <!-- // END login -->
-            
+            <!-- 드롭다운 left 테스트 -->
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-fw fa-filter"></i> 필터링
+              </a>
+              <div class="dropdown-menu dropdown-size-280">
+                <form>
+                  <div class="form-group">
+                    <div class="input-group">
+                    	<!-- 준공년도 -->
+							<div id="buildyear">
+							      <p>
+							         <label for = "price">준공년도:</label>
+							         <input type = "text" id = "price" 
+							            style = "border:0; color:#b9cd6d; font-weight:bold;">
+							      </p>
+							      <div id = "slider-3"></div>
+							</div>
+						<!-- // END 준공년도 -->
+                    </div>
+                  </div>
+                
+                  <div class="form-group">
+                    <div class="input-group">
+                    <!-- 평수 -->
+						<div id="squareFeet">
+							<p>
+								<label for="feet">평수:</label>
+								<input type="checkbox" id="feet"
+									style = "border:0; color:#b9cd6d; font-weight:bold;"> 16평
+								<input type="checkbox" id="feet"
+									style = "border:0; color:#b9cd6d; font-weight:bold;"> 20평
+								<input type="checkbox" id="feet"
+									style = "border:0; color:#b9cd6d; font-weight:bold;"> 24평
+								<input type="checkbox" id="feet"
+									style = "border:0; color:#b9cd6d; font-weight:bold;"> 28평	
+							</p>
+						</div>
+						<!-- // END 평수 -->
+                    </div>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary">적용하기 <i class="fa fa-sign-in"></i></button>
+                  </div>
+                </form>
+              </div>
+            </li>
+            <!-- // END 드롭다운 left 테스트 -->
           </ul>
         </div>
         <!-- /.navbar-collapse -->
