@@ -2,6 +2,8 @@
  * 희망 목적지를 검색 후 등록한다.
  */
 
+
+    
 // 마커를 담을 배열입니다
 var markers = [];
 
@@ -19,6 +21,15 @@ var paginationEl;
 
 // 페이지 번호 변수
 var i;
+
+
+function deleteList() {
+	$("#getItem>li>#deletebtn").on("click", function() {
+		$(this).parent().remove();
+		return false;
+	});
+}
+
 
 // 키워드 검색을 요청하는 함수입니다
 function searchPlaces() {
@@ -67,7 +78,7 @@ function displayPlaces(places) {
     fragment = document.createDocumentFragment(), 
     bounds = new daum.maps.LatLngBounds(), 
     listStr = '';
-    
+    var index = 0;
     // 검색 결과 목록에 추가된 항목들을 제거합니다
     removeAllChildNods(listEl);
 
@@ -107,11 +118,9 @@ function displayPlaces(places) {
         })(marker, places[i].title);
 
         fragment.appendChild(itemEl);
+        index++;
     }
     // 수정부분
-    //console.log('되니?'+$("#places").val(JSON.stringify(places)));
-    //alert($("#places").val(JSON.stringify(places)));
-    alert(JSON.stringify(places));
     $("#places").val(JSON.stringify(places));
 
     // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
@@ -124,9 +133,6 @@ function displayPlaces(places) {
 
 // 검색결과 항목을 Element로 반환하는 함수입니다
 function getListItem(index, places) {
-	var p = encodeURIComponent(places);
-	console.log(places);
-	console.log(JSON.stringify(places));
     var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
                 '<div class="info">' +
@@ -147,7 +153,7 @@ function getListItem(index, places) {
 
                  '<input type="submit" value="등록" onclick="confirm('+places.latitude+','+places.longitude+','+index+');"></div>';
 
-
+    
     el.innerHTML = itemStr;
     el.className = 'item';
     return el;
@@ -176,10 +182,13 @@ function displayPlace(index) {
 
 function getItem(index) {
 	var places = JSON.parse($("#places").val());
-	console.log(places[index].address);
+	var title = places[index].title;
+    $("#title").val(title);
+	
+	
 	var el = document.createElement('li'),
-    itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
-                '<div class="info">' +
+    itemStr = '<span class="markerbg marker_' + (index+1) + '" title="'+places[index].title+'"></span>' +
+                /*'<div class="info">' +*/
                 '   <h5>' + places[index].title + '</h5>';
 
     if (places.newAddress) {
@@ -189,11 +198,10 @@ function getItem(index) {
         itemStr += '    <span>' +  places[index].address  + '</span><br>'; 
     }
                  
-      itemStr += '  <span class="tel">' + places[index].phone  + '</span>' ;
+      itemStr += '  <span class="tel">' + places[index].phone  + '</span><br>' ;
       
-      itemStr += '<input type="button" value="삭제" onclick=""></div><br>';
-                
-
+      itemStr += '<a href="#" class="deletebtn" id="deletebtn" onclick="deleteList();">삭제</a><br>';
+    
     el.innerHTML = itemStr;
     el.className = 'item2';
     return el;
@@ -209,8 +217,10 @@ function getItem(index) {
 }
 
 function confirm(lat, lng, index) {
+	//var places = JSON.parse($("#places").val());
 	hoi(lat, lng, index);
 	displayPlace(index);
+	
 }
 
 
@@ -301,6 +311,17 @@ function removeAllChildNods(el) {
     }
 }
 
+// 희망목적지에 추가된 리스트에서 삭제하는 함수입니다
+function removeOtherChildNods(el, index) {
+   /* while (el.hasChildNodes()) {
+    	if(index = 1) {
+    		el.removeChild (el.lastChild);
+    	}
+    }*/
+    $(this).parent.remove();
+    
+}
+
 // 검색결과 목록의 페이지 번호 삭제하는 함수입니다.
 function removeAllpaginationChildNods(paginationEl) {
 	while (paginationEl.hasChildNodes()) {
@@ -313,7 +334,6 @@ function removeAllpaginationChildNods(paginationEl) {
 function hoi(lat, lng, index) {
 	var listEl = document.getElementById('placesList');
 	alert(lat+", "+lng);
-	var places = JSON.parse($("#places").val());
 	document.getElementById("keyword").value = "";
 	//getItem(index, places);
 	

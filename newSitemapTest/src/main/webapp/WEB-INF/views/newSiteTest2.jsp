@@ -40,6 +40,7 @@ var carArray = new Array(); // 희망목적지 이동수단 자동차인 경우�
 var walkArray = new Array(); // 희망목적지 이동수단 도보인 경우의 좌표를 저장하는 배열
 var tradiArray = new Array(); // 희망목적지 이동수단 대중교통인 경우의 좌표를 저장하는 배열
 var emdName = null;
+var hopeList = new Array(); //희망목적지 리스트 담을 배열
 
 $(document).avgrund({
 	    openOnEvent: false
@@ -965,5 +966,6 @@ This variant is to be used when loading the separate styling modules -->
 
 	<!-- 검색목록의 hidden form으로 전송 -->
 	<input type="hidden" id="places">
+	<input type="hidden" id="title">
 </body>
 </html>
