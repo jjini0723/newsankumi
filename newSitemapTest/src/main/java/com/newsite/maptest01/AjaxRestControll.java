@@ -106,5 +106,39 @@ public class AjaxRestControll {
 		
 		return dongList;
 	}
+	
+
+	@RequestMapping(value = "getAddress", method = RequestMethod.POST)
+	public ConditionResult getAddress(String dong){
+		System.out.println(dong);
+		ConditionResult result = dataDao.getAddress(dong);
+		
+		return result;
+	}
+	
+	@RequestMapping(value = "standardChart", method = RequestMethod.POST)
+	public ConditionResult standardChart(String si, String gu){
+		System.out.println(gu);
+		ConditionResult result = dataDao.standardChart(si,gu);
+		System.out.println("result" + result);
+		
+		return result;
+	}
+	
+	@RequestMapping(value = "allStandardChart", method = RequestMethod.POST)
+	public ConditionResult allStandardChart(){
+		ConditionResult result = dataDao.allStandard();
+		
+		
+		return result;
+	}
+	
+	@RequestMapping(value = "createData", method = RequestMethod.POST)
+	public ConditionResult createData(int citycode){
+		
+		ConditionResult result = dataDao.createData(citycode);
+		
+		return result;
+	}
 
 }
