@@ -34,7 +34,7 @@ function buildList(list) {
 	polyMap(items[0].citycode);
 	createSelectedChart(items[0]);
 		for (var i = 0; i < items.length; i++) {
-			html += '<li><a href = "#" value = "' +items[i].citycode+'" onclick = "polyMap('+items[i].citycode+'); createSelectedChart();"> ' + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
+			html += '<li><a href = "#" id = "listitem" value = "' +items[i].citycode+'" onclick = "polyMap('+items[i].citycode+'); createSelectedChart();"> ' + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
 			
 			
 		};
@@ -193,8 +193,7 @@ function polyMap(citycode){
 function sendData1(){
 	var sendList = [];
 	for (var i = 0; i < 5; i++) {
-		sendList[i] = $(".decimal").find("a").val();
-		sendList
+		sendList[i] = $("#resultList>li").attr("value");
 		
 	}
 	
