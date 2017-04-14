@@ -26,6 +26,7 @@ $(".filter_commit").click(function() {
 //리스트 뿌리기
 
 function buildList(list) {
+	/*$("#dongitem").val(JSON.stringify(list));*/
 	items = list;
 	var html = "";
 	html += '<ol class = "decimal" data-width="400" id = "resultList">';
@@ -193,7 +194,7 @@ function polyMap(citycode){
 
 function sendData1(){
 	var sendList = [];
-	sendList = $("#resultList>li>a").attr("value");
+	sendList = $(".decimal>li>a").attr("value");
 	for (var i = 0; i < 5; i++) {
 		sendList[i] = $("#resultList>li>a").attr("value");
 		//sendList[i] = $("#resultList").find("li>a").eq(i);
