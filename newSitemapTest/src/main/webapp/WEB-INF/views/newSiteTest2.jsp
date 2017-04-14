@@ -12,7 +12,7 @@
 
 <script src="//apis.daum.net/maps/maps3.js?apikey=e5f9cd760a5dedf9f84cc76d41a6decd&libraries=services"></script> <!-- daum api -->
 <script src="./resources/js/jquery-3.1.1.js"></script> <!-- jquery-3.1.1.js -->
-<script src="./resources/js/test123.js"></script>
+<script src="./resources/js/1stBoardList.js"></script>
 <script src="./resources/js/2ndBoardList.js"></script>
 <script src="./resources/js/radioToList.js"></script>
 <script src="./resources/js/jquery.avgrund.min.js"></script>
@@ -74,13 +74,14 @@ function conditionSelect(){
 			console.log($(this).children("input[type=radio]:checked").val());
 			var flagValue = $(this).attr("id");
 			var radioValue = $(this).children("input[type=radio]:checked").val();
-			alert(flagValue);
-			alert(radioValue);
+			//alert(flagValue);
+			//alert(radioValue);
 			var obj = {
 				condition : flagValue,
 				level : radioValue
 			};					
 			arr.push(obj);
+			
 		}
 	})				
 	
@@ -92,12 +93,7 @@ function conditionSelect(){
 			list : arr
 		}),
 		success : function(data){
-			console.log(data);
-//					var html = "";
-//					$.each(data, function(index,item){
-//						html += item;
-//					})
-//					$("#resultDiv").html(html);
+			buildList(data);
 		},
 		error : function(e){
 			console.log(e);
@@ -465,7 +461,7 @@ This variant is to be used when loading the separate styling modules -->
 			<!-- 보육시설 -->
 			<li>
 				<a href="#">
-					<input class="ck" type="checkbox" id="welfare_childcare" name="ck" onclick="checkboxSelect('ck',6)">
+					<input class="ck" type="checkbox" id="welfare_Childcare" name="ck" onclick="checkboxSelect('ck',6)">
 					<label for="welfare_childcare">보육시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_childcare">
@@ -808,7 +804,7 @@ This variant is to be used when loading the separate styling modules -->
 <!-- 폼 끝 (조건 카테고리, 선택한 조건 포함) -->
 	
 	<h4 class="category">결과보기</h4>
-		<div class="sidebar-block text-center" onclick = "conditionSelect();">
+		<div class="sidebar-block text-center filter_commit" onclick = "conditionSelect(); ">
 			<a data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList();" class="btn btn-primary btn-block toggle ">          
 				<strong>NEXT PAGE</strong> <!-- test123.js 연결 -->
 			</a>

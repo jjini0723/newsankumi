@@ -13,42 +13,35 @@ $(document).ready(function() {
         });
     });
     }
- 
+/*
 $(".filter_commit").click(function() {
 	
 	buildList(items);
-	/*
-	var values = $('items').map(function() {
-		return $(this).val();
-	});
 	
-	 .get().join(); 
-
-	$.each(items, function(index, items) {
-		var values = $("items").val("");
-		addItem(values);
-
-	});*/
-});
+});*/
 
 });
 
 //리스트 뿌리기
 
-function buildList(items) {
+function buildList(list) {
+	items = list;
 	var html = "";
-	html += '<ol class = "decimal" data-width="400" >';
-	$.each(items, function(index, item){
-		html += '<li><a href = #> ' + item + '</a><a href="#" onclick="removeItem(' + item + ');">   x   </a> '+ '</li>' ;
-	});
+	html += '<ol class = "decimal" data-width="400" id = "resultList">';
+	/*$.each(items, function(index, item){
+		html += '<li><a href = #> ' + item.si +" "+ item.gu +" "+ item.dong + '</a><a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
+	});*/
+	polyMap(items[0].citycode);
+	createSelectedChart(items[0]);
 		for (var i = 0; i < items.length; i++) {
-			html += '<li> ' + items[i] + '<a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
+			html += '<li><a href = "#" value = "' +items[i].citycode+'" onclick = "polyMap('+items[i].citycode+'); createSelectedChart();"> ' + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
+			
+			
 		};
-	
+		
 	html += '</ol>';
 	$('#req_loc1').html(html);
 }
-
 
 function addItem() {
 	 var obj1 = document.getElementById("selectThis3"); // 시
@@ -62,10 +55,31 @@ function addItem() {
 	 var gu = obj2.options[idx2].text;
 	 var dong = obj3.options[idx3].text;
 	 
-	 var addString = si + " " + gu + " " + dong;
+	 $.ajax({
+		 
+		 url : "getAddress",
+		 type : "post",
+		 data : {
+			 dong : dong
+		 },
+         success : function(data) {
+        	 items.push(data);
+        	 console.log(data);
+        	 buildList(items);
+        	 $("#selectThis option:eq(0)").attr("selected", "selected");
+        	/* $('selectThis3').find('option:first').attr('selected', 'selected');
+        	 $('selectThis4').find('option:first').attr('selected', 'selected');
+        	 $('selectThis5').find('option:first').attr('selected', 'selected');
+        	 */
+         },
+         error : function(e){
+        	 console.log(e);
+        	 
+         }
+		 
+	 });
+	
 
-	items.push(addString);
-	buildList(items);
 }
 
 function removeItem(index) {
@@ -76,10 +90,9 @@ function removeItem(index) {
 }
 
 
-function polyMap(){
-	var name = "";
-	name = "28237101";//값 받는 거 추가
-	
+function polyMap(citycode){
+	var name = citycode;
+	console.log("name"+name);
 	   // 지도 타입 변경 컨트롤을 생성한다
 	    var mapTypeControl = new daum.maps.MapTypeControl();
 
@@ -110,6 +123,7 @@ function polyMap(){
 	          jsonp : "callback",
 	          success : function(rtndata) {
 	             var list = rtndata.featureCollection.features[0].geometry.coordinates;
+	             
 	             var newList = new Array();
 	             var polygonPath = [];
 	             newList = list[0];
@@ -117,7 +131,6 @@ function polyMap(){
 	                newList[i].reverse();
 	             }
 	          /* list =rtndata.featureCollection.features[0].geometry.coordinates; */   
-	            alert("newlist" + newList);
 	          
 	          
 	             // 다각형을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 다각형을 표시합니다
@@ -176,3 +189,15 @@ function polyMap(){
 		    				
 }
 
+
+function sendData1(){
+	var sendList = [];
+	for (var i = 0; i < 5; i++) {
+		sendList[i] = $(".decimal").find("a").val();
+		sendList
+		
+	}
+	
+	console.log(sendList);
+	
+}

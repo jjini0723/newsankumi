@@ -11,4 +11,8 @@ public interface DataMapper {
 	
 	public ArrayList<String> selectGungu(String sido);
 	public ArrayList<String> selectDong(String gungu);
+	public ConditionResult getAddress(String dong);
+	public ConditionResult standardChart(String si, String gu);
+	public ConditionResult allStandard();
+	public ConditionResult createData(int citycode);
 }

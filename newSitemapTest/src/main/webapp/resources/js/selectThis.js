@@ -27,6 +27,11 @@ function searchThis(obj){
 				//mc = data['mp_addcd_gg'+i+''];
 				$("#mp_addcd_gg").append("<option value="+data[mp_addcd_gg]+">"+data[mp_addcd_gg]+"</option>");
 			}
+			var si = $("#mp_addcd_sido").find('option:selected').text();
+			var gu = $("#mp_Addcd_gg").find('option:selected').text();
+			console.log(gu);
+			var sigu = [si,gu];
+			return sigu;
 			
 		},
 		error : function(err){
@@ -35,6 +40,5 @@ function searchThis(obj){
 		}
 		
 	});
-	
 	
 }

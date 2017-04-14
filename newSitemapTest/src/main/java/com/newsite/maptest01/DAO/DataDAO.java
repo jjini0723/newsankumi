@@ -45,4 +45,34 @@ public class DataDAO {
 		ArrayList<String> dongList = mapper.selectDong(gungu);
 		return dongList;
 	}
+	
+
+	public ConditionResult getAddress(String dong) {
+		DataMapper mapper = sqlSession.getMapper(DataMapper.class);
+		ConditionResult result = mapper.getAddress(dong);
+		return result;
+	}
+
+	
+	//기준지역
+	public ConditionResult standardChart(String si, String gu) {
+		DataMapper mapper = sqlSession.getMapper(DataMapper.class);
+		ConditionResult result = mapper.standardChart(si,gu);
+		System.out.println("dao" + result);
+		
+		return result;
+	}
+
+	public ConditionResult allStandard() {
+		DataMapper mapper = sqlSession.getMapper(DataMapper.class);
+		ConditionResult result = mapper.allStandard();
+		return result;
+	}
+
+	
+	public ConditionResult createData(int citycode) {
+		DataMapper mapper = sqlSession.getMapper(DataMapper.class);
+		ConditionResult result = mapper.createData(citycode);
+		return result;
+	}
 }

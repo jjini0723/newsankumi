@@ -7,14 +7,12 @@ $(document).on("click", ".remove", function() {
 
 function getRadios(selected) {
 	var html = "";
-
 	// 스포츠
 	var welfare_sports = "";
 	for (var i = 0; i < selected.rd_welfare_sports.length; i++) {
 		if (selected.rd_welfare_sports[i].checked)
 			welfare_sports = selected.rd_welfare_sports[i].value;
 	}
-	console.log(welfare_sports);
 	if (welfare_sports != '') {
 		html += "<li id = 'welfare_sports' value = "
 				+ welfare_sports
