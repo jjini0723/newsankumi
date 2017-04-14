@@ -87,15 +87,15 @@ function getRadios(selected) {
 	}
 
 	// 보육시설
-	var welfare_childcare = "";
-	for (var i = 0; i < selected.rd_welfare_childcare.length; i++) {
-		if (selected.rd_welfare_childcare[i].checked)
-			welfare_childcare = selected.rd_welfare_childcare[i].value;
+	var welfare_childCare = "";
+	for (var i = 0; i < selected.rd_welfare_childCare.length; i++) {
+		if (selected.rd_welfare_childCare[i].checked)
+			welfare_childCare = selected.rd_welfare_childCare[i].value;
 	}
 
-	if (welfare_childcare != '') {
-		html += "<li id = 'welfare_childcare' value = "
-				+ welfare_childcare
+	if (welfare_childCare != '') {
+		html += "<li id = 'welfare_childCare' value = "
+				+ welfare_childCare
 				+ ">"
 				+ '보육시설'
 				+ '<a href="#" class = "remove" onclick="removeList6();">   x   </a> '
@@ -388,7 +388,7 @@ function removeList5() {
 	$("input:radio[name='rd_welfare_medical']").removeAttr("checked");
 }
 function removeList6() {
-	$("input:radio[name='rd_welfare_childcare']").removeAttr("checked");
+	$("input:radio[name='rd_welfare_childCare']").removeAttr("checked");
 }
 function removeList7() {
 	$("input:radio[name='rd_education_student']").removeAttr("checked");
