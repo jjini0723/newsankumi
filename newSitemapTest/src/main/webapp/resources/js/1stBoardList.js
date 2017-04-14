@@ -37,7 +37,7 @@ function boardList() {
 				html += '</div>';
 				html += '<div class="sidebar-block equal-padding">';
 				html += '<ul class="pagination margin-none">';
-				html += '<li><a href="#" onclick = "boardList2();">다음단계</a></li>';
+				html += '<li><a href="#" onclick = "boardList2(); sendData1();">다음단계</a></li>';
 				html += '<li class="disabled"><a href="#">&raquo;</a></li>';
 				html += '</ul></div></div>';
 
