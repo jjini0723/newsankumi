@@ -73,11 +73,14 @@ function conditionSelect(){
 			console.log($(this).children("input[type=radio]:checked").val());
 			var flagValue = $(this).attr("id");
 			var radioValue = $(this).children("input[type=radio]:checked").val();
+			//alert(flagValue);
+			//alert(radioValue);
 			var obj = {
 				condition : flagValue,
 				level : radioValue
 			};					
 			arr.push(obj);
+			
 		}
 	})				
 	
@@ -89,12 +92,7 @@ function conditionSelect(){
 			list : arr
 		}),
 		success : function(data){
-			console.log(data);
-//					var html = "";
-//					$.each(data, function(index,item){
-//						html += item;
-//					})
-//					$("#resultDiv").html(html);
+			buildList(data);
 		},
 		error : function(e){
 			console.log(e);
@@ -805,7 +803,7 @@ This variant is to be used when loading the separate styling modules -->
 <!-- 폼 끝 (조건 카테고리, 선택한 조건 포함) -->
 	
 	<h4 class="category">결과보기</h4>
-		<div class="sidebar-block text-center filter_commit" onclick = "conditionSelect();">
+		<div class="sidebar-block text-center filter_commit" onclick = "conditionSelect(); ">
 			<a data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList();" class="btn btn-primary btn-block toggle ">          
 				<strong>NEXT PAGE</strong> <!-- test123.js 연결 -->
 			</a>

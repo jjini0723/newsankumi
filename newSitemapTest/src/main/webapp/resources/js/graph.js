@@ -42,6 +42,7 @@ function createData(list, citycode){
 			citycode : citycode
 		},
 		success : function (data){ //table에서 가져 온 값 배열과 배열 내의 key값은 label로 & label(자연, 지역인구, 안전..) 
+			if(labelList.length ==0){
 			$.each(data, function (key, value){
 				for (var i = 0; i < uniqueList.length; i++) {
 					if (uniqueList[i] == key) {
@@ -55,7 +56,7 @@ function createData(list, citycode){
 						}	
 						if (key == "welfare_salon") {
 							labelList.push("미/이용시설");
-							dataList.push("미/이용시설" +value);
+							dataList.push(value);
 						}	
 						if (key == "welfare_society") {
 							labelList.push("사회복지시설");
@@ -135,12 +136,16 @@ function createData(list, citycode){
 						}	
 					}
 				}//for문 끝
-				
+			
 			});//each문끝
 			//console.log("dataList : " + dataList);
+			}
 			var standardList = standardChart();
 			console.log("standardlist"+standardList);
-			
+			if (standardList != '') {
+				createChart(labelList, dataList, standardList);
+				
+			}
 		},
 		error : function (e){
 			console.log(e)
@@ -157,7 +162,7 @@ function standardChart(){
 
 		console.log("si+gu"+si + gu);
 		console.log(uniqueList);
-	if (si != '시/구' && gu != '구/군') {
+	if (si != '시/도' || gu != '구/군') {
 		
 		$.ajax({
 			url : "standardChart",
@@ -185,16 +190,14 @@ function standardChart(){
 			} 
 		});
 		}else{
-			for (var i = 0; i < 5; i++) {
+			for (var j = 0; j < labelList.length; j++) {
 				standardList.push(50);
 			}
 			return standardList;
+			console.log("1st.standardList" + standardList);
 		}
-	console.log("1st.standardList" + standardList);
-	
-	/*var list = standardChart();
-	console.log("10" + list);*/
 	createChart(labelList, dataList, standardList);
+	
 }
 
 
@@ -204,6 +207,9 @@ function createChart(labelList, dataList, list){
 	var lableL = labelList;
 	var dataL = dataList;
 	var standardL = list;
+	if (standardL == '') {
+		standardL = [50,50,50,50,50,50];
+	}
 	console.log("labellist" + labelList);
 	console.log("datalist" + dataList);
 	console.log("stanardL" + standardL);

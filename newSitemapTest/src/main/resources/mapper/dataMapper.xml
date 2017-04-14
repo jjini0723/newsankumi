@@ -64,4 +64,9 @@
 			round(avg(PEOPLE_FOREIGN),0) PEOPLE_FOREIGN, round(avg(PEOPLE_DENSITY),0) PEOPLE_DENSITY, round(avg(LIFE_PUBLICTRAFFIC),0) LIFE_PUBLICTRAFFIC
 			from mp_data
 	</select> -->
+<select id="getAddress" parameterType = "String" resultType="ConditionResult" >
+		select
+			*
+				from mp_data where dong = #{0}
+	</select> 
 </mapper>

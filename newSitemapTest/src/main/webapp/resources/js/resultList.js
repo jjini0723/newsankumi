@@ -13,7 +13,7 @@ $(document).ready(function() {
         });
     });
     }
- /*
+/*
 $(".filter_commit").click(function() {
 	
 	buildList(items);
@@ -27,7 +27,7 @@ $(".filter_commit").click(function() {
 function buildList(list) {
 	items = list;
 	var html = "";
-	html += '<ol class = "decimal" data-width="400" >';
+	html += '<ol class = "decimal" data-width="400" id = "resultList">';
 	/*$.each(items, function(index, item){
 		html += '<li><a href = #> ' + item.si +" "+ item.gu +" "+ item.dong + '</a><a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
 	});*/
@@ -35,7 +35,10 @@ function buildList(list) {
 	createSelectedChart(items[0]);
 		for (var i = 0; i < items.length; i++) {
 			html += '<li><a href = "#" value = "' +items[i].citycode+'" onclick = "polyMap('+items[i].citycode+'); createSelectedChart();"> ' + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
+			
+			
 		};
+		
 	html += '</ol>';
 	$('#req_loc1').html(html);
 }
@@ -61,8 +64,13 @@ function addItem() {
 		 },
          success : function(data) {
         	 items.push(data);
+        	 console.log(data);
         	 buildList(items);
-        	 
+        	 $("#selectThis option:eq(0)").attr("selected", "selected");
+        	/* $('selectThis3').find('option:first').attr('selected', 'selected');
+        	 $('selectThis4').find('option:first').attr('selected', 'selected');
+        	 $('selectThis5').find('option:first').attr('selected', 'selected');
+        	 */
          },
          error : function(e){
         	 console.log(e);
@@ -181,3 +189,15 @@ function polyMap(citycode){
 		    				
 }
 
+
+function sendData1(){
+	var sendList = [];
+	for (var i = 0; i < 5; i++) {
+		sendList[i] = $(".decimal").find("a").val();
+		sendList
+		
+	}
+	
+	console.log(sendList);
+	
+}

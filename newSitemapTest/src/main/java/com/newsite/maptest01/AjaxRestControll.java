@@ -34,7 +34,7 @@ public class AjaxRestControll {
 		ArrayList<ConditionResult> resultList = new ArrayList<>();//모든도시 조건랭크결과 리스트				
 		ArrayList<String> conditionList = new ArrayList<>();//dao넘기는 용
 		HashMap<String, Double> levelSettingMap = new HashMap<>();//가중치 먹이기 용
-		int recommendCount = 100;//추천할 리스트 갯수(보여줄 도시개수 여기서 설정)
+		int recommendCount = 10;//추천할 리스트 갯수(보여줄 도시개수 여기서 설정)
 		
 		for (int i=0; i < mapList.get("list").size(); i++){
 			String condition = mapList.get("list").get(i).get("condition").toString();//넘어온 키값(조건이름)
