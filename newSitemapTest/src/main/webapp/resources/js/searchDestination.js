@@ -22,9 +22,11 @@ var paginationEl;
 // 페이지 번호 변수
 var i;
 
+var hopeList = new Array();
 
-function deleteList() {
+function deleteList(index) {
 	$("#getItem>li>#deletebtn").on("click", function() {
+		hopeList.pop();
 		$(this).parent().remove();
 		return false;
 	});
@@ -157,11 +159,6 @@ function getListItem(index, places) {
     el.innerHTML = itemStr;
     el.className = 'item';
     return el;
-    /*
-     * 희망목적지 등록 hoi('+places.latitude+','+places.longitude+','+index+');
-     * confirm('+places.title+','+places.newAddress+','+places.address+','+places.phone+','+places.latitude+','+places.longitude+','+index+');
-     */
-    
 }
 
 function displayPlace(index) {
@@ -200,27 +197,35 @@ function getItem(index) {
                  
       itemStr += '  <span class="tel">' + places[index].phone  + '</span><br>' ;
       
-      itemStr += '<a href="#" class="deletebtn" id="deletebtn" onclick="deleteList();">삭제</a><br>';
+      itemStr += '<a href="#" class="deletebtn" id="deletebtn" onclick="deleteList('+index+');">삭제</a><br>';
     
     el.innerHTML = itemStr;
     el.className = 'item2';
     return el;
-    /*fragment = document.createDocumentFragment();
-    fragment.appendChild(el2);
-    var el2List = document.getElementById('getItem');
-    el2List.appendChild(fragment);*/
-    /*
-     * 희망목적지 등록 hoi('+places.latitude+','+places.longitude+','+index+');
-     * confirm('+places.latitude+','+places.longitude+','+index+','+places+');
-     */
-    
 }
 
 function confirm(lat, lng, index) {
-	//var places = JSON.parse($("#places").val());
-	hoi(lat, lng, index);
-	displayPlace(index);
-	
+	var places = JSON.parse($("#places").val());
+	for(var j = 0; j < places.length; j++) {
+		for(var k = 0; k < hopeList.length; k++) {
+			if(places[index].title == hopeList[k]) {
+				alert('중복존재');
+				var listEl = document.getElementById('placesList');
+				document.getElementById("keyword").value = "";
+				removeAllChildNods(listEl);
+				removeAllpaginationChildNods(paginationEl);
+				return;
+			}
+		}
+	}
+	hopeList.push(places[index].title);
+	if(hopeList.length < 6) {
+		hoi(lat, lng, index);
+		displayPlace(index);
+	} else {
+		alert('희망목적지는 5개까지만 가능합니다.');
+		listReset();
+	}
 }
 
 
@@ -255,6 +260,16 @@ function removeMarker() {
 
 // 등록한 마커를 제외하고 삭제
 function removeOtherMarker(index) {
+	for ( var i = 0; i < markers.length; i++) {
+		if(index != i) {
+			markers[i].setMap(null);
+		}
+	}
+	markers = [];
+}
+
+//삭제한 희망목적지의 마커를 제외하고 삭제
+function removeThisMarker(index) {
 	for ( var i = 0; i < markers.length; i++) {
 		if(index != i) {
 			markers[i].setMap(null);
@@ -311,16 +326,6 @@ function removeAllChildNods(el) {
     }
 }
 
-// 희망목적지에 추가된 리스트에서 삭제하는 함수입니다
-function removeOtherChildNods(el, index) {
-   /* while (el.hasChildNodes()) {
-    	if(index = 1) {
-    		el.removeChild (el.lastChild);
-    	}
-    }*/
-    $(this).parent.remove();
-    
-}
 
 // 검색결과 목록의 페이지 번호 삭제하는 함수입니다.
 function removeAllpaginationChildNods(paginationEl) {
@@ -332,11 +337,7 @@ function removeAllpaginationChildNods(paginationEl) {
 }
 
 function hoi(lat, lng, index) {
-	var listEl = document.getElementById('placesList');
 	alert(lat+", "+lng);
-	document.getElementById("keyword").value = "";
-	//getItem(index, places);
-	
 	var obj1 = document.getElementsByName("transport");
 	var idx1 = obj1[index].options.selectedIndex; // 해당 selectbox index 구하기
 
@@ -357,13 +358,19 @@ function hoi(lat, lng, index) {
 		tradiArray.push(tradi);
 	}
 	if(transport != 0) {
-		removeOtherMarker(index); // 등록된 희망위치를 제외하고 나머지 마커들을 지우는 메소드.
-		removeAllChildNods(listEl); // 등록 버튼 클릭시 리스트 reset하는 메소드.
-		removeAllpaginationChildNods(paginationEl);
+		listReset(index);
 	}
 }
 
 
 function searchBestLoc() {
 	dfa(carArray, walkArray, tradiArray); // dfa()에  carArray, walkArray, tradiArray를 보내서 dfa에서 각 Array의 length를 체크해보는 건 어떨까?
+}
+
+function listReset(index) {
+	var listEl = document.getElementById('placesList');
+	document.getElementById("keyword").value = "";
+	removeAllChildNods(listEl);
+	removeAllpaginationChildNods(paginationEl);
+	removeOtherMarker(index);
 }
