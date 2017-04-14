@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
+import com.newsite.maptest01.vo.aptsale;
+import com.newsite.maptest01.vo.aptcode;
 import com.newsite.maptest01.vo.bjdName;
 import com.newsite.maptest01.vo.kaptCode;
 @Repository
@@ -38,6 +39,20 @@ public class mapDao {
 		ArrayList<kaptCode> result = new ArrayList<>();
 		mapMapper mapper = sqlsession.getMapper(mapMapper.class);
 		result = mapper.loadKaptCode(emd);
+		return result;
+	}
+	
+	public ArrayList<aptcode> aptcode(){
+		ArrayList<aptcode> result = new ArrayList<>();
+		mapMapper mapper = sqlsession.getMapper(mapMapper.class);
+		result = mapper.aptcode();
+		return result;
+	}
+	
+	public ArrayList<aptsale> getTradeInfo(String xloc, String yloc){
+		ArrayList<aptsale> result = new ArrayList<>();
+		mapMapper mapper = sqlsession.getMapper(mapMapper.class);
+		result = mapper.getTradeInfo(xloc,yloc);
 		return result;
 	}
 }

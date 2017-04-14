@@ -28,8 +28,7 @@ function dfa(carArray, walkArray, tradiArray){
 	console.log(walkArray);
 	console.log(tradiArray);
 	
-	
-	
+
 	if(carArray.length!=0){//자동차가 선택되지 않으면 배열 길이가 0이라 이 ajax는 작동하지않음
 		var avg = 0;
 		var count =0;
@@ -298,5 +297,4 @@ function dfa(carArray, walkArray, tradiArray){
 //			}
 //		}
 //	}
-	console.log(perfect3);
 }

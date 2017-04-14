@@ -19,6 +19,8 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import com.newsite.maptest01.DAO.mapDao;
 import com.newsite.maptest01.vo.aptInfo;
 import com.newsite.maptest01.vo.aptName;
+import com.newsite.maptest01.vo.aptcode;
+import com.newsite.maptest01.vo.aptsale;
 import com.newsite.maptest01.vo.kaptCode;
 
 /**
@@ -370,6 +372,13 @@ public class HomeController {
 		
 //		
 		return newAddrList;
+	}
+	@ResponseBody
+	@RequestMapping(value= "getTradeInfo", method = RequestMethod.POST)
+	public ArrayList<aptsale> getTradeInfo(@RequestBody String xloc,String yloc){
+		ArrayList<aptsale> result = new ArrayList<>();
+		result = dao.getTradeInfo(xloc,yloc);
+		return result;
 	}
 	
 	

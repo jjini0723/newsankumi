@@ -130,6 +130,9 @@ function call(emdName){
 		    					kaptdaCnt : kaptdaCnt[index],
 		    					kaptBcompany : kaptBcompany[index],
 		    					kaptTel : kaptTel[index],
+		    					tradeinfo : '',
+		    					tradeinfo2 : '',
+		    					tradeinfo3 : '',
 	    						car1 : '',//자동차로 3곳을 설정할 경우를 대비해서 아예 1,2,3번만듬
 	    						car2 : '',
 	    						car3 : '',

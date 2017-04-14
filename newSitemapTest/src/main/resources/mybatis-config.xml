@@ -10,6 +10,8 @@
 		<typeAlias type="com.newsite.maptest01.vo.bjdName" alias="bjdName" />
 		<typeAlias type="com.newsite.maptest01.vo.doroCode" alias="doroCode" />
 		<typeAlias type="com.newsite.maptest01.vo.kaptCode" alias="kaptCode" />
+		<typeAlias type="com.newsite.maptest01.vo.aptcode" alias="aptcode" />
+		<typeAlias type="com.newsite.maptest01.vo.aptsale" alias="aptsale" />
 	</typeAliases>	
 		
 	<mappers>
