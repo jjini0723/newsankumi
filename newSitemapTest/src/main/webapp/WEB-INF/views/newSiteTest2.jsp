@@ -461,15 +461,15 @@ This variant is to be used when loading the separate styling modules -->
 			<!-- 보육시설 -->
 			<li>
 				<a href="#">
-					<input class="ck" type="checkbox" id="welfare_Childcare" name="ck" onclick="checkboxSelect('ck',6)">
+					<input class="ck" type="checkbox" id="welfare_childCare" name="ck" onclick="checkboxSelect('ck',6)">
 					<label for="welfare_childcare">보육시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_childcare">
-					<input type="radio" id="rd_welfare_childcare1" name="rd_welfare_childcare" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_welfare_childcare1" name="rd_welfare_childCare" value="<%=SelectConditions.high %>">
 					<label for="rd_welfare_childcare1">상</label>
-					<input type="radio" id="rd_welfare_childcare2" name="rd_welfare_childcare"value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_welfare_childcare2" name="rd_welfare_childCare"value="<%=SelectConditions.mid %>">
 					<label for="rd_welfare_childcare2">중</label>
-					<input type="radio" id="rd_welfare_childcare3" name="rd_welfare_childcare" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_welfare_childcare3" name="rd_welfare_childCare" value="<%=SelectConditions.low %>">
 					<label for="rd_welfare_childcare3">하</label>
 				</span>	
 				</a>
@@ -963,5 +963,6 @@ This variant is to be used when loading the separate styling modules -->
 	<!-- 검색목록의 hidden form으로 전송 -->
 	<input type="hidden" id="places">
 	<input type="hidden" id="title">
+	<input type = "hidden" id = "dongitem">
 </body>
 </html>
