@@ -26,17 +26,14 @@ $(".filter_commit").click(function() {
 //리스트 뿌리기
 
 function buildList(list) {
-	/*$("#dongitem").val(JSON.stringify(list));*/
+	//$("#dongitem").val(JSON.stringify(list));
 	items = list;
 	var html = "";
 	html += '<ol class = "decimal" data-width="400" id = "resultList">';
-	/*$.each(items, function(index, item){
-		html += '<li><a href = #> ' + item.si +" "+ item.gu +" "+ item.dong + '</a><a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
-	});*/
-	polyMap(items[0].citycode);
+	/*polyMap(items[0].citycode);*/
 	createSelectedChart(items[0]);
 		for (var i = 0; i < items.length; i++) {
-			html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "' +items[i].citycode+'" onclick = "polyMap('+items[i].citycode+'); createSelectedChart('+items[i]+');"> ' + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
+			html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "' +items[i].citycode+'" class = "'+items[i].dong+'" onclick = "createSelectedChart();"> ' + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
 			
 			
 		};
@@ -91,7 +88,7 @@ function removeItem(index) {
 	
 }
 
-
+/*
 function polyMap(citycode){
 	var name = citycode;
 	console.log("name"+name);
@@ -132,7 +129,7 @@ function polyMap(citycode){
 	             for(var i in newList){
 	                newList[i].reverse();
 	             }
-	          /* list =rtndata.featureCollection.features[0].geometry.coordinates; */   
+	           list =rtndata.featureCollection.features[0].geometry.coordinates;    
 	          
 	          
 	             // 다각형을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 다각형을 표시합니다
@@ -155,7 +152,6 @@ function polyMap(citycode){
 	            	 center: new daum.maps.LatLng(newList[100][0],newList[50][1]), // 지도의 중심좌표
 	            	 level: 6, // 지도의 확대 레벨
 	             };
-	             var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 	             
 	              polygon.setMap(map);
 	              daum.maps.event.addListener(polygon, 'mouseover', function(mouseEvent) {
@@ -189,18 +185,52 @@ function polyMap(citycode){
 
 		    				
 		    				
-}
+}*/
 
 
-function sendData1(){
-	var sendList = [];
-	sendList = $(".decimal>li>a").attr("value");
-	for (var i = 0; i < 5; i++) {
-		sendList[i] = $("#resultList>li>a").attr("value");
-		//sendList[i] = $("#resultList").find("li>a").eq(i);
-		console.log(sendList[i]);
+function sendData1(){ //코드 및 동 리스트 가져오기
+	var firstlist = [];
+	var codelist = []; //코드리스트
+	var secondlist = [];
+	var donglist = [];
+	for (var i = 0; i < 10; i++) {
+		firstlist[i] = $(".decimal").find("a").eq(i).attr('id');
 	}
 	
-	console.log(sendList);
+	if (typeof firstlist[6] == undefined ||firstlist[6] == null ) {
+		codelist.push(firstlist[0]);
+		codelist.push(firstlist[2]);
+		codelist.push(firstlist[4]);
+	}else if (typeof firstlist[8] == undefined ||firstlist[8] == null ) {
+		codelist.push(firstlist[0]);
+		codelist.push(firstlist[2]);
+		codelist.push(firstlist[4]);
+		codelist.push(firstlist[6]);
+	}
+	else{
+		codelist.push(firstlist[0]);
+		codelist.push(firstlist[2]);
+		codelist.push(firstlist[4]);
+		codelist.push(firstlist[6]);
+		codelist.push(firstlist[8]);
+		
+	}
+	
+	for (var j = 0; j < 10; j++) {
+		secondlist[j] = $(".decimal").find("a").eq(j).attr('class');
+		
+	}
+	
+	if (typeof secondlist[6] == undefined ||secondlist[6] == null ) {
+		var dong = secondlist[0] + ',' + secondlist[2]+ ',' +secondlist[4]
+	}else if (typeof secondlist[8] == undefined ||secondlist[8] == null ) {
+		var dong = secondlist[0] + ',' + secondlist[2]+ ',' +secondlist[4]+ ',' +secondlist[6]
+	}
+	else{
+		var dong = secondlist[0] + ',' + secondlist[2]+ ',' +secondlist[4]+ ',' +secondlist[6]+ ',' +secondlist[8];
+	}
+	console.log("code" + codelist);
+	console.log("dong" + dong);
+	
 	
 }

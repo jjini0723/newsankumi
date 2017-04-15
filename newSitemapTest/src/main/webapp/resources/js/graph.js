@@ -7,8 +7,13 @@
 
 
 function createSelectedChart(item){
-	/*var item = JSON.parse($("#dongitem").val());*/
-	console.log(item);
+	/*if (objlist == "") {
+		var item = JSON.parse($("#dongitem").val());
+		console.log(item);
+		var obj = objlist[index];
+		console.log(obj);
+		
+	}*/
 		var list = [];//null이 아닌 값을 추가해서 넘길 배열
 		var sKey=""; //
 		var kKey="";
