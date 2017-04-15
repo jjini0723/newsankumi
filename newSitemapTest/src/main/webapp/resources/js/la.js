@@ -282,13 +282,7 @@ function dfa(carArray, walkArray, tradiArray){
 			item.changepoint = ((parseFloat(item.totalpoint))*percent).toFixed(2);
 		})
 	}
-	console.log(perfect);
-	
-	
-	var perfect2 = new Array();
-	var perfect3 = new Array();
-	var save=0;
-	
+
 	
 //	for(var i=perfect2.length;i=0;i--){
 //		for(var j=0;j<perfect.length;j++){
@@ -297,4 +291,25 @@ function dfa(carArray, walkArray, tradiArray){
 //			}
 //		}
 //	}
+	
+	
+	
+}
+
+
+
+function drawlist() {
+	console.log(perfect);
+	console.log("drawlist");
+	var html = "";
+	html += '<ol class = "category" data-width="400" id = "list2">';
+//	polyMap(items[0].citycode);
+//	createSelectedChart(items[0]);
+	console.log(perfect[0]);
+		for (var i = 0; i < perfect.length; i++) {
+			html += '<li><a href = "#" id = "" value = "" onclick = "getTradeInfo('+perfect[i].x+');">'+perfect[i].kaptAddr+perfect[i].changepoint+' <a href="#" onclick="">   x   </a></li>' ;
+		};													
+	html += '</ol>';
+	$('#lll').html(html);
+	
 }

@@ -254,7 +254,7 @@ public class HomeController {
 		
 		for(int i = 0; i<kaptcodeList2.size();i++){
 			try {
-				String juso = GET_URL2+kaptcodeList2.get(i)+"&ServiceKey="+GET_KEY;
+				String juso = GET_URL2+kaptcodeList2.get(i)+"&ServiceKey="+GET_KEY3;
 				URL url = new URL(juso);
 				XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 				factory.setNamespaceAware(true);
@@ -375,9 +375,13 @@ public class HomeController {
 	}
 	@ResponseBody
 	@RequestMapping(value= "getTradeInfo", method = RequestMethod.POST)
-	public ArrayList<aptsale> getTradeInfo(@RequestBody String xloc,String yloc){
+	public ArrayList<aptsale> getTradeInfo(String xloc,String yloc){
 		ArrayList<aptsale> result = new ArrayList<>();
+		xloc = xloc.substring(0, 9);
+		yloc = yloc.substring(0, 10);
+		System.out.println(xloc+","+yloc);
 		result = dao.getTradeInfo(xloc,yloc);
+		System.out.println(result);
 		return result;
 	}
 	

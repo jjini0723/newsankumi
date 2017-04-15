@@ -23,6 +23,8 @@
 <script src="./resources/js/resultList.js"></script><!-- 추천지역 리스트 출력 -->
 <script src="./resources/js/mapShowResult.js"></script><!-- 추천지역 리스트 출력 -->
 <script src="./resources/js/la.js"></script><!-- 영석이 시간계산 로직 -->
+<script src="./resources/js/filter.js"></script><!-- 영석이 필터 로직 -->
+<script src="./resources/js/getTradeInfo.js"></script><!-- 영석이 가격정보 로직 -->
 <script src="./resources/js/searchDestination.js"></script><!-- 희망목적지 관련 js -->
 <script src="./resources/js/sweetalert.min.js"></script><!-- sweetalert/email 보내기 팝업 관련 js -->
 
@@ -150,7 +152,7 @@ function conditionSelect(){
 	   $(function() {
             $( "#slider-3" ).slider({
                range:true,
-               min: 1970,
+               min: 1980,
                max: 2017,
                values: [ 1991, 2010 ],
                slide: function( event, ui ) {
@@ -304,21 +306,19 @@ This variant is to be used when loading the separate styling modules -->
 						<div id="squareFeet">
 							<p>
 								<label for="feet">평수:</label>
-								<input type="checkbox" id="feet"
-									style = "border:0; color:#b9cd6d; font-weight:bold;"> 16평
-								<input type="checkbox" id="feet"
-									style = "border:0; color:#b9cd6d; font-weight:bold;"> 20평
-								<input type="checkbox" id="feet"
-									style = "border:0; color:#b9cd6d; font-weight:bold;"> 24평
-								<input type="checkbox" id="feet"
-									style = "border:0; color:#b9cd6d; font-weight:bold;"> 28평	
+								<input type="checkbox" id="kaptMparea60" name="kaptMparea60" 
+									style = "border:0; color:#b9cd6d; font-weight:bold;"> 24평이하
+								<input type="checkbox" id="kaptMparea85" name="kaptMparea85" 
+									style = "border:0; color:#b9cd6d; font-weight:bold;"> 25평~42평
+								<input type="checkbox" id="kaptMparea135" name="kaptMparea135" 
+									style = "border:0; color:#b9cd6d; font-weight:bold;"> 42평이상
 							</p>
 						</div>
 						<!-- // END 평수 -->
                     </div>
                   </div>
                   <div class="text-center">
-                    <button type="submit" class="btn btn-primary">적용하기 <i class="fa fa-sign-in"></i></button>
+                    <button type="button" class="btn btn-primary" onclick="filter();">적용하기 <i class="fa fa-sign-in"></i></button>
                   </div>
                 </form>
               </div>

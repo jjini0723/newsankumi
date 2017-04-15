@@ -95,6 +95,7 @@ function call(emdName){
 			//주소로 좌표를 검색합니다
 			var kaptAddr = new Array();
  			var kaptName = new Array();
+ 			var kaptUsedate = new Array();
  			var codeHeatNm = new Array();
    			var kaptDongCnt = new Array();
 			var kaptdaCnt = new Array();
@@ -102,6 +103,7 @@ function call(emdName){
 			var kaptTel = new Array();
 			var coordsList = [];
 			for(var i in data) {
+				kaptUsedate.push(data[i].kaptUsedate);
 				kaptAddr.push(data[i].kaptAddr);
 				kaptName.push(data[i].kaptName);
 				codeHeatNm.push(data[i].codeHeatNm);
@@ -126,6 +128,7 @@ function call(emdName){
 	    						kaptName : kaptName[index],//아파트이름
 	    						changepoint : '',
 	    						codeHeatNm : codeHeatNm[index],
+	    						kaptUsedate : kaptUsedate[index],
     			       			kaptDongCnt : kaptDongCnt[index],
 		    					kaptdaCnt : kaptdaCnt[index],
 		    					kaptBcompany : kaptBcompany[index],

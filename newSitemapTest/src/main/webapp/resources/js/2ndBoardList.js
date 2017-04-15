@@ -53,7 +53,7 @@ function boardList2() {
 				html += '<ul class="pagination margin-none">';
 				html += '<li class="disabled"><a href="#">&laquo;</a></li>';
 				html += '<li><a href="#" onclick = "boardList();">이전단계</a></li>';
-				html += '<li><a href="#" onclick = "boardList3(); searchBestLoc();">최적의 주거공간 찾기</a></li>';
+				html += '<li><a href="#" onclick = "boardList3(); searchBestLoc(); ">최적의 주거공간 찾기</a></li>';
 				html += '<li class="disabled"><a href="#">&raquo;</a></li>';
 				html += '</ul></div></div>';
 
@@ -76,6 +76,7 @@ function boardList3() {
 				var html = "";
 				html += '<div data-scrollable id="sidebar-map1">';
 				html += '<h4 class="category">주거지역 검색 결과</h4>';
+				html += '<div id = "lll"></div>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 				html += '<h4 class="category">아파트 정보</h4>';
@@ -93,6 +94,9 @@ function boardList3() {
 				html += '</ul></div></div>';
 
 				$("#test123").html(html);
+				if (html != "") {
+					drawlist();
+				}
 			},
 			error : function(e) {
 				console.log(e);

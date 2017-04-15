@@ -1,12 +1,31 @@
 
 function filter(){
 	console.log(perfect);
-
-	var startkaptUsedate =null ; // 연도 4자리만 미사용시 null
-	var endkaptUsedate  =1995 ;// ""
-	var kaptMparea_60 = null; // 18평이하 -null, used
-	var kaptMparea_85 = null; // 19평~24평이하-null, used
-	var kaptMparea_135 = 'used'; //25평~40평이하-null, used
+	alert('필터안녕');
+	var price = document.getElementById("price").value;
+	var startkaptUsedate = price.substring(0,4);
+	var endkaptUsedate = price.substring(7,11);
+	var kaptMparea_60 = $("#kaptMparea60").is(":checked");
+	var kaptMparea_85 = $("#kaptMparea85").is(":checked");
+	var kaptMparea_135 = $("#kaptMparea135").is(":checked");
+	if(kaptMparea_60==false){
+		kaptMparea_60=null;
+	};
+	if(kaptMparea_85==false){
+		kaptMparea_85=null;
+	};
+	if(kaptMparea_135==false){
+		kaptMparea_135=null;
+	};
+//	var kaptMparea60 = document.getElementById("kaptMparea60").value;
+//	var kaptMparea85 = document.getElementById("kaptMparea85").value;
+//	var kaptMparea135 = document.getElementById("kaptMparea135").value; 
+	console.log(startkaptUsedate+","+endkaptUsedate+","+kaptMparea60+","+kaptMparea85+","+kaptMparea135);
+//	var startkaptUsedate =null ; // 연도 4자리만 미사용시 null
+//	var endkaptUsedate  =1995 ;// ""
+//	var kaptMparea_60 = null; // 24평이하 -null, used
+//	var kaptMparea_85 = null; // 25평~42평이하-null, used
+//	var kaptMparea_135 = 'used'; //42이상-null, used
 
 	var result = new Array(); // 결과 리턴 어레이
 	var save = new Array(); // 임시 저장 어레이
