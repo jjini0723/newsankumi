@@ -101,6 +101,9 @@ function call(emdName){
 			var kaptdaCnt = new Array();
 			var kaptBcompany = new Array();
 			var kaptTel = new Array();
+			var kaptMparea_60 = new Array();
+			var kaptMparea_85 = new Array();
+			var kaptMparea_135 = new Array();
 			var coordsList = [];
 			for(var i in data) {
 				kaptUsedate.push(data[i].kaptUsedate);
@@ -111,6 +114,9 @@ function call(emdName){
 				kaptdaCnt.push(data[i].kaptdaCnt);
 				kaptBcompany.push(data[i].kaptBcompany);
 				kaptTel.push(data[i].kaptTel);
+				kaptMparea_60.push(data[i].kaptMparea_60);
+				kaptMparea_85.push(data[i].kaptMparea_85);
+				kaptMparea_135.push(data[i].kaptMparea_135);
 				//alert('주소 : '+kaptAddr[i]+' 아파트이름 : '+kaptName[i]);
 			}
 			$.each(kaptAddr,function(index,item) {
@@ -133,9 +139,9 @@ function call(emdName){
 		    					kaptdaCnt : kaptdaCnt[index],
 		    					kaptBcompany : kaptBcompany[index],
 		    					kaptTel : kaptTel[index],
-		    					tradeinfo : '',
-		    					tradeinfo2 : '',
-		    					tradeinfo3 : '',
+		    					kaptMparea_60 : kaptMparea_60[index],
+		    					kaptMparea_85 : kaptMparea_85[index],
+		    					kaptMparea_135 : kaptMparea_135[index],
 	    						car1 : '',//자동차로 3곳을 설정할 경우를 대비해서 아예 1,2,3번만듬
 	    						car2 : '',
 	    						car3 : '',

@@ -20,7 +20,7 @@ function filter(){
 //	var kaptMparea60 = document.getElementById("kaptMparea60").value;
 //	var kaptMparea85 = document.getElementById("kaptMparea85").value;
 //	var kaptMparea135 = document.getElementById("kaptMparea135").value; 
-	console.log(startkaptUsedate+","+endkaptUsedate+","+kaptMparea60+","+kaptMparea85+","+kaptMparea135);
+	console.log(startkaptUsedate+","+endkaptUsedate+","+kaptMparea_60+","+kaptMparea_85+","+kaptMparea_135);
 //	var startkaptUsedate =null ; // 연도 4자리만 미사용시 null
 //	var endkaptUsedate  =1995 ;// ""
 //	var kaptMparea_60 = null; // 24평이하 -null, used
