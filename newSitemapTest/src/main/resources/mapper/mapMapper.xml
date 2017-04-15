@@ -28,6 +28,6 @@
 	</select>
 	
 	<select id="getTradeInfo" parameterType="String" resultType="aptsale">
-		select s.goyucode,s.salegubun, s.aptsize, s.wolse, s.ploor, s.commitdate from mp_apt_code c join mp_apt_sale s on c.goyucode = s.goyucode where c.xloc = #{0} c.yloc = #{1}
+		select s.goyucode,s.salegubun, s.aptsize, s.sale, s.wolse, s.ploor, s.commitdate from mp_apt_code c join mp_apt_sale s on c.goyucode = s.goyucode where c.xloc = #{0} and c.yloc = #{1}
 	</select>
 </mapper>
