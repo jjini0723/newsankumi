@@ -43,6 +43,7 @@ var walkArray = new Array(); // 희망목적지 이동수단 도보인 경우의
 var tradiArray = new Array(); // 희망목적지 이동수단 대중교통인 경우의 좌표를 저장하는 배열
 var emdName = null;
 var hopeList = new Array(); //희망목적지 리스트 담을 배열
+var newMarkers = []; //희망목적지에 등록된 장소를 표현할 마커를 저장할 배열.
 
 $(document).avgrund({
 	    openOnEvent: false

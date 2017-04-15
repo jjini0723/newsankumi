@@ -22,17 +22,16 @@ var paginationEl;
 // 페이지 번호 변수
 var i;
 
-// 희망목적지에 등록된 희망목적지를 저장할 배열.
-var hopeList = new Array();
-
-// 희망목적지에 등록된 장소를 표현할 마커를 저장할 배열.
-
-var newMarkers = [];
-
-function deleteList(index) {
+function deleteList() {
 	$("#getItem>li>#deletebtn").on("click", function() {
 		// 희망목적지에 등록된 목적지의 개수를 파악하기 위해, 삭제가 되면 배열에서 꺼낸다.
-		hopeList.pop();
+		var title = $(this).attr("title");
+		for(var i = 0; i < hopeList.length; i++) {
+			if(title == hopeList[i]) {
+				removeThisMarker(i);
+				hopeList.splice(i,1);
+			}
+		}
 		$(this).parent().remove();
 		return false;
 	});
@@ -86,7 +85,6 @@ function displayPlaces(places) {
     fragment = document.createDocumentFragment(), 
     bounds = new daum.maps.LatLngBounds(), 
     listStr = '';
-    var index = 0;
     // 검색 결과 목록에 추가된 항목들을 제거합니다
     removeAllChildNods(listEl);
 
@@ -97,9 +95,8 @@ function displayPlaces(places) {
 
         // 마커를 생성하고 지도에 표시합니다
         var placePosition = new daum.maps.LatLng(places[i].latitude, places[i].longitude),
-            marker = addMarker(placePosition, i), 
+            marker = addMarker(placePosition, i),
             itemEl = getListItem(i, places[i], marker); // 검색 결과 항목 Element를 생성합니다
-
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
         bounds.extend(placePosition);
@@ -126,7 +123,6 @@ function displayPlaces(places) {
         })(marker, places[i].title);
 
         fragment.appendChild(itemEl);
-        index++;
     }
     // 수정부분
     $("#places").val(JSON.stringify(places));
@@ -198,12 +194,12 @@ function getItem(index) {
         itemStr += '    <span>' + places[index].newAddress + '</span><br>' +
                     '   <span class="jibun gray">' +  places[index].address  + '</span><br>';
     } else {
-        itemStr += '    <span>' +  places[index].address  + '</span><br>'; 
+        itemStr += '    <span>' +  places[index].address  + '</span><br>';
     }
                  
       itemStr += '  <span class="tel">' + places[index].phone  + '</span><br>' ;
       
-      itemStr += '<a href="#" class="deletebtn" id="deletebtn" onclick="deleteList('+index+');">삭제</a><br>';
+      itemStr += '<a href="#" class="deletebtn" id="deletebtn" title="'+places[index].title+'" onclick="deleteList();">삭제</a><br>';
     
     el.innerHTML = itemStr;
     el.className = 'item2';
@@ -228,14 +224,16 @@ function confirm(lat, lng, index) {
 		}
 	}
 	// 중복된 희망목적지가 아닐 경우 배열에 해당 희망목적지의 이름을 저장한다.
-	hopeList.push(places[index].title);
 	if(hopeList.length < 6) {
-		hoi(lat, lng, index);
+		hopeList.push(places[index].title);
 		displayPlace(index);
+		hoi(lat, lng, index);
+		removeOtherMarker(index); // index는 검색결과의 리스트 배열의 인덱스.
 	} else {
 		alert('희망목적지는 5개까지만 가능합니다.');
 		listReset();
 	}
+	
 }
 
 
@@ -256,7 +254,7 @@ function addMarker(position, idx, title) {
 
     marker.setMap(map); // 지도 위에 마커를 표출합니다
     markers.push(marker);  // 배열에 생성된 마커를 추가합니다
-    newMarkers.push(marker); // 희망목적지로 등록된 마커를 새로운 배열에 추가합니다
+    
 
     return marker;
 }
@@ -276,17 +274,17 @@ function removeOtherMarker(index) {
 			markers[i].setMap(null);
 		}
 	}
-	markers = [];
+	newMarkers.push(markers[index]); // 희망목적지로 등록된 마커를 새로운 배열에 추가합니다
+	removeMarker();
+	for ( var j = 0; j < newMarkers.length; j++) {
+		newMarkers[j].setMap(map);
+	}
 }
 
 //삭제한 희망목적지의 마커를  새로운 마커배열에서 삭제
 function removeThisMarker(index) {
-	for ( var i = 0; i < newMarkers.length; i++) {
-		if(index == i) {
-			newMarkers[i].setMap(null);
-		}
-	}
-	markers = [];
+	newMarkers[index].setMap(null);
+	newMarkers.splice(index,1);
 }
 
 
@@ -300,7 +298,6 @@ function displayPagination(pagination) {
     while (paginationEl.hasChildNodes()) {
         paginationEl.removeChild (paginationEl.lastChild);
     }
-
     for (i=1; i<=pagination.last; i++) {
         var el = document.createElement('a');
         el.href = "#";
@@ -315,7 +312,6 @@ function displayPagination(pagination) {
                 }
             })(i);
         }
-
         fragment.appendChild(el);
     }
     paginationEl.appendChild(fragment);
@@ -325,7 +321,6 @@ function displayPagination(pagination) {
 // 인포윈도우에 장소명을 표시합니다
 function displayInfowindow(marker, title) {
     var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
-
     infowindow.setContent(content);
     infowindow.open(map, marker);
 }
@@ -383,5 +378,4 @@ function listReset(index) {
 	document.getElementById("keyword").value = "";
 	removeAllChildNods(listEl);
 	removeAllpaginationChildNods(paginationEl);
-	removeOtherMarker(index);
 }

@@ -33,10 +33,10 @@ function buildList(list) {
 	/*$.each(items, function(index, item){
 		html += '<li><a href = #> ' + item.si +" "+ item.gu +" "+ item.dong + '</a><a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
 	});*/
-	polyMap(items[0].citycode);
+	/*polyMap(items[0].citycode);*/
 	createSelectedChart(items[0]);
 		for (var i = 0; i < items.length; i++) {
-			html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "' +items[i].citycode+'" onclick = "polyMap('+items[i].citycode+'); createSelectedChart('+items[i]+');"> ' + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
+			html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "' +items[i].citycode+'" onclick = "createSelectedChart('+items[i]+');"> ' + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
 			
 			
 		};
