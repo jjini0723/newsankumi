@@ -192,7 +192,6 @@ function sendData1(){ //코드 및 동 리스트 가져오기
 	var firstlist = [];
 	var codelist = []; //코드리스트
 	var secondlist = [];
-	var donglist = [];
 	for (var i = 0; i < 10; i++) {
 		firstlist[i] = $(".decimal").find("a").eq(i).attr('id');
 	}
@@ -213,12 +212,10 @@ function sendData1(){ //코드 및 동 리스트 가져오기
 		codelist.push(firstlist[4]);
 		codelist.push(firstlist[6]);
 		codelist.push(firstlist[8]);
-		
 	}
 	
 	for (var j = 0; j < 10; j++) {
 		secondlist[j] = $(".decimal").find("a").eq(j).attr('class');
-		
 	}
 	
 	if (typeof secondlist[6] == undefined ||secondlist[6] == null ) {
@@ -232,5 +229,7 @@ function sendData1(){ //코드 및 동 리스트 가져오기
 	console.log("code" + codelist);
 	console.log("dong" + dong);
 	
+	var result = [codelist, dong];
+	return result;
 	
 }
