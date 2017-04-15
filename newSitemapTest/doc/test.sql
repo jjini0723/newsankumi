@@ -31,4 +31,4 @@ select
 select * from MP_LOC_INFO;
 
 
-select mp_conv_d
+select * from mp_data where gu = '동'
