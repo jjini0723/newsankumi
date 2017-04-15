@@ -22,10 +22,16 @@ var paginationEl;
 // 페이지 번호 변수
 var i;
 
+// 희망목적지에 등록된 희망목적지를 저장할 배열.
 var hopeList = new Array();
+
+// 희망목적지에 등록된 장소를 표현할 마커를 저장할 배열.
+
+var newMarkers = [];
 
 function deleteList(index) {
 	$("#getItem>li>#deletebtn").on("click", function() {
+		// 희망목적지에 등록된 목적지의 개수를 파악하기 위해, 삭제가 되면 배열에서 꺼낸다.
 		hopeList.pop();
 		$(this).parent().remove();
 		return false;
@@ -206,8 +212,11 @@ function getItem(index) {
 
 function confirm(lat, lng, index) {
 	var places = JSON.parse($("#places").val());
+	// 검색결과로 넘어온 리스트의 길이 만큼 반복문 진행
 	for(var j = 0; j < places.length; j++) {
+		// 희망목적지가 저장된 배열의 길이만큼 반복.
 		for(var k = 0; k < hopeList.length; k++) {
+			// 검색결과 리스트에 있는 이름과 희망목적지가 저장된 배열이 같은지 비교. 같으면 중복존재, 없으면 중복된 희망목적지 없음.
 			if(places[index].title == hopeList[k]) {
 				alert('중복존재');
 				var listEl = document.getElementById('placesList');
@@ -218,6 +227,7 @@ function confirm(lat, lng, index) {
 			}
 		}
 	}
+	// 중복된 희망목적지가 아닐 경우 배열에 해당 희망목적지의 이름을 저장한다.
 	hopeList.push(places[index].title);
 	if(hopeList.length < 6) {
 		hoi(lat, lng, index);
@@ -229,7 +239,7 @@ function confirm(lat, lng, index) {
 }
 
 
-// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다 
 function addMarker(position, idx, title) {
     var imageSrc = './resources/images/markers/user-01.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
         imageSize = new daum.maps.Size(41, 40),  // 마커 이미지의 크기
@@ -246,6 +256,7 @@ function addMarker(position, idx, title) {
 
     marker.setMap(map); // 지도 위에 마커를 표출합니다
     markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+    newMarkers.push(marker); // 희망목적지로 등록된 마커를 새로운 배열에 추가합니다
 
     return marker;
 }
@@ -268,11 +279,11 @@ function removeOtherMarker(index) {
 	markers = [];
 }
 
-//삭제한 희망목적지의 마커를 제외하고 삭제
+//삭제한 희망목적지의 마커를  새로운 마커배열에서 삭제
 function removeThisMarker(index) {
-	for ( var i = 0; i < markers.length; i++) {
-		if(index != i) {
-			markers[i].setMap(null);
+	for ( var i = 0; i < newMarkers.length; i++) {
+		if(index == i) {
+			newMarkers[i].setMap(null);
 		}
 	}
 	markers = [];
