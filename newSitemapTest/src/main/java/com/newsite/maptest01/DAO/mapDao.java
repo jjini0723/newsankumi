@@ -35,14 +35,6 @@ public class mapDao {
 		return result;
 	}
 	
-	public ArrayList<String> getEmdList(String gwanhal) {
-		ArrayList<String> result = new ArrayList<>();
-		mapMapper mapper = sqlsession.getMapper(mapMapper.class);
-		result = mapper.getEmdList(gwanhal);
-		return result;
-	}
-	
-	
 	public ArrayList<kaptCode> loadKaptCode(String emd){
 		ArrayList<kaptCode> result = new ArrayList<>();
 		mapMapper mapper = sqlsession.getMapper(mapMapper.class);

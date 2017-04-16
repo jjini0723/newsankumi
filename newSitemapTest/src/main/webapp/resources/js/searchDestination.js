@@ -22,20 +22,23 @@ var paginationEl;
 // 페이지 번호 변수
 var i;
 
+// 희망목적지에 등록된 희망목적지를 저장할 배열.
+var hopeList = new Array();
 
-function deleteList() {
-	$("#getItem>li>#deletebtn").on("click", function() {
-		// 희망목적지에 등록된 목적지의 개수를 파악하기 위해, 삭제가 되면 배열에서 꺼낸다.
-		var title = $(this).attr("title");
-		for(var i = 0; i < hopeList.length; i++) {
-			if(title == hopeList[i]) {
-				removeThisMarker(i);
-				hopeList.splice(i,1);
-			}
-		}
-		$(this).parent().remove();
-		return false;
-	});
+// 희망목적지에 등록된 장소를 표현할 마커를 저장할 배열.
+
+var newMarkers = new Array();
+
+function deleteList(index) {
+   $("#getItem>li>#deletebtn").on("click", function() {
+      // 희망목적지에 등록된 목적지의 개수를 파악하기 위해, 삭제가 되면 배열에서 꺼낸다.
+      //hopeList.pop();
+      var title = $(this).attr("title");
+      alert('a태그 타이틀 : '+title);
+      //removeThisMarker(title);
+      $(this).parent().remove();
+      return false;
+   });
 }
 
 
@@ -199,7 +202,8 @@ function getItem(index) {
     }
                  
       itemStr += '  <span class="tel">' + places[index].phone  + '</span><br>' ;
-      itemStr += '<a href="#" class="deletebtn" id="deletebtn" title="'+places[index].title+'" onclick="deleteList();">삭제</a><br>';
+      
+      itemStr += '<a href="#" class="deletebtn" id="deletebtn" title="'+places[index].title+'" onclick="deleteList('+index+');">삭제</a><br>';
     
     el.innerHTML = itemStr;
     el.className = 'item2';
@@ -207,32 +211,36 @@ function getItem(index) {
 }
 
 function confirm(lat, lng, index) {
-	var places = JSON.parse($("#places").val());
-	// 검색결과로 넘어온 리스트의 길이 만큼 반복문 진행
-	for(var j = 0; j < places.length; j++) {
-		// 희망목적지가 저장된 배열의 길이만큼 반복.
-		for(var k = 0; k < hopeList.length; k++) {
-			// 검색결과 리스트에 있는 이름과 희망목적지가 저장된 배열이 같은지 비교. 같으면 중복존재, 없으면 중복된 희망목적지 없음.
-			if(places[index].title == hopeList[k]) {
-				alert('중복존재');
-				var listEl = document.getElementById('placesList');
-				document.getElementById("keyword").value = "";
-				removeAllChildNods(listEl);
-				removeAllpaginationChildNods(paginationEl);
-				return;
-			}
-		}
-	}
-	// 중복된 희망목적지가 아닐 경우 배열에 해당 희망목적지의 이름을 저장한다.
-	if(hopeList.length < 6) {
-		hopeList.push(places[index].title);
-		displayPlace(index);
-		hoi(lat, lng, index);
-		removeOtherMarker(index); // index는 검색결과의 리스트 배열의 인덱스.
-	} else {
-		alert('희망목적지는 5개까지만 가능합니다.');
-		listReset();
-	}
+   var places = JSON.parse($("#places").val());
+   // 검색결과로 넘어온 리스트의 길이 만큼 반복문 진행
+   for(var j = 0; j < places.length; j++) {
+      // 희망목적지가 저장된 배열의 길이만큼 반복.
+      for(var k = 0; k < hopeList.length; k++) {
+         // 검색결과 리스트에 있는 이름과 희망목적지가 저장된 배열이 같은지 비교. 같으면 중복존재, 없으면 중복된 희망목적지 없음.
+         if(places[index].title == hopeList[k]) {
+            alert('중복존재');
+            var listEl = document.getElementById('placesList');
+            document.getElementById("keyword").value = "";
+            removeAllChildNods(listEl);
+            removeAllpaginationChildNods(paginationEl);
+            return;
+         }
+      }
+   }
+   // 중복된 희망목적지가 아닐 경우 배열에 해당 희망목적지의 이름을 저장한다.
+   if(hopeList.length < 6) {
+      hopeList.push(places[index].title);
+      displayPlace(index);
+      hoi(lat, lng, index);
+      removeOtherMarker(index);
+      /*for(var i = 0; i < newMarkers.length; i++) {
+         newMarkers.setMap(map);
+      }*/
+   } else {
+      alert('희망목적지는 5개까지만 가능합니다.');
+      listReset();
+   }
+   
 }
 
 
@@ -268,22 +276,23 @@ function removeMarker() {
 
 // 등록한 마커를 제외하고 삭제
 function removeOtherMarker(index) {
-	for ( var i = 0; i < markers.length; i++) {
-		if(index != i) {
-			markers[i].setMap(null);
-		}
-	}
-	newMarkers.push(markers[index]); // 희망목적지로 등록된 마커를 새로운 배열에 추가합니다
-	removeMarker();
-	for ( var j = 0; j < newMarkers.length; j++) {
-		newMarkers[j].setMap(map);
-	}
+   for ( var i = 0; i < markers.length; i++) {
+      if(index != i) {
+         markers[i].setMap(null);
+      }
+      //newMarkers.push(markers[i]); // 희망목적지로 등록된 마커를 새로운 배열에 추가합니다
+   }
+   markers = [];
 }
 
 //삭제한 희망목적지의 마커를  새로운 마커배열에서 삭제
-function removeThisMarker(index) {
-	newMarkers[index].setMap(null);
-	newMarkers.splice(index,1);
+function removeThisMarker(title) {
+   for (var i = 0; i < hopeList.length; i++) {
+      if(hopeList[i] == title) {
+         newMarkers[i].setMap(null);
+      }
+   }
+   markers = [];
 }
 
 
@@ -297,6 +306,7 @@ function displayPagination(pagination) {
     while (paginationEl.hasChildNodes()) {
         paginationEl.removeChild (paginationEl.lastChild);
     }
+
     for (i=1; i<=pagination.last; i++) {
         var el = document.createElement('a');
         el.href = "#";
@@ -311,6 +321,7 @@ function displayPagination(pagination) {
                 }
             })(i);
         }
+
         fragment.appendChild(el);
     }
     paginationEl.appendChild(fragment);
@@ -320,6 +331,7 @@ function displayPagination(pagination) {
 // 인포윈도우에 장소명을 표시합니다
 function displayInfowindow(marker, title) {
     var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+
     infowindow.setContent(content);
     infowindow.open(map, marker);
 }
@@ -373,9 +385,8 @@ function searchBestLoc() {
 }
 
 function listReset(index) {
-
-	var listEl = document.getElementById('placesList');
-	document.getElementById("keyword").value = "";
-	removeAllChildNods(listEl);
-	removeAllpaginationChildNods(paginationEl);
+   var listEl = document.getElementById('placesList');
+   document.getElementById("keyword").value = "";
+   removeAllChildNods(listEl);
+   removeAllpaginationChildNods(paginationEl);
 }

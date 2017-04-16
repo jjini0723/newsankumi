@@ -2,11 +2,10 @@
  * 다음단계 이후!
  */
 
+
 function boardList2() {
-	//emdName = "삼성동,역삼동";
-	var result = sendData1();
-	
-	call(result[0], result[1]);
+	emdName = "삼성동,역삼동";
+	call(emdName);
 	$(document).ready(function() {
 		$.ajax({
 			type : "get",
@@ -77,7 +76,7 @@ function boardList3() {
 				var html = "";
 				html += '<div data-scrollable id="sidebar-map1">';
 				html += '<h4 class="category">주거지역 검색 결과</h4>';
-				html += '<div id = "lll" style = "height:200px; overflow-y: scroll;"></div>';
+				html += '<div style="overflow:auto;height:200px;" id = "lll"></div>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 				html += '<h4 class="category">아파트 정보</h4>';
@@ -90,7 +89,6 @@ function boardList3() {
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 				html += '<h4 class="category">소요시간 비교</h4>';
 				html += '<div class="sidebar-block padding-none">';
-				html += '<canvas id = "myChart2" width = "100px" height = "100px" style="z-index:15;"></canvas>';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 
 				html += '<div class="sidebar-block equal-padding">';

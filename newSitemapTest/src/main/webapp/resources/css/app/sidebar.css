@@ -7129,8 +7129,7 @@ html.app-mobile #content .container-fluid .sidebar {
     text-decoration: none;
   }
   .sidebar .sidebar-toggle-bar:hover {
-   /*  background-color: rgba(189, 189, 189, 0.3); */
-   background-color: transparent;
+    background-color: rgba(189, 189, 189, 0.3);
     width: 20px;
   }
   .sidebar .sidebar-toggle-bar:after {
@@ -8270,14 +8269,3 @@ html.st-layout .st-content {
   border-bottom: none;
 }
 
-.sidebar [data-scrollable] {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: auto;
-  z-index: 2;
-  overflow-x: hidden;
-  overflow-y: scroll;
-}

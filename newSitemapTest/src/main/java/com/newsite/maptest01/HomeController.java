@@ -224,22 +224,18 @@ public class HomeController {
 		ArrayList<String> kaptcodeList2 = new ArrayList<>();
 		HashMap<ArrayList<String>, ArrayList<String>> resultAddrList = new HashMap<>();
 		ArrayList<String> emdNameList = new ArrayList<>();
-		ArrayList<String> emdNameList2 = new ArrayList<>();
 		
-		String[] gwanhalArray = emdName.split(",");
-		
-		//String[] emdNameArray = emdName.split(",");
+		String[] emdNameArray = emdName.split(",");
 		// 영석이 코드
 		
 		/*kaptcodeList = dao.loadKaptCode(emdName);
-		String strcode = kaptcodeList.get(0).getKaptcode();
+		String strcode = kaptcodeList.get(0).getKaptcode() ;
 		for(String a : strcode.split(",")){
 			kaptcodeList2.add(a);
 		}*/
 		
 		// 수정사항
 		
-		/*
 		for(int i = 0; i < emdNameArray.length; i++) {
 			kaptcodeList = dao.loadKaptCode(emdNameArray[i]);
 			String strCode = kaptcodeList.get(0).getKaptcode();
@@ -247,30 +243,7 @@ public class HomeController {
 				kaptcodeList2.add(a);
 			}
 		}
-		*/
 		
-		for(int i = 0; i < gwanhalArray.length; i++) {
-			emdNameList = dao.getEmdList(gwanhalArray[i]);
-			//System.out.println("emdNameList : "+emdNameList);
-			for(int j = 0; j < emdNameList.size(); j++) {
-				emdNameList2.add(emdNameList.get(j));
-			}
-		}
-		for(int i = 0; i < emdNameList2.size(); i++) {
-			//System.out.println("emdNameList2 : "+emdNameList2);
-			kaptcodeList = dao.loadKaptCode(emdNameList2.get(i));
-			//System.out.println(kaptcodeList.toString());
-			String strCode = null;
-			try {
-				strCode = kaptcodeList.get(0).getKaptcode();
-			} catch(NullPointerException e) {
-				continue;
-			}
-			//System.out.println(strCode);
-			for(String a : strCode.split(",")) {
-				kaptcodeList2.add(a);
-			}
-		}
 		
 		System.out.println(kaptcodeList2);
 		
@@ -376,8 +349,8 @@ public class HomeController {
 		
 		// 수정사항
 		for(int i = 0; i < aptAddr.size(); i++) {
-			for(int j = 0; j < emdNameList2.size(); j++) {
-				if(aptAddr.get(i).getKaptAddr().contains(emdNameList2.get(j))) {
+			for(int j = 0; j < emdNameArray.length; j++) {
+				if(aptAddr.get(i).getKaptAddr().contains(emdNameArray[j])) {
 					newAddrList.add(aptAddr.get(i));
 				}
 			}

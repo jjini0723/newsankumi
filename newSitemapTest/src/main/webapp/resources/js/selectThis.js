@@ -20,7 +20,7 @@ function searchThis(obj){
 			}else if(sido=='인천광역시'){
 				$("#mp_addcd_gg").append("<option value = ''>군/구</option>");
 			}else {
-				$("#mp_addcd_gg").append("<option value = ''>군/구</option>");
+				$("#mp_addcd_gg").append("<option value = ''>시/군/구</option>");
 			}
 			//var result = data['sigunList'];
 			for(var mp_addcd_gg in data){
