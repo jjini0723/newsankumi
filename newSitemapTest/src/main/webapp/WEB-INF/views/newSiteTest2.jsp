@@ -168,7 +168,7 @@ function conditionSelect(){
 </script>
 
 
-<title>두번째 도전하는 테스트닷 호랏!</title>
+<title> S・MAP</title>
 	
  <!-- Vendor CSS BUNDLE
     Includes styling for all of the 3rd party libraries used with this module, such as Bootstrap, Font Awesome and others.
