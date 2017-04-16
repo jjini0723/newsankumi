@@ -30,11 +30,13 @@ function buildList(list) {
 	items = list;
 	var html = "";
 	html += '<ol class = "decimal" data-width="400" id = "resultList">';
-	/*polyMap(items[0].citycode);*/
+
+	
+	moveMap(items[0].citycode);
 	createSelectedChart(items[0]);
 	for (var i = 0; i < items.length; i++) {
 		html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "' 
-		+items[i].citycode+'" class = "'+items[i].dong+'" onclick = "willThisWork('+items[i].citycode+'); "> ' 
+		+items[i].citycode+'" class = "'+items[i].dong+'" onclick = "willThisWork('+items[i].citycode+'); moveMap('+items[i].citycode+');"> ' 
 		+ items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
 	}
 	html += '</ol>';
@@ -84,22 +86,35 @@ function removeItem(index) {
 /*
 =======
 function moveMap(dong){
-	var newList = new Array();
-	var newListX = new Array(); 
-
     	$.ajax({
     		url : "http://apis.vworld.kr/2ddata/ademd/data?apiKey=CCA36BB7-0DA8-3EE7-8836-D4814D529510&domain=http://localhost:8888&emdCd="+dong+"&srsName=EPSG:4326&output=json",
     		dataType : "jsonp",
     		jsonp : "callback",
     		success : function(rtndata) {
-    			console.log(rtndata.featureCollection.features[0].geometry.coordinates);
+    			var newList = [];
     			var list = rtndata.featureCollection.features[0].geometry.coordinates;
-    		 	var polygonPath = [];
     			newList = list[0];
-    			console.log(newList[0]);
+    			var polygonPath = [];
+    			for(var i in newList){
+    				newList[i].reverse();
+    			}
+    			for(var i in newList){
+    				polygonPath.push(new daum.maps.LatLng(newList[i][0],newList[i][1]));
+    			}
+    			 polygon = new daum.maps.Polygon({
+    		        path:polygonPath, // 그려질 다각형의 좌표 배열입니다
+    		        strokeWeight: 3, // 선의 두께입니다
+    		        strokeColor: 'gray', // 선의 색깔입니다
+    		        strokeOpacity: 0.8, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+    		        strokeStyle: 'solid', // 선의 스타일입니다
+    		        fillColor: 'gray', // 채우기 색깔입니다
+    		        fillOpacity: 0.4 // 채우기 불투명도 입니다
+    		    });
     			var result = newList[0];
     			var coords = new daum.maps.LatLng(result[0], result[1]);
+    			console.log(coords);
     			 map.setCenter(coords);
+    			 polygon.setMap(map);
     		},
     		error : function(e){
     			console.log(e);
@@ -107,7 +122,6 @@ function moveMap(dong){
     	});
 }
 
->>>>>>> origin/master
 function polyMap(citycode){
 	var name = citycode;
 	console.log("name"+name);
@@ -194,6 +208,7 @@ function polyMap(citycode){
 		    				
 }
 */
+
 
 function sendData1(){ //코드 및 동 리스트 가져오기
 	var firstlist = [];
