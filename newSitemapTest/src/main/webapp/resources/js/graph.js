@@ -234,7 +234,8 @@ function createChart(labelList, dataList, list){
 	            pointBorderColor: "#fff",
 	            pointHoverBackgroundColor: "#fff",
 	            pointHoverBorderColor: "rgba(34,149,138,1)",
-	            data: dataL
+	            data: dataL,
+	            maxHeight : "200px"
 			
 	}
 	
@@ -249,7 +250,8 @@ function createChart(labelList, dataList, list){
 		            pointBorderColor: "#fff",
 		            pointHoverBackgroundColor: "#fff",
 		            pointHoverBorderColor: "rgba(179,181,198,1)",
-		            data: standardL
+		            data: standardL,
+		            maxHeight : "200px"
 		        },
 		        customer
 		    ]
