@@ -34,7 +34,9 @@ function buildList(list) {
 	/*polyMap(items[0].citycode);*/
 	createSelectedChart(items[0]);
 	for (var i = 0; i < items.length; i++) {
-		html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "' +items[i].citycode+'" class = "'+items[i].dong+'" onclick = "createSelectedChart();"> ' + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
+		html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "' 
+		+items[i].citycode+'" class = "'+items[i].dong+'" onclick = "willThisWork('+items[i].citycode+');"> ' 
+		+ items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
 	}
 	html += '</ol>';
 	$('#req_loc1').html(html);

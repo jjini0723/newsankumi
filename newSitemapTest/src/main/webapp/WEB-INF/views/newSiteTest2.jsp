@@ -97,6 +97,7 @@ function conditionSelect(){
 		}),
 		success : function(data){
 			buildList(data);
+			
 		},
 		error : function(e){
 			console.log(e);
@@ -107,7 +108,6 @@ function conditionSelect(){
 
 //팝업
 	 $(function() {
-
 		$('#show')
 				.avgrund(
 						{
