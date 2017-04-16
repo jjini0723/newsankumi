@@ -29,6 +29,11 @@ public class kaptCode {
 	public void setKaptcode(String kaptcode) {
 		this.kaptcode = kaptcode;
 	}
+
+	@Override
+	public String toString() {
+		return "kaptCode [emd_nm=" + emd_nm + ", kaptcode=" + kaptcode + "]";
+	}
 	
 	
 	

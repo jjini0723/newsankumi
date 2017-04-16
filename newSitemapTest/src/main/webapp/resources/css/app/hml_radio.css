@@ -7,7 +7,7 @@
 
 input[type=radio] {
     display:none; 
-    margin:6px;
+    margin:10px;
 }
 
 /*
@@ -17,7 +17,7 @@ input[type=radio] {
 input[type=radio] + label {
     display:inline-block;
     margin:-2px;
-    padding: 1px 7px;
+    padding: 1px 10px;
     /* background-color: #e7e7e7; */
     color : #EAEAEA;
     border-color: #ddd;

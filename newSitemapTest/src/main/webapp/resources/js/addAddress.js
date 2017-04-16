@@ -20,10 +20,8 @@ function addAddress(obj){
 			$("#selectThis5").children().remove(); 
 			if(sido=='서울특별시'){
 				$("#selectThis4").append("<option value = ''>구</option>");
-				$("#selectThis5").append("<option value = ''>동</option>");
 			}else if(sido=='인천광역시'){
 				$("#selectThis4").append("<option value = ''>군/구</option>");
-				$("#selectThis5").append("<option value = ''>동</option>");
 			}else {
 				$("#selectThis4").append("<option value = ''>시/군/구</option>");
 			}

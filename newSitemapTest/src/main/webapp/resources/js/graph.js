@@ -7,13 +7,8 @@
 
 
 function createSelectedChart(item){
-	/*if (objlist == "") {
-		var item = JSON.parse($("#dongitem").val());
-		console.log(item);
-		var obj = objlist[index];
-		console.log(obj);
-		
-	}*/
+	/*var item = JSON.parse($("#dongitem").val());*/
+	console.log(item);
 		var list = [];//null이 아닌 값을 추가해서 넘길 배열
 		var sKey=""; //
 		var kKey="";
@@ -145,17 +140,20 @@ function createData(list, citycode){
 				}//for문 끝
 			
 			});//each문끝
+			//console.log("dataList : " + dataList);
 			}
-
+			var standardList = standardChart();
+			console.log("standardlist"+standardList);
+			if (standardList != '') {
+				createChart(labelList, dataList, standardList);
 				
+			}
 		},
 		error : function (e){
 			console.log(e)
 		}
-		
 });
-	standardChart();
-	console.log("standard만들기")
+	
 }
 
 function standardChart(){
@@ -186,7 +184,7 @@ function standardChart(){
 					}
 				});
 				console.log("1st stlist " + standardList);
-				/*return standardList;*/
+				return standardList;
 			},
 			error : function (e){
 				console.log(e);
@@ -197,108 +195,13 @@ function standardChart(){
 			for (var j = 0; j < labelList.length; j++) {
 				standardList.push(50);
 			}
-			/*return standardList;*/
+			return standardList;
 			console.log("1st.standardList" + standardList);
 		}
 	createChart(labelList, dataList, standardList);
 	
 }
 
-function willThisWork(citycode){
-	dataList = [];
-	$.ajax({
-		url : "createData",
-		type : "post",
-		async: false,
-		data : {
-			citycode : citycode
-		},
-		success : function (data){ //table에서 가져 온 값 배열과 배열 내의 key값은 label로 & label(자연, 지역인구, 안전..) 
-			$.each(data, function (key, value){
-				for (var i = 0; i < uniqueList.length; i++) {
-					if (uniqueList[i] == key) {
-						if (key == "welfare_sports") {
-							dataList.push(value);
-						}
-						if (key == "welfare_culture") {
-							dataList.push(value);
-						}	
-						if (key == "welfare_salon") {
-							dataList.push(value);
-						}	
-						if (key == "welfare_society") {
-							dataList.push(value);
-						}	
-						if (key == "welfare_medical") {
-							dataList.push(value);
-						}	
-						if (key == "welfare_childCare") {
-							dataList.push(value);
-						}	
-						if (key == "education_student") {
-							dataList.push(value);
-						}	
-						if (key == "education_academy") {
-							dataList.push(value);
-						}	
-						if (key == "safety_fire") {
-							dataList.push(value);
-						}	
-						if (key == "safety_traffic") {
-							dataList.push(value);
-						}	
-						if (key == "safety_crime") {
-							dataList.push(value);
-						}	
-						if (key == "safety_safety") {
-							dataList.push(value);
-						}	
-						if (key == "safety_infection") {
-							dataList.push(value);
-						}	
-						if (key == "safety_nature") {
-							dataList.push(value);
-						}	
-						if (key == "life_convenient") {
-							dataList.push(value);
-						}	
-						if (key == "life_shopping") {
-							dataList.push(value);
-						}	
-						if (key == "life_restaurant") {
-							dataList.push(value);
-						}	
-						if (key == "life_publicTraffic") {
-							dataList.push(value);
-						}	
-						if (key == "people_foreign") {
-							dataList.push(value);
-						}	
-						if (key == "people_density") {
-							dataList.push(value);
-						}	
-						if (key == "nature_park") {
-							dataList.push(value);
-						}	
-						if (key == "nature_pollution") {
-							dataList.push(value);
-						}	
-					}
-				}//for문 끝
-			
-			});//each문끝
-
-				
-		},
-		error : function (e){
-			console.log(e)
-		}
-		
-});
-	console.log("과연" + dataList);
-	standardChart();
-	console.log("끝?");
-}
 
 function createChart(labelList, dataList, list){
 		
@@ -312,6 +215,9 @@ function createChart(labelList, dataList, list){
 	console.log("labellist" + labelList);
 	console.log("datalist" + dataList);
 	console.log("stanardL" + standardL);
+	/*var standardL= [];
+		standardL = standardChart();
+	console.log("stana"+standardL);*/
 	
 	var ctx = $("#myChart");
 	
@@ -323,8 +229,7 @@ function createChart(labelList, dataList, list){
 	            pointBorderColor: "#fff",
 	            pointHoverBackgroundColor: "#fff",
 	            pointHoverBorderColor: "rgba(34,149,138,1)",
-	            data: dataL,
-	            maxHeight : "200px"
+	            data: dataL
 			
 	}
 	
@@ -339,8 +244,7 @@ function createChart(labelList, dataList, list){
 		            pointBorderColor: "#fff",
 		            pointHoverBackgroundColor: "#fff",
 		            pointHoverBorderColor: "rgba(179,181,198,1)",
-		            data: standardL,
-		            maxHeight : "200px"
+		            data: standardL
 		        },
 		        customer
 		    ]
@@ -358,5 +262,8 @@ function createChart(labelList, dataList, list){
 	    }
 	});
 	
+
+
+
 
 }
