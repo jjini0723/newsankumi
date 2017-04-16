@@ -463,15 +463,15 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_childCare" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="welfare_childcare">보육시설</label>
+					<label for="welfare_childCare">보육시설</label>
 				<!-- 상중하 라디오 -->
-				<span class="hml" id="welfare_childcare">
-					<input type="radio" id="rd_welfare_childcare1" name="rd_welfare_childCare" value="<%=SelectConditions.high %>">
-					<label for="rd_welfare_childcare1">상</label>
-					<input type="radio" id="rd_welfare_childcare2" name="rd_welfare_childCare"value="<%=SelectConditions.mid %>">
-					<label for="rd_welfare_childcare2">중</label>
-					<input type="radio" id="rd_welfare_childcare3" name="rd_welfare_childCare" value="<%=SelectConditions.low %>">
-					<label for="rd_welfare_childcare3">하</label>
+				<span class="hml" id="welfare_childCare">
+					<input type="radio" id="rd_welfare_childCare1" name="rd_welfare_childCare" value="<%=SelectConditions.high %>">
+					<label for="rd_welfare_childCare1">상</label>
+					<input type="radio" id="rd_welfare_childCare2" name="rd_welfare_childCare"value="<%=SelectConditions.mid %>">
+					<label for="rd_welfare_childCare2">중</label>
+					<input type="radio" id="rd_welfare_childCare3" name="rd_welfare_childCare" value="<%=SelectConditions.low %>">
+					<label for="rd_welfare_childCare3">하</label>
 				</span>	
 				</a>
 			</li>

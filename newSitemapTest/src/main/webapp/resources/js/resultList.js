@@ -30,9 +30,7 @@ function buildList(list) {
 	items = list;
 	var html = "";
 	html += '<ol class = "decimal" data-width="400" id = "resultList">';
-	/*$.each(items, function(index, item){
-		html += '<li><a href = #> ' + item.si +" "+ item.gu +" "+ item.dong + '</a><a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
-	});*/
+	
 	/*polyMap(items[0].citycode);*/
 	createSelectedChart(items[0]);
 	for (var i = 0; i < items.length; i++) {
@@ -66,10 +64,6 @@ function addItem() {
         	 console.log(data);
         	 buildList(items);
         	 $("#selectThis option:eq(0)").attr("selected", "selected");
-        	/* $('selectThis3').find('option:first').attr('selected', 'selected');
-        	 $('selectThis4').find('option:first').attr('selected', 'selected');
-        	 $('selectThis5').find('option:first').attr('selected', 'selected');
-        	 */
          },
          error : function(e){
         	 console.log(e);

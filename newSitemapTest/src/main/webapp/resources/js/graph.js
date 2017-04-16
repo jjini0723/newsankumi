@@ -145,20 +145,17 @@ function createData(list, citycode){
 				}//for문 끝
 			
 			});//each문끝
-			//console.log("dataList : " + dataList);
 			}
-			var standardList = standardChart();
-			console.log("standardlist"+standardList);
-			if (standardList != '') {
-				createChart(labelList, dataList, standardList);
+
 				
-			}
 		},
 		error : function (e){
 			console.log(e)
 		}
+		
 });
-	
+	standardChart();
+	console.log("standard만들기")
 }
 
 function standardChart(){
@@ -189,7 +186,7 @@ function standardChart(){
 					}
 				});
 				console.log("1st stlist " + standardList);
-				return standardList;
+				/*return standardList;*/
 			},
 			error : function (e){
 				console.log(e);
@@ -200,7 +197,7 @@ function standardChart(){
 			for (var j = 0; j < labelList.length; j++) {
 				standardList.push(50);
 			}
-			return standardList;
+			/*return standardList;*/
 			console.log("1st.standardList" + standardList);
 		}
 	createChart(labelList, dataList, standardList);
@@ -220,9 +217,6 @@ function createChart(labelList, dataList, list){
 	console.log("labellist" + labelList);
 	console.log("datalist" + dataList);
 	console.log("stanardL" + standardL);
-	/*var standardL= [];
-		standardL = standardChart();
-	console.log("stana"+standardL);*/
 	
 	var ctx = $("#myChart");
 	
