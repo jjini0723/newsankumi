@@ -1,9 +1,9 @@
 /**
  * 아파트 교통수단 시간 비교
  */
-var dataList2 = [];
-var labelList2 = [];
-var avgList = [];
+var bar_data = [];
+var labels = [];
+var line_data= [];
 
 //mychart2
 
@@ -13,7 +13,7 @@ function createData2(){
 	var myChart2 = new Chart(ctx2, {
 	    type: 'bar',
 	    data: {
-	        labels: ['Item 1', 'Item 2', 'Item 3','4','5','6','7','8'],
+	        labels: ['1', '2', '3','4','5','6','7','8'],
 	        datasets: [
 	            {
 	                type: 'bar',

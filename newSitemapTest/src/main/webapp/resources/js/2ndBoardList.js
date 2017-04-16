@@ -55,7 +55,7 @@ function boardList2() {
 				html += '<ul class="pagination margin-none">';
 				html += '<li class="disabled"><a href="#">&laquo;</a></li>';
 				html += '<li><a href="#" onclick = "boardList();">이전단계</a></li>';
-				html += '<li><a href="#" onclick = "boardList3(); searchBestLoc(); createData2(); ">최적의 주거공간 찾기</a></li>';
+				html += '<li><a href="#" onclick = "boardList3(); searchBestLoc(); ">최적의 주거공간 찾기</a></li>';
 				html += '<li class="disabled"><a href="#">&raquo;</a></li>';
 				html += '</ul></div></div>';
 
@@ -92,7 +92,7 @@ function boardList3() {
 				html += '<h4 class="category">소요시간 비교</h4>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400">';
-				html += '<canvas id = "myChart2" width = "400px" height = "200px" style="z-index:50; height:200px;"></canvas></div>';
+				html += '<canvas id = "myChart2" width = "400px" height = "600px" style="z-index:50; height:200px;"></canvas></div>';
 
 				html += '<div class="sidebar-block equal-padding">';
 				html += '<ul class="pagination margin-none">';
