@@ -32,3 +32,12 @@ select * from MP_LOC_INFO;
 
 
 select * from mp_data where gu = '동'
+
+
+select * from mp_loc_info where bjd_cd = '4119510200';
+
+select count(*) from MP_LOC_INFO;
+
+select count(bjd_cd), bjd_cd from mp_loc_info group by bjd_cd;
+
+select * from MP_DATA_100;

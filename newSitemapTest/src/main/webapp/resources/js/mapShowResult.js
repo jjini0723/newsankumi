@@ -2,7 +2,7 @@
  * 
  */
 
-function call(emdName){
+function call(testArray, emdName){
 	alert('호호');
 	
 	// 지도 타입 변경 컨트롤을 생성한다
@@ -30,7 +30,6 @@ function call(emdName){
                    '지도의 중심 좌표는 ' + map.getCenter().toString() +' 입니다.';
        console.log(message);
     });
-	var testArray = [];
 	//var emdName = '삼성동';
 	var emdNameArray = new Array();
    	//var emdName = new Object();
@@ -38,9 +37,9 @@ function call(emdName){
    	//emdName.emdName1 = '상계동';
    	//emdName.emdName1 = '부평동';
    	//emdNameArray.push(emdName);
-  	testArray.push('11680105');
-  	testArray.push('11740102');
-   	testArray.push('28237101');
+  	//testArray.push('11680105');
+  	//testArray.push('11740102');
+   	//testArray.push('28237101');
    	
     	
     for(var i in testArray){
