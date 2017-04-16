@@ -85,6 +85,7 @@ function boardList3() {
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 				html += '<h4 class="category">소요시간 비교</h4>';
 				html += '<div class="sidebar-block padding-none">';
+				html += '<canvas id = "myChart2" width = "100px" height = "100px" style="z-index:15;"></canvas>';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 
 				html += '<div class="sidebar-block equal-padding">';

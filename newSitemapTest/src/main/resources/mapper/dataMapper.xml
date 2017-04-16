@@ -48,7 +48,7 @@
 			round(avg(SAFETY_NATURE),0) SAFETY_NATURE, round(avg(WELFARE_CHILDCARE),0) ,round(avg(EDUCATION_STUDENT),0) EDUCATION_STUDENT,round(avg(LIFE_SHOPPING),0) LIFE_SHOPPING,
 			round(avg(LIFE_CONVENIENT),0) LIFE_CONVENIENT, round(avg(NATURE_POLLUTION),0) NATURE_POLLUTION, round(avg(NATURE_PARK),0) NATURE_PARK,round(avg(LIFE_RESTAURANT),0) LIFE_RESTAURANT,
 			round(avg(PEOPLE_FOREIGN),0) PEOPLE_FOREIGN, round(avg(PEOPLE_DENSITY),0) PEOPLE_DENSITY, round(avg(LIFE_PUBLICTRAFFIC),0) LIFE_PUBLICTRAFFIC
-		from mp_data_3 where gu = #{1} group by gu 
+		from mp_data_100 where gu = #{1} group by gu 
 	</select>
 	
 	<select id="createData" parameterType = "int" resultType="ConditionResult" >

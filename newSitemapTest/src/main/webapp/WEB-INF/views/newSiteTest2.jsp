@@ -847,7 +847,7 @@ This variant is to be used when loading the separate styling modules -->
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 			    mapOption = { 
 							center: new daum.maps.LatLng(37.5128827,127.0561418), // 지도의 중심좌표
-					        level: 8, // 지도의 확대 레벨
+					        level: 7, // 지도의 확대 레벨
 			    };
 			var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 			
