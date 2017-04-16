@@ -176,4 +176,22 @@ function filter(){
 		} 
 		 console.log(result);
 	}
+	console.log(result);
+	console.log("drawlist");
+	var html = "";
+	var index =0;
+	html += '<ul class = "category" data-width="400" id = "list2">';
+//	polyMap(items[0].citycode);
+//	createSelectedChart(items[0]);
+	console.log(result[0]);
+		for (var i = 0; i < result.length; i++) {
+			html += '<li><a href = "#" id = "" value = "" onclick = "getTradeInfo('+result[i].x+');">'+(++rank)+"."+result[i].kaptAddr+result[i].changepoint+' <a href="#" onclick="">   x   </a></li>' ;
+		};													
+	html += '</ul>';
+	$('#lll').html(html);
+	
+	
+	
+	
+	
 }

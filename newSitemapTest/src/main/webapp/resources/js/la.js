@@ -302,14 +302,17 @@ function drawlist() {
 	console.log(perfect);
 	console.log("drawlist");
 	var html = "";
-	html += '<ol class = "category" data-width="400" id = "list2">';
-//	polyMap(items[0].citycode);
-//	createSelectedChart(items[0]);
+	var rank = 0;
+	html += '<ul class = "category" data-width="400" id = "list2">';
 	console.log(perfect[0]);
 		for (var i = 0; i < perfect.length; i++) {
-			html += '<li><a href = "#" id = "" value = "" onclick = "getTradeInfo('+perfect[i].x+');">'+perfect[i].kaptAddr+perfect[i].changepoint+' <a href="#" onclick="">   x   </a></li>' ;
+			html += '<li><a href = "#" id = "" value = "" onclick = "getTradeInfo('+perfect[i].x+');">'+(++rank)+"."+perfect[i].kaptName+'<br>'+perfect[i].changepoint+' <a href="#" onclick="">   x   </a></li>' ;
 		};													
-	html += '</ol>';
+	html += '</ul>';
 	$('#lll').html(html);
 	
+	
+	
 }
+
+

@@ -33,10 +33,10 @@ function buildList(list) {
 	/*$.each(items, function(index, item){
 		html += '<li><a href = #> ' + item.si +" "+ item.gu +" "+ item.dong + '</a><a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
 	});*/
-	polyMap(items[0].citycode);
+	/*polyMap(items[0].citycode);*/
 	createSelectedChart(items[0]);
 		for (var i = 0; i < items.length; i++) {
-			html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "' +items[i].citycode+'" onclick = "polyMap('+items[i].citycode+'); createSelectedChart('+items[i]+');"> ' + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
+			html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "' +items[i].citycode+'" onclick = "createSelectedChart('+items[i]+');"> ' + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
 			
 			
 		};
@@ -91,7 +91,7 @@ function removeItem(index) {
 	
 }
 
-
+/*
 function polyMap(citycode){
 	var name = citycode;
 	console.log("name"+name);
@@ -132,7 +132,7 @@ function polyMap(citycode){
 	             for(var i in newList){
 	                newList[i].reverse();
 	             }
-	          /* list =rtndata.featureCollection.features[0].geometry.coordinates; */   
+	           list =rtndata.featureCollection.features[0].geometry.coordinates;    
 	          
 	          
 	             // 다각형을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 다각형을 표시합니다
@@ -190,7 +190,7 @@ function polyMap(citycode){
 		    				
 		    				
 }
-
+*/
 
 function sendData1(){
 	var sendList = [];

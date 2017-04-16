@@ -318,7 +318,7 @@ This variant is to be used when loading the separate styling modules -->
                     </div>
                   </div>
                   <div class="text-center">
-                    <button type="button" class="btn btn-primary" onclick="filter();">적용하기 <i class="fa fa-sign-in"></i></button>
+                    <button type="button" class="btn btn-primary" onclick="filter()">적용하기 <i class="fa fa-sign-in"></i></button>
                   </div>
                 </form>
               </div>

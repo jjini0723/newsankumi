@@ -27,15 +27,18 @@ var hopeList = new Array();
 
 // 희망목적지에 등록된 장소를 표현할 마커를 저장할 배열.
 
-var newMarkers = [];
+var newMarkers = new Array();
 
 function deleteList(index) {
-	$("#getItem>li>#deletebtn").on("click", function() {
-		// 희망목적지에 등록된 목적지의 개수를 파악하기 위해, 삭제가 되면 배열에서 꺼낸다.
-		hopeList.pop();
-		$(this).parent().remove();
-		return false;
-	});
+   $("#getItem>li>#deletebtn").on("click", function() {
+      // 희망목적지에 등록된 목적지의 개수를 파악하기 위해, 삭제가 되면 배열에서 꺼낸다.
+      //hopeList.pop();
+      var title = $(this).attr("title");
+      alert('a태그 타이틀 : '+title);
+      //removeThisMarker(title);
+      $(this).parent().remove();
+      return false;
+   });
 }
 
 
@@ -86,7 +89,6 @@ function displayPlaces(places) {
     fragment = document.createDocumentFragment(), 
     bounds = new daum.maps.LatLngBounds(), 
     listStr = '';
-    var index = 0;
     // 검색 결과 목록에 추가된 항목들을 제거합니다
     removeAllChildNods(listEl);
 
@@ -97,9 +99,8 @@ function displayPlaces(places) {
 
         // 마커를 생성하고 지도에 표시합니다
         var placePosition = new daum.maps.LatLng(places[i].latitude, places[i].longitude),
-            marker = addMarker(placePosition, i), 
+            marker = addMarker(placePosition, i),
             itemEl = getListItem(i, places[i], marker); // 검색 결과 항목 Element를 생성합니다
-
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
         bounds.extend(placePosition);
@@ -126,7 +127,6 @@ function displayPlaces(places) {
         })(marker, places[i].title);
 
         fragment.appendChild(itemEl);
-        index++;
     }
     // 수정부분
     $("#places").val(JSON.stringify(places));
@@ -184,12 +184,12 @@ function displayPlace(index) {
 }
 
 function getItem(index) {
-	var places = JSON.parse($("#places").val());
-	var title = places[index].title;
+   var places = JSON.parse($("#places").val());
+   var title = places[index].title;
     $("#title").val(title);
-	
-	
-	var el = document.createElement('li'),
+   
+   
+   var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '" title="'+places[index].title+'"></span>' +
                 /*'<div class="info">' +*/
                 '   <h5>' + places[index].title + '</h5>';
@@ -198,12 +198,12 @@ function getItem(index) {
         itemStr += '    <span>' + places[index].newAddress + '</span><br>' +
                     '   <span class="jibun gray">' +  places[index].address  + '</span><br>';
     } else {
-        itemStr += '    <span>' +  places[index].address  + '</span><br>'; 
+        itemStr += '    <span>' +  places[index].address  + '</span><br>';
     }
                  
       itemStr += '  <span class="tel">' + places[index].phone  + '</span><br>' ;
       
-      itemStr += '<a href="#" class="deletebtn" id="deletebtn" onclick="deleteList('+index+');">삭제</a><br>';
+      itemStr += '<a href="#" class="deletebtn" id="deletebtn" title="'+places[index].title+'" onclick="deleteList('+index+');">삭제</a><br>';
     
     el.innerHTML = itemStr;
     el.className = 'item2';
@@ -211,31 +211,36 @@ function getItem(index) {
 }
 
 function confirm(lat, lng, index) {
-	var places = JSON.parse($("#places").val());
-	// 검색결과로 넘어온 리스트의 길이 만큼 반복문 진행
-	for(var j = 0; j < places.length; j++) {
-		// 희망목적지가 저장된 배열의 길이만큼 반복.
-		for(var k = 0; k < hopeList.length; k++) {
-			// 검색결과 리스트에 있는 이름과 희망목적지가 저장된 배열이 같은지 비교. 같으면 중복존재, 없으면 중복된 희망목적지 없음.
-			if(places[index].title == hopeList[k]) {
-				alert('중복존재');
-				var listEl = document.getElementById('placesList');
-				document.getElementById("keyword").value = "";
-				removeAllChildNods(listEl);
-				removeAllpaginationChildNods(paginationEl);
-				return;
-			}
-		}
-	}
-	// 중복된 희망목적지가 아닐 경우 배열에 해당 희망목적지의 이름을 저장한다.
-	hopeList.push(places[index].title);
-	if(hopeList.length < 6) {
-		hoi(lat, lng, index);
-		displayPlace(index);
-	} else {
-		alert('희망목적지는 5개까지만 가능합니다.');
-		listReset();
-	}
+   var places = JSON.parse($("#places").val());
+   // 검색결과로 넘어온 리스트의 길이 만큼 반복문 진행
+   for(var j = 0; j < places.length; j++) {
+      // 희망목적지가 저장된 배열의 길이만큼 반복.
+      for(var k = 0; k < hopeList.length; k++) {
+         // 검색결과 리스트에 있는 이름과 희망목적지가 저장된 배열이 같은지 비교. 같으면 중복존재, 없으면 중복된 희망목적지 없음.
+         if(places[index].title == hopeList[k]) {
+            alert('중복존재');
+            var listEl = document.getElementById('placesList');
+            document.getElementById("keyword").value = "";
+            removeAllChildNods(listEl);
+            removeAllpaginationChildNods(paginationEl);
+            return;
+         }
+      }
+   }
+   // 중복된 희망목적지가 아닐 경우 배열에 해당 희망목적지의 이름을 저장한다.
+   if(hopeList.length < 6) {
+      hopeList.push(places[index].title);
+      displayPlace(index);
+      hoi(lat, lng, index);
+      removeOtherMarker(index);
+      /*for(var i = 0; i < newMarkers.length; i++) {
+         newMarkers.setMap(map);
+      }*/
+   } else {
+      alert('희망목적지는 5개까지만 가능합니다.');
+      listReset();
+   }
+   
 }
 
 
@@ -256,7 +261,7 @@ function addMarker(position, idx, title) {
 
     marker.setMap(map); // 지도 위에 마커를 표출합니다
     markers.push(marker);  // 배열에 생성된 마커를 추가합니다
-    newMarkers.push(marker); // 희망목적지로 등록된 마커를 새로운 배열에 추가합니다
+    
 
     return marker;
 }
@@ -271,28 +276,29 @@ function removeMarker() {
 
 // 등록한 마커를 제외하고 삭제
 function removeOtherMarker(index) {
-	for ( var i = 0; i < markers.length; i++) {
-		if(index != i) {
-			markers[i].setMap(null);
-		}
-	}
-	markers = [];
+   for ( var i = 0; i < markers.length; i++) {
+      if(index != i) {
+         markers[i].setMap(null);
+      }
+      //newMarkers.push(markers[i]); // 희망목적지로 등록된 마커를 새로운 배열에 추가합니다
+   }
+   markers = [];
 }
 
 //삭제한 희망목적지의 마커를  새로운 마커배열에서 삭제
-function removeThisMarker(index) {
-	for ( var i = 0; i < newMarkers.length; i++) {
-		if(index == i) {
-			newMarkers[i].setMap(null);
-		}
-	}
-	markers = [];
+function removeThisMarker(title) {
+   for (var i = 0; i < hopeList.length; i++) {
+      if(hopeList[i] == title) {
+         newMarkers[i].setMap(null);
+      }
+   }
+   markers = [];
 }
 
 
 // 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
 function displayPagination(pagination) {
-	paginationEl = document.getElementById('pagination'),
+   paginationEl = document.getElementById('pagination'),
     fragment = document.createDocumentFragment(),
     i; 
 
@@ -340,48 +346,47 @@ function removeAllChildNods(el) {
 
 // 검색결과 목록의 페이지 번호 삭제하는 함수입니다.
 function removeAllpaginationChildNods(paginationEl) {
-	while (paginationEl.hasChildNodes()) {
-		paginationEl.removeChild (paginationEl.lastChild);
+   while (paginationEl.hasChildNodes()) {
+      paginationEl.removeChild (paginationEl.lastChild);
     }
-	// i에 1을 설정해주지 않으면 검색결과 삭제 후 i가 undefined라는 에러 발생.
-	i = 1;
+   // i에 1을 설정해주지 않으면 검색결과 삭제 후 i가 undefined라는 에러 발생.
+   i = 1;
 }
 
 function hoi(lat, lng, index) {
-	alert(lat+", "+lng);
-	var obj1 = document.getElementsByName("transport");
-	var idx1 = obj1[index].options.selectedIndex; // 해당 selectbox index 구하기
+   alert(lat+", "+lng);
+   var obj1 = document.getElementsByName("transport");
+   var idx1 = obj1[index].options.selectedIndex; // 해당 selectbox index 구하기
 
-	var transport = obj1[index].options[idx1].value; // 선택된 selectbox의 value값 가져오기
-	if(transport == 0) {
-		alert('이동수단을 선택해주세요.');
-	}
-	if(transport == 1) {
-		var car = { x : lat, y: lng};
-		carArray.push(car);
-	}
-	if(transport == 2) {
-		var walk = { x : lat, y : lng};
-		walkArray.push({ x : lat, y: lng});
-	}
-	if(transport == 3) {
-		var tradi = { x : lat, y :  lng};
-		tradiArray.push(tradi);
-	}
-	if(transport != 0) {
-		listReset(index);
-	}
+   var transport = obj1[index].options[idx1].value; // 선택된 selectbox의 value값 가져오기
+   if(transport == 0) {
+      alert('이동수단을 선택해주세요.');
+   }
+   if(transport == 1) {
+      var car = { x : lat, y: lng};
+      carArray.push(car);
+   }
+   if(transport == 2) {
+      var walk = { x : lat, y : lng};
+      walkArray.push({ x : lat, y: lng});
+   }
+   if(transport == 3) {
+      var tradi = { x : lat, y :  lng};
+      tradiArray.push(tradi);
+   }
+   if(transport != 0) {
+      listReset(index);
+   }
 }
 
 
 function searchBestLoc() {
-	dfa(carArray, walkArray, tradiArray); // dfa()에  carArray, walkArray, tradiArray를 보내서 dfa에서 각 Array의 length를 체크해보는 건 어떨까?
+   dfa(carArray, walkArray, tradiArray); // dfa()에  carArray, walkArray, tradiArray를 보내서 dfa에서 각 Array의 length를 체크해보는 건 어떨까?
 }
 
 function listReset(index) {
-	var listEl = document.getElementById('placesList');
-	document.getElementById("keyword").value = "";
-	removeAllChildNods(listEl);
-	removeAllpaginationChildNods(paginationEl);
-	removeOtherMarker(index);
+   var listEl = document.getElementById('placesList');
+   document.getElementById("keyword").value = "";
+   removeAllChildNods(listEl);
+   removeAllpaginationChildNods(paginationEl);
 }

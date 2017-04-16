@@ -76,10 +76,15 @@ function boardList3() {
 				var html = "";
 				html += '<div data-scrollable id="sidebar-map1">';
 				html += '<h4 class="category">주거지역 검색 결과</h4>';
-				html += '<div id = "lll"></div>';
+				html += '<div style="overflow:auto;height:200px;" id = "lll"></div>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 				html += '<h4 class="category">아파트 정보</h4>';
+				html += '<div style="overflow:auto;height:100px;" id = "aptInfo"></div>';
+				html += '<div class="sidebar-block padding-none">';
+				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
+				html += '<h4 class="category">부동산 거래정보</h4>';
+				html += '<div style="overflow:auto;height:150px;" id = "aptTradeInfo"></div>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 				html += '<h4 class="category">소요시간 비교</h4>';
