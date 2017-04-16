@@ -31,4 +31,24 @@ select
 select * from MP_LOC_INFO;
 
 
-select mp_conv_d
+select * from mp_data where gu = '동'
+
+
+select * from mp_loc_info where bjd_cd = '4119510200';
+
+select count(*) from MP_LOC_INFO;
+
+select count(bjd_cd), bjd_cd from mp_loc_info group by bjd_cd;
+
+select * from MP_DATA_100;
+
+
+select * from mp_data2;
+
+select
+			conditionName, si, gu, dong, citycode, value
+		from
+			table
+			
+			
+			update mp_data2 set citycode=41190102 where citycode=41195102;

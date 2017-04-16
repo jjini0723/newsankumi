@@ -26,21 +26,17 @@ $(".filter_commit").click(function() {
 //리스트 뿌리기
 
 function buildList(list) {
-	/*$("#dongitem").val(JSON.stringify(list));*/
+	//$("#dongitem").val(JSON.stringify(list));
 	items = list;
 	var html = "";
 	html += '<ol class = "decimal" data-width="400" id = "resultList">';
-	/*$.each(items, function(index, item){
-		html += '<li><a href = #> ' + item.si +" "+ item.gu +" "+ item.dong + '</a><a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
-	});*/
 	/*polyMap(items[0].citycode);*/
 	createSelectedChart(items[0]);
-		for (var i = 0; i < items.length; i++) {
-			html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "' +items[i].citycode+'" onclick = "createSelectedChart('+items[i]+');"> ' + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
-			
-			
-		};
-		
+	for (var i = 0; i < items.length; i++) {
+		html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "' 
+		+items[i].citycode+'" class = "'+items[i].dong+'" onclick = "willThisWork('+items[i].citycode+'); "> ' 
+		+ items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
+	}
 	html += '</ol>';
 	$('#req_loc1').html(html);
 }
@@ -66,13 +62,8 @@ function addItem() {
 		 },
          success : function(data) {
         	 items.push(data);
-        	 console.log(data);
         	 buildList(items);
         	 $("#selectThis option:eq(0)").attr("selected", "selected");
-        	/* $('selectThis3').find('option:first').attr('selected', 'selected');
-        	 $('selectThis4').find('option:first').attr('selected', 'selected');
-        	 $('selectThis5').find('option:first').attr('selected', 'selected');
-        	 */
          },
          error : function(e){
         	 console.log(e);
@@ -80,8 +71,6 @@ function addItem() {
          }
 		 
 	 });
-	
-
 }
 
 function removeItem(index) {
@@ -91,22 +80,37 @@ function removeItem(index) {
 	
 }
 
+
 /*
+=======
+function moveMap(dong){
+	var newList = new Array();
+	var newListX = new Array(); 
+
+    	$.ajax({
+    		url : "http://apis.vworld.kr/2ddata/ademd/data?apiKey=CCA36BB7-0DA8-3EE7-8836-D4814D529510&domain=http://localhost:8888&emdCd="+dong+"&srsName=EPSG:4326&output=json",
+    		dataType : "jsonp",
+    		jsonp : "callback",
+    		success : function(rtndata) {
+    			console.log(rtndata.featureCollection.features[0].geometry.coordinates);
+    			var list = rtndata.featureCollection.features[0].geometry.coordinates;
+    		 	var polygonPath = [];
+    			newList = list[0];
+    			console.log(newList[0]);
+    			var result = newList[0];
+    			var coords = new daum.maps.LatLng(result[0], result[1]);
+    			 map.setCenter(coords);
+    		},
+    		error : function(e){
+    			console.log(e);
+    		}
+    	});
+}
+
+>>>>>>> origin/master
 function polyMap(citycode){
 	var name = citycode;
 	console.log("name"+name);
-	   // 지도 타입 변경 컨트롤을 생성한다
-	    var mapTypeControl = new daum.maps.MapTypeControl();
-
-	    // 지도의 상단 우측에 지도 타입 변경 컨트롤을 추가한다
-	    map.addControl(mapTypeControl, daum.maps.ControlPosition.TOPRIGHT);   
-
-	    // 지도에 확대 축소 컨트롤을 생성한다
-	    var zoomControl = new daum.maps.ZoomControl();
-
-	    // 지도의 우측에 확대 축소 컨트롤을 추가한다
-	    map.addControl(zoomControl, daum.maps.ControlPosition.RIGHT);
-	    
 	    // 주소-좌표 변환 객체를 생성합니다
 	    var geocoder = new daum.maps.services.Geocoder();
 
@@ -155,7 +159,6 @@ function polyMap(citycode){
 	            	 center: new daum.maps.LatLng(newList[100][0],newList[50][1]), // 지도의 중심좌표
 	            	 level: 6, // 지도의 확대 레벨
 	             };
-	             var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 	             
 	              polygon.setMap(map);
 	              daum.maps.event.addListener(polygon, 'mouseover', function(mouseEvent) {
@@ -192,15 +195,48 @@ function polyMap(citycode){
 }
 */
 
-function sendData1(){
-	var sendList = [];
-	sendList = $(".decimal>li>a").attr("value");
-	for (var i = 0; i < 5; i++) {
-		sendList[i] = $("#resultList>li>a").attr("value");
-		//sendList[i] = $("#resultList").find("li>a").eq(i);
-		console.log(sendList[i]);
+function sendData1(){ //코드 및 동 리스트 가져오기
+	var firstlist = [];
+	var codelist = []; //코드리스트
+	var secondlist = [];
+	for (var i = 0; i < 10; i++) {
+		firstlist[i] = $(".decimal").find("a").eq(i).attr('id');
 	}
 	
-	console.log(sendList);
+	if (typeof firstlist[6] == undefined ||firstlist[6] == null ) {
+		codelist.push(firstlist[0]);
+		codelist.push(firstlist[2]);
+		codelist.push(firstlist[4]);
+	}else if (typeof firstlist[8] == undefined ||firstlist[8] == null ) {
+		codelist.push(firstlist[0]);
+		codelist.push(firstlist[2]);
+		codelist.push(firstlist[4]);
+		codelist.push(firstlist[6]);
+	}
+	else{
+		codelist.push(firstlist[0]);
+		codelist.push(firstlist[2]);
+		codelist.push(firstlist[4]);
+		codelist.push(firstlist[6]);
+		codelist.push(firstlist[8]);
+	}
+	
+	for (var j = 0; j < 10; j++) {
+		secondlist[j] = $(".decimal").find("a").eq(j).attr('class');
+	}
+	
+	if (typeof secondlist[6] == undefined ||secondlist[6] == null ) {
+		var dong = secondlist[0] + ',' + secondlist[2]+ ',' +secondlist[4]
+	}else if (typeof secondlist[8] == undefined ||secondlist[8] == null ) {
+		var dong = secondlist[0] + ',' + secondlist[2]+ ',' +secondlist[4]+ ',' +secondlist[6]
+	}
+	else{
+		var dong = secondlist[0] + ',' + secondlist[2]+ ',' +secondlist[4]+ ',' +secondlist[6]+ ',' +secondlist[8];
+	}
+	console.log("code" + codelist);
+	console.log("dong" + dong);
+	
+	var result = [codelist, dong];
+	return result;
 	
 }

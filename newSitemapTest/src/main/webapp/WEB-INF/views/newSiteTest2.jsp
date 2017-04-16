@@ -43,6 +43,7 @@ var walkArray = new Array(); // 희망목적지 이동수단 도보인 경우의
 var tradiArray = new Array(); // 희망목적지 이동수단 대중교통인 경우의 좌표를 저장하는 배열
 var emdName = null;
 var hopeList = new Array(); //희망목적지 리스트 담을 배열
+var newMarkers = []; //희망목적지에 등록된 장소를 표현할 마커를 저장할 배열.
 
 $(document).avgrund({
 	    openOnEvent: false
@@ -96,6 +97,7 @@ function conditionSelect(){
 		}),
 		success : function(data){
 			buildList(data);
+			
 		},
 		error : function(e){
 			console.log(e);
@@ -106,7 +108,6 @@ function conditionSelect(){
 
 //팝업
 	 $(function() {
-
 		$('#show')
 				.avgrund(
 						{
@@ -167,7 +168,7 @@ function conditionSelect(){
 </script>
 
 
-<title>두번째 도전하는 테스트닷 호랏!</title>
+<title> S・MAP</title>
 	
  <!-- Vendor CSS BUNDLE
     Includes styling for all of the 3rd party libraries used with this module, such as Bootstrap, Font Awesome and others.
@@ -462,15 +463,15 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_childCare" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="welfare_childcare">보육시설</label>
+					<label for="welfare_childCare">보육시설</label>
 				<!-- 상중하 라디오 -->
-				<span class="hml" id="welfare_childcare">
-					<input type="radio" id="rd_welfare_childcare1" name="rd_welfare_childCare" value="<%=SelectConditions.high %>">
-					<label for="rd_welfare_childcare1">상</label>
-					<input type="radio" id="rd_welfare_childcare2" name="rd_welfare_childCare"value="<%=SelectConditions.mid %>">
-					<label for="rd_welfare_childcare2">중</label>
-					<input type="radio" id="rd_welfare_childcare3" name="rd_welfare_childCare" value="<%=SelectConditions.low %>">
-					<label for="rd_welfare_childcare3">하</label>
+				<span class="hml" id="welfare_childCare">
+					<input type="radio" id="rd_welfare_childCare1" name="rd_welfare_childCare" value="<%=SelectConditions.high %>">
+					<label for="rd_welfare_childCare1">상</label>
+					<input type="radio" id="rd_welfare_childCare2" name="rd_welfare_childCare"value="<%=SelectConditions.mid %>">
+					<label for="rd_welfare_childCare2">중</label>
+					<input type="radio" id="rd_welfare_childCare3" name="rd_welfare_childCare" value="<%=SelectConditions.low %>">
+					<label for="rd_welfare_childCare3">하</label>
 				</span>	
 				</a>
 			</li>
