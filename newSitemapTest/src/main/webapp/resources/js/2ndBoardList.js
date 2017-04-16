@@ -2,6 +2,7 @@
  * 다음단계 이후!
  */
 
+
 function boardList2() {
 	//emdName = "삼성동,역삼동";
 	var result = sendData1();
@@ -54,7 +55,7 @@ function boardList2() {
 				html += '<ul class="pagination margin-none">';
 				html += '<li class="disabled"><a href="#">&laquo;</a></li>';
 				html += '<li><a href="#" onclick = "boardList();">이전단계</a></li>';
-				html += '<li><a href="#" onclick = "boardList3(); searchBestLoc(); ">최적의 주거공간 찾기</a></li>';
+				html += '<li><a href="#" onclick = "boardList3(); searchBestLoc(); createData2(); ">최적의 주거공간 찾기</a></li>';
 				html += '<li class="disabled"><a href="#">&raquo;</a></li>';
 				html += '</ul></div></div>';
 
@@ -77,16 +78,21 @@ function boardList3() {
 				var html = "";
 				html += '<div data-scrollable id="sidebar-map1">';
 				html += '<h4 class="category">주거지역 검색 결과</h4>';
-				html += '<div id = "lll" style = "height:200px; overflow-y: scroll;"></div>';
+				html += '<div style="overflow:auto;height:200px;" id = "lll"></div>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 				html += '<h4 class="category">아파트 정보</h4>';
+				html += '<div style="overflow:auto;height:100px;" id = "aptInfo"></div>';
+				html += '<div class="sidebar-block padding-none">';
+				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
+				html += '<h4 class="category">부동산 거래정보</h4>';
+				html += '<div style="overflow:auto;height:150px;" id = "aptTradeInfo"></div>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 				html += '<h4 class="category">소요시간 비교</h4>';
 				html += '<div class="sidebar-block padding-none">';
-				html += '<canvas id = "myChart2" width = "100px" height = "100px" style="z-index:15;"></canvas>';
-				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
+				html += '<div data-toggle="gridalicious" data-width="400">';
+				html += '<canvas id = "myChart2" width = "400px" height = "200px" style="z-index:50; height:200px;"></canvas></div>';
 
 				html += '<div class="sidebar-block equal-padding">';
 				html += '<ul class="pagination margin-none">';

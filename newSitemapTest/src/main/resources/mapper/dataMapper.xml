@@ -52,21 +52,10 @@
 	</select>
 	
 	<select id="createData" parameterType = "int" resultType="ConditionResult" >
-		select * from mp_data_3 where citycode = #{0} and rownum = 1
+		select * from mp_data_100 where citycode = #{0} and rownum = 1
 	</select>
 	
-	<!-- <select id="allStandard" resultType="ConditionResult" >
-		select round(avg(EDUCATION_ACADEMY),0) EDUCATION_ACADEMY,round(avg(WELFARE_CULTURE),0) WELFARE_CULTURE,round(avg(WELFARE_MEDICAL),0) WELFARE_MEDICAL,
-			round(avg(WELFARE_SALON),0) WELFARE_SALON, round(avg(WELFARE_SOCIETY),0) WELFARE_SOCIETY,round(avg(WELFARE_SPORTS),0) WELFARE_SPORTS, round(avg(SAFETY_FIRE),0) SAFETY_FIRE,
-			round(avg(SAFETY_TRAFFIC),0) SAFETY_TRAFFIC, round(avg(SAFETY_CRIME),0) SAFETY_CRIME,round(avg(SAFETY_SAFETY),0) SAFETY_SAFETY,round(avg(SAFETY_INFECTION),0) SAFETY_INFECTION,
-			round(avg(SAFETY_NATURE),0) SAFETY_NATURE, round(avg(WELFARE_CHILDCARE),0) ,round(avg(EDUCATION_STUDENT),0) EDUCATION_STUDENT,round(avg(LIFE_SHOPPING),0) LIFE_SHOPPING,
-			round(avg(LIFE_CONVENIENT),0) LIFE_CONVENIENT, round(avg(NATURE_POLLUTION),0) NATURE_POLLUTION, round(avg(NATURE_PARK),0) NATURE_PARK,round(avg(LIFE_RESTAURANT),0) LIFE_RESTAURANT,
-			round(avg(PEOPLE_FOREIGN),0) PEOPLE_FOREIGN, round(avg(PEOPLE_DENSITY),0) PEOPLE_DENSITY, round(avg(LIFE_PUBLICTRAFFIC),0) LIFE_PUBLICTRAFFIC
-			from mp_data_3
-	</select> -->
 <select id="getAddress" parameterType = "String" resultType="ConditionResult" >
-		select
-			*
-				from mp_data_3 where dong = #{0}
+		select * from mp_data_3 where dong = #{0}
 	</select> 
 </mapper>

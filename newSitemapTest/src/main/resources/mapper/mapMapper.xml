@@ -18,7 +18,9 @@
 	<select id="emdList" resultType="String">
 		select distinct(emd_nm) from mp_loc_info order by emd_nm asc
 	</select>
-	
+	<select id="getEmdList" parameterType="String" resultType="String">
+		select distinct(emd_nm) from mp_loc_info where gwanhal=#{0}
+	</select>
 	<select id="loadKaptCode" parameterType="String" resultType="kaptCode">
 		select kaptcode from mp_kaptcode where emd_nm=#{0}
 	</select>
@@ -31,3 +33,4 @@
 		select s.goyucode,s.salegubun, s.aptsize, s.sale, s.wolse, s.ploor, s.commitdate from mp_apt_code c join mp_apt_sale s on c.goyucode = s.goyucode where c.xloc = #{0} and c.yloc = #{1}
 	</select>
 </mapper>
+
