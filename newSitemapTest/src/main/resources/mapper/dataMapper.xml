@@ -28,16 +28,16 @@
 	
 	<select id="selectGungu" parameterType = "String" resultType="String">
 		select
-			distinct(mp_addcd_gg) 
-			from MP_ADDCD where mp_addcd_sido = #{0}
-			order by mp_addcd_gg
+			distinct(gu) 
+			from mp_data_3 where si = #{0}
+			order by gu
 	</select>
 	
 	<select id="selectDong" parameterType = "String" resultType="String" >
 		select
-			mp_addcd_dong, mp_addcd_dong_cd
-			from MP_ADDCD where mp_addcd_gg = #{0}
-			order by mp_addcd_dong
+			dong, citycode
+			from mp_data_3 where gu = #{0}
+			order by dong
 	</select>
 	
 	
