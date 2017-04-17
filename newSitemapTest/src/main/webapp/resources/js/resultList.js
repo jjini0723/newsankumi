@@ -168,7 +168,7 @@ function sendData1(){ //코드 및 동 리스트 가져오기
 		}
 		
 		console.log(resultList);
-/*	return resultList;*/
+		return resultList;
 	
 }
 
