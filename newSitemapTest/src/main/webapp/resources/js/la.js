@@ -301,13 +301,12 @@ function dfa(carArray, walkArray, tradiArray){
 function drawlist() {
    console.log(perfect);
    console.log("drawlist");
-   createData2();
    var html = "";
    var rank = 0;
    html += '<ul class = "category" data-width="400" id = "list2"><table><tr><td>아파트 명</td><td>평점</td></tr>';
    console.log(perfect[0]);
       for (var i = 0; i < perfect.length; i++) {
-         html += '<tr><td><a href = "#" id = "" value = "" onclick = "getTradeInfo('+perfect[i].x+'); createData2('+perfect[i].kaptName+','+');">'+perfect[i].kaptName+'</a></td><td>'+perfect[i].changepoint+'</td></tr>' ;
+         html += '<tr><td><a href = "#" id = "" value = "" onclick = "getTradeInfo('+perfect[i].x+');">'+perfect[i].kaptName+'</a></td><td>'+perfect[i].changepoint+'</td></tr>' ;
       };                                       
    html += '</table></ul>';
    $('#lll').html(html);
