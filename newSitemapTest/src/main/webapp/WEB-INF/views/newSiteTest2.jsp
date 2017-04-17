@@ -15,9 +15,9 @@
 <script src="./resources/js/1stBoardList.js"></script>
 <script src="./resources/js/2ndBoardList.js"></script>
 <script src="./resources/js/radioToList.js"></script>
-<script src="./resources/js/jquery.avgrund.min.js"></script>
+<script src="./resources/js/js_plugin/jquery.avgrund.min.js"></script>
 <script src="./resources/js/selectThis.js"></script> <!-- 기준 지역 선택 -->
-<script src="./resources/js/Chart.js"></script><!-- 차트 라이브러리 -->
+<script src="./resources/js/js_plugin/Chart.js"></script><!-- 차트 라이브러리 -->
 <script src="./resources/js/graph.js"></script><!-- 그래프1 -->
 <script src="./resources/js/graph2.js"></script><!-- 그래프2 -->
 <script src="./resources/js/addAddress.js"></script><!-- 추천지역 리스트에 주소추가 -->
@@ -27,8 +27,8 @@
 <script src="./resources/js/filter.js"></script><!-- 영석이 필터 로직 -->
 <script src="./resources/js/getTradeInfo.js"></script><!-- 영석이 가격정보 로직 -->
 <script src="./resources/js/searchDestination.js"></script><!-- 희망목적지 관련 js -->
-<script src="./resources/js/sweetalert.min.js"></script><!-- sweetalert/email 보내기 팝업 관련 js -->
-<script src="./resources/js/jquery.blockUI.js"></script><!-- 데이터 로딩 표시 -->
+<script src="./resources/js/js_plugin/sweetalert.min.js"></script><!-- sweetalert/email 보내기 팝업 관련 js -->
+<script src="./resources/js/js_plugin/jquery.blockUI.js"></script><!-- 데이터 로딩 표시 -->
 
 <!-- 필터링 관련 -->
 <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
