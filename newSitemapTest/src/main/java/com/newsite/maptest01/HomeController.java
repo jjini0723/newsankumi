@@ -1,5 +1,7 @@
 package com.newsite.maptest01;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
+
 import java.io.BufferedInputStream;
 import java.net.URL;
 import java.util.ArrayList;
@@ -412,7 +414,53 @@ public class HomeController {
 		return result;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value="getBoundary", method = RequestMethod.POST)
+	public ArrayList<String> getBoundary(String gu, String dong) {
+		String emd = null;
+		ArrayList<String> emdList = new ArrayList<>();
+		ArrayList<String> boundaryList = new ArrayList<>();
+		String [] gwanhalArray = dong.split(",");
+		for(int i = 0; i < gwanhalArray.length; i++) {
+			for(int j = 0; j < gwanhalArray[i].length(); j++) {
+				String check = gwanhalArray[i].charAt(j)+"";
+				System.out.println("한글자씩 : "+check);
+				if(isNumber(check)) {
+					String check2 = gwanhalArray[i].charAt(j-1)+"";
+					System.out.println("숫자일 경우 앞 글자 : "+check2);
+					if(check2.equals("제")) {
+						String check3 = gwanhalArray[i].charAt(j-2)+"";
+						System.out.println("숫자 앞에 제 일 경우 그 앞글자 : "+check3);
+						if(check3.equals("제")) {
+							emdList.add(gwanhalArray[i].substring(0, j-1)+"동");
+							System.out.println("숫자 앞에 두글자가 제 일 경우 동이름 : "+emdList);
+						} else {
+							emdList.add(gwanhalArray[i].substring(0, j-2)+"동");
+							System.out.println("숫자 앞에 한글자가 제 일 경우 동이름 : "+emdList);
+						}
+					} else {
+						emdList.add(gwanhalArray[i].substring(0, j)+"동");
+						System.out.println("숫자 앞에 제 없을 경우 동이름 : "+emdList);
+					}
+				}
+			}
+			emdList.add(gwanhalArray[i]);
+			System.out.println("숫자 없을 경우 동이름 : "+emdList);
+		}
+		for(int i = 0; i < emdList.size(); i++) {
+			boundaryList.add(dao.getBoundary(gu, emdList.get(i)));
+		}
+		
+		return boundaryList;
+	}
 	
-
+	public static boolean isNumber(String check){
+        boolean result = false;
+        try{
+            Integer.parseInt(check) ;
+            result = true ;
+        }catch(Exception e){}
+        return result ;
+    }
 }
 

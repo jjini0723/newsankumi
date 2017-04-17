@@ -2,7 +2,7 @@
  * 
  */
 
-function call(testArray, emdName){
+function call(emdName){
 	alert('호호');
 	
 	// 지도 타입 변경 컨트롤을 생성한다
@@ -30,16 +30,33 @@ function call(testArray, emdName){
                    '지도의 중심 좌표는 ' + map.getCenter().toString() +' 입니다.';
        console.log(message);
     });
-	//var emdName = '삼성동';
-	var emdNameArray = new Array();
-   	//var emdName = new Object();
-   	//emdName.emdName1 = '삼성동';
-   	//emdName.emdName1 = '상계동';
-   	//emdName.emdName1 = '부평동';
-   	//emdNameArray.push(emdName);
-  	//testArray.push('11680105');
-  	//testArray.push('11740102');
-   	//testArray.push('28237101');
+	var testArray = new Array();
+   	// emdName = {{gu: a, dong: b}, {gu: c, dong: d}, {gu:e, dong: f}, {gu: g, dong: h}, {gu: i, dong: j}};
+	//var gu;
+	//var dong;
+	alert(emdName[0].gu);
+	alert(emdName[0].dong);
+	$.each(emdName, function(index, item) {
+		alert('들어오긴 하니?');
+		$.ajax({
+			type : "post",
+			url : "getBoundary",
+			contentType : "application/json; charset=utf-8",
+			data : JSON.stringify({
+				gu: item.gu,
+				dong: item.dong
+			}),
+			success : function(data) {
+				// 테두리 코드 
+				console.log(data);
+				testArray.push(data);
+				
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		});
+	});
    	
     	
     for(var i in testArray){

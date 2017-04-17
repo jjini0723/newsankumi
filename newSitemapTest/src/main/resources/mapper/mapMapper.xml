@@ -32,5 +32,13 @@
 	<select id="getTradeInfo" parameterType="String" resultType="aptsale">
 		select s.goyucode,s.salegubun, s.aptsize, s.sale, s.wolse, s.ploor, s.commitdate from mp_apt_code c join mp_apt_sale s on c.goyucode = s.goyucode where c.xloc = #{0} and c.yloc = #{1}
 	</select>
+	<!-- 
+	<select id="getBoundary" parameterType="" resultType="String">
+		select substr(BJD_CD,1,8) from MP_LOC_INFO where SIGUNGU_NM = #{gu}, EMD_NM = #{dong}
+	</select>
+	 -->
+	<select id="getBoundary" parameterType="String" resultType="String">
+		select distinct(substr(BJD_CD,1,8)) from MP_LOC_INFO where SIGUNGU_NM = #{0} and EMD_NM like #{1} || '%'
+	</select>
 </mapper>
 

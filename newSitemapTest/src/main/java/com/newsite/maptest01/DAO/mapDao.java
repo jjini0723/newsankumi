@@ -63,4 +63,11 @@ public class mapDao {
 		result = mapper.getTradeInfo(xloc,yloc);
 		return result;
 	}
+	
+	public String getBoundary(String gu, String dong) {
+		String result = null;
+		mapMapper mapper = sqlsession.getMapper(mapMapper.class);
+		result = mapper.getBoundary(gu, dong);
+		return result;
+	}
 }

@@ -344,6 +344,7 @@ function removeAllpaginationChildNods(paginationEl) {
 
 function hoi(lat, lng, index) {
    alert(lat+", "+lng);
+   var places = JSON.parse($("#places").val()); 
    var obj1 = document.getElementsByName("transport");
    var idx1 = obj1[index].options.selectedIndex; // 해당 selectbox index 구하기
 
@@ -352,15 +353,15 @@ function hoi(lat, lng, index) {
       alert('이동수단을 선택해주세요.');
    }
    if(transport == 1) {
-      var car = { x : lat, y: lng};
+      var car = { x : lat, y: lng, title: places[index].title};
       carArray.push(car);
    }
    if(transport == 2) {
-      var walk = { x : lat, y : lng};
+      var walk = { x : lat, y : lng, title: places[index].title};
       walkArray.push(walk);
    }
    if(transport == 3) {
-      var tradi = { x : lat, y :  lng};
+      var tradi = { x : lat, y :  lng, title: places[index].title};
       tradiArray.push(tradi);
    }
    if(transport != 0) {

@@ -16,4 +16,5 @@ public interface mapMapper {
 	public ArrayList<kaptCode> loadKaptCode(String emd);
 	public ArrayList<aptcode> aptcode();
 	public ArrayList<aptsale> getTradeInfo(String xloc, String yloc);
+	public String getBoundary(String gu, String dong); 
 }
