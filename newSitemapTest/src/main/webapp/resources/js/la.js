@@ -297,7 +297,6 @@ function dfa(carArray, walkArray, tradiArray){
 }
 
 
-
 function drawlist() {
    console.log(perfect);
    console.log("drawlist");
@@ -311,6 +310,7 @@ function drawlist() {
    html += '</table></ul>';
    $('#lll').html(html);
    
+   createData2();
    
    
 }
