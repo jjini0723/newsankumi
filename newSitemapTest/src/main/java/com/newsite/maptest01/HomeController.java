@@ -1,7 +1,5 @@
 package com.newsite.maptest01;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-
 import java.io.BufferedInputStream;
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,10 +19,8 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import com.newsite.maptest01.DAO.mapDao;
 import com.newsite.maptest01.vo.aptInfo;
 import com.newsite.maptest01.vo.aptName;
-import com.newsite.maptest01.vo.aptcode;
 import com.newsite.maptest01.vo.aptsale;
 import com.newsite.maptest01.vo.kaptCode;
-import java.util.regex.*; // 정규표현식 관련
 /**
  * Handles requests for the application home page.
  */
@@ -417,36 +413,41 @@ public class HomeController {
 	@ResponseBody
 	@RequestMapping(value="getBoundary", method = RequestMethod.POST)
 	public ArrayList<String> getBoundary(String gu, String dong) {
-		String emd = null;
 		ArrayList<String> emdList = new ArrayList<>();
 		ArrayList<String> boundaryList = new ArrayList<>();
-		String [] gwanhalArray = dong.split(",");
-		for(int i = 0; i < gwanhalArray.length; i++) {
-			for(int j = 0; j < gwanhalArray[i].length(); j++) {
-				String check = gwanhalArray[i].charAt(j)+"";
-				System.out.println("한글자씩 : "+check);
-				if(isNumber(check)) {
-					String check2 = gwanhalArray[i].charAt(j-1)+"";
-					System.out.println("숫자일 경우 앞 글자 : "+check2);
-					if(check2.equals("제")) {
-						String check3 = gwanhalArray[i].charAt(j-2)+"";
-						System.out.println("숫자 앞에 제 일 경우 그 앞글자 : "+check3);
-						if(check3.equals("제")) {
-							emdList.add(gwanhalArray[i].substring(0, j-1)+"동");
-							System.out.println("숫자 앞에 두글자가 제 일 경우 동이름 : "+emdList);
-						} else {
-							emdList.add(gwanhalArray[i].substring(0, j-2)+"동");
-							System.out.println("숫자 앞에 한글자가 제 일 경우 동이름 : "+emdList);
-						}
+		//String [] gwanhalArray = dong.split(",");
+		for(int i = 0; i < dong.length(); i++) {
+			String check = dong.charAt(i)+"";
+			System.out.println("한글자씩 : "+check);
+			if(isNumber(check)) {
+				String check2 = dong.charAt(i-1)+"";
+				String check4 = dong.charAt(i+1)+"";
+				System.out.println("숫자일 경우 앞 글자 : "+check2);
+				if(check2.equals("제")) {
+					String check3 = dong.charAt(i-2)+"";
+					System.out.println("숫자 앞에 제 일 경우 그 앞글자 : "+check3);
+					if(check3.equals("제")) {
+						emdList.add(dong.substring(0, i-1)+"동");
+						System.out.println("숫자 앞에 두글자가 제 일 경우 동이름 : "+emdList);
 					} else {
-						emdList.add(gwanhalArray[i].substring(0, j)+"동");
-						System.out.println("숫자 앞에 제 없을 경우 동이름 : "+emdList);
+						emdList.add(dong.substring(0, i-2)+"동");
+						System.out.println("숫자 앞에 한글자가 제 일 경우 동이름 : "+emdList);
+					}
+				} else {
+					if(check4.equals(",") || check4.equals(".")) {
+						emdList.add(dong.substring(0, i)+"");
+						System.out.println("숫자 뒤에 ,나 . 있을 경우 동이름 : "+emdList);
+						break;
+					} else {
+						emdList.add(dong.substring(0, i)+"동");
+						System.out.println("숫자 뒤에 ,나 . 없을 경우 동이름 : "+emdList);
+						break;
 					}
 				}
 			}
-			emdList.add(gwanhalArray[i]);
-			System.out.println("숫자 없을 경우 동이름 : "+emdList);
 		}
+		emdList.add(dong);
+		System.out.println("숫자 없을 경우 동이름 : "+emdList);
 		for(int i = 0; i < emdList.size(); i++) {
 			boundaryList.add(dao.getBoundary(gu, emdList.get(i)));
 		}

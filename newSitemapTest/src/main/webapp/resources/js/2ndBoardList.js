@@ -6,8 +6,36 @@
 function boardList2() {
 	//emdName = "삼성동,역삼동";
 	var result = sendData1();
+	/*$.each(result, function(index, item) {
+		
+	});*/
 	
+	console.log(result);
+	$.each(result, function(index, item) {
+		alert('들어오긴 하니?');
+		alert(item.gu);
+		alert(item.dong);
+		jQuery.ajaxSettings.traditional = true;
+		$.ajax({
+			type : "post",
+			url : "getBoundary",
+			data : {
+				gu : item.gu,
+				dong : item.dong
+			},
+			success : function(data) {
+				// 테두리 코드 , bjd_cd 어레이로 넘어가야함.
+				console.log(data);
+				call(data);
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		});
+	});
+   	
 	/*call(result[0], result[1]);*/
+	
 	$(document).ready(function() {
 		$.ajax({
 			type : "get",

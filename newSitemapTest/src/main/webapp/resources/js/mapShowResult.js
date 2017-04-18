@@ -34,73 +34,9 @@ function call(emdName){
    	// emdName = {{gu: a, dong: b}, {gu: c, dong: d}, {gu:e, dong: f}, {gu: g, dong: h}, {gu: i, dong: j}};
 	//var gu;
 	//var dong;
-	alert(emdName[0].gu);
-	alert(emdName[0].dong);
-	$.each(emdName, function(index, item) {
-		alert('들어오긴 하니?');
-		$.ajax({
-			type : "post",
-			url : "getBoundary",
-			contentType : "application/json; charset=utf-8",
-			data : JSON.stringify({
-				gu: item.gu,
-				dong: item.dong
-			}),
-			success : function(data) {
-				// 테두리 코드 
-				console.log(data);
-				testArray.push(data);
-				
-			},
-			error : function(e) {
-				console.log(e);
-			}
-		});
-	});
-   	
+	
     	
-    for(var i in testArray){
-    	$.ajax({
-    		url : "http://apis.vworld.kr/2ddata/ademd/data?apiKey=CCA36BB7-0DA8-3EE7-8836-D4814D529510&domain=http://localhost:8888&emdCd="+testArray[i]+"&srsName=EPSG:4326&output=json",
-    		dataType : "jsonp",
-    		jsonp : "callback",
-    		success : function(rtndata) {
-    			console.log(rtndata.featureCollection.features[0].geometry.coordinates);
-    			var list = rtndata.featureCollection.features[0].geometry.coordinates;
-    			var newList = new Array();
-    		 	var newListX = new Array(); 
-    		 	var polygonPath = [];
-    			newList = list[0];
-    			for(var i in newList){
-    				newList[i].reverse();
-    			}
-    			alert(newList);
-    		/* list =rtndata.featureCollection.features[0].geometry.coordinates; */	
-    		/* 	alert(newList); */
-    		
-    		
-    			// 다각형을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 다각형을 표시합니다
-    			for(var i in newList){
-    				polygonPath.push(new daum.maps.LatLng(newList[i][0],newList[i][1]));
-    			}
-    			// 지도에 표시할 다각형을 생성합니다
-	    		var polygon = new daum.maps.Polygon({
-    		        path:polygonPath, // 그려질 다각형의 좌표 배열입니다
-    		        strokeWeight: 3, // 선의 두께입니다
-    		        strokeColor: '#39DE2A', // 선의 색깔입니다
-    		        strokeOpacity: 0.8, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-    		        strokeStyle: 'longdash', // 선의 스타일입니다
-    		        fillColor: 'gray', // 채우기 색깔입니다
-    		        fillOpacity: 0.7 // 채우기 불투명도 입니다
-    		    });
-    		    // 지도에 다각형을 표시합니다
-    		    polygon.setMap(map);
-    		},
-    		error : function(e){
-    			console.log(e);
-    		} 
-    	});
-    }
+    
     jQuery.ajaxSettings.traditional = true;
 	$.ajax({
 		type : "POST",
