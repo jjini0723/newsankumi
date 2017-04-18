@@ -1,5 +1,5 @@
 /**
- * 추천 지역 리스트 가져오기
+ * 추천 지역 리스트 가져오기, 삭제, 동 추가, 다음 단으로 동정보 넘기기
  */
 
 var items = [];
@@ -122,32 +122,21 @@ function sendData1(){ //코드 및 동 리스트 가져오기
 	for (var i = 0; i < 10; i++) {
 		firstlist[i] = $(".decimal").find("a").eq(i).attr('class');
 	}
-	console.log(firstlist);//제대로 나옴
-	
+	/*console.log(firstlist);//제대로 나옴
+*/	
 		if (typeof firstlist[6] == undefined ||firstlist[6] == null ) {
 			var split1 = firstlist[0].split(',');
 			var split2 = firstlist[2].split(',');
 			var split3 = firstlist[4].split(',');
-			var obj1 = {gu : split1[0], dong : split1[1] };
-			var obj2 = {gu : split2[0], dong : split2[1] };
-			var obj3 = {gu : split3[0], dong : split3[1] };
-			resultList.push(obj1);
-			resultList.push(obj2);
-			resultList.push(obj3);
-			console.log(split1);
+			var gustr = split1[0]+','+split2[0]+','+split3[0];
+			var dongstr = split1[1]+','+ split2[1]+','+split3[1];
 		}else if (typeof firstlist[8] == undefined ||firstlist[8] == null ) {
 			var split1 = firstlist[0].split(',');
 			var split2 = firstlist[2].split(',');
 			var split3 = firstlist[4].split(',');
 			var split4 = firstlist[6].split(',');
-			var obj1 = {gu : split1[0], dong : split1[1] };
-			var obj2 = {gu : split2[0], dong : split2[1] };
-			var obj3 = {gu : split3[0], dong : split3[1] };
-			var obj4 = {gu : split4[0], dong : split4[1] };
-			resultList.push(obj1);
-			resultList.push(obj2);
-			resultList.push(obj3);
-			resultList.push(obj4);
+			var gustr = split1[0]+','+split2[0]+','+split3[0]+','+split4[0];
+			var dongstr = split1[1]+','+ split2[1]+','+split3[1]+','+split4[1];
 		}
 		else{
 			var split1 = firstlist[0].split(',');
@@ -155,20 +144,13 @@ function sendData1(){ //코드 및 동 리스트 가져오기
 			var split3 = firstlist[4].split(',');
 			var split4 = firstlist[6].split(',');
 			var split5 = firstlist[8].split(',');
-			var obj1 = {gu : split1[0], dong : split1[1] };
-			var obj2 = {gu : split2[0], dong : split2[1] };
-			var obj3 = {gu : split3[0], dong : split3[1] };
-			var obj4 = {gu : split4[0], dong : split4[1] };
-			var obj5 = {gu : split5[0], dong : split5[1] };
-			resultList.push(obj1);
-			resultList.push(obj2);
-			resultList.push(obj3);
-			resultList.push(obj4);
-			resultList.push(obj5);
+			var gustr = split1[0]+','+split2[0]+','+split3[0]+','+split4[0]+','+split5[0];
+			var dongstr = split1[1]+','+ split2[1]+','+split3[1]+','+split4[1]+','+split5[1];
 		}
 		
-		console.log(resultList);
-		return resultList;
+		var result = [gustr, dongstr];
+		console.log(result);
+		return result;
 	
 }
 
