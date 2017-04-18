@@ -35,7 +35,9 @@
 <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 
-
+<!-- 툴팁 관련 -->
+<link href="./resources/tipr/tipr.css?ver=3" rel ="stylesheet">
+<script src="./resources/tipr/tipr.min.js?ver=3"></script>
 
 <script type='text/javascript'>
 var coords2 = new Array();
@@ -123,7 +125,7 @@ function conditionSelect(){
 							closeByDocument : true,
 							openOnEvent : false,
 							onBlurContainer : '.container',
-							template : '<img src="./resources/images/popuptest1.jpg" height="330" width="620">'
+							template : '<img src="./resources/images/main_popup_high.jpg" height="330" width="620">'
 						});
 	}); 
 	
@@ -162,7 +164,13 @@ function conditionSelect(){
                "년 - " + $( "#slider-3" ).slider( "values", 1 ) +  "년");
          });
 
+	
+	//title 툴팁용
+$(document).ready(function() {
+     $('.tip').tipr();
+});
 
+	
 </script>
 
 
@@ -254,8 +262,9 @@ This variant is to be used when loading the separate styling modules -->
           <ul class="nav navbar-nav navbar-right ">
             <!-- 코드불러오기 -->
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="결과 저장시 이메일로 부여받았던 코드를 입력해주세요">
-                <i class="fa fa-fw fa-lock"></i> 코드불러오기
+              <a href="#" class="dropdown-toggle tip" data-toggle="dropdown" data-tip="이전에 저장해두었던 결과를 다시 볼수 있습니다">
+              <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" tooltip tooltip-direction="right" tooltip-content="이전에 저장해두었던 결과를 다시 볼수 있습니다"> -->
+                <i class="fa fa-fw fa-lock"></i>코드불러오기
               </a>
               <div class="dropdown-menu dropdown-size-280">
                 <form>
@@ -344,8 +353,10 @@ This variant is to be used when loading the separate styling modules -->
 		<li class="hasSubmenu open active">
 			<a><i class="fa fa-home"></i><span>1차 선택</span></a>
 				<ul class="in">
-					<h4 class="category">기준지역선택</h4>
-	            	<li>
+					<h4 class="category">기준지역선택
+					<i class="fa fa-question-circle tip" aria-hidden="true" data-tip="현재 거주하고 있는 지역이나, 기준이 되는 지역을 선택합니다(서울,경기,인천 한정)<br>기준지역 미 선택시 전체 평균으로 선택됨"></i>
+					</h4>
+					<li>
 						<div class="cd-select" style="margin: 14px">
 							<select class="select1" name="selectThis1" id="mp_addcd_sido" onchange="searchThis(this)">
 								<option value="">시/도</option>
