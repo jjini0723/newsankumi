@@ -126,7 +126,7 @@ function boardList3() {
 				html += '<ul class="pagination margin-none">';
 				html += '<li class="disabled"><a href="#">&laquo;</a></li>';
 				html += '<li><a href="#" onclick ="boardList2();">이전단계</a></li>';
-				html += '<li><a href="#" onclick ="">검색결과저장</a></li>';
+				html += '<li><a href="#" onclick ="JSalert();">검색결과저장</a></li>';
 				html += '</ul></div></div>';
 
 				$("#test123").html(html);

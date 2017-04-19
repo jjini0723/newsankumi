@@ -227,6 +227,8 @@ This variant is to be used when loading the separate styling modules -->
 
 
 <body>
+
+
 <!--  팝업1-->
 <a href="#" id="show" class="button left"></a>
 
@@ -251,6 +253,9 @@ This variant is to be used when loading the separate styling modules -->
           <a class="navbar-brand"
           style="width: 400px; position: absolute; left: 50%; margin-left: -200px; border: 0; outline: 0;">
 				エッ！スマップ？ S(SMART)・MAP</a>
+		<form action="mailTest" method="post">
+			<input type="submit" value="메일팝업 ㄱㄱ">
+		</form>
         </div>
 		
 		
@@ -338,6 +343,7 @@ This variant is to be used when loading the separate styling modules -->
 
       </div>
     </nav>
+
 
 
 <!-- 왼쪽 사이드바 시작 -->
@@ -823,6 +829,8 @@ This variant is to be used when loading the separate styling modules -->
 		</div><!-- <div data-scrollable> -->
 	</aside>
 <!-- 왼쪽 사이드바 끝 -->
+
+
 
 <!-- 오른쪽 사이드바 시작-->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
