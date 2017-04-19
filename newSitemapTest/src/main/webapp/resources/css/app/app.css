@@ -32124,13 +32124,16 @@ html.app-mobile #content .container-fluid {
 }
 [data-scrollable] {
   position: relative;
-  height: 100%;
+  /* height: 100%; */
+  height: 80%;
   overflow-x: hidden;
 }
 [data-scrollable-h] {
   position: relative;
-  max-width: 100%;
-  width: 100%;
+  max-width: 80%;
+  width: 80%;
+  /* max-width: 100%;
+  width: 100%; */
   overflow-x: scroll;
 }
 .list-group-item .cover.overlay {
@@ -40048,7 +40051,8 @@ html.app-mobile #content .container-fluid .sidebar {
   bottom: 0;
   left: 0;
   right: 0;
-  height: auto;
+  /* height: auto; */
+  height: 80%
   z-index: 2;
   overflow-x: hidden;
   overflow-y: scroll;

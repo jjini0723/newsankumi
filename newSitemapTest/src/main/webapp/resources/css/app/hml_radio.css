@@ -36,6 +36,8 @@ input[type=radio]:checked + label {
 /*상중하hml 관련 스타일*/
 .hml {
 visibility: hidden; /*hidden 후 visible*/
+float: right;
+margin-right: 10px;
 }
 .ck_radio {
 visibility: visible;

@@ -184,13 +184,16 @@ $(document).ready(function() {
   <!-- Vendor CSS Standalone Libraries
         NOTE: Some of these may have been customized (for example, Bootstrap).
         See: src/less/themes/{theme_name}/vendor/ directory -->
+    <link href="./resources/css/vendor/all.css" rel="stylesheet">
 	<link href="./resources/css/vendor/bootstrap.css" rel="stylesheet">
+	<link href="./resources/css/vendor/bootstrap-slider.css" rel="stylesheet">
+	
+	
 	<link href="./resources/css/vendor/font-awesome.css" rel="stylesheet">
 	<link href="./resources/css/vendor/picto.css" rel="stylesheet">
 	<link href="./resources/css/vendor/material-design-iconic-font.css" rel="stylesheet">
 	<link href="./resources/css/vendor/datepicker3.css" rel="stylesheet">
 	<link href="./resources/css/vendor/jquery.minicolors.css" rel="stylesheet">
-	<link href="./resources/css/vendor/bootstrap-slider.css" rel="stylesheet">
 	<link href="./resources/css/vendor/railscasts.css" rel="stylesheet">
 	<link href="./resources/css/vendor/jquery-jvectormap.css" rel="stylesheet">
 	<link href="./resources/css/vendor/owl.carousel.css" rel="stylesheet">
@@ -211,16 +214,18 @@ This variant is to be used when loading the separate styling modules -->
     Some of the standalone modules may have not been used with the current theme/module
     but ALL modules are 100% compatible -->
 
+	<link href="./resources/css/app/app.css" rel="stylesheet" />
+	<link href="./resources/css/app/sidebar-skins.css" rel="stylesheet" />
+	<link href="./resources/css/app/sidebar.css?ver=2" rel="stylesheet" />
+
 	<link href="./resources/css/app/essentials.css" rel="stylesheet" />
 	<link href="./resources/css/app/layout.css" rel="stylesheet" />
-	<link href="./resources/css/app/sidebar.css" rel="stylesheet" />
-	<link href="./resources/css/app/sidebar-skins.css" rel="stylesheet" />
 	<link href="./resources/css/app/navbar.css" rel="stylesheet" />
 	<link href="./resources/css/app/media.css" rel="stylesheet" />
 	<link href="./resources/css/app/maps.css" rel="stylesheet" />
 	<link href="./resources/css/app/colors-buttons.css" rel="stylesheet" />
 	<link href="./resources/css/app/colors-text.css" rel="stylesheet" />
-	<link href="./resources/css/app/hml_radio.css" rel="stylesheet" />
+	<link href="./resources/css/app/hml_radio.css?ver=2" rel="stylesheet" />
 
 </head>
 
@@ -392,7 +397,7 @@ This variant is to be used when loading the separate styling modules -->
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_sports" name="ck" onclick="checkboxSelect('ck',6)">
 					<!-- 수정필요 -->
-					<label for="welfare_sports"><span>체육시설</span></label>
+					<label for="welfare_sports" data-toggle="tooltip" data-title="Agency"><span>체육시설</span></label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_sports">
 					<input type="radio" id="rd_welfare_sports1" name="rd_welfare_sports" value="<%=SelectConditions.high %>" >
@@ -834,8 +839,8 @@ This variant is to be used when loading the separate styling modules -->
 
 <!-- 오른쪽 사이드바 시작-->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
-    <aside class="sidebar right sidebar-size-xs-2 sidebar-size-lg-30pc sidebar-size-25pc sidebar-offset-0 sidebar-skin-white" 
-    	id="sidebar-map" data-toggle-layout=sidebar-r-30pc-lg,sidebar-r-25pc data-toggle-bar=true data-overlay=false>
+    <aside class="sidebar right sidebar-size-xs-2 sidebar-size-lg-35pc sidebar-size-30pc sidebar-offset-0 sidebar-skin-white" 
+    	id="sidebar-map" data-toggle-layout=sidebar-r-30pc-lg,sidebar-r-25pc data-toggle-bar=false data-overlay=false>
       <div id = "test123">
       	<!-- test123.js 삽입 -->
       </div>
@@ -954,9 +959,20 @@ This variant is to be used when loading the separate styling modules -->
 
 
 <!-- Vendor Scripts Standalone Libraries-->  
+	
+	<script src="./resources/js/all.js"></script>
 
-	<!-- <script src="./resources/js/vendor/core/all.js"></script> -->
+	<script src="./resources/js/app/all.js"></script>
+	<script src="./resources/js/app/app.js"></script>
+	<script src="./resources/js/app/essentials.js"></script>
+	
+	<script src="./resources/js/vender/core/all.js"></script>
 	<script src="./resources/js/vendor/core/bootstrap.js"></script>
+	
+	<script src="./resources/js/vendor/forms/all.js"></script>
+	<script src="./resources/js/vendor/forms/bootstrap-datepicker.js"></script>
+	<script src="./resources/js/vendor/forms/bootstrap-slider.js"></script>
+	
 	<script src="./resources/js/vendor/core/breakpoints.js"></script>
 	<script src="./resources/js/vendor/core/jquery.nicescroll.js"></script>
 	<!-- <script src="./resources/js/vendor/core/isotope.pkgd.js"></script> -->

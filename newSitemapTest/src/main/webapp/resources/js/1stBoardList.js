@@ -9,9 +9,9 @@ function boardList() {
 				html += '<h4 class="category">검색결과</h4>';
 				html += '<div data-toggle="gridalicious" data-width="400" class="req_loc1" id="req_loc1" style = "height:100px; overflow-y: scroll;"></div>';
 				html += '<div class="sidebar-block padding-none" style="color:black;" data-height="400"></div>';
-				html += '<h4 class="category cd-filter-block">지역추가</h4>';
-				html += '<div class="sidebar-block padding-none cd-filter-content cd-select cd-filters">';
-				html += '<select class="filter3" name="selectThis3" id="selectThis3" style = "margin-left:80px;" onchange="addAddress(this)">';
+				html += '<h4 class="category">지역추가</h4>';
+				html += '<div class="sidebar-block">';
+				html += '<select class="filter3" name="selectThis3" id="selectThis3" onchange="addAddress(this)">';
 				html += '<option value="">시/도</option>';
 				html += '<option value="서울특별시">서울특별시</option>';
 				html += '<option value="인천광역시">인천광역시</option>';
