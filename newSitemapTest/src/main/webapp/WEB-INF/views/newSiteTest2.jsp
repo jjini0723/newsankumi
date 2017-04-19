@@ -27,7 +27,7 @@
 <script src="./resources/js/filter.js"></script><!-- 영석이 필터 로직 -->
 <script src="./resources/js/getTradeInfo.js"></script><!-- 영석이 가격정보 로직 -->
 <script src="./resources/js/searchDestination.js"></script><!-- 희망목적지 관련 js -->
-<script src="./resources/js/js_plugin/sweetalert.min.js"></script><!-- sweetalert/email 보내기 팝업 관련 js -->
+<script src="./resources/js/sweetalert.min.js"></script><!-- sweetalert/email 보내기 팝업 관련 js -->
 <script src="./resources/js/js_plugin/jquery.blockUI.js"></script><!-- 데이터 로딩 표시 -->
 
 <!-- 필터링 관련 -->
