@@ -1,7 +1,7 @@
 /**
  * 라디오버튼에서 선택 된 값 리스트에 넣기
  */
-$(document).on("click", ".remove", function() {
+$(document).on("click", ".remove", function(e) {
 	$(this).parent().remove();
 });
 
@@ -13,12 +13,13 @@ function getRadios(selected) {
 		if (selected.rd_welfare_sports[i].checked)
 			welfare_sports = selected.rd_welfare_sports[i].value;
 	}
+	
 	if (welfare_sports != '') {
-		html += "<li id = 'welfare_sports' value = "
+		html += "<li value = "
 				+ welfare_sports
 				+ ">"
 				+ '스포츠시설'
-				+ '<a href="#" class = "remove" onclick="removeList1();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList1();" name = "welfare_sports">   x   </a> '
 				+ "</li>";
 	}
 
@@ -33,7 +34,7 @@ function getRadios(selected) {
 				+ welfare_culture
 				+ ">"
 				+ '문화시설'
-				+ '<a href="#" class = "remove" onclick="removeList2();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList2();" value ="welfare_culture" >   x   </a> '
 				+ "</li>";
 	}
 
@@ -368,25 +369,15 @@ function getRadios(selected) {
 }
 
 
-function removeList(str){
-	
-	var value = document.getElementsByName(str);
-	for(var i=0;park.length;i++){
-        if(park[i].checked){
-            park[i].checked = false;
-        }
-   }
-}
-
 function removeList1() {
 	var park = document.getElementsByName("rd_welfare_sports");
-	  
     for(var i=0;park.length;i++){
          if(park[i].checked){
              park[i].checked = false;
          }
     }
-
+	$('#welfare_sports').trigger("click");
+    
 }
 function removeList2() {
 	var park = document.getElementsByName("rd_welfare_culture");
@@ -396,7 +387,8 @@ function removeList2() {
              park[i].checked = false;
          }
     }
-
+    $("input:radio[id = 'welfare_culture']").removeAttr("checked");
+	$('#welfare_culture').trigger("click");
 }
 function removeList3() {
 	var park = document.getElementsByName("rd_welfare_salon");
@@ -406,7 +398,8 @@ function removeList3() {
              park[i].checked = false;
          }
     }
-
+    $("#welfare_salon").removeAttr("checked");
+	$('#welfare_salon').trigger("click");
 }
 function removeList4() {
 	var park = document.getElementsByName("rd_welfare_society");
@@ -416,6 +409,8 @@ function removeList4() {
              park[i].checked = false;
          }
     }
+    $("#welfare_society").removeAttr("checked");
+    $('#welfare_society').trigger("click");
 
 }
 function removeList5() {
@@ -426,7 +421,8 @@ function removeList5() {
              park[i].checked = false;
          }
     }
-
+    $("#welfare_medical").removeAttr("checked");
+    $('#welfare_medical').trigger("click");
 }
 function removeList6() {
 	var park = document.getElementsByName("rd_welfare_childCare");
@@ -436,7 +432,7 @@ function removeList6() {
              park[i].checked = false;
          }
     }
-
+    $('#welfare_childCare').trigger("click");
 }
 function removeList7() {
 	var park = document.getElementsByName("rd_education_student");
@@ -446,7 +442,7 @@ function removeList7() {
              park[i].checked = false;
          }
     }
-
+    $('#education_student').trigger("click");
 }
 function removeList8() {
 	var park = document.getElementsByName("rd_education_academy");
@@ -456,7 +452,7 @@ function removeList8() {
              park[i].checked = false;
          }
     }
-
+    $('#education_academy').trigger("click");
 }
 function removeList9() {
 	var park = document.getElementsByName("rd_safety_fire");
@@ -466,7 +462,7 @@ function removeList9() {
              park[i].checked = false;
          }
     }
-
+    $('#safety_fire').trigger("click");
 }
 function removeList10() {
 	var park = document.getElementsByName("rd_safety_traffic");
@@ -476,7 +472,7 @@ function removeList10() {
              park[i].checked = false;
          }
     }
-
+    $('#safety_traffic').trigger("click");
 }
 function removeList11() {
 	var park = document.getElementsByName("rd_safety_crime");
@@ -486,7 +482,7 @@ function removeList11() {
              park[i].checked = false;
          }
     }
-
+    $('#safety_crime').trigger("click");
 }
 function removeList12() {
 	var park = document.getElementsByName("rd_safety_safety");
@@ -496,7 +492,7 @@ function removeList12() {
              park[i].checked = false;
          }
     }
-
+    $('#safety_safety').trigger("click");
 }
 function removeList13() {
 	var park = document.getElementsByName("rd_safety_infection");
@@ -506,9 +502,10 @@ function removeList13() {
              park[i].checked = false;
          }
     }
-
+    $('#safety_infection').trigger("click");
 }
 function removeList14() {
+	$('#safety_nature').trigger("click");
 	var park = document.getElementsByName("rd_safety_nature");
 	  
     for(var i=0;park.length;i++){
@@ -526,7 +523,7 @@ function removeList15() {
              park[i].checked = false;
          }
     }
-
+    $('#life_convenient').trigger("click");
 }
 function removeList16() {
 	var park = document.getElementsByName("rd_life_shopping");
@@ -536,7 +533,7 @@ function removeList16() {
              park[i].checked = false;
          }
     }
-
+	$('#life_shopping').trigger("click");
 }
 function removeList17() {
 	var park = document.getElementsByName("rd_life_restaurant");
@@ -546,7 +543,7 @@ function removeList17() {
              park[i].checked = false;
          }
     }
-
+	$('#life_restaurant').trigger("click");
 }
 function removeList18() {
 	var park = document.getElementsByName("rd_life_publicTraffic");
@@ -556,9 +553,10 @@ function removeList18() {
              park[i].checked = false;
          }
     }
-
+    $('#life_publicTraffic').trigger("click");
 }
 function removeList19() {
+	$('#people_foreign').trigger("click");
 	var park = document.getElementsByName("rd_people_foreign");
 	  
     for(var i=0;park.length;i++){
@@ -566,7 +564,7 @@ function removeList19() {
              park[i].checked = false;
          }
     }
-
+    $('#people_foreign').trigger("click");
 }
 function removeList20() {
 	var park = document.getElementsByName("rd_people_density");
@@ -576,7 +574,7 @@ function removeList20() {
              park[i].checked = false;
          }
     }
-
+    $('#people_density').trigger("click");
 }
 function removeList21() {
 	var park = document.getElementsByName("rd_nature_park");
@@ -586,7 +584,7 @@ function removeList21() {
              park[i].checked = false;
          }
     }
-
+    $('#nature_park').trigger("click");
 }
 function removeList22() {
 	var park = document.getElementsByName("rd_nature_pollution");
@@ -594,5 +592,5 @@ function removeList22() {
     for(var i=0;park.length;i++){
              park[i].checked = false;
     }
-
+    $('#nature_pollution').trigger("click");
 }

@@ -142,6 +142,7 @@ function conditionSelect(){
 				if (chk[i].checked == false)
 					chk[i].disabled = true;
 			alert("6개까지만 선택 가능하십니다.");
+			
 		} else {
 			for (i = 0; i < tot; i++)
 				chk[i].disabled = false;
@@ -1006,5 +1007,6 @@ This variant is to be used when loading the separate styling modules -->
 	<input type="hidden" id="places">
 	<input type="hidden" id="title">
 	<input type = "hidden" id = "dongitem">
+	<input type = "hidden" id = "transport">
 </body>
 </html>

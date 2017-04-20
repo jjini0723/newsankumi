@@ -1,32 +1,61 @@
 /**
  * 아파트 교통수단 시간 비교
  */
-var bar_data = [];
-var labels = [];
-var line_data= [];
 
 //mychart2
+//평균  - line / 아파트의 교통수단 별 
 
-function createData2(){
-	console.log("들어오니?");
+function getChartData2(){
+	
+	var barData = []; //
+	var labelList2 = [];//희망목적지
+	var line_data= []; // 전국평균
+
+	var listData2 = JSON.parse($("#transport").val());
+	console.log(listData2);
+	console.log(listData2[0]);
+	
+	for (var i = 0; i < listData2.length; i++) {
+		$.each(listData2[i], function(key, value){
+			var title = listData2[i].title;
+				labelList2.push(title);
+			if (value != 0 || !isNaN(value)) {
+				var time = value/60;
+				barData.push(time);
+				
+			}
+			if (key == "car1avg") {
+				
+			}
+			
+		});
+	}
+	
+	/*createChart2(labelList2, lineData, barData);*/
+}
+
+
+function createChart2(labelList2, lineData, barData){
 	var ctx2 = document.getElementById("myChart2");
+	
 	var myChart2 = new Chart(ctx2, {
 	    type: 'bar',
 	    data: {
-	        labels: ['1', '2', '3','4','5','6','7','8'],
+	        labels: labelList2,
 	        datasets: [
 	            {
 	                type: 'bar',
-	                label: 'Bar Component',
-	                data: [10, 20, 30,40,50,60,70,80]
+	                label: '교통수단 별 소요시간',
+	                data: barData
 	            },
 	            {
 	                type: 'line',
-	                label: 'Line Component',
-	                data: [40, 40, 40,40,40,40,30,40]
+	                label: '평균 소요시간',
+	                data: lineData
 	            }
 	        ]
 	    }
 	});
+	
 }
 
