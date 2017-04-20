@@ -7,13 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" href="./resources/css/avgrund.css"> <!-- 첫번째 팝업 style -->
+<link rel="stylesheet" href="./resources/css/avgrund.css?ver=1"> <!-- 첫번째 팝업 style -->
 <link rel="stylesheet" href="./resources/css/sweetalert.css"> <!-- sweetalert/email 보내기 팝업 관련 style -->
 
 <script src="//apis.daum.net/maps/maps3.js?apikey=e5f9cd760a5dedf9f84cc76d41a6decd&libraries=services"></script> <!-- daum api -->
 <script src="./resources/js/jquery-3.1.1.js"></script> <!-- jquery-3.1.1.js -->
-<script src="./resources/js/1stBoardList.js"></script>
-<script src="./resources/js/2ndBoardList.js"></script>
+<script src="./resources/js/1stBoardList.js?ver=2"></script>
+<script src="./resources/js/2ndBoardList.js?ver=2"></script>
 <script src="./resources/js/radioToList.js"></script>
 <script src="./resources/js/js_plugin/jquery.avgrund.min.js"></script>
 <script src="./resources/js/selectThis.js"></script> <!-- 기준 지역 선택 -->
@@ -214,11 +214,11 @@ This variant is to be used when loading the separate styling modules -->
     Some of the standalone modules may have not been used with the current theme/module
     but ALL modules are 100% compatible -->
 
-	<link href="./resources/css/app/app.css" rel="stylesheet" />
+	<link href="./resources/css/app/app.css?ver=1" rel="stylesheet" />
 	<link href="./resources/css/app/sidebar-skins.css" rel="stylesheet" />
 	<link href="./resources/css/app/sidebar.css?ver=2" rel="stylesheet" />
 
-	<link href="./resources/css/app/essentials.css" rel="stylesheet" />
+	<link href="./resources/css/app/essentials.css?ver=3" rel="stylesheet" />
 	<link href="./resources/css/app/layout.css" rel="stylesheet" />
 	<link href="./resources/css/app/navbar.css" rel="stylesheet" />
 	<link href="./resources/css/app/media.css" rel="stylesheet" />
@@ -245,6 +245,7 @@ This variant is to be used when loading the separate styling modules -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
+       <!-- 모바일 부분 -->
           <a href="#sidebar-menu" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
             <span class="sr-only">Toggle navigation</span>
@@ -256,11 +257,9 @@ This variant is to be used when loading the separate styling modules -->
           <a href="#sidebar-map1" data-toggle="sidebar-menu" class="toggle pull-right visible-xs"><i class="fa fa-map-marker"></i></a>
 
           <a class="navbar-brand"
-          style="width: 400px; position: absolute; left: 50%; margin-left: -200px; border: 0; outline: 0;">
+          style="width: 400px; position: absolute; left: 50%; margin-left: -200px; border: 0; outline: 0;
+          		-ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none;">
 				エッ！スマップ？ S(SMART)・MAP</a>
-		<form action="mailTest" method="post">
-			<input type="submit" value="메일팝업 ㄱㄱ">
-		</form>
         </div>
 		
 		
@@ -276,22 +275,31 @@ This variant is to be used when loading the separate styling modules -->
               <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" tooltip tooltip-direction="right" tooltip-content="이전에 저장해두었던 결과를 다시 볼수 있습니다"> -->
                 <i class="fa fa-fw fa-lock"></i>코드불러오기
               </a>
-              <div class="dropdown-menu dropdown-size-280">
-                <form>
-                  <div class="form-group">
-                    <div class="input-group">
-                    	결과 저장시 이메일로 부여받았던 코드를 입력해주세요
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon"><i class="fa fa-shield"></i></span>
-                      <input type="password" class="form-control" placeholder="code">
-                    </div>
-                  </div>
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary">코드불러오기 <i class="fa fa-sign-in"></i></button>
-                  </div>
+			<div class="dropdown-menu dropdown-size-280">
+				<form>
+					<div class="form-group">
+						<div class="input-group" style="text-align: center;">
+	                    	<i class="fa fa-floppy-o fa-x" aria-hidden="true"></i>&nbsp&nbsp결과 저장시 입력했던 email과<br>
+	                    	email로 부여받았던 코드를 입력해주세요
+						</div>
+					</div>
+                  
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+							<input type="email" class="form-control" placeholder="email주소를 입력해 주세요">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-key"></i></span>
+							<input type="password" class="form-control" placeholder="code를 입력해 주세요">
+						</div>
+					</div>
+                
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary">코드불러오기 <i class="fa fa-sign-in"></i></button>
+					</div>
                 </form>
               </div>
             </li>

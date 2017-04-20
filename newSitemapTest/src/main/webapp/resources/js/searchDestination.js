@@ -139,7 +139,7 @@ function displayPlaces(places) {
 function getListItem(index, places) {
     var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
-                '<div class="info">' +
+                '<div class="info sidebar-block">' +
                 '   <h5>' + places.title + '</h5>';
 
     if (places.newAddress) {

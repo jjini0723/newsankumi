@@ -42,7 +42,9 @@ function boardList2() {
 			success : function(data) {
 				var html = "";
 				html += '<div data-scrollable id="sidebar-map1">';
-				html += '<h4 class="category">희망위치추가</h4>';
+				
+				
+				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">희망위치추가</h4>';
 				html += '<div class="sidebar-block padding-none" id = "req_loc1">';
 				html += '<div data-toggle="gridalicious" data-width="400">';
 				
@@ -52,8 +54,8 @@ function boardList2() {
 			    html += '<div id="menu_wrap" class="bg_white">';
 			    html += '<div class="option">';
 			    html += '<div>';
-			    html += '<form onsubmit="searchPlaces(); return false;">';
-			    html += '키워드 : <input type="text" value="" id="keyword" size="25" placeholder="희망목적지를 입력해주세요.">'; 
+			    html += '<form class="sidebar-block" onsubmit="searchPlaces(); return false;">';
+			    html += '키워드 : <input type="text" value="" id="keyword" size="20" placeholder="희망목적지를 입력해주세요.">'; 
 			    html += '<button type="submit">검색하기</button>'; 
 			    html += '</form>';
 			    html += '</div>';
@@ -68,12 +70,12 @@ function boardList2() {
 			    
 			    
 				html += '</div></div>';
-				html += '<h4 class="category">희망 목적지</h4>';
+				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">희망 목적지</h4>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400">';
 				
 				///////////// 등록된 희망목적지가 추가될 부분
-				html += '<div class="map_wrap padding-none" style="color:black">';
+				html += '<div class="map_wrap padding-none sidebar-block" style="color:black">';
 				html += '<ul id="getItem"></ul>';
 				html += '</div>';
 				/////////////
@@ -105,19 +107,27 @@ function boardList3() {
 			success : function(data) {
 				var html = "";
 				html += '<div data-scrollable id="sidebar-map1">';
-				html += '<h4 class="category">주거지역 검색 결과</h4>';
+				
+				
+				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">주거지역 검색 결과</h4>';
 				html += '<div style="overflow:auto;height:200px;" id = "lll"></div>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
-				html += '<h4 class="category">아파트 정보</h4>';
+			
+				
+				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">아파트 정보</h4>';
 				html += '<div style="overflow:auto;height:100px;" id = "aptInfo"></div>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
-				html += '<h4 class="category">부동산 거래정보</h4>';
+				
+				
+				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">부동산 거래정보</h4>';
 				html += '<div style="overflow:auto;height:150px;" id = "aptTradeInfo"></div>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
-				html += '<h4 class="category">소요시간 비교</h4>';
+			
+				
+				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">소요시간 비교</h4>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div>';
 				html += '<canvas id = "myChart2" width = "400px" height = "600px" style="z-index:15;"></canvas></div>';
