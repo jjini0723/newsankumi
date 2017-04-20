@@ -152,11 +152,37 @@ function JSalert(){
     inputPlaceholder: "Your Email address" }, 
     
     function(inputValue){
-        if (inputValue === false) 
-        return false;      
-           if (inputValue === "") {     
-            swal.showInputError("Please enter email!");     
-            return false   
-            }      
-         swal("Action Saved!", "You entered following email: " + inputValue, "success"); });
+		var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+	    if (inputValue === false){
+	    	return false; 
+	    }       	
+	         
+	    if (inputValue === "") {     
+	    	swal.showInputError("Please enter email!");     
+	        return false   
+	    }   
+	    else if(regex.test(inputValue) == false){
+	    	swal.showInputError("Please input correct format email..");
+	  		return false;
+	  	}
+	    
+	    $.ajax
+		({
+			type : "post",
+			url : "emailcheck",		
+			data : 
+			{
+				user : inputValue
+			},				
+			success : function(data)
+			{
+				//alert("입력하신 메일로 인증번호가 전송되었습니다.");
+				console.log("메일로 인증번호가 전송되었습니다.");				
+			},				
+			error : function(e)
+			{
+				console.log(e);
+			}
+		})
+		swal("Action Saved!", "You entered following email: " + inputValue, "success"); });
 }

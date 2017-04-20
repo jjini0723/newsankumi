@@ -30,7 +30,7 @@ public class MailController {
    @RequestMapping(value="emailcheck", method=RequestMethod.POST)
    public void emailcheck(String user, HttpSession session)
    {
-	  System.out.println(user);
+	  //System.out.println(user);
 	  
       SendMail mail = new SendMail("", null, null);
       
@@ -38,14 +38,14 @@ public class MailController {
       
       num = code;
       
-      System.out.println("메일 전송완료.");
+      //System.out.println("메일 전송완료.");
    }
    
    @ResponseBody
    @RequestMapping(value = "checknum", method = RequestMethod.POST)
    public int checknum()
    {
-	   System.out.println(num);
+	   //System.out.println(num);
 	   return num;
    }
    
