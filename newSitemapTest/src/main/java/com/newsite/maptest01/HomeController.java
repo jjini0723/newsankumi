@@ -130,6 +130,7 @@ public class HomeController {
 		System.out.println("ghName : "+ghName);
 		ArrayList<aptInfo> aptInfoList = new ArrayList<>();
 		ArrayList<aptInfo> aptInfoList2 = new ArrayList<>();
+		ArrayList<aptInfo> aptInfoList3 = new ArrayList<>();
 		String[] guArray = sigunguName.split(",");
 		String[] ghNameArray = ghName.split(",");
 		for(int i = 0; i < guArray.length; i++) {
@@ -144,6 +145,22 @@ public class HomeController {
 				e.printStackTrace();
 			}
 		}
+		for(int z = 0; z<aptInfoList2.size();z++){
+	         if(aptInfoList3.size()==0){
+	            aptInfoList3.add(aptInfoList2.get(z));
+	         }else{
+	        	 for(int x =0; x<aptInfoList3.size();x++){
+	        		 if(!(aptInfoList3.get(x).getKaptName().equals(aptInfoList2.get(z).getKaptName()))){
+	        			 if(x == aptInfoList3.size()-1){
+	        				 aptInfoList3.add(aptInfoList2.get(z));
+	                         break;
+	                     }
+	                 }else{
+	                	 break;
+	                 }
+	             }
+	         }
+	    }
 		System.out.println("aptInfoList : "+aptInfoList);
 		return aptInfoList2;
 	}

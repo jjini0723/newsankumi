@@ -34,14 +34,14 @@ function dfa(carArray, walkArray, tradiArray){
    
 
    if(carArray.length!=0){//자동차가 선택되지 않으면 배열 길이가 0이라 이 ajax는 작동하지않음
-      var avg = 0;
-      var count =0;
       var flag1 = 0;
       $.each(carArray,function(index,item){ //자동차가 선택 된 회수만큼 작동 희망목적지가 3곳 다 자동차면 3번 돈다
+         var avg = 0;
+          var count =0;
          $.each(perfect,function(index,item1){ // 선택되어있는 아파트만큼 돈다
             $.ajax({
                type : "POST",   
-                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=360a72a6-2781-35ea-b877-98cd58c69b91",
+                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=250b188d-21df-3751-a05f-225464a8462f",
                 success : function(data){//succes 안에서 길이만큼 반복 후 2번 돌아야 할시 2번돌고 true로 변경
                    console.log(data);
                    yebi = data.features[0].properties.totalTime//시간만 빼온다
@@ -112,14 +112,14 @@ function dfa(carArray, walkArray, tradiArray){
       })      
    }
    if(walkArray.length!=0){//도보가 선택되지 않았으면 작동 안함
-      var avg1 = 0;
-      var count1 =0;
       var flag2 = 0;
       $.each(walkArray,function(index,item){//도보로 설정 된 만큼 돈다
+         var avg1 = 0;
+          var count1 =0;
          $.each(perfect,function(index,item1){//아파트 개수만큼 돈다 ex)도보로 2개 설정 된상태에서 아파트가 200개 면 url400번 날린다
             $.ajax({
                type : "POST",      
-                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=360a72a6-2781-35ea-b877-98cd58c69b91",
+                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=250b188d-21df-3751-a05f-225464a8462f",
                 success : function(data){
                    yebi = data.features[0].properties.totalTime//총 시간만 출력
                    console.log(data);
@@ -189,10 +189,10 @@ function dfa(carArray, walkArray, tradiArray){
       })
    }
    if(tradiArray.length!=0){//대중교통이 선택되지 않았으면 작동 안함
-      var avg2 = 0;
-      var count2 =0;
       var flag3 = 0;
       $.each(tradiArray,function(index,item){//대중교통이 선택 된 횟수 만큼
+         var avg2 = 0;
+          var count2 =0;
          $.each(perfect,function(index,item1){//아파트 개수 만큼
             jQuery.ajaxSettings.traditional = true;
             $.ajax({
