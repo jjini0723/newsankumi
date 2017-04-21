@@ -39,6 +39,11 @@
 <link href="./resources/tipr/tipr.css?ver=3" rel ="stylesheet">
 <script src="./resources/tipr/tipr.min.js?ver=3"></script>
 
+<!-- 부트스트랩 tooltip용 -->
+<script src="./resources/js/tether-1.3.3/tether.js?ver=1"></script>
+<script src="./resources/js/tether-1.3.3/tether.css?ver=1"></script>
+
+
 <script type='text/javascript'>
 var coords2 = new Array();
 var perfect = new Array();
@@ -170,7 +175,17 @@ function conditionSelect(){
 $(document).ready(function() {
      $('.tip').tipr();
 });
+	
+//title 툴팁용
+$(document).ready(function() {
+     $('.tip').tipr();
+});
 
+	$(function () {
+		  $('[data-toggle="tooltip"]').tooltip()
+		})
+		
+	$('#example').tooltip(options)
 
 </script>
 
@@ -374,7 +389,9 @@ This variant is to be used when loading the separate styling modules -->
 			<a><i class="fa fa-home"></i><span>1차 선택</span></a>
 				<ul class="in">
 					<h4 class="category">기준지역선택
-					<i class="fa fa-question-circle tip" aria-hidden="true" data-tip="현재 거주하고 있는 지역이나, 기준이 되는 지역을 선택합니다(서울,경기,인천 한정)<br>기준지역 미 선택시 전체 평균으로 선택됨"></i>
+					<i class="fa fa-question-circle" 
+					data-toggle="tooltip" data-placement="right"
+					title="현재 거주하고 있는 지역이나, 기준이 되는 지역을 선택합니다(서울,경기,인천 한정)<br>기준지역 미 선택시 전체 평균으로 선택됨"></i>
 					</h4>
 					<li>
 						<div class="cd-select" style="margin: 14px">
