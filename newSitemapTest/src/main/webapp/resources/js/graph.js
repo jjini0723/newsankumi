@@ -5,8 +5,11 @@
 	var dataList = []; //그래프에 그려질 값
 	var labelList = [];//라벨이 담긴 배열
 */	
-
+	
 function createChart1(index){
+	rawKeyList.length = 0;
+	valueList.length = 0;
+	labelList.length = 0;
 	console.log(index);
 	var listData = JSON.parse($("#dongitem").val());
 	
@@ -201,3 +204,57 @@ function createChart(labelList, dataList, standardList){
 	});
 }
 
+function makeChart(){
+Highcharts.chart('container', {
+
+    chart: {
+        polar: true,
+        type: 'line'
+    },
+
+    title: {
+        text: 'Budget vs spending',
+        x: -80
+    },
+
+    pane: {
+        size: '80%'
+    },
+
+    xAxis: {
+        categories: ['Sales', 'Marketing', 'Development', 'Customer Support',
+                'Information Technology', 'Administration'],
+        tickmarkPlacement: 'on',
+        lineWidth: 0
+    },
+
+    yAxis: {
+        gridLineInterpolation: 'polygon',
+        lineWidth: 0,
+        min: 0
+    },
+
+    tooltip: {
+        shared: true,
+        pointFormat: '<span style="color:{series.color}">{series.name}: <b>${point.y:,.0f}</b><br/>'
+    },
+
+    legend: {
+        align: 'right',
+        verticalAlign: 'top',
+        y: 70,
+        layout: 'vertical'
+    },
+
+    series: [{
+        name: 'Allocated Budget',
+        data: [43000, 19000, 60000, 35000, 17000, 10000],
+        pointPlacement: 'on'
+    }, {
+        name: 'Actual Spending',
+        data: [50000, 39000, 42000, 31000, 26000, 14000],
+        pointPlacement: 'on'
+    }]
+
+});
+}

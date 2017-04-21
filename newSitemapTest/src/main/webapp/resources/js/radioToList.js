@@ -370,16 +370,18 @@ function getRadios(selected) {
 
 
 function removeList1() {
+	$('#welfare_sports').trigger("click");
 	var park = document.getElementsByName("rd_welfare_sports");
     for(var i=0;park.length;i++){
          if(park[i].checked){
              park[i].checked = false;
          }
     }
-	$('#welfare_sports').trigger("click");
+
     
 }
 function removeList2() {
+	$('#welfare_culture').trigger("click");
 	var park = document.getElementsByName("rd_welfare_culture");
 	  
     for(var i=0;park.length;i++){
@@ -387,10 +389,11 @@ function removeList2() {
              park[i].checked = false;
          }
     }
-    $("input:radio[id = 'welfare_culture']").removeAttr("checked");
-	$('#welfare_culture').trigger("click");
+    
+
 }
 function removeList3() {
+	$('#welfare_salon').trigger("click");
 	var park = document.getElementsByName("rd_welfare_salon");
 	  
     for(var i=0;park.length;i++){
@@ -398,10 +401,10 @@ function removeList3() {
              park[i].checked = false;
          }
     }
-    $("#welfare_salon").removeAttr("checked");
-	$('#welfare_salon').trigger("click");
+
 }
 function removeList4() {
+    $('#welfare_society').trigger("click");
 	var park = document.getElementsByName("rd_welfare_society");
 	  
     for(var i=0;park.length;i++){
@@ -409,11 +412,11 @@ function removeList4() {
              park[i].checked = false;
          }
     }
-    $("#welfare_society").removeAttr("checked");
-    $('#welfare_society').trigger("click");
+
 
 }
 function removeList5() {
+    $('#welfare_medical').trigger("click");
 	var park = document.getElementsByName("rd_welfare_medical");
 	  
     for(var i=0;park.length;i++){
@@ -421,10 +424,10 @@ function removeList5() {
              park[i].checked = false;
          }
     }
-    $("#welfare_medical").removeAttr("checked");
-    $('#welfare_medical').trigger("click");
+
 }
 function removeList6() {
+    $('#welfare_childCare').trigger("click");
 	var park = document.getElementsByName("rd_welfare_childCare");
 	  
     for(var i=0;park.length;i++){
@@ -432,9 +435,10 @@ function removeList6() {
              park[i].checked = false;
          }
     }
-    $('#welfare_childCare').trigger("click");
+
 }
 function removeList7() {
+    $('#education_student').trigger("click");
 	var park = document.getElementsByName("rd_education_student");
 	  
     for(var i=0;park.length;i++){
@@ -442,9 +446,10 @@ function removeList7() {
              park[i].checked = false;
          }
     }
-    $('#education_student').trigger("click");
+
 }
 function removeList8() {
+	$('#education_academy').trigger("click");
 	var park = document.getElementsByName("rd_education_academy");
 	  
     for(var i=0;park.length;i++){
@@ -452,9 +457,10 @@ function removeList8() {
              park[i].checked = false;
          }
     }
-    $('#education_academy').trigger("click");
+    
 }
 function removeList9() {
+	$('#safety_fire').trigger("click");
 	var park = document.getElementsByName("rd_safety_fire");
 	  
     for(var i=0;park.length;i++){
@@ -462,9 +468,11 @@ function removeList9() {
              park[i].checked = false;
          }
     }
-    $('#safety_fire').trigger("click");
+    
+    
 }
 function removeList10() {
+	 $('#safety_traffic').trigger("click");
 	var park = document.getElementsByName("rd_safety_traffic");
 	  
     for(var i=0;park.length;i++){
@@ -472,9 +480,10 @@ function removeList10() {
              park[i].checked = false;
          }
     }
-    $('#safety_traffic').trigger("click");
+   
 }
 function removeList11() {
+    $('#safety_crime').trigger("click");
 	var park = document.getElementsByName("rd_safety_crime");
 	  
     for(var i=0;park.length;i++){
@@ -482,9 +491,10 @@ function removeList11() {
              park[i].checked = false;
          }
     }
-    $('#safety_crime').trigger("click");
+
 }
 function removeList12() {
+	$('#safety_safety').trigger("click");
 	var park = document.getElementsByName("rd_safety_safety");
 	  
     for(var i=0;park.length;i++){
@@ -492,9 +502,10 @@ function removeList12() {
              park[i].checked = false;
          }
     }
-    $('#safety_safety').trigger("click");
+    
 }
 function removeList13() {
+	 $('#safety_infection').trigger("click");
 	var park = document.getElementsByName("rd_safety_infection");
 	  
     for(var i=0;park.length;i++){
@@ -502,7 +513,7 @@ function removeList13() {
              park[i].checked = false;
          }
     }
-    $('#safety_infection').trigger("click");
+   
 }
 function removeList14() {
 	$('#safety_nature').trigger("click");
@@ -514,8 +525,10 @@ function removeList14() {
          }
     }
 
+    
 }
 function removeList15() {
+	$('#life_convenient').trigger("click");
 	var park = document.getElementsByName("rd_life_convenient");
 	  
     for(var i=0;park.length;i++){
@@ -523,9 +536,10 @@ function removeList15() {
              park[i].checked = false;
          }
     }
-    $('#life_convenient').trigger("click");
+    
 }
 function removeList16() {
+	$('#life_shopping').trigger("click");
 	var park = document.getElementsByName("rd_life_shopping");
 	  
     for(var i=0;park.length;i++){
@@ -533,9 +547,10 @@ function removeList16() {
              park[i].checked = false;
          }
     }
-	$('#life_shopping').trigger("click");
+	
 }
 function removeList17() {
+	$('#life_restaurant').trigger("click");
 	var park = document.getElementsByName("rd_life_restaurant");
 	  
     for(var i=0;park.length;i++){
@@ -543,9 +558,10 @@ function removeList17() {
              park[i].checked = false;
          }
     }
-	$('#life_restaurant').trigger("click");
+	
 }
 function removeList18() {
+	  $('#life_publicTraffic').trigger("click");
 	var park = document.getElementsByName("rd_life_publicTraffic");
 	  
     for(var i=0;park.length;i++){
@@ -553,10 +569,9 @@ function removeList18() {
              park[i].checked = false;
          }
     }
-    $('#life_publicTraffic').trigger("click");
+  
 }
 function removeList19() {
-	$('#people_foreign').trigger("click");
 	var park = document.getElementsByName("rd_people_foreign");
 	  
     for(var i=0;park.length;i++){
@@ -567,6 +582,7 @@ function removeList19() {
     $('#people_foreign').trigger("click");
 }
 function removeList20() {
+	$('#people_density').trigger("click");
 	var park = document.getElementsByName("rd_people_density");
 	  
     for(var i=0;park.length;i++){
@@ -574,9 +590,11 @@ function removeList20() {
              park[i].checked = false;
          }
     }
-    $('#people_density').trigger("click");
+    
+    
 }
 function removeList21() {
+	  $('#nature_park').trigger("click");
 	var park = document.getElementsByName("rd_nature_park");
 	  
     for(var i=0;park.length;i++){
@@ -584,13 +602,13 @@ function removeList21() {
              park[i].checked = false;
          }
     }
-    $('#nature_park').trigger("click");
+    
 }
 function removeList22() {
+	$('#nature_pollution').trigger("click");
 	var park = document.getElementsByName("rd_nature_pollution");
 
     for(var i=0;park.length;i++){
              park[i].checked = false;
     }
-    $('#nature_pollution').trigger("click");
 }
