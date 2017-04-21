@@ -3,6 +3,8 @@
  */
 $(document).on("click", ".remove", function(e) {
 	$(this).parent().remove();
+	
+	
 });
 
 function getRadios(selected) {
@@ -355,7 +357,7 @@ function getRadios(selected) {
 				+ nature_pollution
 				+ ">"
 				+ '미세먼지'
-				+ '<a href="#" class = "remove" onclick="removeList22();">  x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList22();" id = "x22">  x   </a> '
 				+ "</li>";
 		/*
 		 * +'<a href="#" class = "remove" onchange="removeList('+ selected +
@@ -368,247 +370,242 @@ function getRadios(selected) {
 	$(".selectedList").html(html);
 }
 
-
 function removeList1() {
-	$('#welfare_sports').trigger("click");
+	
 	var park = document.getElementsByName("rd_welfare_sports");
-    for(var i=0;park.length;i++){
+    for(var i=0;park.length-1;i++){
          if(park[i].checked){
              park[i].checked = false;
+             document.myselection.welfare_sports.click();
          }
     }
-
-    
 }
 function removeList2() {
-	$('#welfare_culture').trigger("click");
 	var park = document.getElementsByName("rd_welfare_culture");
 	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
-    
-
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.welfare_culture.click();
+	         }
+	    }
 }
 function removeList3() {
-	$('#welfare_salon').trigger("click");
 	var park = document.getElementsByName("rd_welfare_salon");
 	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.welfare_salon.click();
+	         }
+	    }
 
 }
 function removeList4() {
-    $('#welfare_society').trigger("click");
 	var park = document.getElementsByName("rd_welfare_society");
 	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.welfare_society.click();
+	         }
+	    }
 
 
 }
 function removeList5() {
-    $('#welfare_medical').trigger("click");
 	var park = document.getElementsByName("rd_welfare_medical");
 	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.welfare_medical.click();
+	         }
+	    }
 
 }
 function removeList6() {
-    $('#welfare_childCare').trigger("click");
 	var park = document.getElementsByName("rd_welfare_childCare");
 	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.welfare_childCare.click();
+	         }
+	    }
 
 }
 function removeList7() {
-    $('#education_student').trigger("click");
 	var park = document.getElementsByName("rd_education_student");
 	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
-
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.education_student.click();
+	         }
+	    }
 }
 function removeList8() {
-	$('#education_academy').trigger("click");
 	var park = document.getElementsByName("rd_education_academy");
 	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
-    
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.education_academy.click();
+	         }
+	    }
 }
 function removeList9() {
-	$('#safety_fire').trigger("click");
 	var park = document.getElementsByName("rd_safety_fire");
 	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.safety_fire.click();
+	         }
+	    }
     
     
 }
 function removeList10() {
-	 $('#safety_traffic').trigger("click");
 	var park = document.getElementsByName("rd_safety_traffic");
 	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
-   
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.safety_traffic.click();
+	         }
+	    }
 }
 function removeList11() {
-    $('#safety_crime').trigger("click");
 	var park = document.getElementsByName("rd_safety_crime");
 	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.safety_crime.click();
+	         }
+	    }
 
 }
 function removeList12() {
-	$('#safety_safety').trigger("click");
 	var park = document.getElementsByName("rd_safety_safety");
 	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.safety_safety.click();
+	         }
+	    }
     
 }
 function removeList13() {
-	 $('#safety_infection').trigger("click");
 	var park = document.getElementsByName("rd_safety_infection");
 	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.safety_infection.click();
+	         }
+	    }
    
 }
 function removeList14() {
-	$('#safety_nature').trigger("click");
 	var park = document.getElementsByName("rd_safety_nature");
 	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.safety_nature.click();
+	         }
+	    }
 
     
 }
 function removeList15() {
-	$('#life_convenient').trigger("click");
 	var park = document.getElementsByName("rd_life_convenient");
 	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
-    
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.life_convenient.click();
+	         }
+	    }
 }
 function removeList16() {
-	$('#life_shopping').trigger("click");
 	var park = document.getElementsByName("rd_life_shopping");
 	  
     for(var i=0;park.length;i++){
          if(park[i].checked){
              park[i].checked = false;
+             document.myselection.life_shopping.click();
          }
     }
 	
 }
 function removeList17() {
-	$('#life_restaurant').trigger("click");
 	var park = document.getElementsByName("rd_life_restaurant");
 	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.life_restaurant.click();
+	         }
+	    }
 	
 }
 function removeList18() {
-	  $('#life_publicTraffic').trigger("click");
 	var park = document.getElementsByName("rd_life_publicTraffic");
 	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.life_publicTraffic.click();
+	         }
+	    }
   
 }
 function removeList19() {
 	var park = document.getElementsByName("rd_people_foreign");
-	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
-    $('#people_foreign').trigger("click");
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.people_foreign.click();
+	         }
+	    }
 }
 function removeList20() {
-	$('#people_density').trigger("click");
 	var park = document.getElementsByName("rd_people_density");
 	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
-    
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.people_density.click();
+	         }
+	    }
     
 }
 function removeList21() {
-	  $('#nature_park').trigger("click");
-	var park = document.getElementsByName("rd_nature_park");
+	//  $('#nature_park').trigger("click");
+	  var park = document.getElementsByName("rd_nature_park");
 	  
-    for(var i=0;park.length;i++){
-         if(park[i].checked){
-             park[i].checked = false;
-         }
-    }
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.nature_park.click();
+	         }
+	    }
     
 }
 function removeList22() {
-	$('#nature_pollution').trigger("click");
 	var park = document.getElementsByName("rd_nature_pollution");
 
-    for(var i=0;park.length;i++){
-             park[i].checked = false;
-    }
+	  for(var i=0;park.length-1;i++){
+	         if(park[i].checked){
+	             park[i].checked = false;
+	             document.myselection.nature_pollution.click();
+	         }
+	    }
+	 
+	//  $('#nature_pollution ').trigger("click");
 }
