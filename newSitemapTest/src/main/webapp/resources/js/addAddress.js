@@ -26,9 +26,10 @@ function addAddress(obj){
 				$("#selectThis5").append("<option value = ''>동</option>");
 			}else {
 				$("#selectThis4").append("<option value = ''>시/군/구</option>");
+				$("#selectThis5").append("<option value = ''>동</option>");
 			}
-			for(var mp_addcd_gg in data){
-				$("#selectThis4").append("<option value="+data[mp_addcd_gg]+">"+data[mp_addcd_gg]+"</option>");
+			for(var gu in data){
+				$("#selectThis4").append("<option value="+data[gu]+">"+data[gu]+"</option>");
 			}
 		},
 		error : function(err){
@@ -54,8 +55,8 @@ function addAddress(obj){
 			success : function(data){
 				console.log(data);
 				$("#selectThis5").children().remove(); 
-				for(var mp_addcd_dong in data){
-					$("#selectThis5").append("<option value="+data[mp_addcd_dong]+">"+data[mp_addcd_dong]+"</option>");
+				for(var dong in data){
+					$("#selectThis5").append("<option value="+data[dong]+">"+data[dong]+"</option>");
 				}
 				
 			},
@@ -65,6 +66,7 @@ function addAddress(obj){
 			}
 			
 		});
+		
 }
 	
 	

@@ -415,8 +415,8 @@ fieldset[disabled] .btn-inverse.active {
   position: relative;
   padding: 6px 12px;
   text-align: center;
-  margin-left: -12px;
-  margin-right: -12px;
+ /*  margin-left: -12px;
+  margin-right: -12px; */
 }
 .ribbon-heading:before,
 .ribbon-heading:after {

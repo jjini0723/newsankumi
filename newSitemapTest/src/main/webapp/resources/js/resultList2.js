@@ -25,14 +25,12 @@ function buildList(list) {
 	html += '<ol class = "decimal" data-width="400" id = "resultList">';
 
 	moveMap(0);
-/*	createChart1(0);*/
-	makeChart();
+	createChart1(0);
 	
 	for (var i = 0; i < items.length; i++) {
 		html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "' 
-		+items[i].citycode+'" class = "'+items[i].gu +','+ items[i].dong+'" onclick = "createChart1('+ i +'); moveMap('+i+');"'+
-		'style="color:#333333";> ' 
-		+ items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');" style = "color:red";>   x   </a> '+ '</li>' ;
+		+items[i].citycode+'" class = "'+items[i].gu +','+ items[i].dong+'" onclick = "createChart1('+ i +'); moveMap('+i+');"> ' 
+		+ items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');">   x   </a> '+ '</li>' ;
 	}
 	
 	html += '</ol>';

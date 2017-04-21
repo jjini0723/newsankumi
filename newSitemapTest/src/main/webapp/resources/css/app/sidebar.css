@@ -6776,7 +6776,8 @@ html.app-mobile #content .container-fluid .sidebar {
   bottom: 0;
   left: 0;
   right: 0;
-  height: auto;
+  height: 80%;
+  /* height: auto; */
   z-index: 2;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -6947,12 +6948,12 @@ html.app-mobile #content .container-fluid .sidebar {
 .sidebar-menu li ul li a {
   line-height: 32px;
   padding-left: 16px;
-  font-size: 14px;
+  font-size: 13px;
 }
 .sidebar-menu li ul li a i {
   top: -1px;
   position: relative;
-  font-size: 14px;
+  font-size: 13px;
   width: 21px;
 }
 .sidebar.left .dropdown-menu {
@@ -8276,7 +8277,8 @@ html.st-layout .st-content {
   bottom: 0;
   left: 0;
   right: 0;
-  height: auto;
+  height: 80%;
+  /* height: auto; */
   z-index: 2;
   overflow-x: hidden;
   overflow-y: scroll;

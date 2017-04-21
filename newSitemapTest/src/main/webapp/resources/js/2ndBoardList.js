@@ -14,7 +14,7 @@ function boardList2() {
          success : function(data) {
             var html = "";
             html += '<div data-scrollable id="sidebar-map1">';
-            html += '<h4 class="category">희망위치추가</h4>';
+            html += '<h4 class="ribbon-heading text-h5 ribbon-primary">희망위치추가</h4>';
             html += '<div class="sidebar-block padding-none" id = "req_loc1">';
             html += '<div data-toggle="gridalicious" data-width="400">';
             
@@ -58,7 +58,6 @@ function boardList2() {
             html += '<li><a href="#" onclick = "boardList3(); searchBestLoc(); ">최적의 주거공간 찾기</a></li>';
             html += '<li class="disabled"><a href="#">&raquo;</a></li>';
             html += '</ul></div></div>';
-
             $("#test123").html(html);
          },
          error : function(e) {
@@ -70,35 +69,45 @@ function boardList2() {
 }
 
 function boardList3() {
-   $(document).ready(function() {
-      console.log("여기까지333");
-      $.ajax({
-         type : "get",
-         success : function(data) {
-            var html = "";
-            html += '<div data-scrollable id="sidebar-map1">';
-            html += '<h4 class="category">주거지역 검색 결과</h4>';
-            html += '<div style="overflow:auto;height:200px;" id = "lll"></div>';
-            html += '<div class="sidebar-block padding-none">';
-            html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
-            html += '<h4 class="category">아파트 정보</h4>';
-            html += '<div style="overflow:auto;height:100px;" id = "aptInfo"></div>';
-            html += '<div class="sidebar-block padding-none">';
-            html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
-            html += '<h4 class="category">부동산 거래정보</h4>';
-            html += '<div style="overflow:auto;height:150px;" id = "aptTradeInfo"></div>';
-            html += '<div class="sidebar-block padding-none">';
-            html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
-            html += '<h4 class="category">소요시간 비교</h4>';
-            html += '<div class="sidebar-block padding-none">';
-            html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 
-            html += '<div class="sidebar-block equal-padding">';
-            html += '<ul class="pagination margin-none">';
-            html += '<li class="disabled"><a href="#">&laquo;</a></li>';
-            html += '<li><a href="#" onclick ="boardList2();">이전단계</a></li>';
-            html += '<li><a href="#" onclick ="">검색결과저장</a></li>';
-            html += '</ul></div></div>';
+	$(document).ready(function() {
+		console.log("여기까지333");
+		$.ajax({
+			type : "get",
+			success : function(data) {
+				var html = "";
+				html += '<div data-scrollable id="sidebar-map1">';
+				
+				
+				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">주거지역 검색 결과</h4>';
+				html += '<div style="overflow:auto;height:200px;" id = "lll"></div>';
+				html += '<div class="sidebar-block padding-none">';
+				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
+			
+				
+				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">아파트 정보</h4>';
+				html += '<div style="overflow:auto;height:100px;" id = "aptInfo"></div>';
+				html += '<div class="sidebar-block padding-none">';
+				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
+				
+				
+				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">부동산 거래정보</h4>';
+				html += '<div style="overflow:auto;height:150px;" id = "aptTradeInfo"></div>';
+				html += '<div class="sidebar-block padding-none">';
+				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
+			
+				
+				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">소요시간 비교</h4>';
+				html += '<div class="sidebar-block padding-none">';
+				html += '<div data-toggle="gridalicious" data-width="400"></div>';
+				html += '<canvas id = "myChart2" width = "400px" height = "600px" style="z-index:15;"></canvas></div>';
+
+				html += '<div class="sidebar-block equal-padding">';
+				html += '<ul class="pagination margin-none">';
+				html += '<li class="disabled"><a href="#">&laquo;</a></li>';
+				html += '<li><a href="#" onclick ="boardList2();">이전단계</a></li>';
+				html += '<li><a href="#" onclick ="JSalert();">검색결과저장</a></li>';
+				html += '</ul></div></div>';
 
             $("#test123").html(html);
             if (html != "") {
@@ -123,11 +132,37 @@ function JSalert(){
     inputPlaceholder: "Your Email address" }, 
     
     function(inputValue){
-        if (inputValue === false) 
-        return false;      
-           if (inputValue === "") {     
-            swal.showInputError("Please enter email!");     
-            return false   
-            }      
-         swal("Action Saved!", "You entered following email: " + inputValue, "success"); });
+		var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+	    if (inputValue === false){
+	    	return false; 
+	    }       	
+	         
+	    if (inputValue === "") {     
+	    	swal.showInputError("Please enter email!");     
+	        return false   
+	    }   
+	    else if(regex.test(inputValue) == false){
+	    	swal.showInputError("Please input correct format email..");
+	  		return false;
+	  	}
+	    
+	    $.ajax
+		({
+			type : "post",
+			url : "emailcheck",		
+			data : 
+			{
+				user : inputValue
+			},				
+			success : function(data)
+			{
+				//alert("입력하신 메일로 인증번호가 전송되었습니다.");
+				console.log("메일로 인증번호가 전송되었습니다.");				
+			},				
+			error : function(e)
+			{
+				console.log(e);
+			}
+		})
+		swal("Action Saved!", "You entered following email: " + inputValue, "success"); });
 }

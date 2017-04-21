@@ -7,13 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" href="./resources/css/avgrund.css"> <!-- 첫번째 팝업 style -->
+<link rel="stylesheet" href="./resources/css/avgrund.css?ver=1"> <!-- 첫번째 팝업 style -->
 <link rel="stylesheet" href="./resources/css/sweetalert.css"> <!-- sweetalert/email 보내기 팝업 관련 style -->
 
 <script src="//apis.daum.net/maps/maps3.js?apikey=e5f9cd760a5dedf9f84cc76d41a6decd&libraries=services"></script> <!-- daum api -->
 <script src="./resources/js/jquery-3.1.1.js"></script> <!-- jquery-3.1.1.js -->
-<script src="./resources/js/1stBoardList.js"></script>
-<script src="./resources/js/2ndBoardList.js"></script>
+<script src="./resources/js/1stBoardList.js?ver=2"></script>
+<script src="./resources/js/2ndBoardList.js?ver=2"></script>
 <script src="./resources/js/radioToList.js"></script>
 <script src="./resources/js/js_plugin/jquery.avgrund.min.js"></script>
 <script src="./resources/js/selectThis.js"></script> <!-- 기준 지역 선택 -->
@@ -27,7 +27,7 @@
 <script src="./resources/js/filter.js"></script><!-- 영석이 필터 로직 -->
 <script src="./resources/js/getTradeInfo.js"></script><!-- 영석이 가격정보 로직 -->
 <script src="./resources/js/searchDestination.js"></script><!-- 희망목적지 관련 js -->
-<script src="./resources/js/js_plugin/sweetalert.min.js"></script><!-- sweetalert/email 보내기 팝업 관련 js -->
+<script src="./resources/js/sweetalert.min.js"></script><!-- sweetalert/email 보내기 팝업 관련 js -->
 <script src="./resources/js/js_plugin/jquery.blockUI.js"></script><!-- 데이터 로딩 표시 -->
 
 <!-- 필터링 관련 -->
@@ -35,7 +35,9 @@
 <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
 
-
+<!-- 툴팁 관련 -->
+<link href="./resources/tipr/tipr.css?ver=3" rel ="stylesheet">
+<script src="./resources/tipr/tipr.min.js?ver=3"></script>
 
 <script type='text/javascript'>
 var coords2 = new Array();
@@ -123,7 +125,7 @@ function conditionSelect(){
 							closeByDocument : true,
 							openOnEvent : false,
 							onBlurContainer : '.container',
-							template : '<img src="./resources/images/popuptest1.jpg" height="330" width="620">'
+							template : '<img src="./resources/images/main_popup_high.jpg" height="330" width="620">'
 						});
 	}); 
 	
@@ -140,6 +142,7 @@ function conditionSelect(){
 				if (chk[i].checked == false)
 					chk[i].disabled = true;
 			alert("6개까지만 선택 가능하십니다.");
+			
 		} else {
 			for (i = 0; i < tot; i++)
 				chk[i].disabled = false;
@@ -162,6 +165,12 @@ function conditionSelect(){
                "년 - " + $( "#slider-3" ).slider( "values", 1 ) +  "년");
          });
 
+	
+	//title 툴팁용
+$(document).ready(function() {
+     $('.tip').tipr();
+});
+
 
 </script>
 
@@ -176,13 +185,16 @@ function conditionSelect(){
   <!-- Vendor CSS Standalone Libraries
         NOTE: Some of these may have been customized (for example, Bootstrap).
         See: src/less/themes/{theme_name}/vendor/ directory -->
+    <link href="./resources/css/vendor/all.css" rel="stylesheet">
 	<link href="./resources/css/vendor/bootstrap.css" rel="stylesheet">
+	<link href="./resources/css/vendor/bootstrap-slider.css" rel="stylesheet">
+	
+	
 	<link href="./resources/css/vendor/font-awesome.css" rel="stylesheet">
 	<link href="./resources/css/vendor/picto.css" rel="stylesheet">
 	<link href="./resources/css/vendor/material-design-iconic-font.css" rel="stylesheet">
 	<link href="./resources/css/vendor/datepicker3.css" rel="stylesheet">
 	<link href="./resources/css/vendor/jquery.minicolors.css" rel="stylesheet">
-	<link href="./resources/css/vendor/bootstrap-slider.css" rel="stylesheet">
 	<link href="./resources/css/vendor/railscasts.css" rel="stylesheet">
 	<link href="./resources/css/vendor/jquery-jvectormap.css" rel="stylesheet">
 	<link href="./resources/css/vendor/owl.carousel.css" rel="stylesheet">
@@ -203,22 +215,26 @@ This variant is to be used when loading the separate styling modules -->
     Some of the standalone modules may have not been used with the current theme/module
     but ALL modules are 100% compatible -->
 
-	<link href="./resources/css/app/essentials.css" rel="stylesheet" />
-	<link href="./resources/css/app/layout.css" rel="stylesheet" />
-	<link href="./resources/css/app/sidebar.css" rel="stylesheet" />
+	<link href="./resources/css/app/app.css?ver=1" rel="stylesheet" />
 	<link href="./resources/css/app/sidebar-skins.css" rel="stylesheet" />
+	<link href="./resources/css/app/sidebar.css?ver=2" rel="stylesheet" />
+
+	<link href="./resources/css/app/essentials.css?ver=3" rel="stylesheet" />
+	<link href="./resources/css/app/layout.css" rel="stylesheet" />
 	<link href="./resources/css/app/navbar.css" rel="stylesheet" />
 	<link href="./resources/css/app/media.css" rel="stylesheet" />
 	<link href="./resources/css/app/maps.css" rel="stylesheet" />
 	<link href="./resources/css/app/colors-buttons.css" rel="stylesheet" />
 	<link href="./resources/css/app/colors-text.css" rel="stylesheet" />
-	<link href="./resources/css/app/hml_radio.css" rel="stylesheet" />
+	<link href="./resources/css/app/hml_radio.css?ver=2" rel="stylesheet" />
 
 </head>
 
 
 
 <body>
+
+
 <!--  팝업1-->
 <a href="#" id="show" class="button left"></a>
 
@@ -230,6 +246,7 @@ This variant is to be used when loading the separate styling modules -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
+       <!-- 모바일 부분 -->
           <a href="#sidebar-menu" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
             <span class="sr-only">Toggle navigation</span>
@@ -241,7 +258,8 @@ This variant is to be used when loading the separate styling modules -->
           <a href="#sidebar-map1" data-toggle="sidebar-menu" class="toggle pull-right visible-xs"><i class="fa fa-map-marker"></i></a>
 
           <a class="navbar-brand"
-          style="width: 400px; position: absolute; left: 50%; margin-left: -200px; border: 0; outline: 0;">
+          style="width: 400px; position: absolute; left: 50%; margin-left: -200px; border: 0; outline: 0;
+          		-ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none;">
 				エッ！スマップ？ S(SMART)・MAP</a>
         </div>
 		
@@ -254,25 +272,35 @@ This variant is to be used when loading the separate styling modules -->
           <ul class="nav navbar-nav navbar-right ">
             <!-- 코드불러오기 -->
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="결과 저장시 이메일로 부여받았던 코드를 입력해주세요">
-                <i class="fa fa-fw fa-lock"></i> 코드불러오기
+              <a href="#" class="dropdown-toggle tip" data-toggle="dropdown" data-tip="이전에 저장해두었던 결과를 다시 볼수 있습니다">
+              <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" tooltip tooltip-direction="right" tooltip-content="이전에 저장해두었던 결과를 다시 볼수 있습니다"> -->
+                <i class="fa fa-fw fa-lock"></i>코드불러오기
               </a>
-              <div class="dropdown-menu dropdown-size-280">
-                <form>
-                  <div class="form-group">
-                    <div class="input-group">
-                    	결과 저장시 이메일로 부여받았던 코드를 입력해주세요
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon"><i class="fa fa-shield"></i></span>
-                      <input type="password" class="form-control" placeholder="code">
-                    </div>
-                  </div>
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary">코드불러오기 <i class="fa fa-sign-in"></i></button>
-                  </div>
+			<div class="dropdown-menu dropdown-size-280">
+				<form>
+					<div class="form-group">
+						<div class="input-group" style="text-align: center;">
+	                    	<i class="fa fa-floppy-o fa-x" aria-hidden="true"></i>&nbsp&nbsp결과 저장시 입력했던 email과<br>
+	                    	email로 부여받았던 코드를 입력해주세요
+						</div>
+					</div>
+                  
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+							<input type="email" class="form-control" placeholder="email주소를 입력해 주세요">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-key"></i></span>
+							<input type="password" class="form-control" placeholder="code를 입력해 주세요">
+						</div>
+					</div>
+                
+					<div class="text-center">
+						<button type="submit" class="btn btn-primary">코드불러오기 <i class="fa fa-sign-in"></i></button>
+					</div>
                 </form>
               </div>
             </li>
@@ -331,6 +359,7 @@ This variant is to be used when loading the separate styling modules -->
     </nav>
 
 
+
 <!-- 왼쪽 사이드바 시작 -->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
 	<aside class="sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-dark sidebar-visible-desktop" id=sidebar-menu data-type=collapse>
@@ -344,8 +373,10 @@ This variant is to be used when loading the separate styling modules -->
 		<li class="hasSubmenu open active">
 			<a><i class="fa fa-home"></i><span>1차 선택</span></a>
 				<ul class="in">
-					<h4 class="category">기준지역선택</h4>
-	            	<li>
+					<h4 class="category">기준지역선택
+					<i class="fa fa-question-circle tip" aria-hidden="true" data-tip="현재 거주하고 있는 지역이나, 기준이 되는 지역을 선택합니다(서울,경기,인천 한정)<br>기준지역 미 선택시 전체 평균으로 선택됨"></i>
+					</h4>
+					<li>
 						<div class="cd-select" style="margin: 14px">
 							<select class="select1" name="selectThis1" id="mp_addcd_sido" onchange="searchThis(this)">
 								<option value="">시/도</option>
@@ -375,7 +406,7 @@ This variant is to be used when loading the separate styling modules -->
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_sports" name="ck" onclick="checkboxSelect('ck',6)">
 					<!-- 수정필요 -->
-					<label for="welfare_sports"><span>체육시설</span></label>
+					<label for="welfare_sports" data-toggle="tooltip" data-title="Agency"><span>체육시설</span></label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_sports">
 					<input type="radio" id="rd_welfare_sports1" name="rd_welfare_sports" value="<%=SelectConditions.high %>" >
@@ -813,10 +844,12 @@ This variant is to be used when loading the separate styling modules -->
 	</aside>
 <!-- 왼쪽 사이드바 끝 -->
 
+
+
 <!-- 오른쪽 사이드바 시작-->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
-    <aside class="sidebar right sidebar-size-xs-2 sidebar-size-lg-30pc sidebar-size-25pc sidebar-offset-0 sidebar-skin-white" 
-    	id="sidebar-map" data-toggle-layout=sidebar-r-30pc-lg,sidebar-r-25pc data-toggle-bar=true data-overlay=false>
+    <aside class="sidebar right sidebar-size-xs-2 sidebar-size-lg-35pc sidebar-size-30pc sidebar-offset-0 sidebar-skin-white" 
+    	id="sidebar-map" data-toggle-layout=sidebar-r-30pc-lg,sidebar-r-25pc data-toggle-bar=false data-overlay=false>
       <div id = "test123">
       	<!-- test123.js 삽입 -->
       </div>
@@ -935,9 +968,20 @@ This variant is to be used when loading the separate styling modules -->
 
 
 <!-- Vendor Scripts Standalone Libraries-->  
+	
+	<script src="./resources/js/all.js"></script>
 
-	<!-- <script src="./resources/js/vendor/core/all.js"></script> -->
+	<script src="./resources/js/app/all.js"></script>
+	<script src="./resources/js/app/app.js"></script>
+	<script src="./resources/js/app/essentials.js"></script>
+	
+	<script src="./resources/js/vender/core/all.js"></script>
 	<script src="./resources/js/vendor/core/bootstrap.js"></script>
+	
+	<script src="./resources/js/vendor/forms/all.js"></script>
+	<script src="./resources/js/vendor/forms/bootstrap-datepicker.js"></script>
+	<script src="./resources/js/vendor/forms/bootstrap-slider.js"></script>
+	
 	<script src="./resources/js/vendor/core/breakpoints.js"></script>
 	<script src="./resources/js/vendor/core/jquery.nicescroll.js"></script>
 	<!-- <script src="./resources/js/vendor/core/isotope.pkgd.js"></script> -->
@@ -963,5 +1007,6 @@ This variant is to be used when loading the separate styling modules -->
 	<input type="hidden" id="places">
 	<input type="hidden" id="title">
 	<input type = "hidden" id = "dongitem">
+	<input type = "hidden" id = "transport">
 </body>
 </html>

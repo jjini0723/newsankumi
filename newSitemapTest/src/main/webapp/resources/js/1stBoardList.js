@@ -1,6 +1,7 @@
 function boardList() {
+	//window.scroll(0,0);
 	$(document).ready(function() {
-		console.log("여기까지1");
+		console.log("boardlist1");
 		$.ajax({
 			type : "get",
 			success : function(data) {
@@ -11,7 +12,7 @@ function boardList() {
 				html += '<div class="sidebar-block padding-none" style="color:black;" data-height="400"></div>';
 				html += '<h4 class="category cd-filter-block">지역추가</h4>';
 				html += '<div class="sidebar-block padding-none cd-filter-content cd-select cd-filters">';
-				html += '<select class="filter3" name="selectThis3" id="selectThis3" style = "margin-left:80px;" onchange="addAddress(this)">';
+				html += '<select class="filter3" name="selectThis3" id="selectThis3" style = "margin-left:30px;" onchange="addAddress(this)">';
 				html += '<option value="">시/도</option>';
 				html += '<option value="서울특별시">서울특별시</option>';
 				html += '<option value="인천광역시">인천광역시</option>';
@@ -31,7 +32,8 @@ function boardList() {
 				html += '<h4 class="category">지역종합현황</h4>';
 				html += '<div class="sidebar-block padding-none" >';
 				html += '<div data-toggle="gridalicious" data-height="200px">';
-				html += '<canvas id = "myChart" width = "100px" height = "100px" style="z-index:15; height:200px;"></canvas>';
+				html += '<div id="container" style="min-width: 300px; max-width: 300px; height: 300px; margin: 0 auto"></div>'
+				html += '<canvas id = "myChart" width = "100px" height = "100px" style="z-index:15;"></canvas>';
 				html += '</div>';
 				html += '<div class="sidebar-block equal-padding">';
 				html += '<ul class="pagination margin-none">';
