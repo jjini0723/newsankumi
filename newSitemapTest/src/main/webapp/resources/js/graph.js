@@ -24,9 +24,6 @@ function createChart1(index){
 			valueList.push(value);
 		}
 	});
-	console.log(rawKeyList);
-	console.log(valueList);
-	
 for (var i = 0; i < rawKeyList.length; i++) {
 	
 	if (rawKeyList.length != 0) {
