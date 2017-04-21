@@ -2,27 +2,31 @@
  * 
  */
 
+carFlag = true;
+walkFlag = true;
+tradiFlag = true;
+
 function dfa(carArray, walkArray, tradiArray){
-   /*var car1 = {
-         y : '37.4833729',
-         x : '126.9797921'
-   };
-   var walk1 = {
-         y : '37.4993211',
-         x : '127.0527393'
-   };
-   var tradi1 = {
-         y : '37.5118467',
-         x : '127.0863366'
-   };
-   var car = new Array();
-   var walk = new Array();
-   var tradi = new Array();
-   car.push(car1);
-   walk.push(walk1);
-   tradi.push(tradi1);*/
-////////////////////////////////수동으로 자동차1,도보1,대중교통1 선택 가정해서 좌표 객체화 해서 배열에 집어넣음
+   //선택된 애들 false로 변경
    
+   var carNum = carArray.length * perfect.length;
+   var walkNum = walkArray.length * perfect.length;
+   var tradiNum = tradiArray.length * perfect.length;
+   console.log(carNum);
+   console.log(walkNum);
+   console.log(tradiNum);
+   if(carArray.length!=0){
+      carFlag = false;
+   };
+   if(walkArray.length!=0){
+      walkFlag = false;
+   };
+   if(tradiArray.length!=0){
+      tradiFlag = false;
+   };
+   console.log(carFlag);
+   console.log(walkFlag);
+   console.log(tradiFlag);
    alert('호잇');
    console.log(carArray);
    console.log(walkArray);
@@ -32,13 +36,14 @@ function dfa(carArray, walkArray, tradiArray){
    if(carArray.length!=0){//자동차가 선택되지 않으면 배열 길이가 0이라 이 ajax는 작동하지않음
       var avg = 0;
       var count =0;
+      var flag1 = 0;
       $.each(carArray,function(index,item){ //자동차가 선택 된 회수만큼 작동 희망목적지가 3곳 다 자동차면 3번 돈다
          $.each(perfect,function(index,item1){ // 선택되어있는 아파트만큼 돈다
             $.ajax({
                type : "POST",   
-                async: false,
-                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=2bb28cd1-f268-3af6-8329-e6b49122331b",
-                success : function(data){
+                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=360a72a6-2781-35ea-b877-98cd58c69b91",
+                success : function(data){//succes 안에서 길이만큼 반복 후 2번 돌아야 할시 2번돌고 true로 변경
+                   console.log(data);
                    yebi = data.features[0].properties.totalTime//시간만 빼온다
                    if(item1.car1==''){//소요 시간을 1번부터 돌면서 빈곳에 집어넣음, 만약 자동차로 3개가 골라졌으면 1,2,3번 다 찬다
                       item1.car1=yebi;
@@ -91,26 +96,33 @@ function dfa(carArray, walkArray, tradiArray){
                          })
                       }
                    }
+                   flag1++;
+                   console.log(flag1);
+                   if(flag1==carNum){
+                      carFlag=true;
+                      console.log(carFlag);
+                   }
                 },
                 error : function(e){
                    
                 }
             })
          })
-      })
+
+      })      
    }
    if(walkArray.length!=0){//도보가 선택되지 않았으면 작동 안함
       var avg1 = 0;
       var count1 =0;
+      var flag2 = 0;
       $.each(walkArray,function(index,item){//도보로 설정 된 만큼 돈다
          $.each(perfect,function(index,item1){//아파트 개수만큼 돈다 ex)도보로 2개 설정 된상태에서 아파트가 200개 면 url400번 날린다
             $.ajax({
                type : "POST",      
-                async: false,
-                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=2bb28cd1-f268-3af6-8329-e6b49122331b",
+                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=360a72a6-2781-35ea-b877-98cd58c69b91",
                 success : function(data){
                    yebi = data.features[0].properties.totalTime//총 시간만 출력
-                   console.log(data)
+                   console.log(data);
                    if(item1.walk1==''){//빈곳 찾아 가기
                       item1.walk1=yebi;
                       avg1=avg1+yebi;
@@ -162,6 +174,12 @@ function dfa(carArray, walkArray, tradiArray){
                          })
                       }
                    }
+                   flag2++;
+                   console.log(flag2);
+                   if(flag2==walkNum){
+                      walkFlag=true;
+                      console.log(walkFlag);
+                   }
                 },
                 error : function(e){
                    
@@ -173,16 +191,17 @@ function dfa(carArray, walkArray, tradiArray){
    if(tradiArray.length!=0){//대중교통이 선택되지 않았으면 작동 안함
       var avg2 = 0;
       var count2 =0;
+      var flag3 = 0;
       $.each(tradiArray,function(index,item){//대중교통이 선택 된 횟수 만큼
          $.each(perfect,function(index,item1){//아파트 개수 만큼
             jQuery.ajaxSettings.traditional = true;
             $.ajax({
                type:"post",
-               async: false,
                contentType : "application/json;charset=utf-8",
                dataType : "json",
-               url:"https://maps.googleapis.com/maps/api/directions/json?origin="+item1.y+","+item1.x+"&destination="+item.x+","+item.y+"&mode=transit&key=AIzaSyCY7dyy4vD8x7q9Is03binfIE9TgEoVA5w",
+               url:"https://maps.googleapis.com/maps/api/directions/json?origin="+item1.y+","+item1.x+"&destination="+item.x+","+item.y+"&mode=transit&key=AIzaSyBKWZBV932x9UcDs4ey8TVQ-oV8fiXxPpI",
                success:function(data){
+                  console.log(data);
                   yebi = data.routes[0].legs[0].duration.value;//소요시간만 뺀다
                   if(item1.tradi1==''){// 자리에 찾아 들어간다
                      item1.tradi1=yebi;
@@ -235,6 +254,12 @@ function dfa(carArray, walkArray, tradiArray){
                         })
                      }
                   }
+                 flag3++;
+                 console.log(flag3);
+                 if(flag3==tradiNum){
+                    tradiFlag=true;
+                    console.log(tradiFlag);
+                 }
                },
                error:function(e){
                   console.log(e)
@@ -243,14 +268,29 @@ function dfa(carArray, walkArray, tradiArray){
          })
       })
    }
+   var setInt = setInterval(function() {
+      console.log('여러번찍혀야해');
+      if(carFlag == true&& walkFlag == true&&tradiFlag==true){
+      console.log('한번만찍혀야해');
+      sendArray();
+      drawlist();
+      clearInterval(setInt);
+      }
+   }, 1000);
    
-   $.each(perfect,function(index,item){
-         item.totalpoint = parseFloat(item.car1point)+parseFloat(item.car2point)+parseFloat(item.car3point)+parseFloat(item.walk1point)+parseFloat(item.walk2point)+parseFloat(item.walk3point)+parseFloat(item.tradi1point)+parseFloat(item.tradi2point)+parseFloat(item.tradi3point);
+   //다 돌고 모두 true가 되었을때 setinterval인터벌 플래그 확인 하다가 다 트루가 되면 다음 실행
+
+    
+}
+function sendArray(){
+   var newperfect = new Array();
+   $.each(perfect, function(key, value){ 
+        if($.inArray(value, newperfect) === -1) newperfect.push(value); });
+   $.each(newperfect,function(index,item){
+      item.totalpoint = parseFloat(item.car1point)+parseFloat(item.car2point)+parseFloat(item.car3point)+parseFloat(item.walk1point)+parseFloat(item.walk2point)+parseFloat(item.walk3point)+parseFloat(item.tradi1point)+parseFloat(item.tradi2point)+parseFloat(item.tradi3point);
 
    })
-   var perfect2 = new Array();
-   var perfect3 = new Array();
-   var save=0;
+   console.log("sendArray"+newperfect);
 
 //   $.each(perfect,function(index,item){
 //      perfect2.push(item.totalpoint);
@@ -281,37 +321,54 @@ function dfa(carArray, walkArray, tradiArray){
       $.each(perfect,function(index,item){
          item.changepoint = ((parseFloat(item.totalpoint))*percent).toFixed(2);
       })
+   } 
+//   console.log(perfect);
+//   console.log("drawlist");
+//   var html = "";
+//   var rank = 0;
+//   html += '<ul class = "category" data-width="400" id = "list2"><table><tr><td>아파트 명</td><td>평점</td></tr>';
+//   console.log(perfect[0]);
+//      for (var i = 0; i < perfect.length; i++) {
+//         html += '<tr><td><a href = "#" id = "" value = "" onclick = "getTradeInfo('+perfect[i].x+');">'+perfect[i].kaptName+'</a></td><td>'+perfect[i].changepoint+'</td></tr>' ;
+//      };                                       
+//   html += '</table></ul>';
+//   $('#lll').html(html);
+//
    }
 
-   
-//   for(var i=perfect2.length;i=0;i--){
-//      for(var j=0;j<perfect.length;j++){
-//         if(perfect2[i]==perfect[j].totalpoint){
-//            perfect3.push(perfect[j]);
-//         }
-//      }
-//   }
-   
-   
-   
-}
 
 
 function drawlist() {
    console.log(perfect);
    console.log("drawlist");
+   var newperfect = new Array();
+//   $.each(perfect, function(key, value){ 
+//       if($.inArray(value, newperfect) === -1) newperfect.push(value); });
+//   
+//   for(var i=0;i<perfect.length;i++){
+//      for(var j=0;j<perfect.length;j++){
+//         if(perfect[i].kaptAddr==perfect[j].kaptAddr){
+//            perfect.splice(j,1);
+//         }
+//      }
+//   }
+   
    var html = "";
    var rank = 0;
    html += '<ul class = "category" data-width="400" id = "list2"><table><tr><td>아파트 명</td><td>평점</td></tr>';
-   console.log(perfect[0]);
+   console.log(perfect);
       for (var i = 0; i < perfect.length; i++) {
-         html += '<tr><td><a href = "#" id = "" value = "" onclick = "getTradeInfo('+perfect[i].x+');">'+perfect[i].kaptName+'</a></td><td>'+perfect[i].changepoint+'</td></tr>' ;
+         html += '<tr><td><a href = "#" id = "" value = "" onclick = "getTradeInfo('+perfect[i].x+'),focuson('+perfect[i].x+','+perfect[i].y+');">'+perfect[i].kaptName+'</a></td><td>'+perfect[i].changepoint+'</td></tr>' ;
       };                                       
    html += '</table></ul>';
    $('#lll').html(html);
    
-   createData2();
    
    
 }
-
+function focuson(x,y){
+   var moveLatLon = new daum.maps.LatLng(y, x);
+    
+    // 지도 중심을 이동 시킵니다
+    map.setCenter(moveLatLon);
+}

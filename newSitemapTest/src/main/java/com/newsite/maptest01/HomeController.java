@@ -3,7 +3,6 @@ package com.newsite.maptest01;
 import java.io.BufferedInputStream;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,10 +16,10 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import com.newsite.maptest01.DAO.mapDao;
+import com.newsite.maptest01.vo.GuGwanhal;
 import com.newsite.maptest01.vo.aptInfo;
 import com.newsite.maptest01.vo.aptName;
 import com.newsite.maptest01.vo.aptsale;
-import com.newsite.maptest01.vo.kaptCode;
 /**
  * Handles requests for the application home page.
  */
@@ -83,7 +82,7 @@ public class HomeController {
 		
 		try {
 			String juso = GET_URL+"?"+loadCode+"&ServiceKey="+GET_KEY;
-			System.out.println(juso);
+			//System.out.println(juso);
 			URL url = new URL(juso);
 			XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 	    	factory.setNamespaceAware(true);
@@ -126,277 +125,27 @@ public class HomeController {
 	}
 	@ResponseBody
 	@RequestMapping(value = "getDoroCD", method = RequestMethod.POST)
-	//public ArrayList<aptInfo> getDoroCD(String emdName){
-	public ArrayList<aptInfo> getDoroCD(@RequestBody String emdName) {
-//		ArrayList<String> result = new ArrayList<>();
-//		ArrayList<String> aptNameList = new ArrayList<>();
-//		ArrayList<String> newList = new ArrayList<>();
-//		ArrayList<String> emdList = new ArrayList<>();
-//		bjdName name = new bjdName();
-//		emdList = dao.emdList();
-//		double counter = 0;
-//		double counterMax=10000;
-//		double percent2=0;
-//		double percent = 138;
-//		for(int z=1100;z<1238;z++){
-//			emdName = emdList.get(z);
-//		System.out.println("콘"+emdName);
-//		name.setBjdName1(emdName);
-//		System.out.println("콘2"+name);
-//		try {
-//			result = dao.getDoroCD(name);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		
-//		System.out.println(result.size());
-//		System.out.println("도로코드"+result);
-//		aptName aN = new aptName();
-//		System.out.println(result);
-//		ArrayList<String> aptCode = new ArrayList<>();
-//		kaptCode kaptcode1 = new kaptCode();
-//		int count = 0;
-//		String kaptCode = "";
-		
-//		for(int i = 0; i<result.size();i++){
-//			try {
-//				String juso = GET_URL+"?loadCode="+result.get(i)+"&ServiceKey="+GET_KEY4;
-//				URL url = new URL(juso);
-//				XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-//				factory.setNamespaceAware(true);
-//				XmlPullParser xpp = factory.newPullParser();
-//				BufferedInputStream bis = new BufferedInputStream(url.openStream());
-//				xpp.setInput(bis,"utf-8");
-//				System.out.println(++count+"juso"+juso);
-//				System.out.println(aptCode);
-//				System.out.println(aptCode.size());
-//				++counter;
-//				
-//				String tag = null;
-//				int event_type = xpp.getEventType();
-//				
-//				String kaptCo = null;
-//				while(event_type != XmlPullParser.END_DOCUMENT){
-//					if(event_type == XmlPullParser.START_TAG){
-//						tag=xpp.getName();
-//					}else if(event_type == XmlPullParser.TEXT){
-//						if(tag.equals("kaptCode")){
-//							kaptCo = xpp.getText();
-//						}
-//						}else if(event_type == XmlPullParser.END_TAG){
-//							tag = xpp.getName();
-//							if(tag.equals("item")){
-//								aptCode.add(kaptCo);
-//							}
-//					}
-//					event_type = xpp.next();
-//				}
-//				
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}		
-//		}
-//		for(int j =0; j<aptCode.size();j++){
-//			if(j==aptCode.size()-1){
-//				kaptCode += aptCode.get(j);
-//			}else{
-//			kaptCode += aptCode.get(j)+",";
-//			}
-//		}
-//		kaptcode1.setEmd_nm(emdName);
-//		kaptcode1.setKaptcode(kaptCode);
-//		dao.kaptcode(kaptcode1);
-		
-		
-		
-		
-//		System.out.println(aptCode);System.out.println(aptCode.size());
-//		System.out.println("현재 진행도"+(++percent2)/percent*100+"%");
-//		System.out.println("누적 신호 발송 수 : "+counter+"회  /  사용율 :"+counter/counterMax*100+"%");
-//		}
-//		System.out.println("끝");
-//		
-//	
-		System.out.println(emdName+"찍히니?");
-		ArrayList<kaptCode> kaptcodeList = new ArrayList<>();
-		ArrayList<String> kaptcodeList2 = new ArrayList<>();
-		HashMap<ArrayList<String>, ArrayList<String>> resultAddrList = new HashMap<>();
-		ArrayList<String> emdNameList = new ArrayList<>();
-		ArrayList<String> emdNameList2 = new ArrayList<>();
-		
-		String[] gwanhalArray = emdName.split(",");
-		
-		//String[] emdNameArray = emdName.split(",");
-		// 영석이 코드
-		
-		/*kaptcodeList = dao.loadKaptCode(emdName);
-		String strcode = kaptcodeList.get(0).getKaptcode();
-		for(String a : strcode.split(",")){
-			kaptcodeList2.add(a);
-		}*/
-		
-		// 수정사항
-		
-		/*
-		for(int i = 0; i < emdNameArray.length; i++) {
-			kaptcodeList = dao.loadKaptCode(emdNameArray[i]);
-			String strCode = kaptcodeList.get(0).getKaptcode();
-			for(String a : strCode.split(",")) {
-				kaptcodeList2.add(a);
-			}
-		}
-		*/
-		
-		for(int i = 0; i < gwanhalArray.length; i++) {
-			emdNameList = dao.getEmdList(gwanhalArray[i]);
-			//System.out.println("emdNameList : "+emdNameList);
-			for(int j = 0; j < emdNameList.size(); j++) {
-				emdNameList2.add(emdNameList.get(j));
-			}
-		}
-		for(int i = 0; i < emdNameList2.size(); i++) {
-			//System.out.println("emdNameList2 : "+emdNameList2);
-			kaptcodeList = dao.loadKaptCode(emdNameList2.get(i));
-			//System.out.println(kaptcodeList.toString());
-			String strCode = null;
+	public ArrayList<aptInfo> getDoroCD(String sigunguName, String ghName) {
+		System.out.println("sigunguName : "+sigunguName);
+		System.out.println("ghName : "+ghName);
+		ArrayList<aptInfo> aptInfoList = new ArrayList<>();
+		ArrayList<aptInfo> aptInfoList2 = new ArrayList<>();
+		String[] guArray = sigunguName.split(",");
+		String[] ghNameArray = ghName.split(",");
+		for(int i = 0; i < guArray.length; i++) {
+			GuGwanhal gugh = new GuGwanhal(guArray[i], ghNameArray[i]);
 			try {
-				strCode = kaptcodeList.get(0).getKaptcode();
-			} catch(NullPointerException e) {
-				continue;
-			}
-			//System.out.println(strCode);
-			for(String a : strCode.split(",")) {
-				kaptcodeList2.add(a);
-			}
-		}
-		
-		System.out.println(kaptcodeList2);
-		
-		ArrayList<aptInfo> aptAddr = new ArrayList<>();
-		ArrayList<aptInfo> newAddrList = new ArrayList<>();
-		
-		String tag = null;
-		
-		for(int i = 0; i<kaptcodeList2.size();i++){
-			try {
-				String juso = GET_URL2+kaptcodeList2.get(i)+"&ServiceKey="+GET_KEY3;
-				URL url = new URL(juso);
-				XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-				factory.setNamespaceAware(true);
-				XmlPullParser xpp = factory.newPullParser();
-				BufferedInputStream bis = new BufferedInputStream(url.openStream());
-				xpp.setInput(bis,"utf-8");
-				System.out.println("juso"+juso);
-				System.out.println(aptAddr);
-				System.out.println(aptAddr.size());
-				String kaptAddr = null;
-				String doroJuso= null;
-				String codeHallNm= null;
-				String kaptName= null;
-				String kaptMparea_135= null;
-				String kaptMparea_60= null;
-				String kaptMparea_85= null;
-				String kaptUsedate= null;
-				String codeHeatNm = null;
-				String kaptDongCnt = null;
-				String kaptdaCnt = null;
-				String kaptBcompany = null;
-				String kaptTel = null;
-				
-				int event_type = xpp.getEventType();
-				String kaptCode = null;
-				while(event_type != XmlPullParser.END_DOCUMENT){
-					if(event_type == XmlPullParser.START_TAG){
-						tag=xpp.getName();
-						
-					}else if(event_type == XmlPullParser.TEXT){
-						if(tag.equals("kaptAddr")){
-							kaptAddr = xpp.getText();
-						}
-						if(tag.equals("doroJuso")){
-							doroJuso = xpp.getText();
-						}
-						if(tag.equals("codeHallNm")){
-							codeHallNm = xpp.getText();
-						}
-						if(tag.equals("kaptName")){
-							kaptName = xpp.getText();
-						}
-						if(tag.equals("kaptMparea_135")){
-							kaptMparea_135 = xpp.getText();
-						}
-						if(tag.equals("kaptMparea_60")){
-							kaptMparea_60 = xpp.getText();
-						}
-						if(tag.equals("kaptMparea_85")){
-							kaptMparea_85 = xpp.getText();
-						}
-						if(tag.equals("kaptUsedate")){
-							kaptUsedate = xpp.getText();
-						}
-						if(tag.equals("codeHeatNm")){
-							codeHeatNm = xpp.getText();
-						}
-						if(tag.equals("kaptDongCnt")){
-							kaptDongCnt = xpp.getText();
-						}
-						if(tag.equals("kaptdaCnt")){
-							kaptdaCnt = xpp.getText();
-						}
-						if(tag.equals("kaptBcompany")){
-							kaptBcompany = xpp.getText();
-						}
-						if(tag.equals("kaptTel")){
-							kaptTel = xpp.getText();
-						}
-						}else if(event_type == XmlPullParser.END_TAG){
-							tag = xpp.getName();
-							if(tag.equals("item")){
-								aptInfo aptinfo = new aptInfo(kaptAddr, doroJuso, codeHallNm, kaptName, kaptMparea_135, kaptMparea_60, kaptMparea_85, kaptUsedate, codeHeatNm, kaptDongCnt, kaptdaCnt, kaptBcompany, kaptTel);
-								aptAddr.add(aptinfo);
-							}
-					}
-					event_type = xpp.next();
+				aptInfoList = dao.getAptInfoList(gugh);
+				for(int j = 0; j < aptInfoList.size(); j++) {
+					aptInfoList2.add(aptInfoList.get(j));
 				}
-			} catch (Exception e) {
+				System.out.println(gugh);
+			} catch(Exception e) {
 				e.printStackTrace();
-			}		
-		}System.out.println(aptAddr);System.out.println(aptAddr.size()); 
-		
-		
-		
-		// 영석이 코드
-		/*for(int i =0;i<aptAddr.size();i++){
-			if(aptAddr.get(i).getKaptAddr().contains(emdName)){
-				newAddrList.add(aptAddr.get(i));
 			}
-		}System.out.println(newAddrList);System.out.println(newAddrList.size());*/
-		
-		// 수정사항
-		for(int i = 0; i < aptAddr.size(); i++) {
-			for(int j = 0; j < emdNameList2.size(); j++) {
-				if(aptAddr.get(i).getKaptAddr().contains(emdNameList2.get(j))) {
-					newAddrList.add(aptAddr.get(i));
-				}
-			}
-		}System.out.println(newAddrList);System.out.println(newAddrList.size());
-		
-		
-		
-//		for(int q = 0; q<aptAddr.size();q++){
-//			if(!newAddrList.contains(aptAddr.get(q))){
-//				newAddrList.add(aptAddr.get(q));
-//			}
-//		}
-//		System.out.println(newAddrList);
-//		System.out.println(newAddrList.size());
-//		
-		
-		
-		
-		
-//		
-		return newAddrList;
+		}
+		System.out.println("aptInfoList : "+aptInfoList);
+		return aptInfoList2;
 	}
 	@ResponseBody
 	@RequestMapping(value= "getTradeInfo", method = RequestMethod.POST)
@@ -409,52 +158,104 @@ public class HomeController {
 		System.out.println(result);
 		return result;
 	}
-	
+	/*
 	@ResponseBody
 	@RequestMapping(value="getBoundary", method = RequestMethod.POST)
-	public ArrayList<String> getBoundary(String gu, String dong) {
+	public Object[] getBoundary(String gu, String dong) {
+		//return 해줄 데이터 배열
+		// index : 0 - 테두리 좌표 리스트(ArrayList<String>)
+		// index : 1 - 읍면동 리스트(String)
 		ArrayList<String> emdList = new ArrayList<>();
+		ArrayList<String> emdList2 = new ArrayList<>();
 		ArrayList<String> boundaryList = new ArrayList<>();
-		//String [] gwanhalArray = dong.split(",");
-		for(int i = 0; i < dong.length(); i++) {
-			String check = dong.charAt(i)+"";
-			System.out.println("한글자씩 : "+check);
-			if(isNumber(check)) {
-				String check2 = dong.charAt(i-1)+"";
-				String check4 = dong.charAt(i+1)+"";
-				System.out.println("숫자일 경우 앞 글자 : "+check2);
-				if(check2.equals("제")) {
-					String check3 = dong.charAt(i-2)+"";
-					System.out.println("숫자 앞에 제 일 경우 그 앞글자 : "+check3);
-					if(check3.equals("제")) {
-						emdList.add(dong.substring(0, i-1)+"동");
-						System.out.println("숫자 앞에 두글자가 제 일 경우 동이름 : "+emdList);
-					} else {
-						emdList.add(dong.substring(0, i-2)+"동");
-						System.out.println("숫자 앞에 한글자가 제 일 경우 동이름 : "+emdList);
-					}
-				} else {
-					if(check4.equals(",") || check4.equals(".")) {
-						emdList.add(dong.substring(0, i)+"");
-						System.out.println("숫자 뒤에 ,나 . 있을 경우 동이름 : "+emdList);
-						break;
-					} else {
-						emdList.add(dong.substring(0, i)+"동");
-						System.out.println("숫자 뒤에 ,나 . 없을 경우 동이름 : "+emdList);
-						break;
-					}
+		ArrayList<DongGu> dongguList = new ArrayList<>();
+		
+		String[] guArray = gu.split(",");
+		String[] dongArray = dong.split(",");
+		String dong2 = "";
+		String gu2 = "";
+		for(int i = 0; i < dongArray.length; i++) {
+			dongguList = dao.getBoundary(guArray[i], dongArray[i]);
+			for(int j = 0; j < dongguList.size(); j++) {
+				
+				boundaryList.add(dongguList.get(j).getBjd_cd());
+				if(j == dongguList.size()-1 && i == dongArray.length-1) {
+					dong2 += dongguList.get(j).getEmd_nm();
+					gu2 += guArray[i];
+				}else {
+					dong2 += dongguList.get(j).getEmd_nm()+",";
+					gu2 += guArray[i]+",";
 				}
 			}
 		}
-		emdList.add(dong);
-		System.out.println("숫자 없을 경우 동이름 : "+emdList);
-		for(int i = 0; i < emdList.size(); i++) {
-			boundaryList.add(dao.getBoundary(gu, emdList.get(i)));
-		}
+		Object[] result = {boundaryList, gu2, dong2};
+		System.out.println("result : "+ result);
+		System.out.println("boundaryList : "+boundaryList);
+		System.out.println("dong2 : "+dong2);
+		System.out.println("gu2 : "+gu2);
+		return result;
 		
-		return boundaryList;
+		
+		for(int i = 0; i < dongArray.length; i++) {
+			String dong2 = null;
+			for(int j = 0; j < dongArray[i].length(); j++) {
+				String check = dongArray[i].charAt(j)+"";
+				System.out.println("한글자씩 : "+check);
+				if(isNumber(check)) {
+					String check2 = dongArray[i].charAt(j-1)+"";
+					String check4 = dongArray[i].charAt(j+1)+"";
+					System.out.println("숫자일 경우 앞 글자 : "+check2);
+					if(check2.equals("제")) {
+						String check3 = dongArray[i].charAt(j-2)+"";
+						System.out.println("숫자 앞에 제 일 경우 그 앞글자 : "+check3);
+						if(check3.equals("제")) {
+							dong2 = dongArray[i].substring(0, j-1)+"동";
+							emdList.add(dong2);
+							System.out.println("숫자 앞에 두글자가 제 일 경우 동이름 : "+emdList);
+						} else {
+							dong2 = dongArray[i].substring(0, j-2)+"동";
+							emdList.add(dong2);
+							System.out.println("숫자 앞에 한글자가 제 일 경우 동이름 : "+emdList);
+						}
+					} else {
+						if(check4.equals(",") || check4.equals(".")) {
+							dong2 = dongArray[i].substring(0, j+1)+"";
+							emdList.add(dong2);
+							System.out.println("숫자 뒤에 ,나 . 있을 경우 동이름 : "+emdList);
+							break;
+						} else if(check4.equals("가")) {
+							dong2 = dongArray[i].substring(0, j+1)+"";
+							emdList.add(dong2);
+							System.out.println("숫자 뒤에 ,나 . 있을 경우 동이름 : "+emdList);
+							break;
+						} else {
+							dong2 = dongArray[i].substring(0, j)+"동";
+							emdList.add(dong2);
+							System.out.println("숫자 뒤에 ,나 . 없을 경우 동이름 : "+emdList);
+							break;
+						}
+					}
+				}
+			}
+			if(!dongArray[i].contains(".")) {
+				emdList.add(dongArray[i]);
+				System.out.println("숫자 없을 경우 동이름 : "+emdList);
+			}
+		}
+		System.out.println("emdList : "+emdList);
+		for(int k = 0; k < emdList.size(); k++) {
+			
+			DongGu donggu = dao.getBoundary(guArray[k], emdList.get(k));
+			boundaryList.add(donggu.getBjd_cd());
+			emdList2.add(donggu.getEmd_nm());
+		}
+		System.out.println(boundaryList);
+		Object[] result = {emdList2, boundaryList};
+		return result;
+		
+		
 	}
-	
+	*/
 	public static boolean isNumber(String check){
         boolean result = false;
         try{

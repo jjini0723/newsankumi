@@ -52,3 +52,8 @@ select
 			
 			
 			update mp_data2 set citycode=41190102 where citycode=41195102;
+			
+			
+select distinct(bjd_cd), sigungu_nm, emd_nm, gwanhal from mp_loc_info where emd_nm in (select distinct(emd_nm) from mp_loc_info where gwanhal in(select distinct(gwanhal) from mp_loc_info));
+
+

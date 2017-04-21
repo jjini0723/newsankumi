@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import com.newsite.maptest01.vo.aptsale;
+
+import com.newsite.maptest01.vo.GuGwanhal;
+import com.newsite.maptest01.vo.aptInfo;
 import com.newsite.maptest01.vo.aptcode;
+import com.newsite.maptest01.vo.aptsale;
 import com.newsite.maptest01.vo.bjdName;
 import com.newsite.maptest01.vo.kaptCode;
 @Repository
@@ -23,9 +26,9 @@ public class mapDao {
 		return result;
 		
 	}
-	public void kaptcode(kaptCode kaptcode){
+	public void kaptcode(aptInfo aptInfo){
 		mapMapper mapper = sqlsession.getMapper(mapMapper.class);
-		mapper.kaptcode(kaptcode);
+		mapper.kaptcode(aptInfo);
 	}
 	
 	public ArrayList<String> emdList(){
@@ -64,10 +67,12 @@ public class mapDao {
 		return result;
 	}
 	
-	public String getBoundary(String gu, String dong) {
-		String result = null;
+	public ArrayList<aptInfo> getAptInfoList(GuGwanhal gugwanhal) {
+		System.out.println("Dao : "+gugwanhal);
+		ArrayList<aptInfo> result = new ArrayList<>();
 		mapMapper mapper = sqlsession.getMapper(mapMapper.class);
-		result = mapper.getBoundary(gu, dong);
+		result = mapper.getAptInfoList(gugwanhal);
+		System.out.println("result : "+result);
 		return result;
 	}
 }

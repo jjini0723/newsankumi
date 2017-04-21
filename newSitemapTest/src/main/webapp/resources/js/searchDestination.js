@@ -205,37 +205,42 @@ function getItem(index) {
     el.className = 'item2';
     return el;
 }
-
+////////////////////////////다시 짜기
 function confirm(lat, lng, index) {
-   var places = JSON.parse($("#places").val());
-   // 검색결과로 넘어온 리스트의 길이 만큼 반복문 진행
-   for(var j = 0; j < places.length; j++) {
-      // 희망목적지가 저장된 배열의 길이만큼 반복.
-      for(var k = 0; k < hopeList.length; k++) {
-         // 검색결과 리스트에 있는 이름과 희망목적지가 저장된 배열이 같은지 비교. 같으면 중복존재, 없으면 중복된 희망목적지 없음.
-         if(places[index].title == hopeList[k]) {
-            alert('중복존재');
-            var listEl = document.getElementById('placesList');
-            document.getElementById("keyword").value = "";
-            removeAllChildNods(listEl);
-            removeAllpaginationChildNods(paginationEl);
-            return;
-         }
-      }
-   }
-   // 중복된 희망목적지가 아닐 경우 배열에 해당 희망목적지의 이름을 저장한다.
-   if(hopeList.length < 6) {
-      hopeList.push(places[index].title);
-      displayPlace(index);
-      hoi(lat, lng, index);
-      removeOtherMarker(index); // index는 검색결과의 리스트 배열의 인덱스.
-   } else {
-      alert('희망목적지는 5개까지만 가능합니다.');
-      listReset();
-   }
-   
+	var places = JSON.parse($("#places").val());
+	var obj1 = document.getElementsByName("transport");
+	var idx1 = obj1[index].options.selectedIndex; // 해당 selectbox index 구하기
+	var transport = obj1[index].options[idx1].value; // 선택된 selectbox의 value값 가져오기
+	if(transport == 0) {
+	    alert('이동수단을 선택해주세요.');
+	} else {
+		// 검색결과로 넘어온 리스트의 길이 만큼 반복문 진행
+		for(var j = 0; j < places.length; j++) {
+			// 희망목적지가 저장된 배열의 길이만큼 반복.
+			for(var k = 0; k < hopeList.length; k++) {
+				// 검색결과 리스트에 있는 이름과 희망목적지가 저장된 배열이 같은지 비교. 같으면 중복존재, 없으면 중복된 희망목적지 없음.
+				if(places[index].title == hopeList[k]) {
+					alert('중복존재');
+					var listEl = document.getElementById('placesList');
+					document.getElementById("keyword").value = "";
+					removeAllChildNods(listEl);
+					removeAllpaginationChildNods(paginationEl);
+					return;
+				}
+			}
+		}
+		// 중복된 희망목적지가 아닐 경우 배열에 해당 희망목적지의 이름을 저장한다.
+		if(hopeList.length < 6) {
+			hopeList.push(places[index].title);
+			displayPlace(index);
+			hoi(lat, lng, index);
+			removeOtherMarker(index); // index는 검색결과의 리스트 배열의 인덱스.
+		} else {
+			alert('희망목적지는 5개까지만 가능합니다.');
+			listReset();
+		}
+	}
 }
-
 
 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다 
 function addMarker(position, idx, title) {
@@ -349,9 +354,6 @@ function hoi(lat, lng, index) {
    var idx1 = obj1[index].options.selectedIndex; // 해당 selectbox index 구하기
 
    var transport = obj1[index].options[idx1].value; // 선택된 selectbox의 value값 가져오기
-   if(transport == 0) {
-      alert('이동수단을 선택해주세요.');
-   }
    if(transport == 1) {
       var car = { x : lat, y: lng, title: places[index].title};
       carArray.push(car);
@@ -367,6 +369,7 @@ function hoi(lat, lng, index) {
    if(transport != 0) {
       listReset(index);
    }
+   infowindow.close();
 }
 
 

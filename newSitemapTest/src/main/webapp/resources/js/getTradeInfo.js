@@ -149,5 +149,14 @@ function itekute(id){
    $('#call28').hide();
    $('#call29').hide();
    $('#call210').hide();
+   $('#call211').hide();
+   $('#call212').hide();
+   $('#call213').hide();
+   $('#call214').hide();
+   $('#call215').hide();
+   $('#call216').hide();
+   $('#call217').hide();
+   $('#call218').hide();
+   $('#call219').hide();
    $(id).show();
 }
