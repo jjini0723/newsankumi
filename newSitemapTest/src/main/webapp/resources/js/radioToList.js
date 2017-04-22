@@ -535,7 +535,7 @@ function removeList15() {
 function removeList16() {
 	var park = document.getElementsByName("rd_life_shopping");
 	  
-    for(var i=0;park.length;i++){
+    for(var i=0;park.length-1;i++){
          if(park[i].checked){
              park[i].checked = false;
              document.myselection.life_shopping.click();

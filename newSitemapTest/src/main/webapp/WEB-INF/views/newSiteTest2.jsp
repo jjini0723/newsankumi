@@ -1025,5 +1025,6 @@ This variant is to be used when loading the separate styling modules -->
 	<input type="hidden" id="title">
 	<input type = "hidden" id = "dongitem">
 	<input type = "hidden" id = "transport">
+	<input type = "hidden" id = "keylist">
 </body>
 </html>

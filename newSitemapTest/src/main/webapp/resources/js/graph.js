@@ -7,9 +7,7 @@
 */	
 	
 function createChart1(index){
-	rawKeyList.length = 0;
-	valueList.length = 0;
-	labelList.length = 0;
+	
 	console.log(index);
 	var listData = JSON.parse($("#dongitem").val());
 	
@@ -100,6 +98,7 @@ function createChart1(index){
 	}
 	console.log(valueList);
 	console.log(labelList);
+	$("#keylist").val(JSON.stringify(rawKeyList));
 	
 		//기준지역 만들기 시작.
 	var standardList = [];//기준지역 값 배열

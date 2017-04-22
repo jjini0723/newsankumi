@@ -25,7 +25,7 @@ function buildList(list) {
 	html += '<ol class = "decimal" data-width="400" id = "resultList">';
 
 	moveMap(0);
-/*	createChart1(0);*/
+	createChart1(0);
 	//makeChart();
 	
 	for (var i = 0; i < items.length; i++) {
@@ -59,9 +59,22 @@ function addItem() {
 			 dong : dong
 		 },
         success : function(data) {
-       	 items.push(data);
-       	 buildList(items);
-    /*   	 $("#selectThis option:eq(0)").attr("selected", "selected");*/
+        	var keylist = JSON.parse($("#keylist").val());
+        	console.log("keylist" + keylist);
+        	
+        	for (var i = 0; i < 27; i++) {
+				$.each(data, function(key, value){
+					if (keylist[i] == key) {
+					}else{
+						data[keylist[i]] = 0;
+					}
+					
+				});
+			}
+        	console.log(data);
+        	
+       	/* items.push(data);
+       	 buildList(items);*/
        	 
        	$("#selectThis3").empty().data('options');
        	$("#selectThis3").append('<option value="">시/도</option><option value="서울특별시">서울특별시</option>'

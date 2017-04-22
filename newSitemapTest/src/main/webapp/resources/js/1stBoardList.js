@@ -32,7 +32,7 @@ function boardList() {
 				html += '<h4 class="category">지역종합현황</h4>';
 				html += '<div class="sidebar-block padding-none" >';
 				html += '<div data-toggle="gridalicious" data-height="200px">';
-				html += '<canvas id = "myChart" width = "100px" height = "100px" style="z-index:15;"></canvas>';
+				html += '<canvas id = "myChart" width = "100px" height = "100px" style="z-index:15;"></canvas></div>';
 				html += '</div>';
 				html += '<div class="sidebar-block equal-padding">';
 				html += '<ul class="pagination margin-none">';
