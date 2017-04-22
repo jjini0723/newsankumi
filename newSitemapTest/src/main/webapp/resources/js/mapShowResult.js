@@ -27,7 +27,6 @@ function call(sigunguName, ghName){
     // 지도 드래깅 이벤트를 등록한다 (드래그 시작 : dragstart, 드래그 종료 : dragend)
     daum.maps.event.addListener(map, 'drag', function () {
     	var message = '지도를 드래그 하고 있습니다. ' + '지도의 중심 좌표는 ' + map.getCenter().toString() +' 입니다.';
-        console.log(message);
     });
     //var emdName = '삼성동';
     var emdNameArray = new Array();

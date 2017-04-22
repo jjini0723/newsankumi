@@ -31,8 +31,28 @@ function dfa(carArray, walkArray, tradiArray){
    console.log(carArray);
    console.log(walkArray);
    console.log(tradiArray);
-   
-
+   var carTitle = [];
+   var walkTitle = [];
+   var transTitle = [];
+   var title = [];
+   for (var i = 0; i < carArray.length; i++) {
+	   if (carArray.length!=0) {
+		title.push(carArray[i].title);
+	}
+   }
+   for (var j = 0; j < walkArray.length; j++) {
+	   if (walkArray.length!=0) {
+			title.push(walkArray[j].title);
+		}
+   }
+   for (var k = 0; k < tradiArray.length; k++) {
+	   if (tradiArray.length!=0) {
+		   title.push(tradiArray[k].title);
+		}
+}
+  console.log(title);
+  
+  $("#titleList").val(JSON.stringify(title));
    if(carArray.length!=0){//자동차가 선택되지 않으면 배열 길이가 0이라 이 ajax는 작동하지않음
       var flag1 = 0;
       $.each(carArray,function(index,item){ //자동차가 선택 된 회수만큼 작동 희망목적지가 3곳 다 자동차면 3번 돈다
@@ -41,7 +61,7 @@ function dfa(carArray, walkArray, tradiArray){
          $.each(perfect,function(index,item1){ // 선택되어있는 아파트만큼 돈다
             $.ajax({
                type : "POST",   
-                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=250b188d-21df-3751-a05f-225464a8462f",
+                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=360a72a6-2781-35ea-b877-98cd58c69b91",
                 success : function(data){//succes 안에서 길이만큼 반복 후 2번 돌아야 할시 2번돌고 true로 변경
                    console.log(data);
                    yebi = data.features[0].properties.totalTime//시간만 빼온다
@@ -341,6 +361,7 @@ function sendArray(){
 function drawlist() {
    console.log(perfect);
    console.log("drawlist");
+   $("#graphData").val(JSON.stringify(perfect));
    var newperfect = new Array();
 //   $.each(perfect, function(key, value){ 
 //       if($.inArray(value, newperfect) === -1) newperfect.push(value); });
@@ -358,11 +379,10 @@ function drawlist() {
    html += '<ul class = "category" data-width="400" id = "list2"><table><tr><td>아파트 명</td><td>평점</td></tr>';
    console.log(perfect);
       for (var i = 0; i < perfect.length; i++) {
-         html += '<tr><td><a href = "#" id = "" value = "" onclick = "getTradeInfo('+perfect[i].x+'),focuson('+perfect[i].x+','+perfect[i].y+');">'+perfect[i].kaptName+'</a></td><td>'+perfect[i].changepoint+'</td></tr>' ;
+         html += '<tr><td><a href = "#" id = "" value = "" onclick = "getTradeInfo('+perfect[i].x+'),focuson('+perfect[i].x+','+perfect[i].y+'); getChartData2('+i+');">'+perfect[i].kaptName+'</a></td><td>'+perfect[i].changepoint+'</td></tr>' ;
       };                                       
    html += '</table></ul>';
    $('#lll').html(html);
-   
    
    
 }
