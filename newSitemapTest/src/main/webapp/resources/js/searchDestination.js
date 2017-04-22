@@ -188,7 +188,7 @@ function getItem(index) {
    var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '" title="'+places[index].title+'"></span>' +
                 /*'<div class="info">' +*/
-                '   <h5>' + places[index].title + '</h5>';
+                '   <a href="#" style="text-decoration:none" onclick="focuson('+places[index].longitude+','+places[index].latitude+')"><h5>' + places[index].title + '</h5></a>';
 
     if (places.newAddress) {
         itemStr += '    <span>' + places[index].newAddress + '</span><br>' +
@@ -199,7 +199,7 @@ function getItem(index) {
                  
       itemStr += '  <span class="tel">' + places[index].phone  + '</span><br>' ;
       
-      itemStr += '<a href="#" class="deletebtn" id="deletebtn" title="'+places[index].title+'" onclick="deleteList();">삭제</a><br>';
+      itemStr += '<a href="#" class="deletebtn" id="deletebtn" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteList();");">삭제</a><br>';
     
     el.innerHTML = itemStr;
     el.className = 'item2';
@@ -382,4 +382,10 @@ function listReset(index) {
    document.getElementById("keyword").value = "";
    removeAllChildNods(listEl);
    removeAllpaginationChildNods(paginationEl);
+}
+function focuson(x,y){
+	var moveLatLon = new daum.maps.LatLng(y, x);
+	    
+	// 지도 중심을 이동 시킵니다
+	map.setCenter(moveLatLon);
 }
