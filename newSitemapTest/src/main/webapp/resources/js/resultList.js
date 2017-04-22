@@ -51,30 +51,37 @@ function addItem() {
 	 var gu = obj2.options[idx2].text;
 	 var dong = obj3.options[idx3].text;
 	 
+	/* var allKey = ["safety_fire", "safety_traffic", "safety_crime",  "safety_safety","safety_infection","safety_nature", 
+		 "people_foreign",  "people_density",  "nature_park",	"nature_pollution","life_convenient",
+		 "life_shopping", "life_restaurant", "life_publicTraffic", "education_student", "education_academy", "welfare_childCare",
+		 "welfare_medical", "welfare_society",  "welfare_culture",  "welfare_sports", "welfare_salon"];
+	 */
 	 $.ajax({
 		 
 		 url : "getAddress",
 		 type : "post",
+		 async: false,
 		 data : {
 			 dong : dong
 		 },
         success : function(data) {
+        	console.log(data);
         	var keylist = JSON.parse($("#keylist").val());
-        	console.log("keylist" + keylist);
+        	console.log(keylist);
         	
-        	for (var i = 0; i < 27; i++) {
-				$.each(data, function(key, value){
-					if (keylist[i] == key) {
+        		$.each(data, function(key, value){
+        			if (key == keylist[0] || key == keylist[1] ||key == keylist[2] ||key == keylist[3] ||key == keylist[4] 
+        			||key == keylist[5] || key == "si" || key =="gu" || key =="dong" ) {
+						
 					}else{
-						data[keylist[i]] = 0;
+						delete data[key];
+						
 					}
-					
-				});
-			}
+        		});
         	console.log(data);
         	
-       	/* items.push(data);
-       	 buildList(items);*/
+       	 items.push(data);
+       	 buildList(items);
        	 
        	$("#selectThis3").empty().data('options');
        	$("#selectThis3").append('<option value="">시/도</option><option value="서울특별시">서울특별시</option>'
