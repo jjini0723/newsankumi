@@ -146,7 +146,6 @@ function createChart1(index){
 }//function종료
 
 function createChart(labelList, dataList, standardList){
-	
 	var lableL = labelList;
 	var dataL = dataList;
 	var standardL = standardList;
@@ -201,8 +200,4 @@ function createChart(labelList, dataList, standardList){
 	            }
 	    }
 	});
-}
-
-function makeChart(){
-
 }

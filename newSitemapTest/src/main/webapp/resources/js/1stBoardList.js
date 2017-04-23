@@ -7,10 +7,10 @@ function boardList() {
 			success : function(data) {
 				var html = "";
 				/*html += '<div data-scrollable id="sidebar-map1">';*/
-				html += '<h4 class="category">검색결과</h4>';
+				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">검색결과</h4>';
 				html += '<div data-toggle="gridalicious" data-width="400" class="req_loc1" id="req_loc1" style = "height:100px; overflow-y: scroll;"></div>';
 				html += '<div class="sidebar-block padding-none" style="color:black;" data-height="400"></div>';
-				html += '<h4 class="category cd-filter-block">지역추가</h4>';
+				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">지역추가</h4>';
 				html += '<div class="sidebar-block padding-none cd-filter-content cd-select cd-filters">';
 				html += '<select class="filter3" name="selectThis3" id="selectThis3" style = "margin-left:30px;" onchange="addAddress(this)">';
 				html += '<option value="">시/도</option>';
@@ -29,9 +29,9 @@ function boardList() {
 				html += '</div>';
 				html += '</div>';
 				html += '<div data-toggle="gridalicious" data-width="300"></div>';
-				html += '<h4 class="category">지역종합현황</h4>';
+				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">지역종합현황</h4>';
 				html += '<div class="sidebar-block padding-none" >';
-				html += '<div data-toggle="gridalicious" data-height="200px">';
+				html += '<div data-toggle="gridalicious" data-height="200px height = "100px">';
 				html += '<canvas id = "myChart" width = "100px" height = "100px" style="z-index:15;"></canvas></div>';
 				html += '</div>';
 				html += '<div class="sidebar-block equal-padding">';

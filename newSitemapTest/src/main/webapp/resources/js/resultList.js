@@ -39,6 +39,7 @@ function buildList(list) {
 	$('#req_loc1').html(html);
 }
 
+
 function addItem() {
 	 var obj1 = document.getElementById("selectThis3"); // 시
 	 var obj2 = document.getElementById("selectThis4"); // 구군

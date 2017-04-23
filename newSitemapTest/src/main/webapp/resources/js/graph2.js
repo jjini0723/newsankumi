@@ -5,33 +5,40 @@
 //mychart2
 //평균  - line / 아파트의 교통수단 별 
 
-function getChartData2(){
-	
+function getChartData2(index){
+	var titlelist = JSON.parse($("#titleList").val());
 	var barData = []; //
 	var labelList2 = [];//희망목적지
 	var line_data= []; // 전국평균
 
-	var listData2 = JSON.parse($("#transport").val());
+	var listData2 = JSON.parse($("#graphData").val());
 	console.log(listData2);
 	console.log(listData2[0]);
 	
-	for (var i = 0; i < listData2.length; i++) {
-		$.each(listData2[i], function(key, value){
-			var title = listData2[i].title;
-				labelList2.push(title);
-			if (value != 0 || !isNaN(value)) {
-				var time = value/60;
-				barData.push(time);
-				
-			}
-			if (key == "car1avg") {
-				
-			}
-			
-		});
-	}
+	var item = listData2[index];
+	var itemkey = [];
+	var itemvalue = [];
+	//var itemkeyavg = [];
+	var itemvalueavg = [];
 	
-	/*createChart2(labelList2, lineData, barData);*/
+	$.each(item, function(key, value){
+		if (!isNaN(value) && value != 0) {
+			if (key == "car1" || key =="car2" || key == "car3" || key == "car4" || key == "car5" ||
+					key == "tradi1"|| key == "tradi2" ||key == "tradi3" ||key == "tradi4" ||key == "tradi5" ||
+					key == "walk1" || key == "walk2" ||key == "walk3" ||key == "walk4" || key == "walk5") {
+						//itemkey.push(key);
+						itemvalue.push(Math.round(value/60,2));
+			}else if (key == "car1avg" || key =="car2avg" || key == "car3avg" || key == "car4avg" || key == "car5avg" ||
+					key == "tradi1avg"|| key == "tradi2avg" ||key == "tradi3avg" ||key == "tradi4avg" ||key == "tradi5avg" ||
+					key == "walk1avg" || key == "walk2avg" ||key == "walk3avg" ||key == "walk4avg" || key == "walk5avg"){
+					itemvalueavg.push(Math.round(value/60,2));
+			}
+		}
+		
+	});
+	//console.log(itemkey + "," + itemvalue + "," + itemvalueavg);
+	
+	createChart2(titlelist, itemvalueavg, itemvalue);
 }
 
 
@@ -45,13 +52,28 @@ function createChart2(labelList2, lineData, barData){
 	        datasets: [
 	            {
 	                type: 'bar',
-	                label: '교통수단 별 소요시간',
-	                data: barData
+	                label: '교통수단 별 소요시간 (분)',
+	                data: barData,
+	                backgroundColor:['rgba(255, 99, 132, 0.2)',
+	                'rgba(54, 162, 235, 0.2)',
+	                'rgba(255, 206, 86, 0.2)',
+	                'rgba(75, 192, 192, 0.2)',
+	                'rgba(153, 102, 255, 0.2)',
+	                'rgba(255, 159, 64, 0.2)'],
+	                borderColor: [
+	                    'rgba(255,99,132,1)',
+	                    'rgba(54, 162, 235, 1)',
+	                    'rgba(255, 206, 86, 1)',
+	                    'rgba(75, 192, 192, 1)',
+	                    'rgba(153, 102, 255, 1)',
+	                    'rgba(255, 159, 64, 1)'
+	                ],
 	            },
 	            {
 	                type: 'line',
-	                label: '평균 소요시간',
-	                data: lineData
+	                label: '평균 소요시간 (분)',
+	                data: lineData,
+	                pointBackgroundColor : "white"
 	            }
 	        ]
 	    }

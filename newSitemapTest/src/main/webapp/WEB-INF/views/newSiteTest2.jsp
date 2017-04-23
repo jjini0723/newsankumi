@@ -1024,7 +1024,9 @@ This variant is to be used when loading the separate styling modules -->
 	<input type="hidden" id="places">
 	<input type="hidden" id="title">
 	<input type = "hidden" id = "dongitem">
-	<input type = "hidden" id = "transport">
+	<input type = "hidden" id = "graphData">
 	<input type = "hidden" id = "keylist">
+	<input type = "hidden" id = "titleList">
+	
 </body>
 </html>
