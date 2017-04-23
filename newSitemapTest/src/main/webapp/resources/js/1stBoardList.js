@@ -6,7 +6,7 @@ function boardList() {
 			type : "get",
 			success : function(data) {
 				var html = "";
-				/*html += '<div data-scrollable id="sidebar-map1">';*/
+				html += '<div data-scrollable id="sidebar-map1">';
 				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">검색결과</h4>';
 				html += '<div data-toggle="gridalicious" data-width="400" class="req_loc1" id="req_loc1" style = "height:100px; overflow-y: scroll;"></div>';
 				html += '<div class="sidebar-block padding-none" style="color:black;" data-height="400"></div>';
