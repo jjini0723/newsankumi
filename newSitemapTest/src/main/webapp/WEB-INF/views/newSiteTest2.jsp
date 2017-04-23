@@ -272,7 +272,7 @@ This variant is to be used when loading the separate styling modules -->
 
           <a href="#sidebar-map1" data-toggle="sidebar-menu" class="toggle pull-right visible-xs"><i class="fa fa-map-marker"></i></a>
 
-          <a class="navbar-brand"
+          <a href = "/maptest01/" class="navbar-brand" 
           style="width: 400px; position: absolute; left: 50%; margin-left: -200px; border: 0; outline: 0;
           		-ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none;">
 				エッ！スマップ？ S(SMART)・MAP</a>
@@ -283,7 +283,6 @@ This variant is to be used when loading the separate styling modules -->
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="main-nav">
 
-		<!-- dropdown 해결 필요 -->
           <ul class="nav navbar-nav navbar-right ">
             <!-- 코드불러오기 -->
             <li class="dropdown">
@@ -842,7 +841,7 @@ This variant is to be used when loading the separate styling modules -->
 <!-- //조건 카테고리 끝 -->
 	
 	<!-- 선택한 조건 -->
-	<h4 class="category">선택한 조건</h4>
+	<h4 class="category">선택한 조건</h4> <a href = "#" onclick=""></a>
         <div class="sidebar-block" id = "sList" >
 				<ul class = "selectedList" id = "selectedList">
 				</ul>  

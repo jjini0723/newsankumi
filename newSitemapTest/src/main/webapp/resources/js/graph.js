@@ -1,16 +1,13 @@
 /**
  * 그래프 만들기
  */
-	/*var uniqueList = [];//중복값 제거 배열
-	var dataList = []; //그래프에 그려질 값
-	var labelList = [];//라벨이 담긴 배열
-*/	
+
+var myRadarChart = {};
 	
 function createChart1(index){
 	
 	console.log(index);
 	var listData = JSON.parse($("#dongitem").val());
-	
 	console.log(listData);
 	//buildlist에 있는 내용들이 나옴
 	var rawKeyList = [];
@@ -146,6 +143,9 @@ function createChart1(index){
 }//function종료
 
 function createChart(labelList, dataList, standardList){
+	
+	var ctx = $("#myChart");
+	
 	var lableL = labelList;
 	var dataL = dataList;
 	var standardL = standardList;
@@ -156,7 +156,13 @@ function createChart(labelList, dataList, standardList){
 	console.log("datalist" + dataList);
 	console.log("stanardL" + standardL);
 	
-	var ctx = $("#myChart");
+	/*if ( typeof myRadarChart != "undefined" )  {
+		myRadarChart.destory();
+		console.log("destroy?");
+	}else{
+		console.log("안 없어짐..");
+	}*/
+	
 	
 	var customer = {
 				label: "내가 선택한 지역",
@@ -189,7 +195,8 @@ function createChart(labelList, dataList, standardList){
 		    ]
 		};
 	
-	var myRadarChart = 	new Chart(ctx, {
+	
+	 myRadarChart = new Chart(ctx, {
 	    type: "radar",
 	    data: data,
 	    options: {
@@ -200,4 +207,11 @@ function createChart(labelList, dataList, standardList){
 	            }
 	    }
 	});
+	
 }
+
+function initChart(){
+	myRadarChart.destroy();
+	console.log("destroy");
+}
+
