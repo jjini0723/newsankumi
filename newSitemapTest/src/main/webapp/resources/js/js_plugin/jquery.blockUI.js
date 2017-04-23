@@ -113,7 +113,7 @@
 		$.blockUI.defaults = {
 			// message displayed when blocking (use null for no message)
 			//message:  "<h1>로딩중...</h1>",
-			 message: $('#displayBox'),
+			 message: "<img src='./resources/images/40.gif'></img>",
 	            css: { 
 	                top:  ($(window).height() - 400) /2 + 'px', 
 	                left: ($(window).width() - 400) /2 + 'px', 
