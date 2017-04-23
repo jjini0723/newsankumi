@@ -125,7 +125,6 @@ function moveMap(index){
 	geocoder.addr2coord(item.gu + " " + item.dong, callback);
 	
 	
-	
 }
 
 
