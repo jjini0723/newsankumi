@@ -31,8 +31,8 @@ function boardList() {
 				html += '<div data-toggle="gridalicious" data-width="300"></div>';
 				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">지역종합현황</h4>';
 				html += '<div class="sidebar-block padding-none" >';
-				html += '<div data-toggle="gridalicious" data-height="300px height = "300px" display:inline-block>';
-				html += '<canvas id = "myChart" width = "300px" height = "300px" style="z-index:15; left:50%" position: absolute;></canvas></div>';
+				html += '<div data-toggle="gridalicious" data-height="300px height = "300px" style="display:block; text-align:center;">';
+				html += '<canvas id = "myChart" width = "300px" height = "300px" style="z-index:15; left:50%; display:inline-block;" ></canvas></div>';
 				html += '</div>';
 				html += '<div class="sidebar-block equal-padding">';
 				html += '<ul class="pagination margin-none">';
