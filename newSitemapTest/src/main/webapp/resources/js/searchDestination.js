@@ -234,7 +234,7 @@ function confirm(lat, lng, index) {
 			hopeList.push(places[index].title);
 			displayPlace(index);
 			hoi(lat, lng, index);
-			removeOtherMarker(index); // index는 검색결과의 리스트 배열의 인덱스.
+			removeOtherMarker(index, transport); // index는 검색결과의 리스트 배열의 인덱스.
 		} else {
 			alert('희망목적지는 5개까지만 가능합니다.');
 			listReset();
@@ -254,7 +254,7 @@ function addMarker(position, idx, title) {
         markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imgOptions),
             marker = new daum.maps.Marker({
             position: position, // 마커의 위치
-            image: markerImage 
+            image: markerImage
         });
 
     marker.setMap(map); // 지도 위에 마커를 표출합니다
@@ -273,17 +273,17 @@ function removeMarker() {
 }
 
 // 등록한 마커를 제외하고 삭제
-function removeOtherMarker(index) {
-   for ( var i = 0; i < markers.length; i++) {
-      if(index != i) {
-         markers[i].setMap(null);
-      }
-   }
-   newMarkers.push(markers[index]); // 희망목적지로 등록된 마커를 새로운 배열에 추가합니다
-   removeMarker();
-   for ( var j = 0; j < newMarkers.length; j++) {
-      newMarkers[j].setMap(map);
-   }
+function removeOtherMarker(index, transport) {
+    for ( var i = 0; i < markers.length; i++) {
+        if(index != i) {
+           markers[i].setMap(null);
+        }
+    }
+    newMarkers.push(markers[index]); // 희망목적지로 등록된 마커를 새로운 배열에 추가합니다
+    removeMarker();
+    for ( var j = 0; j < newMarkers.length; j++) {
+        newMarkers[j].setMap(map);
+    }
 }
 
 //삭제한 희망목적지의 마커를  새로운 마커배열에서 삭제
