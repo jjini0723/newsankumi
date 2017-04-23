@@ -54,6 +54,7 @@ var tradiArray = new Array(); // 희망목적지 이동수단 대중교통인 �
 var emdName = null;
 var hopeList = new Array(); //희망목적지 리스트 담을 배열
 var newMarkers = []; //희망목적지에 등록된 장소를 표현할 마커를 저장할 배열.
+var marker2 = [];
 
 $(document).avgrund({
 	    openOnEvent: false
@@ -61,6 +62,9 @@ $(document).avgrund({
 	
 //check box 클릭시 radio box 활성화
 $(function() {
+	
+	
+	$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
 	
 	$('input:checkbox').click(function(e){
 		var id = e.target.getAttribute('id');
@@ -1026,6 +1030,7 @@ This variant is to be used when loading the separate styling modules -->
 	<input type = "hidden" id = "graphData">
 	<input type = "hidden" id = "keylist">
 	<input type = "hidden" id = "titleList">
+	
 	
 </body>
 </html>

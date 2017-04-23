@@ -162,7 +162,7 @@ public class HomeController {
 	         }
 	    }
 		System.out.println("aptInfoList : "+aptInfoList);
-		return aptInfoList2;
+		return aptInfoList3;
 	}
 	@ResponseBody
 	@RequestMapping(value= "getTradeInfo", method = RequestMethod.POST)

@@ -1,7 +1,7 @@
 
 function filter(){
+   removeMarker1();
    console.log(perfect);
-   alert('필터안녕');
    var price = document.getElementById("price").value;
    var startkaptUsedate = price.substring(0,4);
    var endkaptUsedate = price.substring(7,11);
@@ -178,6 +178,7 @@ function filter(){
    }
    console.log(result);
    console.log("drawlist");
+   filterMarker(result);
    var html = "";
    var index =0;
    html += '<ul class = "category" data-width="400" id = "list2"><table><tr><td>아파트 명</td><td>평점</td></tr>';
@@ -189,9 +190,24 @@ function filter(){
       };                                       
    html += '</table></ul>';
    $('#lll').html(html);
-   
-   
-   
-   
-   
+}
+function removeMarker1() {
+    for ( var i = 0; i < marker2.length; i++ ) {
+       marker2[i].setMap(null);
+    }   
+    marker2 = [];
+}
+function filterMarker(result){
+    // 주소-좌표 변환 객체를 생성합니다
+    var geocoder = new daum.maps.services.Geocoder();
+    $.each(result,function(index,item) {
+                 var coords = new daum.maps.LatLng(item.y, item.x);
+                 console.log(coords);
+                 var marker = new daum.maps.Marker({
+                     map: map,
+                     position: coords
+                 });
+                 marker2.push(marker);
+    })
+
 }

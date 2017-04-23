@@ -19,10 +19,10 @@ function boardList() {
 				html += '<option value="경기도">경기도</option>';
 				html += '</select>';
 				html += '<select class="filter4" name="selectThis4" id="selectThis4" onchange="addAddress2(this)">';
-				html += '<option value="">읍/군/구</option>';
+				html += '<option value="">군/구</option>';
 				html += '</select>';
 				html += '<select class="filter5" name="selectThis5" id="selectThis5" >';
-				html += '<option value="">동</option>';
+				html += '<option value="">읍/면/동</option>';
 				html += '</select>';
 				html += '<a href = "#" onclick = "addItem();"id = "addAddress">추가</a><br>';
 				html += '<div class="cd-filter-right-confirm">';
