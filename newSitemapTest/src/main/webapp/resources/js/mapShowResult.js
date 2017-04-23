@@ -46,6 +46,51 @@ function call(sigunguName, ghName){
             ghName : ghName
         },
         success : function(data) {
+        	var ghNameArray = ghName.split(',');
+        	var sigunguNameArray = sigunguName.split(',');
+        	var ghNameStr = '';
+        	var lastChar = '';
+        	alert(ghNameArray);
+        	alert(sigunguNameArray);
+        	$.each(ghNameArray, function(index, item) {
+        		geocoder.addr2coord(sigunguNameArray[index]+" "+item, function(status, result) {
+        			// 정상적으로 검색이 완료됐으면 
+        			if (status === daum.maps.services.Status.OK) {
+        				ghNameStr = item;
+        				lastChar = ghNameStr.charAt(ghNameStr.length - 1);
+        				if(lastChar == '읍' || lastChar == '면') {
+        					// 지도에 표시할 원을 생성합니다
+        					var circle = new daum.maps.Circle({
+        						center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
+        						radius: 8000, // 미터 단위의 원의 반지름입니다 
+        						strokeWeight: 5, // 선의 두께입니다 
+        						strokeColor: '#75B8FA', // 선의 색깔입니다
+        						strokeOpacity: 0, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+        						strokeStyle: 'dashed', // 선의 스타일 입니다
+        						fillColor: '#26a69a', // 채우기 색깔입니다
+        						fillOpacity: 0.5  // 채우기 불투명도 입니다   
+        					}); 
+        				} else {
+        					// 지도에 표시할 원을 생성합니다
+        					var circle = new daum.maps.Circle({
+        						center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
+        						radius: 4000, // 미터 단위의 원의 반지름입니다 
+        						strokeWeight: 5, // 선의 두께입니다 
+        						strokeColor: '#75B8FA', // 선의 색깔입니다
+        						strokeOpacity: 0, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+        						strokeStyle: 'dashed', // 선의 스타일 입니다
+        						fillColor: '#26a69a', // 채우기 색깔입니다
+        						fillOpacity: 0.5  // 채우기 불투명도 입니다   
+        					}); 
+        				}
+        				// 지도에 원을 표시합니다 
+        				circle.setMap(map); 
+        			} 
+        		});    
+        		
+        	}); 
+        	
+        	
         	//주소로 좌표를 검색합니다
             var kaptAddr = new Array();
             var kaptName = new Array();

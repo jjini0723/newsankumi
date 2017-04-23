@@ -272,7 +272,7 @@ This variant is to be used when loading the separate styling modules -->
 
           <a href="#sidebar-map1" data-toggle="sidebar-menu" class="toggle pull-right visible-xs"><i class="fa fa-map-marker"></i></a>
 
-          <a class="navbar-brand"
+          <a href = "/maptest01/" class="navbar-brand"
           style="width: 400px; position: absolute; left: 50%; margin-left: -200px; border: 0; outline: 0;
           		-ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none;">
 				エッ！スマップ？ S(SMART)・MAP</a>
