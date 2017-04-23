@@ -113,7 +113,8 @@
 		$.blockUI.defaults = {
 			// message displayed when blocking (use null for no message)
 			//message:  "<h1>로딩중...</h1>",
-			 message: "<img src='./resources/images/40.gif'></img>",
+
+			 message: '<img src = "./resources/images/40.gif" style="opacity:0.5;"></img>',
 	            css: { 
 	                top:  ($(window).height() - 400) /2 + 'px', 
 	                left: ($(window).width() - 400) /2 + 'px', 
@@ -151,7 +152,7 @@
 			// styles for the overlay
 			overlayCSS:  {
 				backgroundColor:	'#000',
-				opacity:			0.6,
+				opacity:			0.9,
 				cursor:				'wait'
 			},
 
