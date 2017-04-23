@@ -77,7 +77,12 @@ function createChart2(labelList2, lineData, barData){
 	                pointBackgroundColor : "white"
 	            }
 	        ]
-	    }
+	    },
+	    options : { 
+	    	height : "300px",
+	    	width : "300px",
+	    	responsive: false
+        }
 	});
 	
 }
