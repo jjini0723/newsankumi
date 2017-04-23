@@ -4,6 +4,7 @@
 
 //mychart2
 //평균  - line / 아파트의 교통수단 별 
+var myChart2 = {};
 
 function getChartData2(index){
 	var titlelist = JSON.parse($("#titleList").val());
@@ -45,7 +46,7 @@ function getChartData2(index){
 function createChart2(labelList2, lineData, barData){
 	var ctx2 = document.getElementById("myChart2");
 	
-	var myChart2 = new Chart(ctx2, {
+	myChart2 = new Chart(ctx2, {
 	    type: 'bar',
 	    data: {
 	        labels: labelList2,
@@ -73,11 +74,21 @@ function createChart2(labelList2, lineData, barData){
 	                type: 'line',
 	                label: '평균 소요시간 (분)',
 	                data: lineData,
-	                pointBackgroundColor : "white"
+	                pointBackgroundColor : "white",
+	                backgroundColor : "#fff"
 	            }
 	        ]
-	    }
+	    },
+	    options : { 
+	    	height : "300px",
+	    	width : "300px",
+	    	responsive: false
+        }
 	});
 	
 }
 
+function initChart2(){
+	
+	myChart2.destroy();
+}

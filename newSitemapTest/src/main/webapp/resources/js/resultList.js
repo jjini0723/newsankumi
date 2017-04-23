@@ -30,7 +30,7 @@ function buildList(list) {
 	
 	for (var i = 0; i < items.length; i++) {
 		html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "' 
-		+items[i].citycode+'" class = "'+items[i].gu +','+ items[i].dong+'" onclick = "createChart1('+ i +'); moveMap('+i+');"'+
+		+items[i].citycode+'" class = "'+items[i].gu +','+ items[i].dong+'" onclick = "initChart(); createChart1('+ i +'); moveMap('+i+');"'+
 		'style="color:#333333";> ' 
 		+ items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');" style = "color:red";>   x   </a> '+ '</li>' ;
 	}
@@ -57,6 +57,8 @@ function addItem() {
 		 "life_shopping", "life_restaurant", "life_publicTraffic", "education_student", "education_academy", "welfare_childCare",
 		 "welfare_medical", "welfare_society",  "welfare_culture",  "welfare_sports", "welfare_salon"];
 	 */
+	 if (si != "시/도" || gu != "군/구" || dong != "읍/면/동") {
+		
 	 $.ajax({
 		 
 		 url : "getAddress",
@@ -66,7 +68,6 @@ function addItem() {
 			 dong : dong
 		 },
         success : function(data) {
-        	console.log(data);
         	var keylist = JSON.parse($("#keylist").val());
         	console.log(keylist);
         	
@@ -76,11 +77,12 @@ function addItem() {
 						
 					}else{
 						delete data[key];
-						
 					}
         		});
+        		
         	console.log(data);
         	
+				
        	 items.push(data);
        	 buildList(items);
        	 
@@ -98,6 +100,7 @@ function addItem() {
         }
 		 
 	 });
+	 }
 	 
 }
 
@@ -120,12 +123,12 @@ function moveMap(index){
 	        var obj = result.addr[0];
 	        console.log(obj.lat, obj.lng);
 	        setCenter(obj.lat, obj.lng);
+	        
 	    }
 	};
 	geocoder.addr2coord(item.gu + " " + item.dong, callback);
 	
-	
-	
+
 }
 
 

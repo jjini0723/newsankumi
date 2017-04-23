@@ -6,6 +6,9 @@ function searchThis(obj){
 	var sido = $(obj).find('option:selected').text();
 	console.log(sido);
 	document.getElementById('mp_addcd_sido').value = $("#mp_addcd_sido").val();
+	
+	
+	
 	$.ajax({
 		url : "selectGungu",
 		type : "post",

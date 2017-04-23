@@ -112,8 +112,14 @@
 		// override these in your code to change the default behavior and style
 		$.blockUI.defaults = {
 			// message displayed when blocking (use null for no message)
-			message:  "<h1>로딩중...</h1>",
-
+			//message:  "<h1>로딩중...</h1>",
+			 message: $('#displayBox'),
+	            css: { 
+	                top:  ($(window).height() - 400) /2 + 'px', 
+	                left: ($(window).width() - 400) /2 + 'px', 
+	                width: '400px' 
+	            }, 
+		
 			title: null,		// title string; only used when theme == true
 			draggable: true,	// only used when theme == true (requires jquery-ui.js to be loaded)
 
@@ -122,7 +128,7 @@
 			// styles for the message when blocking; if you wish to disable
 			// these and use an external stylesheet then do this in your code:
 			// $.blockUI.defaults.css = {};
-			css: {
+			/*css: {
 				padding:	0,
 				margin:		0,
 				width:		'30%',
@@ -133,7 +139,7 @@
 				border:		'3px solid #aaa',
 				backgroundColor:'#fff',
 				cursor:		'wait'
-			},
+			},*/
 
 			// minimal style set used when themes are used
 			themedCSS: {

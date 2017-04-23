@@ -362,6 +362,9 @@ function drawlist() {
    console.log(perfect);
    console.log("drawlist");
    $("#graphData").val(JSON.stringify(perfect));
+   getTradeInfo(perfect[0].x);
+   focuson(perfect[0].x,perfect[0].y);
+   getChartData2(0);
    var newperfect = new Array();
 //   $.each(perfect, function(key, value){ 
 //       if($.inArray(value, newperfect) === -1) newperfect.push(value); });
@@ -379,7 +382,7 @@ function drawlist() {
    html += '<ul class = "category" data-width="400" id = "list2"><table><tr><td>아파트 명</td><td>평점</td></tr>';
    console.log(perfect);
       for (var i = 0; i < perfect.length; i++) {
-         html += '<tr><td><a href = "#" id = "" value = "" onclick = "getTradeInfo('+perfect[i].x+'),focuson('+perfect[i].x+','+perfect[i].y+'); getChartData2('+i+');">'+perfect[i].kaptName+'</a></td><td>'+perfect[i].changepoint+'</td></tr>' ;
+         html += '<tr><td><a href = "#" id = "" value = "" onclick = "initChart2(); getTradeInfo('+perfect[i].x+'),focuson('+perfect[i].x+','+perfect[i].y+'); getChartData2('+i+');">'+perfect[i].kaptName+'</a></td><td>'+perfect[i].changepoint+'</td></tr>' ;
       };                                       
    html += '</table></ul>';
    $('#lll').html(html);
