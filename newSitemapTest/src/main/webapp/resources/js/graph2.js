@@ -61,7 +61,6 @@ function createChart2(labelList2, lineData, barData){
 	                'rgba(75, 192, 192, 0.2)',
 	                'rgba(153, 102, 255, 0.2)',
 	                'rgba(255, 159, 64, 0.2)'],
-	                
 	                borderColor: [
 	                    'rgba(255,99,132,1)',
 	                    'rgba(54, 162, 235, 1)',
@@ -76,22 +75,15 @@ function createChart2(labelList2, lineData, barData){
 	                label: '평균 소요시간 (분)',
 	                data: lineData,
 	                pointBackgroundColor : "white",
-	                backgroundColor : "none"
+	                backgroundColor : "#fff"
 	            }
 	        ]
 	    },
 	    options : { 
 	    	height : "300px",
 	    	width : "300px",
-	    	responsive: false,
-	            scales: {
-	                yAxes: [{
-	                    ticks: {
-	                        beginAtZero:true
-	                    }
-	                }]
-	            }
-	        }
+	    	responsive: false
+        }
 	});
 	
 }
