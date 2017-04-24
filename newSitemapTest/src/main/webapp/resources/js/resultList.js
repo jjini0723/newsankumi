@@ -29,10 +29,10 @@ function buildList(list) {
 	//makeChart();
 	
 	for (var i = 0; i < items.length; i++) {
-		html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "' 
-		+items[i].citycode+'" class = "'+items[i].gu +','+ items[i].dong+'" onclick = "initChart(); createChart1('+ i +'); moveMap('+i+');"'+
+		html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "'
+		+items[i].citycode+'" class = "'+items[i].gu +','+ items[i].dong+'" onclick = "initChart(); createChart1('+ i +'); setCircle('+ i +'); moveMap('+i+');"'+
 		'style="color:#333333";> ' 
-		+ items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="removeItem(' + i + ');" style = "color:red";>   x   </a> '+ '</li>' ;
+		+ items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="initChart(); removeItem(' + i + ');" style = "color:red";>   x   </a> '+ '</li>' ;
 	}
 	
 	html += '</ol>';
@@ -109,6 +109,52 @@ function removeItem(index) {
 	buildList(items);
 }
 
+function setCircle(index) {
+	var geocoder = new daum.maps.services.Geocoder();
+	var circle = new daum.maps.Circle({});
+
+	var listData = JSON.parse($("#dongitem").val());
+	///////태훈 추가 수정부분
+    
+    var item = listData[index];
+    var ghNameStr = item.dong;
+    var lastChar = ghNameStr.charAt(ghNameStr.length - 1);
+    if(circleArray.length != 0) {
+    	circleArray[0].setMap(null);
+    	circleArray.splice(0,1);
+    }
+    geocoder.addr2coord(item.gu+" "+item.dong, function(status, result) {
+		// 정상적으로 검색이 완료됐으면 
+		if (status === daum.maps.services.Status.OK) {
+		    if(lastChar == '읍' || lastChar == '면') {
+	    		circle = new daum.maps.Circle({
+		    		center : new daum.maps.LatLng(obj.lat, obj.lng),  // 원의 중심좌표 입니다 
+		    		radius: 8000, // 미터 단위의 원의 반지름입니다 
+		    		strokeWeight: 5, // 선의 두께입니다 
+		    		strokeColor: '#75B8FA', // 선의 색깔입니다
+		    		strokeOpacity: 0, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+		    		strokeStyle: 'dashed', // 선의 스타일 입니다
+		    		fillColor: '#26a69a', // 채우기 색깔입니다
+		    		fillOpacity: 0.5  // 채우기 불투명도 입니다   
+		    	});
+	    		circle.setMap(map);
+		    } else {
+	    		circle = new daum.maps.Circle({
+		    		center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
+		    		radius: 4000, // 미터 단위의 원의 반지름입니다 
+		    		strokeWeight: 5, // 선의 두께입니다 
+		    		strokeColor: '#75B8FA', // 선의 색깔입니다
+		    		strokeOpacity: 0, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+		    		strokeStyle: 'dashed', // 선의 스타일 입니다
+		    		fillColor: '#26a69a', // 채우기 색깔입니다
+		    		fillOpacity: 0.5  // 채우기 불투명도 입니다   
+		    	});
+	    		circle.setMap(map);
+		    }
+		    circleArray.push(circle);
+		}
+    });
+}
 
 function moveMap(index){
 	
@@ -123,7 +169,6 @@ function moveMap(index){
 	        var obj = result.addr[0];
 	        console.log(obj.lat, obj.lng);
 	        setCenter(obj.lat, obj.lng);
-	        
 	    }
 	};
 	geocoder.addr2coord(item.gu + " " + item.dong, callback);

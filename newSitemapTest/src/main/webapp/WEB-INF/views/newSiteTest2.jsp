@@ -57,6 +57,7 @@ var newMarkers = []; //희망목적지에 등록된 장소를 표현할 마커�
 var marker2 = [];
 var recLocationArray = new Array();
 var hopeDestinationArray = new Array();
+var circleArray = new Array();
 
 
 $(document).avgrund({
@@ -887,7 +888,7 @@ This variant is to be used when loading the separate styling modules -->
 					<label for="rd_nature_pollution2">중</label>
 					<input type="radio" id="rd_nature_pollution3" name="rd_nature_pollution" value="<%=SelectConditions.low %>">
 					<label for="rd_nature_pollution3">하</label>
-				</span>	
+				</span>
 				</a>
 			</li>
 		</ul>
@@ -900,14 +901,14 @@ This variant is to be used when loading the separate styling modules -->
 	<h4 class="category">선택한 조건</h4> <a href = "#" onclick=""></a>
         <div class="sidebar-block" id = "sList" >
 				<ul class = "selectedList" id = "selectedList">
-				</ul>  
+				</ul>
         </div>
 	</form>
 <!-- 폼 끝 (조건 카테고리, 선택한 조건 포함) -->
 	
 	<h4 class="category">결과보기</h4>
 		<div class="sidebar-block text-center filter_commit" onclick = "conditionSelect(); ">
-			<a data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList();" class="btn btn-primary btn-block toggle ">          
+			<a data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList();" class="btn btn-primary btn-block toggle ">
 				<strong>NEXT PAGE</strong> <!-- test123.js 연결 -->
 			</a>
 		</div>
@@ -920,7 +921,7 @@ This variant is to be used when loading the separate styling modules -->
 
 <!-- 오른쪽 사이드바 시작-->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
-    <aside class="sidebar right sidebar-size-xs-2 sidebar-size-lg-35pc sidebar-size-30pc sidebar-offset-0 sidebar-skin-white" 
+    <aside class="sidebar right sidebar-size-xs-2 sidebar-size-lg-35pc sidebar-size-30pc sidebar-offset-0 sidebar-skin-white"
     	id="sidebar-map" data-toggle-layout=sidebar-r-30pc-lg,sidebar-r-25pc data-toggle-bar=false data-overlay=false>
       <div id = "test123">
       	<!-- test123.js 삽입 -->
@@ -947,7 +948,7 @@ This variant is to be used when loading the separate styling modules -->
 			<div id="map" style="width:100%;height:800px; "></div>
 			<script src="//apis.daum.net/maps/maps3.js?apikey=e5f9cd760a5dedf9f84cc76d41a6decd"></script>
 			<script>
-			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 			    mapOption = { 
 							center: new daum.maps.LatLng(37.5128827,127.0561418), // 지도의 중심좌표
 					        level: 7, // 지도의 확대 레벨
@@ -958,9 +959,9 @@ This variant is to be used when loading the separate styling modules -->
 			function resizeMap() {
 			    var mapContainer = document.getElementById('map');
 			    mapContainer.style.width = '650px';
-			    mapContainer.style.height = '650px'; 
+			    mapContainer.style.height = '650px';
 			}
-			function relayout() {    
+			function relayout() {
 			    // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
 			    // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다 
 			    // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
@@ -969,13 +970,12 @@ This variant is to be used when loading the separate styling modules -->
 			</script>
 		<!-- 지도끝 -->
 			
-			
 	<!-- 우선 상단바 아래로 낑겨넣음 -->
 <!-- 		<nav class="navbar navbar-default navbar-size-large navbar-static-top navbar-map-overlay">
 			<a data-toggle="sidebar-menu" href="#sidebar-map" class="toggle pull-right hidden-xs margin-none"><i class="fa fa-list"></i></a>
   <div class="navbar-header">
            <div class="container-fluid">
-				<div class="navbar-text pull-left"><i class="fa fa-fw fa-info"></i> Discover thousands of locations</div> 
+				<div class="navbar-text pull-left"><i class="fa fa-fw fa-info"></i> Discover thousands of locations</div>
 					<a class="toggle pull-right margin-none visible-xs" data-toggle="collapse" data-target="#map-nav"><i class="fa fa-sliders fa-rotate-90"></i></a>
 				</div>
 			</div>-->
@@ -990,7 +990,7 @@ This variant is to be used when loading the separate styling modules -->
 							</span>
 						</div>
 					</div>
-				</form> 
+				</form>
             </div>
 		</nav>
 		-->
@@ -1039,7 +1039,7 @@ This variant is to be used when loading the separate styling modules -->
   </script>
 
 
-<!-- Vendor Scripts Standalone Libraries-->  
+<!-- Vendor Scripts Standalone Libraries-->
 	
 	<script src="./resources/js/all.js"></script>
 
