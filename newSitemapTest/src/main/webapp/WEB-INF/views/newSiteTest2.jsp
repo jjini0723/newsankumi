@@ -124,7 +124,7 @@ function conditionSelect(){
 	var hml = $(".hml");
 	
 	$.each(hml, function(index,item){
-		if($(this).children("input[type=radio]:checked").val() != null){//여기 조건 찾기..
+		if($(this).children("input[type=radio]:checked").val() >=2){//여기 조건 찾기..
 			console.log($(this).children("input[type=radio]:checked").val());
 			var flagValue = $(this).attr("id");
 			var radioValue = $(this).children("input[type=radio]:checked").val();
@@ -135,6 +135,14 @@ function conditionSelect(){
 				level : radioValue
 			};					
 			arr.push(obj);
+			
+		}else{
+			sweetAlert({
+				title: "이런!", 
+			    text: "최소 2개 이상 선택 해 주세요!", 
+			    type: "error"
+			});
+			return false;
 			
 		}
 	})				
@@ -184,12 +192,20 @@ function checkboxSelect(obj, cnt) {
 		for (i = 0; i < tot; i++)
 			if (chk[i].checked == false)
 				chk[i].disabled = true;
-		alert("6개까지만 선택 가능하십니다.");
+		
+		sweetAlert({
+			title: "이런!", 
+		    text: "최대 6개만 선택 해 주세요!", 
+		    type: "error"
+		});
+		return false;
+		
 	} else {
 		for (i = 0; i < tot; i++)
 			chk[i].disabled = false;
 	}
 }
+
 	
     //필터링용
     $(function() {
@@ -913,7 +929,7 @@ This variant is to be used when loading the separate styling modules -->
 <!-- 폼 끝 (조건 카테고리, 선택한 조건 포함) -->
 	
 	<h4 class="category">결과보기</h4>
-		<div class="sidebar-block text-center filter_commit" onclick = "conditionSelect(); ">
+		<div class="sidebar-block text-center filter_commit" onclick = "conditionSelect();  ">
 			<a data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList();" class="btn btn-primary btn-block toggle ">
 				<strong>NEXT PAGE</strong> <!-- test123.js 연결 -->
 			</a>
