@@ -235,9 +235,9 @@ function sendData1(){ //코드 및 동 리스트 가져오기
 			finalAddList.push(addList1[8]);
 		}
 
-		var result = [gustr, dongstr, finalAddList];
-		console.log(result);
-		return result;
+		result300 = [gustr, dongstr, finalAddList];
+		console.log(result300);
+		return result300;
 	
 }
 

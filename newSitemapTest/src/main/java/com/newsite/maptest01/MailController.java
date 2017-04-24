@@ -1,16 +1,25 @@
 package com.newsite.maptest01;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.newsite.maptest01.DAO.saveDAO;
 import com.newsite.maptest01.vo.SendMail;
+import com.newsite.maptest01.vo.saveData;
 
 @Controller
 public class MailController {
+	
+	@Autowired
+    saveDAO dao;
 
 	@RequestMapping(value="mailTest", method=RequestMethod.POST)
 	public String mailTest(){
@@ -28,7 +37,7 @@ public class MailController {
     */
    @ResponseBody
    @RequestMapping(value="emailcheck", method=RequestMethod.POST)
-   public void emailcheck(String user, HttpSession session)
+   public int emailcheck(String user, HttpSession session)
    {
 	  //System.out.println(user);
 	  
@@ -38,6 +47,10 @@ public class MailController {
       
       num = code;
       
+      System.out.println(code);
+      System.out.println(num);
+      
+      return code;
       //System.out.println("메일 전송완료.");
    }
    
@@ -51,5 +64,29 @@ public class MailController {
    
    private static int num;
    
+   @ResponseBody
+   @RequestMapping(value = "save" , method=RequestMethod.POST)
+   public void save(@RequestBody saveData save){
+      System.out.println("컨트롤러"+save);
+      try {
+         dao.save(save);
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+   }
+    @ResponseBody
+    @RequestMapping(value="loadData", method=RequestMethod.POST)
+    public ArrayList<saveData> loadData(String email, String number){
+       System.out.println(email);
+       System.out.println(number);
+       ArrayList<saveData> result = new ArrayList<>();
+       try {
+         result = dao.loadData(email,number);
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+       System.out.println("콘트롤러"+result);
+       return result;
+    }
    
 }

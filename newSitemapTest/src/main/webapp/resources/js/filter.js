@@ -8,6 +8,8 @@ function filter(){
    var kaptMparea_60 = $("#kaptMparea60").is(":checked");
    var kaptMparea_85 = $("#kaptMparea85").is(":checked");
    var kaptMparea_135 = $("#kaptMparea135").is(":checked");
+   var result = new Array(); // 결과 리턴 어레이
+   var save = new Array(); // 임시 저장 어레이
    if(kaptMparea_60==false){
       kaptMparea_60=null;
    };
@@ -199,8 +201,12 @@ function removeMarker1() {
 }
 function filterMarker(result){
     // 주소-좌표 변환 객체를 생성합니다
+	alert(result);
+	var markerResult = new Array();
+	markerResult = result;
+	console.log(markerResult);
     var geocoder = new daum.maps.services.Geocoder();
-    $.each(result,function(index,item) {
+    $.each(markerResult,function(index,item) {
                  var coords = new daum.maps.LatLng(item.y, item.x);
                  console.log(coords);
                  var marker = new daum.maps.Marker({

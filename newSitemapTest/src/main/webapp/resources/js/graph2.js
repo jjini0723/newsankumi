@@ -9,7 +9,6 @@ var myChart2 = {};
 function getChartData2(index){
 	var titlelist = JSON.parse($("#titleList").val());
 	var barData = []; //
-	var labelList2 = [];//희망목적지
 	var line_data= []; // 전국평균
 
 	var listData2 = JSON.parse($("#graphData").val());
@@ -43,13 +42,13 @@ function getChartData2(index){
 }
 
 
-function createChart2(labelList2, lineData, barData){
+function createChart2(titlelist, lineData, barData){
 	var ctx2 = document.getElementById("myChart2");
 	
 	myChart2 = new Chart(ctx2, {
 	    type: 'bar',
 	    data: {
-	        labels: labelList2,
+	        labels: titlelist,
 	        datasets: [
 	            {
 	                type: 'bar',
@@ -76,7 +75,7 @@ function createChart2(labelList2, lineData, barData){
 	                label: '평균 소요시간 (분)',
 	                data: lineData,
 	                pointBackgroundColor : "white",
-	                backgroundColor : "none"
+	                backgroundColor : "#fff"
 	            }
 	        ]
 	    },

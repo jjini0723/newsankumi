@@ -122,6 +122,8 @@ function boardList3() {
 
 //이메일 보내기
 function JSalert(){
+	var checknumber = null;
+	var checkemail = null;
    swal({   title: "Require Email!",   
     text: "Enter your email address:",   
     type: "input",   
@@ -143,7 +145,7 @@ function JSalert(){
 	    else if(regex.test(inputValue) == false){
 	    	swal.showInputError("Please input correct format email..");
 	  		return false;
-	  	}
+	  	}checkemail=inputValue;
 	    
 	    $.ajax
 		({
@@ -156,7 +158,9 @@ function JSalert(){
 			success : function(data)
 			{
 				//alert("입력하신 메일로 인증번호가 전송되었습니다.");
-				console.log("메일로 인증번호가 전송되었습니다.");				
+				console.log("메일로 인증번호가 전송되었습니다.");	
+				checknumber=data;
+				save(checknumber,checkemail);
 			},				
 			error : function(e)
 			{

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 회원정보 처리 SQL -->
+<mapper namespace="com.newsite.maptest01.DAO.saveMapper">
+	
+	<insert id="save" parameterType = "saveData">
+		insert into saveData(checknumber,checkemail,gu,dong,car1,car2,car3,car4,car5,walk1,walk2,walk3,walk4,walk5,tradi1,tradi2,tradi3,tradi4,tradi5,count) values(#{checknumber},#{checkemail},#{gu},#{dong},#{car1},#{car2},#{car3},#{car4},#{car5},#{walk1},#{walk2},#{walk3},#{walk4},#{walk5},#{tradi1},#{tradi2},#{tradi3},#{tradi4},#{tradi5},#{count})
+	</insert>
+	<select id="loadData" parameterType="String" resultType="saveData">
+		select * from saveData where checknumber=#{1} and checkemail=#{0}
+	</select>
+</mapper>

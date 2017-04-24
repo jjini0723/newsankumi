@@ -26,6 +26,8 @@
 <script src="./resources/js/la.js"></script><!-- 영석이 시간계산 로직 -->
 <script src="./resources/js/filter.js"></script><!-- 영석이 필터 로직 -->
 <script src="./resources/js/getTradeInfo.js"></script><!-- 영석이 가격정보 로직 -->
+<script src="./resources/js/save.js"></script><!-- 영석이 저장 로직 -->
+<script src="./resources/js/loadData.js"></script><!-- 영석이 불러오기 로직 -->
 <script src="./resources/js/searchDestination.js"></script><!-- 희망목적지 관련 js -->
 <script src="./resources/js/sweetalert.min.js"></script><!-- sweetalert/email 보내기 팝업 관련 js -->
 <script src="./resources/js/js_plugin/jquery.blockUI.js"></script><!-- 데이터 로딩 표시 -->
@@ -59,6 +61,9 @@ var recLocationArray = new Array();
 var hopeDestinationArray = new Array();
 var circleArray = new Array();
 var finalAddList = new Array(); 
+var result300 = []; // 저장 할꺼 1번
+/* var checknumber = null; // 인증 번호
+var checkemail = null; //인증 이멜 */
 
 
 $(document).avgrund({
@@ -362,18 +367,18 @@ This variant is to be used when loading the separate styling modules -->
 										<div class="form-group">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-													<input type="email" class="form-control" placeholder="email주소를 입력해 주세요">
+													<input type="email" class="form-control" id="email" name="email" placeholder="email주소를 입력해 주세요">
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-key"></i></span>
-												<input type="password" class="form-control" placeholder="code를 입력해 주세요">
+												<input type="password" class="form-control" id="number" name="number" placeholder="code를 입력해 주세요">
 											</div>
 										</div>
 				                
 										<div class="text-center">
-											<button type="submit" class="btn btn-primary">코드불러오기 <i class="fa fa-sign-in"></i></button>
+											<button type="button" class="btn btn-primary"  data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList3(); loadData();">코드불러오기 <i class="fa fa-sign-in"></i></button>
 										</div>
 					                </form>
 				                </div>

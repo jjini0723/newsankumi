@@ -1,14 +1,147 @@
 /**
  * 
  */
+loadFlag = true;
+function loadData(){
+	var email = document.getElementById("email").value;
+	var number = document.getElementById("number").value;
+	
+$.ajax({
+	url:"loadData",
+	type:"post",
+	data : {
+		email : email,
+		number : number
+	},
+	//dataType: "JSON",
+	success:function(data){
+		console.log(data)
+		loadaction(data);
+	},
+	error:function(e){
+		console.log(e)
+	}
+})
+}
+function loadaction(data){
+	var gu = data[0].gu;
+	var dong = data[0].dong;
+	var car1info = [];
+	var car2info = [];
+	var car3info = [];
+	var car4info = [];
+	var car5info = [];
+	var walk1info = [];
+	var walk2info = [];
+	var walk3info = [];
+	var walk4info = [];
+	var walk5info = [];
+	var tradi1info = [];
+	var tradi2info = [];
+	var tradi3info = [];
+	var tradi4info = [];
+	var tradi5info = [];
+	var count =data[0].count;
+	
+	if(data[0].car1!='no,no,no'){
+		car1info = data[0].car1.split(",");
+		var car1={title:car1info[0],x:car1info[1],y:car1info[2]};
+		carArray.push(car1);
+	}
+	if(data[0].car2!='no,no,no'){
+		car2info = data[0].car2.split(",");
+		var car2={title:car2info[0],x:car2info[1],y:car2info[2]};
+		carArray.push(car2);
+	}
+	if(data[0].car3!='no,no,no'){
+		car3info = data[0].car3.split(",");
+		var car3={title:car3info[0],x:car3info[1],y:car3info[2]};
+		carArray.push(car3);
+	}
+	if(data[0].car4!='no,no,no'){
+		car4info = data[0].car4.split(",");
+		var car4={title:car4info[0],x:car4info[1],y:car4info[2]};
+		carArray.push(car4);
+	}
+	if(data[0].car5!='no,no,no'){
+		car5info = data[0].car5.split(",");
+		var car5={title:car5info[0],x:car5info[1],y:car5info[2]};
+		carArray.push(car5);
+	}
+	if(data[0].walk1!='no,no,no'){
+		walk1info = data[0].walk1.split(",");
+		var walk1={title:walk1info[0],x:walk1info[1],y:walk1info[2]};
+		walkArray.push(walk1);
+	}
+	if(data[0].walk2!='no,no,no'){
+		walk2info = data[0].walk2.split(",");
+		var walk2={title:walk2info[0],x:walk2info[1],y:walk2info[2]};
+		walkArray.push(walk2);
+	}
+	if(data[0].walk3!='no,no,no'){
+		walk3info = data[0].walk3.split(",");
+		var walk3={title:walk3info[0],x:walk3info[1],y:walk3info[2]};
+		walkArray.push(walk3);
+	}
+	if(data[0].walk4!='no,no,no'){
+		walk4info = data[0].walk4.split(",");
+		var walk4={title:walk4info[0],x:walk4info[1],y:walk4info[2]};
+		walkArray.push(walk4);
+	}
+	if(data[0].walk5!='no,no,no'){
+		walk5info = data[0].walk5.split(",");
+		var walk5={title:walk5info[0],x:walk5info[1],y:walk5info[2]};
+		walkArray.push(walk5);
+	}
+	if(data[0].tradi1!='no,no,no'){
+		tradi1info = data[0].tradi1.split(",");
+		var tradi1={title:tradi1info[0],x:tradi1info[1],y:tradi1info[2]};
+		tradiArray.push(tradi1);
+	}
+	if(data[0].tradi2!='no,no,no'){
+		tradi2info = data[0].tradi2.split(",");
+		var tradi2={title:tradi2info[0],x:tradi2info[1],y:tradi2info[2]};
+		tradiArray.push(tradi2);
+	}
+	if(data[0].tradi3!='no,no,no'){
+		tradi3info = data[0].tradi3.split(",");
+		var tradi3={title:tradi3info[0],x:tradi3info[1],y:tradi3info[2]};
+		tradiArray.push(tradi3);
+	}
+	if(data[0].tradi4!='no,no,no'){
+		tradi4info = data[0].tradi4.split(",");
+		var tradi4={title:tradi4info[0],x:tradi4info[1],y:tradi4info[2]};
+		tradiArray.push(tradi4);
+	}
+	if(data[0].tradi5!='no,no,no'){
+		tradi5info = data[0].tradi5.split(",");
+		var tradi5={title:tradi5info[0],x:tradi5info[1],y:tradi5info[2]};
+		tradiArray.push(tradi5);
+	}
+	console.log(gu);
+	console.log(dong);
+	console.log(carArray);
+	console.log(walkArray);
+	console.log(tradiArray);
+	
+	loadcall(gu,dong,count);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
 
-function call(sigunguName, ghName, finalAddList2){
-	finalAddList = finalAddList2;
-	console.log(sigunguName);
-	console.log(ghName);
-	console.log(finalAddList2);
+
+
+function loadcall(sigunguName, ghName,count){
 	alert('호호');
-	var marker = null;
+	var countFlag=0;
+	var count=count;
    
     // 지도 타입 변경 컨트롤을 생성한다
     var mapTypeControl = new daum.maps.MapTypeControl();
@@ -55,6 +188,8 @@ function call(sigunguName, ghName, finalAddList2){
         	var sigunguNameArray = sigunguName.split(',');
         	var ghNameStr = '';
         	var lastChar = '';
+        	alert(ghNameArray);
+        	alert(sigunguNameArray);
         	$.each(ghNameArray, function(index, item) {
         		geocoder.addr2coord(sigunguNameArray[index]+" "+item, function(status, result) {
         			// 정상적으로 검색이 완료됐으면 
@@ -125,11 +260,10 @@ function call(sigunguName, ghName, finalAddList2){
 	            geocoder.addr2coord(item, function(status, result) {
 	                if (status === daum.maps.services.Status.OK) {
 	                    var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-	                    	marker = new daum.maps.Marker({
+	                    var marker = new daum.maps.Marker({
 	                        map: map,
 	                        position: coords
 	                    });
-	                    marker2.push(marker);
 	                    var perfect2 = {
 	                    		y : result.addr[0].lat,//y좌표
 	                            x : result.addr[0].lng,//x좌표
@@ -211,8 +345,23 @@ function call(sigunguName, ghName, finalAddList2){
 	                    infowindow.close();
 	                });
 	            });
+	            countFlag++;
             });
             //alert(coordsList.sample.kaptName);
+            console.log(perfect);
+         //   dfa(carArray,walkArray,tradiArray);
+            var setInt1 = setInterval(function() {
+                console.log('7');
+                if(count==countFlag){
+                console.log('1');
+                dfa(carArray,walkArray,tradiArray);
+             //   boardList3();
+                clearInterval(setInt1);
+                }
+             }, 2000);
+            
+            
+            
         },
         error : function(e) {
         	console.log(e)
