@@ -136,7 +136,8 @@ function conditionSelect(){
 			};					
 			arr.push(obj);
 			
-		}else{
+		}
+		else{
 			sweetAlert({
 				title: "이런!", 
 			    text: "최소 2개 이상 선택 해 주세요!", 
