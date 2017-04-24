@@ -50,8 +50,6 @@ function call(sigunguName, ghName){
         	var sigunguNameArray = sigunguName.split(',');
         	var ghNameStr = '';
         	var lastChar = '';
-        	alert(ghNameArray);
-        	alert(sigunguNameArray);
         	$.each(ghNameArray, function(index, item) {
         		geocoder.addr2coord(sigunguNameArray[index]+" "+item, function(status, result) {
         			// 정상적으로 검색이 완료됐으면 

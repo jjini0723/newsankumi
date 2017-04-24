@@ -55,6 +55,9 @@ var emdName = null;
 var hopeList = new Array(); //희망목적지 리스트 담을 배열
 var newMarkers = []; //희망목적지에 등록된 장소를 표현할 마커를 저장할 배열.
 var marker2 = [];
+var recLocationArray = new Array();
+var hopeDestinationArray = new Array();
+
 
 $(document).avgrund({
 	    openOnEvent: false
@@ -78,7 +81,34 @@ $(function() {
 		
 	});
 	 
-}); 
+});
+
+$(document).ready(function() {
+	if(typeof(recLocationArray[0]) != 'undefined') {
+		var strRec = '<a href="#" class="dropdown-toggle" data-toggle="dropdown">';
+		strRec += '<i class="fa fa-fw fa-filter"></i> 추천지역</a>';
+		strRec += '<div class="dropdown-menu dropdown-size-280 recLocation">';
+		strRec += '<div class="form-group">';
+		strRec += '<div id="recLocation" class="input-group">';
+		strRec += '</div>';
+		strRec += '</div>';
+		strRec += '</div>';
+		$(".dropdown1").html(strRec);
+	}
+	if(typeof(hopeDestinationArray[0]) != 'undefined') {
+		var strRec2 = '<a href="#" class="dropdown-toggle" data-toggle="dropdown">';
+		strRec2 += '<i class="fa fa-fw fa-filter"></i> 희망목적지</a>';
+		strRec2 += '<div class="dropdown-menu dropdown-size-280 hopeDestination">';
+		strRec2 += '<div class="form-group">';
+		strRec2 += '<div id="hopeDestination" class="input-group">';
+		strRec2 += '</div>';
+		strRec2 += '</div>';
+		strRec2 += '</div>';
+		$(".dropdown2").html(strRec2);
+	}
+});
+
+
 
 //라디오버튼 값 보내기
 function conditionSelect(){
@@ -119,75 +149,70 @@ function conditionSelect(){
 }
 
 
-//팝업
-	 $(function() {
-
-		$('#show')
-				.avgrund(
-						{
-							height : 350,
-							width : 640,
-							holderClass : 'custom',
-							showClose : true,
-							showCloseText : 'X',
-							enableStackAnimation : true,
-							closeByDocument : true,
-							openOnEvent : false,
-							onBlurContainer : '.container',
-							template : '<img src="./resources/images/main_popup_high.jpg" height="330" width="620">'
-						});
-	}); 
+ //팝업
+ $(function() {
+ 	 $('#show').avgrund({
+ 	 	 height : 350,
+ 	 	 width : 640,
+ 	 	 holderClass : 'custom',
+ 	 	 showClose : true,
+ 	 	 showCloseText : 'X',
+ 	 	 enableStackAnimation : true,
+ 	 	 closeByDocument : true,
+ 	 	 openOnEvent : false,
+ 	 	 onBlurContainer : '.container',
+ 	 	 template : '<img src="./resources/images/main_popup_high.jpg" height="330" width="620">'
+ 	 });
+ }); 
 	
-	//체크박스 선택 개수 제한 (6개)
-	function checkboxSelect(obj, cnt) {
-		var i, sum = 1;
-		var chk = document.getElementsByName(obj);
-		var tot = chk.length;
+//체크박스 선택 개수 제한 (6개)
+function checkboxSelect(obj, cnt) {
+	var i, sum = 1;
+	var chk = document.getElementsByName(obj);
+	var tot = chk.length;
+	for (i = 0; i < tot; i++)
+		if (chk[i].checked == true)
+			sum++;
+	if (sum > cnt) {
 		for (i = 0; i < tot; i++)
-			if (chk[i].checked == true)
-				sum++;
-		if (sum > cnt) {
-			for (i = 0; i < tot; i++)
-				if (chk[i].checked == false)
-					chk[i].disabled = true;
-			alert("6개까지만 선택 가능하십니다.");
-			
-		} else {
-			for (i = 0; i < tot; i++)
-				chk[i].disabled = false;
-		}
+			if (chk[i].checked == false)
+				chk[i].disabled = true;
+		alert("6개까지만 선택 가능하십니다.");
+	} else {
+		for (i = 0; i < tot; i++)
+			chk[i].disabled = false;
 	}
+}
 	
-
-	//필터링용
-	   $(function() {
-            $( "#slider-3" ).slider({
-               range:true,
-               min: 1980,
-               max: 2017,
-               values: [ 1991, 2010 ],
-               slide: function( event, ui ) {
-                  $( "#price" ).val(  ui.values[ 0 ]+"년 -" + ui.values[ 1 ] +"년");
-               }
-            });
-            $( "#price" ).val( $( "#slider-3" ).slider( "values", 0 ) +
-               "년 - " + $( "#slider-3" ).slider( "values", 1 ) +  "년");
-         });
+    //필터링용
+    $(function() {
+    	$( "#slider-3" ).slider({
+    		range:true,
+            min: 1980,
+            max: 2017,
+            values: [ 1991, 2010 ],
+            slide: function( event, ui ) {
+            	$( "#price" ).val(  ui.values[ 0 ]+"년 -" + ui.values[ 1 ] +"년");
+            }
+        });
+        $( "#price" ).val( $( "#slider-3" ).slider( "values", 0 ) +
+        		"년 - " + $( "#slider-3" ).slider( "values", 1 ) +  "년");
+    });
 
 	
 	//title 툴팁용
-$(document).ready(function() {
-     $('.tip').tipr();
-});
+	$(document).ready(function() {
+    	$('.tip').tipr();
+	});
 	
-//title 툴팁용
-$(document).ready(function() {
-     $('.tip').tipr();
-});
+	//title 툴팁용
+	$(document).ready(function() {
+    	$('.tip').tipr();
+	});
 
 	$(function () {
-		  $('[data-toggle="tooltip"]').tooltip()
-		})
+		$('[data-toggle="tooltip"]').tooltip()
+	})
 		
 	$('#example').tooltip(options)
 
@@ -252,134 +277,160 @@ This variant is to be used when loading the separate styling modules -->
 
 
 <body>
+	<!--  팝업1-->
+	<a href="#" id="show" class="button left"></a>
+
+		<!-- Wrapper required for sidebar transitions -->
+		<div class="st-container">
+
+		    <!-- Fixed navbar -->
+		    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		    	<div class="container-fluid">
+		        	<div class="navbar-header">
+		       		<!-- 모바일 부분 -->
+		            	<a href="#sidebar-menu" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
+		          			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+		            			<span class="sr-only">Toggle navigation</span>
+					            <span class="icon-bar"></span>
+					            <span class="icon-bar"></span>
+					            <span class="icon-bar"></span>
+		          			</button>
+		    
+		          		<a href="#sidebar-map1" data-toggle="sidebar-menu" class="toggle pull-right visible-xs" style = "opacity:0.5;"><i class="fa fa-map-marker"></i></a>
+		     
+		          		<a href = "/maptest01/" class="navbar-brand"
+		     
+			          		style="width: 400px; position: absolute; left: 50%; margin-left: -200px; border: 0; outline: 0;
+			          		-ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none;">
+							エッ！スマップ？ S(SMART)・MAP</a>
+		        	</div>
+				
+					<!-- 오른쪽 상단 네비게이션 -->
+			        <!-- Collect the nav links, forms, and other content for toggling -->
+			        <div class="collapse navbar-collapse" id="main-nav">
+			        	<ul class="nav navbar-nav navbar-right ">
+			        		
+			        		<!-- 추천지역 드롭다운 -->
+			        		<li class="dropdown dropdown1">
+				            	<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				                	<i class="fa fa-fw fa-filter"></i> 추천지역
+				                </a>
+				                <div class="dropdown-menu dropdown-size-280 recLocation">
+			                  		<div class="form-group">
+			                    		<div id="recLocation" class="input-group">
+			                    			
+			                    	    </div>
+			                  		</div>
+				              	</div> -->
+				            </li>
+				            <!-- // END 드롭다운 left 테스트 -->
+			        		
+			        		
+			        		<!-- 희망목적지역 드롭다운 -->
+			        		<li class="dropdown dropdown2">
+				            	<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				                	<i class="fa fa-fw fa-filter"></i> 희망목적지
+				                </a>
+				                <div class="dropdown-menu dropdown-size-280 hopeDestination">
+			                  		<div class="form-group">
+			                    		<div id="hopeDestination" class="input-group">
+			                    			
+			                    	    </div>
+			                  		</div>
+				              	</div> -->
+				            </li>
+				            <!-- // END 드롭다운 left 테스트 -->
+			        		
+			        		
+			        		<!-- 코드불러오기 -->
+			            	<li class="dropdown">
+			              		<a href="#" class="dropdown-toggle tip" data-toggle="dropdown" data-tip="이전에 저장해두었던 결과를 다시 볼수 있습니다">
+			              		<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" tooltip tooltip-direction="right" tooltip-content="이전에 저장해두었던 결과를 다시 볼수 있습니다"> -->
+			                		<i class="fa fa-fw fa-lock"></i>코드불러오기
+			              		</a>
+								<div class="dropdown-menu dropdown-size-280">
+									<form>
+										<div class="form-group">
+											<div class="input-group" style="text-align: center;">
+				                   				<i class="fa fa-floppy-o fa-x" aria-hidden="true"></i>&nbsp&nbsp결과 저장시 입력했던 email과<br>
+				                   					email로 부여받았던 코드를 입력해주세요
+											</div>
+										</div>
+				                
+										<div class="form-group">
+											<div class="input-group">
+												<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+													<input type="email" class="form-control" placeholder="email주소를 입력해 주세요">
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="input-group">
+												<span class="input-group-addon"><i class="fa fa-key"></i></span>
+												<input type="password" class="form-control" placeholder="code를 입력해 주세요">
+											</div>
+										</div>
+				                
+										<div class="text-center">
+											<button type="submit" class="btn btn-primary">코드불러오기 <i class="fa fa-sign-in"></i></button>
+										</div>
+					                </form>
+				                </div>
+				            </li>
+				            <!-- // END login -->
+				            <!-- 드롭다운 left 테스트 -->
+				            <li class="dropdown">
+				            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				                	<i class="fa fa-fw fa-filter"></i> 필터링
+				                </a>
+				                <div class="dropdown-menu dropdown-size-280">
+				                	<form>
+				                  		<div class="form-group">
+				                    		<div class="input-group">
+				                    			<!-- 준공년도 -->
+												<div id="buildyear">
+											    	<p>
+											        	<label for = "price">준공년도:</label>
+											        	<input type = "text" id = "price" style = "border:0; color:#b9cd6d; font-weight:bold;">
+											        </p>
+											        <div id = "slider-3"></div>
+												</div>
+												<!-- // END 준공년도 -->
+				                    	    </div>
+				                  		</div>
+				                
+				                  		<div class="form-group">
+				                    		<div class="input-group">
+				                    			<!-- 평수 -->
+												<div id="squareFeet">
+													<p>
+														<label for="feet">평수:</label>
+														<input type="checkbox" id="kaptMparea60" name="kaptMparea60" 
+															style = "border:0; color:#b9cd6d; font-weight:bold;"> 24평이하
+														<input type="checkbox" id="kaptMparea85" name="kaptMparea85" 
+															style = "border:0; color:#b9cd6d; font-weight:bold;"> 25평~42평
+														<input type="checkbox" id="kaptMparea135" name="kaptMparea135" 
+															style = "border:0; color:#b9cd6d; font-weight:bold;"> 42평이상
+													</p>
+												</div>
+												<!-- // END 평수 -->
+				                    		</div>
+				                  		</div>
+				                  		<div class="text-center">
+				                    		<button type="button" class="btn btn-primary" onclick="filter();">적용하기 <i class="fa fa-sign-in"></i></button>
+				                  		</div>
+				                	</form>
+				              	</div>
+				            </li>
+				            <!-- // END 드롭다운 left 테스트 -->
+			            </ul>
+			        </div>
+		        <!-- /.navbar-collapse -->
+			    </div>
+			</nav>
 
 
-<!--  팝업1-->
-<a href="#" id="show" class="button left"></a>
 
-
-  <!-- Wrapper required for sidebar transitions -->
-  <div class="st-container">
-
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-       <!-- 모바일 부분 -->
-          <a href="#sidebar-menu" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-
-          <a href="#sidebar-map1" data-toggle="sidebar-menu" class="toggle pull-right visible-xs" style = "opacity:0.5;"><i class="fa fa-map-marker"></i></a>
-
-          <a href = "/maptest01/" class="navbar-brand"
-
-          style="width: 400px; position: absolute; left: 50%; margin-left: -200px; border: 0; outline: 0;
-          		-ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none;">
-				エッ！スマップ？ S(SMART)・MAP</a>
-        </div>
-		
-		
-	<!-- 오른쪽 상단 네비게이션 -->
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="main-nav">
-
-          <ul class="nav navbar-nav navbar-right ">
-            <!-- 코드불러오기 -->
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle tip" data-toggle="dropdown" data-tip="이전에 저장해두었던 결과를 다시 볼수 있습니다">
-              <!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" tooltip tooltip-direction="right" tooltip-content="이전에 저장해두었던 결과를 다시 볼수 있습니다"> -->
-                <i class="fa fa-fw fa-lock"></i>코드불러오기
-              </a>
-			<div class="dropdown-menu dropdown-size-280">
-				<form>
-					<div class="form-group">
-						<div class="input-group" style="text-align: center;">
-	                    	<i class="fa fa-floppy-o fa-x" aria-hidden="true"></i>&nbsp&nbsp결과 저장시 입력했던 email과<br>
-	                    	email로 부여받았던 코드를 입력해주세요
-						</div>
-					</div>
-                  
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-							<input type="email" class="form-control" placeholder="email주소를 입력해 주세요">
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-key"></i></span>
-							<input type="password" class="form-control" placeholder="code를 입력해 주세요">
-						</div>
-					</div>
-                
-					<div class="text-center">
-						<button type="submit" class="btn btn-primary">코드불러오기 <i class="fa fa-sign-in"></i></button>
-					</div>
-                </form>
-              </div>
-            </li>
-            <!-- // END login -->
-            <!-- 드롭다운 left 테스트 -->
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-fw fa-filter"></i> 필터링
-              </a>
-              <div class="dropdown-menu dropdown-size-280">
-                <form>
-                  <div class="form-group">
-                    <div class="input-group">
-                    	<!-- 준공년도 -->
-							<div id="buildyear">
-							      <p>
-							         <label for = "price">준공년도:</label>
-							         <input type = "text" id = "price" 
-							            style = "border:0; color:#b9cd6d; font-weight:bold;">
-							      </p>
-							      <div id = "slider-3"></div>
-							</div>
-						<!-- // END 준공년도 -->
-                    </div>
-                  </div>
-                
-                  <div class="form-group">
-                    <div class="input-group">
-                    <!-- 평수 -->
-						<div id="squareFeet">
-							<p>
-								<label for="feet">평수:</label>
-								<input type="checkbox" id="kaptMparea60" name="kaptMparea60" 
-									style = "border:0; color:#b9cd6d; font-weight:bold;"> 24평이하
-								<input type="checkbox" id="kaptMparea85" name="kaptMparea85" 
-									style = "border:0; color:#b9cd6d; font-weight:bold;"> 25평~42평
-								<input type="checkbox" id="kaptMparea135" name="kaptMparea135" 
-									style = "border:0; color:#b9cd6d; font-weight:bold;"> 42평이상
-							</p>
-						</div>
-						<!-- // END 평수 -->
-                    </div>
-                  </div>
-                  <div class="text-center">
-                    <button type="button" class="btn btn-primary" onclick="filter();">적용하기 <i class="fa fa-sign-in"></i></button>
-                  </div>
-                </form>
-              </div>
-            </li>
-            <!-- // END 드롭다운 left 테스트 -->
-          </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-
-      </div>
-    </nav>
-
-
-
-<!-- 왼쪽 사이드바 시작 -->
+	<!-- 왼쪽 사이드바 시작 -->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
 	<aside class="sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-dark sidebar-visible-desktop" id=sidebar-menu data-type=collapse>
 	<div data-scrollable>

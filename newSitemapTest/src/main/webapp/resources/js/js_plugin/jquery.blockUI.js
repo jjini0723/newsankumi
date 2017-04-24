@@ -116,8 +116,8 @@
 
 			 message: '<img src = "./resources/images/40.gif" style="opacity:0.5;"></img>',
 	            css: { 
-	                top:  ($(window).height() - 400) /2 + 'px', 
-	                left: ($(window).width() - 400) /2 + 'px', 
+	                top:  ($(window).height() - 400) /2 + 'px',
+	                left: ($(window).width() - 400) /2 + 'px',
 	                width: '400px' 
 	            }, 
 		
