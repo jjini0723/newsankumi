@@ -8,10 +8,10 @@ function boardList() {
 				var html = "";
 				html += '<div data-scrollable id="sidebar-map1">';
 				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">검색결과</h4>';
-				html += '<div data-toggle="gridalicious" data-width="400" class="req_loc1" id="req_loc1" style = "height:100px; overflow-y: scroll;"></div>';
+				html += '<div data-toggle="gridalicious" data-width="400" class="req_loc1" id="req_loc1" style = "height:150px; overflow-y: scroll;"></div>';
 				html += '<div class="sidebar-block padding-none" style="color:black;" data-height="400"></div>';
 				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">지역추가</h4>';
-				html += '<div class="sidebar-block padding-none cd-filter-content cd-select cd-filters">';
+				html += '<div class="sidebar-block padding-none cd-filter-content cd-select cd-filters" style = "text-align:center">';
 				html += '<select class="filter3" name="selectThis3" id="selectThis3" style = "margin-left:30px;" onchange="addAddress(this)">';
 				html += '<option value="">시/도</option>';
 				html += '<option value="서울특별시">서울특별시</option>';
@@ -24,7 +24,7 @@ function boardList() {
 				html += '<select class="filter5" name="selectThis5" id="selectThis5" >';
 				html += '<option value="">읍/면/동</option>';
 				html += '</select>';
-				html += '<a href = "#" onclick = "addItem();"id = "addAddress">추가</a><br>';
+				html += '&nbsp &nbsp<a href = "#" onclick = "addItem();"id = "addAddress">추가</a><br>';
 				html += '<div class="cd-filter-right-confirm">';
 				html += '</div>';
 				html += '</div>';
