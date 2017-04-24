@@ -784,7 +784,7 @@
   margin-bottom: 18px;
 }
 .navbar-default {
-  border-bottom: 1px solid #141414;
+  border-bottom: 1px solid #fff;
 }
 @media (min-width: 768px) {
   .navbar-default .navbar-brand {

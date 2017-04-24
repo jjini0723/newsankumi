@@ -210,7 +210,7 @@ function createChart(labelList, dataList, standardList){
 	            responsive: false
 	    }
 	});
-	
+	console.log("차트 만들어짐");
 }
 
 function initChart(){

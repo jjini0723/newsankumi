@@ -124,7 +124,7 @@ function conditionSelect(){
 	var hml = $(".hml");
 	
 	$.each(hml, function(index,item){
-		if($(this).children("input[type=radio]:checked").val() >=2){//여기 조건 찾기..
+		if($(this).children("input[type=radio]:checked").val() !=null){//여기 조건 찾기..
 			console.log($(this).children("input[type=radio]:checked").val());
 			var flagValue = $(this).attr("id");
 			var radioValue = $(this).children("input[type=radio]:checked").val();
@@ -193,13 +193,13 @@ function checkboxSelect(obj, cnt) {
 		for (i = 0; i < tot; i++)
 			if (chk[i].checked == false)
 				chk[i].disabled = true;
+		return false;
 		
 		sweetAlert({
 			title: "이런!", 
 		    text: "최대 6개만 선택 해 주세요!", 
 		    type: "error"
 		});
-		return false;
 		
 	} else {
 		for (i = 0; i < tot; i++)
@@ -309,7 +309,7 @@ This variant is to be used when loading the separate styling modules -->
 
 		    <!-- Fixed navbar -->
 		    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		    	<div class="container-fluid" style = "background:#141414; font">
+		    	<div class="container-fluid" >
 		        	<div class="navbar-header">
 		       		<!-- 모바일 부분 -->
 		            	<a href="#sidebar-menu" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
@@ -325,7 +325,7 @@ This variant is to be used when loading the separate styling modules -->
 		          		<a href = "/maptest01/" class="navbar-brand"
 		     
 			          		style="width: 400px; position: absolute; left: 50%; margin-left: -200px; border: 0; outline: 0;
-			          		-ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none; color : #cccccc;">
+			          		-ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none; color : #141414;">
 							エッ！スマップ？ S(SMART)・MAP</a>
 		        	</div>
 				
@@ -456,7 +456,7 @@ This variant is to be used when loading the separate styling modules -->
 
 	<!-- 왼쪽 사이드바 시작 -->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
-	<aside class="sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-dark sidebar-visible-desktop" id=sidebar-menu data-type=collapse>
+	<aside class="sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" id=sidebar-menu data-type=collapse>
 	<div data-scrollable>
 	
 	<!-- 폼시작 -->
