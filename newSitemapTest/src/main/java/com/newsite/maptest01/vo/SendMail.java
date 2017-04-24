@@ -75,8 +75,8 @@ public class SendMail {
 
          public MyAuthentication() {
 
-            String id = "denshanuri"; // 구글 ID
-            String pw = "z1a1q1@@"; // 구글 비밀번호 // 
+            String id = "sankumi333"; // 구글 ID
+            String pw = "sankumi#"; // 구글 비밀번호 // 
         	
             // ID와 비밀번호를 입력한다.
             pa = new PasswordAuthentication(id, pw);
