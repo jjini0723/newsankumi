@@ -192,9 +192,12 @@ function setCenter(lat, lng) {
 function sendData1(){ //코드 및 동 리스트 가져오기
 	var firstlist = [];
 	var resultList = [];
+	var addList1 = [];
+	var finalAddList=[];
 	
 	for (var i = 0; i < 10; i++) {
 		firstlist[i] = $(".decimal").find("a").eq(i).attr('class');
+		addList1[i] = $(".decimal").find("a").eq(i).text();
 	}
 		if (typeof firstlist[6] == undefined ||firstlist[6] == null ) {
 			var split1 = firstlist[0].split(',');
@@ -202,6 +205,9 @@ function sendData1(){ //코드 및 동 리스트 가져오기
 			var split3 = firstlist[4].split(',');
 			var gustr = split1[0]+','+split2[0]+','+split3[0];
 			var dongstr = split1[1]+','+ split2[1]+','+split3[1];
+			finalAddList.push(addList1[0]);
+			finalAddList.push(addList1[2]);
+			finalAddList.push(addList1[4]);
 		}else if (typeof firstlist[8] == undefined ||firstlist[8] == null ) {
 			var split1 = firstlist[0].split(',');
 			var split2 = firstlist[2].split(',');
@@ -209,6 +215,10 @@ function sendData1(){ //코드 및 동 리스트 가져오기
 			var split4 = firstlist[6].split(',');
 			var gustr = split1[0]+','+split2[0]+','+split3[0]+','+split4[0];
 			var dongstr = split1[1]+','+ split2[1]+','+split3[1]+','+split4[1];
+			finalAddList.push(addList1[0]);
+			finalAddList.push(addList1[2]);
+			finalAddList.push(addList1[4]);
+			finalAddList.push(addList1[6]);
 		}
 		else{
 			var split1 = firstlist[0].split(',');
@@ -218,9 +228,14 @@ function sendData1(){ //코드 및 동 리스트 가져오기
 			var split5 = firstlist[8].split(',');
 			var gustr = split1[0]+','+split2[0]+','+split3[0]+','+split4[0]+','+split5[0];
 			var dongstr = split1[1]+','+ split2[1]+','+split3[1]+','+split4[1]+','+split5[1];
+			finalAddList.push(addList1[0]);
+			finalAddList.push(addList1[2]);
+			finalAddList.push(addList1[4]);
+			finalAddList.push(addList1[6]);
+			finalAddList.push(addList1[8]);
 		}
-		
-		var result = [gustr, dongstr];
+
+		var result = [finalAddList, gustr, dongstr];
 		console.log(result);
 		return result;
 	

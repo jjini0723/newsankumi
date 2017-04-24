@@ -182,7 +182,7 @@ function displayPlace(index) {
 function getItem(index) {
    var places = JSON.parse($("#places").val());
    var title = places[index].title;
-    $("#title").val(title);
+   $("#title").val(title);
    
    
    var el = document.createElement('li'),

@@ -2,7 +2,8 @@
  * 
  */
 
-function call(sigunguName, ghName){
+function call(finalAddList2, sigunguName, ghName){
+	finalAddList = finalAddList2; 
 	alert('호호');
    
     // 지도 타입 변경 컨트롤을 생성한다

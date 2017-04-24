@@ -58,6 +58,7 @@ var marker2 = [];
 var recLocationArray = new Array();
 var hopeDestinationArray = new Array();
 var circleArray = new Array();
+var finalAddList = new Array();
 
 
 $(document).avgrund({
