@@ -114,11 +114,11 @@
 			// message displayed when blocking (use null for no message)
 			//message:  "<h1>로딩중...</h1>",
 
-			 message: '<img src = "./resources/images/40.gif" style="opacity:0.5;"></img>',
+			 message: '<img src = "./resources/images/loading3.gif" style="opacity:0.7;"></img>',
 	            css: { 
 	                top:  ($(window).height() - 400) /2 + 'px',
 	                left: ($(window).width() - 400) /2 + 'px',
-	                width: '400px' 
+	                width: '200px' 
 	            }, 
 		
 			title: null,		// title string; only used when theme == true
@@ -151,7 +151,7 @@
 
 			// styles for the overlay
 			overlayCSS:  {
-				backgroundColor:	'#000',
+				backgroundColor:	'#FFF',
 				opacity:			0.9,
 				cursor:				'wait'
 			},
