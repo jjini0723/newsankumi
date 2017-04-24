@@ -137,7 +137,7 @@ function conditionSelect(){
 			arr.push(obj);
 			
 		}
-		else{
+		/* else{
 			sweetAlert({
 				title: "이런!", 
 			    text: "최소 2개 이상 선택 해 주세요!", 
@@ -145,7 +145,7 @@ function conditionSelect(){
 			});
 			return false;
 			
-		}
+		} */ //2개 이상 선택할 수 있는 조건. 마지막에 푸르기!
 	})				
 	
 	$.ajax({
@@ -309,7 +309,7 @@ This variant is to be used when loading the separate styling modules -->
 
 		    <!-- Fixed navbar -->
 		    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		    	<div class="container-fluid">
+		    	<div class="container-fluid" style = "background:#141414; font">
 		        	<div class="navbar-header">
 		       		<!-- 모바일 부분 -->
 		            	<a href="#sidebar-menu" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
@@ -325,7 +325,7 @@ This variant is to be used when loading the separate styling modules -->
 		          		<a href = "/maptest01/" class="navbar-brand"
 		     
 			          		style="width: 400px; position: absolute; left: 50%; margin-left: -200px; border: 0; outline: 0;
-			          		-ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none;">
+			          		-ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none; color : #cccccc;">
 							エッ！スマップ？ S(SMART)・MAP</a>
 		        	</div>
 				
@@ -368,7 +368,7 @@ This variant is to be used when loading the separate styling modules -->
 			        		
 			        		<!-- 코드불러오기 -->
 			            	<li class="dropdown">
-			              		<a href="#" class="dropdown-toggle tip" data-toggle="dropdown" data-tip="이전에 저장해두었던 결과를 다시 볼수 있습니다">
+			              		<a href="#" class="dropdown-toggle tip" data-toggle="dropdown" data-tip="이전에 저장해두었던 결과를 다시 볼수 있습니다" style = "color:#8a8a8a;">
 			              		<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" tooltip tooltip-direction="right" tooltip-content="이전에 저장해두었던 결과를 다시 볼수 있습니다"> -->
 			                		<i class="fa fa-fw fa-lock"></i>코드불러오기
 			              		</a>
@@ -403,7 +403,7 @@ This variant is to be used when loading the separate styling modules -->
 				            <!-- // END login -->
 				            <!-- 드롭다운 left 테스트 -->
 				            <li class="dropdown">
-				            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				            	<a href="#" class="dropdown-toggle" data-toggle="dropdown" style = "color:#8a8a8a;">
 				                	<i class="fa fa-fw fa-filter"></i> 필터링
 				                </a>
 				                <div class="dropdown-menu dropdown-size-280">
