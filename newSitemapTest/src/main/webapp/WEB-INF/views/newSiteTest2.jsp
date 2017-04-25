@@ -62,8 +62,7 @@ var hopeDestinationArray = new Array();
 var circleArray = new Array();
 var finalAddList = new Array(); 
 var result300 = []; // 저장 할꺼 1번
-/* var checknumber = null; // 인증 번호
-var checkemail = null; //인증 이멜 */
+var dongScore = [];
 
 
 $(document).avgrund({
@@ -952,7 +951,7 @@ This variant is to be used when loading the separate styling modules -->
 	
 	<h4 class="category">결과보기</h4>
 		<div class="sidebar-block text-center filter_commit" onclick = "conditionSelect();  ">
-			<a data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList();" class="btn btn-primary btn-block toggle ">
+			<a data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList(); deleteArray1();" class="btn btn-primary btn-block toggle ">
 				<strong style="color: white;">NEXT PAGE</strong> <!-- test123.js 연결 -->
 			</a>
 		</div>
