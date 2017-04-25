@@ -7060,7 +7060,7 @@ html.app-mobile #content .container-fluid .sidebar {
 }
 .sidebar .sidebar-block > *:last-child {
   margin-bottom: 0;
-  color : white;
+  color : #141414;
 }
 .sidebar .sidebar-block .activity-feed ul {
   list-style: none;

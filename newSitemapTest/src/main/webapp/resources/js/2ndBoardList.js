@@ -13,19 +13,22 @@ function boardList2() {
          type : "get",
          success : function(data) {
             var html = "";
+            
+            //희망위치추가
             html += '<div data-scrollable id="sidebar-map1">';
-            html += '<h4 class="ribbon-heading text-h5 ribbon-primary">희망위치추가</h4>';
-            html += '<div class="sidebar-block padding-none" id = "req_loc1">';
+            html += '<h4 class="ribbon-heading ribbon-primary">희망위치추가</h4>';
+            html += '<div class="panel-body text-center" id = "req_loc1">';
             html += '<div data-toggle="gridalicious" data-width="400">';
             
             /////// 희망목적지 검색 및 검색결과 리스트 출력부분
-            html += '<div class="map_wrap padding-none" style="color:black">';
+            html += '<div class="map_wrap panel-body text-center" style="color:black">';
              html += '<div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>';
              html += '<div id="menu_wrap" class="bg_white">';
              html += '<div class="option">';
              html += '<div>';
              html += '<form onsubmit="searchPlaces(); return false;">';
-             html += '키워드 : <input type="text" value="" id="keyword" size="25" placeholder="희망목적지를 입력해주세요.">'; 
+             
+             html += '<input type="text" value="" id="keyword" size="25" placeholder="희망목적지를 입력해주세요.">'; 
              html += '<button type="submit">검색하기</button>'; 
              html += '</form>';
              html += '</div>';
@@ -38,25 +41,28 @@ function boardList2() {
             
             /////////
              
-             
+       //희망목적지      
             html += '</div></div>';
             html += '<h4 class="category">희망 목적지</h4>';
-            html += '<div class="sidebar-block padding-none">';
+            html += '<div class="panel-body text-center">';
             html += '<div data-toggle="gridalicious" data-width="400">';
             
             ///////////// 등록된 희망목적지가 추가될 부분
-            html += '<div class="map_wrap padding-none" style="color:black">';
+            html += '<div class="map_wrap panel-body text-center" style="color:black">';
             html += '<ul id="getItem"></ul>';
             html += '</div>';
             /////////////
             
             html += '</div></div>';
-            html += '<div class="sidebar-block equal-padding">';
+            
+            //다음단계
+            html += '<div class="panel-body text-center">';
             html += '<ul class="pagination margin-none">';
-            html += '<li class="disabled"><a href="#">&laquo;</a></li>';
-            html += '<li><a href="#" onclick = "boardList();">이전단계</a></li>';
+           /* html += '<li class="disabled"><a href="#">&laquo;</a></li>';
+            html += '<li><a href="#" onclick = "boardList();">이전단계</a></li>'; */
             html += '<li><a href="#" onclick = "boardList3(); searchBestLoc(); hoit();">최적의 주거공간 찾기</a></li>';
-            html += '<li class="disabled"><a href="#">&raquo;</a></li>';
+           /* html += '<li class="disabled"><a href="#">&raquo;</a></li>'; */
+
             html += '</ul></div></div>';
             $("#test123").html(html);
          },
@@ -78,33 +84,35 @@ function boardList3() {
 				var html = "";
 				html += '<div data-scrollable id="sidebar-map1">';
 				
-				
-				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">주거지역 검색 결과</h4>';
+				//주거지역검색결과
+				html += '<h4 class="ribbon-heading ribbon-primary">주거지역 검색 결과</h4>';
 				html += '<div style="overflow:auto;height:200px;" id = "lll"></div>';
-				html += '<div class="sidebar-block padding-none">';
+				html += '<div class="panel-body text-center">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 			
-				
-				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">아파트 정보</h4>';
+				//아파트정보
+				html += '<h4 class="ribbon-heading ribbon-primary">아파트 정보</h4>';
 				html += '<div style="overflow:auto;height:100px;" id = "aptInfo"></div>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 				
-				
-				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">부동산 거래정보</h4>';
+				//부동산거래정보
+				html += '<h4 class="ribbon-heading ribbon-primary">부동산 거래정보</h4>';
 				html += '<div style="overflow:auto;height:150px;" id = "aptTradeInfo"></div>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 			
-				
-				html += '<h4 class="ribbon-heading text-h5 ribbon-primary">소요시간 비교</h4>';
+				//소요시간비교
+				html += '<h4 class="ribbon-heading ribbon-primary">소요시간 비교</h4>';
 				html += '<div class="sidebar-block padding-none"></div>';
 				html += '<div data-toggle="gridalicious" data-width="400" style="display:block; text-align:center;">';
 				html += '<canvas id = "myChart2" width = "300px" height = "300px" style="z-index:15; left:50%; display:inline-block;"></canvas></div>';
-				html += '<div class="sidebar-block equal-padding">';
+				
+				//저장하기
+				html += '<div class="panel-body text-center">';
 				html += '<ul class="pagination margin-none">';
-				html += '<li class="disabled"><a href="#">&laquo;</a></li>';
-				html += '<li><a href="#" onclick ="boardList2();">이전단계</a></li>';
+				/*html += '<li class="disabled"><a href="#">&laquo;</a></li>';
+				html += '<li><a href="#" onclick ="boardList2();">이전단계</a></li>';*/
 				html += '<li><a href="#" onclick ="JSalert();">검색결과저장</a></li>';
 				html += '</ul></div></div>';
 

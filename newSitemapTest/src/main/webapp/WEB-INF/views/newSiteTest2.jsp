@@ -12,8 +12,8 @@
 
 <script src="//apis.daum.net/maps/maps3.js?apikey=e5f9cd760a5dedf9f84cc76d41a6decd&libraries=services"></script> <!-- daum api -->
 <script src="./resources/js/jquery-3.1.1.js"></script> <!-- jquery-3.1.1.js -->
-<script src="./resources/js/1stBoardList.js?ver=2"></script>
-<script src="./resources/js/2ndBoardList.js?ver=2"></script>
+<script src="./resources/js/1stBoardList.js?ver=3"></script>
+<script src="./resources/js/2ndBoardList.js?ver=3"></script>
 <script src="./resources/js/radioToList.js"></script>
 <script src="./resources/js/js_plugin/jquery.avgrund.min.js"></script>
 <script src="./resources/js/selectThis.js"></script> <!-- 기준 지역 선택 -->
@@ -130,7 +130,7 @@ function conditionSelect(){
 	var hml = $(".hml");
 	
 	$.each(hml, function(index,item){
-		if($(this).children("input[type=radio]:checked").val() != null){//여기 조건 찾기..
+		if($(this).children("input[type=radio]:checked").val() !=null){//여기 조건 찾기..
 			console.log($(this).children("input[type=radio]:checked").val());
 			var flagValue = $(this).attr("id");
 			var radioValue = $(this).children("input[type=radio]:checked").val();
@@ -143,6 +143,15 @@ function conditionSelect(){
 			arr.push(obj);
 			
 		}
+		/* else{
+			sweetAlert({
+				title: "이런!", 
+			    text: "최소 2개 이상 선택 해 주세요!", 
+			    type: "error"
+			});
+			return false;
+			
+		} */ //2개 이상 선택할 수 있는 조건. 마지막에 푸르기!
 	})				
 	
 	$.ajax({
@@ -205,12 +214,20 @@ function checkboxSelect(obj, cnt) {
 		for (i = 0; i < tot; i++)
 			if (chk[i].checked == false)
 				chk[i].disabled = true;
-		alert("6개까지만 선택 가능하십니다.");
+		return false;
+		
+		sweetAlert({
+			title: "이런!", 
+		    text: "최대 6개만 선택 해 주세요!", 
+		    type: "error"
+		});
+		
 	} else {
 		for (i = 0; i < tot; i++)
 			chk[i].disabled = false;
 	}
 }
+
 	
     //필터링용
     $(function() {
@@ -287,11 +304,11 @@ This variant is to be used when loading the separate styling modules -->
     Some of the standalone modules may have not been used with the current theme/module
     but ALL modules are 100% compatible -->
 
-	<link href="./resources/css/app/app.css?ver=1" rel="stylesheet" />
-	<link href="./resources/css/app/sidebar-skins.css" rel="stylesheet" />
-	<link href="./resources/css/app/sidebar.css?ver=2" rel="stylesheet" />
+	<link href="./resources/css/app/app.css?ver=2" rel="stylesheet" />
+	<link href="./resources/css/app/sidebar-skins.css?ver=3" rel="stylesheet" />
+	<link href="./resources/css/app/sidebar.css?ver=3" rel="stylesheet" />
 
-	<link href="./resources/css/app/essentials.css?ver=3" rel="stylesheet" />
+	<link href="./resources/css/app/essentials.css?ver=1" rel="stylesheet" />
 	<link href="./resources/css/app/layout.css" rel="stylesheet" />
 	<link href="./resources/css/app/navbar.css" rel="stylesheet" />
 	<link href="./resources/css/app/media.css" rel="stylesheet" />
@@ -313,7 +330,7 @@ This variant is to be used when loading the separate styling modules -->
 
 		    <!-- Fixed navbar -->
 		    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		    	<div class="container-fluid">
+		    	<div class="container-fluid" >
 		        	<div class="navbar-header">
 		       		<!-- 모바일 부분 -->
 		            	<a href="#sidebar-menu" data-toggle="sidebar-menu" class="toggle pull-left visible-xs"><i class="fa fa-bars"></i></a>
@@ -329,7 +346,7 @@ This variant is to be used when loading the separate styling modules -->
 		          		<a href = "/maptest01/" class="navbar-brand"
 		     
 			          		style="width: 400px; position: absolute; left: 50%; margin-left: -200px; border: 0; outline: 0;
-			          		-ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none;">
+			          		-ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none; color : #141414;">
 							エッ！スマップ？ S(SMART)・MAP</a>
 		        	</div>
 				
@@ -372,7 +389,7 @@ This variant is to be used when loading the separate styling modules -->
 			        		
 			        		<!-- 코드불러오기 -->
 			            	<li class="dropdown">
-			              		<a href="#" class="dropdown-toggle tip" data-toggle="dropdown" data-tip="이전에 저장해두었던 결과를 다시 볼수 있습니다">
+			              		<a href="#" class="dropdown-toggle tip" data-toggle="dropdown" data-tip="이전에 저장해두었던 결과를 다시 볼수 있습니다" style = "color:#8a8a8a;">
 			              		<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" tooltip tooltip-direction="right" tooltip-content="이전에 저장해두었던 결과를 다시 볼수 있습니다"> -->
 			                		<i class="fa fa-fw fa-lock"></i>코드불러오기
 			              		</a>
@@ -407,7 +424,7 @@ This variant is to be used when loading the separate styling modules -->
 				            <!-- // END login -->
 				            <!-- 드롭다운 left 테스트 -->
 				            <li class="dropdown">
-				            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				            	<a href="#" class="dropdown-toggle" data-toggle="dropdown" style = "color:#8a8a8a;">
 				                	<i class="fa fa-fw fa-filter"></i> 필터링
 				                </a>
 				                <div class="dropdown-menu dropdown-size-280">
@@ -460,7 +477,7 @@ This variant is to be used when loading the separate styling modules -->
 
 	<!-- 왼쪽 사이드바 시작 -->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
-	<aside class="sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-dark sidebar-visible-desktop" id=sidebar-menu data-type=collapse>
+	<aside class="sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" id=sidebar-menu data-type=collapse>
 	<div data-scrollable>
 	
 	<!-- 폼시작 -->
@@ -477,7 +494,7 @@ This variant is to be used when loading the separate styling modules -->
 					title="현재 거주하고 있는 지역이나, 기준이 되는 지역을 선택합니다(서울,경기,인천 한정)<br>기준지역 미 선택시 전체 평균으로 선택됨"></i>
 					</h4>
 					<li>
-						<div class="cd-select" style="margin: 14px">
+						<div class="bootstrap-select cd-select" style="margin: 14px">
 							<select class="select1" name="selectThis1" id="mp_addcd_sido" onchange="searchThis(this)">
 								<option value="">시/도</option>
 								<option value="서울특별시">서울특별시</option>
@@ -934,9 +951,9 @@ This variant is to be used when loading the separate styling modules -->
 <!-- 폼 끝 (조건 카테고리, 선택한 조건 포함) -->
 	
 	<h4 class="category">결과보기</h4>
-		<div class="sidebar-block text-center filter_commit" onclick = "conditionSelect(); ">
+		<div class="sidebar-block text-center filter_commit" onclick = "conditionSelect();  ">
 			<a data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList();" class="btn btn-primary btn-block toggle ">
-				<strong>NEXT PAGE</strong> <!-- test123.js 연결 -->
+				<strong style="color: white;">NEXT PAGE</strong> <!-- test123.js 연결 -->
 			</a>
 		</div>
 		
@@ -949,7 +966,8 @@ This variant is to be used when loading the separate styling modules -->
 <!-- 오른쪽 사이드바 시작-->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
     <aside class="sidebar right sidebar-size-xs-2 sidebar-size-lg-35pc sidebar-size-30pc sidebar-offset-0 sidebar-skin-white"
-    	id="sidebar-map" data-toggle-layout=sidebar-r-30pc-lg,sidebar-r-25pc data-toggle-bar=false data-overlay=false>
+    	id="sidebar-map" data-toggle-layout=sidebar-r-30pc-lg,sidebar-r-25pc data-toggle-bar=false data-overlay=false
+    	style="box-shadow: 0px 0px 20px black; ">
       <div id = "test123">
       	<!-- test123.js 삽입 -->
       </div>

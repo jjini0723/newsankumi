@@ -286,7 +286,7 @@ fieldset[disabled] .sidebar.sidebar-skin-dark .btn-default.active {
   color: #858585;
 }
 .sidebar.sidebar-skin-white .sidebar-block {
-  border-color: #ebebeb;
+  /* border-color: #141414; */
 }
 .sidebar.sidebar-skin-white .sidebar-text,
 .sidebar.sidebar-skin-white p {
@@ -402,7 +402,8 @@ fieldset[disabled] .sidebar.sidebar-skin-dark .btn-default.active {
 }
 .sidebar.sidebar-skin-white .sidebar-menu li.hasSubmenu.open > a,
 .sidebar.sidebar-skin-white .sidebar-menu li.hasSubmenu.open > a i {
-  color: #303030;
+  /* color: #303030; */
+  color: #26a69a;
 }
 .sidebar.sidebar-skin-white .sidebar-menu li.active > a {
   color: #303030;
@@ -418,7 +419,7 @@ fieldset[disabled] .sidebar.sidebar-skin-dark .btn-default.active {
   color: #ffffff;
 }
 .sidebar.sidebar-skin-white .sidebar-menu.sm-icons-block li > a i {
-  background: #ebebeb;
+  /* background: #ebebeb; */
   color: #bdbdbd;
 }
 .sidebar.sidebar-skin-white .sidebar-menu.sm-icons-block li.active > a i {

@@ -22,6 +22,7 @@ function createChart1(index){
 			valueList.push(value);
 		}
 	});
+	
 	for (var i = 0; i < rawKeyList.length; i++) {
 		
 		if (rawKeyList.length != 0) {
@@ -209,7 +210,7 @@ function createChart(labelList, dataList, standardList){
 	            responsive: false
 	    }
 	});
-	
+	console.log("차트 만들어짐");
 }
 
 function initChart(){
