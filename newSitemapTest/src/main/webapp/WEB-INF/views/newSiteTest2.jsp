@@ -522,7 +522,7 @@ This variant is to be used when loading the separate styling modules -->
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_sports" name="ck" onclick="checkboxSelect('ck',6)">
 					<!-- 수정필요 -->
-					<label for="welfare_sports" data-toggle="tooltip" data-title="Agency"><span>체육시설</span></label>
+					<label for="welfare_sports" data-toggle="tooltip" data-title="Agency"><span>스포츠시설</span></label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_sports">
 					<input type="radio" id="rd_welfare_sports1" name="rd_welfare_sports" value="<%=SelectConditions.high %>" >
@@ -634,7 +634,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="education_student" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="education_student">1인당 교원수</label>
+					<label for="education_student">교원 당 학생수</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="education_student">
 					<input type="radio" id="rd_education_student1" name="rd_education_student" value="<%=SelectConditions.high %>">
@@ -651,7 +651,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="education_academy" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="education_academy">학원수</label>
+					<label for="education_academy">학원 수</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="education_academy">
 					<input type="radio" id="rd_education_academy1" name="rd_education_academy" value="<%=SelectConditions.high %>">
