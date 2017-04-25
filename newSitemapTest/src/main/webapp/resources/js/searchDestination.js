@@ -46,7 +46,8 @@ function searchPlaces() {
     var keyword = document.getElementById('keyword').value;
 
     if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        alert('키워드를 입력해주세요!');
+    	//sweetalert을 적용할까 생각중-진희
+    	alert('키워드를 입력해주세요!');
         return false;
     }
 
@@ -139,25 +140,27 @@ function displayPlaces(places) {
 
 // 검색결과 항목을 Element로 반환하는 함수입니다
 function getListItem(index, places) {
-    var el = document.createElement('li'),
+	var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
                 '<div class="info sidebar-block">' +
                 '   <h5><strong>' + places.title + '</strong></h5>';
 
     if (places.newAddress) {
-        itemStr += '    <span style="font-size:10px">' + places.newAddress + '</span><br>' +
-                    ' <span class="jibun gray" style="font-size:10px">' +  places.address  + '</span><br> ';
+        itemStr += '<span style="font-size:12px">' + places.newAddress + '</span><br>' +
+                   '<span class="jibun gray" style="font-size:12px">' +  places.address  + '</span><br> ';
     } else {
-        itemStr += '    <span>' +  places.address  + '</span><br>'; 
+        itemStr += '    <span style=style="font-size:12px">' +  places.address  + '</span><br>'; 
     }
                  
-      itemStr += '  <span class="tel" style="font-size:10px">' + places.phone  + '</span><br>' ;
+      itemStr += '  <span class="tel" style="font-size:12px">' + places.phone  + '</span><br>' ;
       
       itemStr += '<select id="transport" name="transport"><option value="0">이동수단</option>' +
                  '<option value="1">자동차</option>' +
-                 '<option value="2">도보</option><option value="3">대중교통</option></select>' +
-
-                 '<input type="submit" value="등록" onclick="confirm('+places.latitude+','+places.longitude+','+index+');"></div>';
+                 '<option value="2">도보</option>'+
+                 '<option value="3">대중교통</option></select>' +
+                 '&nbsp &nbsp'+
+                 //등록버튼 수정 중-진희
+                 '<input class="btn" style="padding: 4px; font-size:12px; width: inherit;" type="submit" value="등록" onclick="confirm('+places.latitude+','+places.longitude+','+index+');"></div>';
 
     
     el.innerHTML = itemStr;
@@ -201,7 +204,9 @@ function getItem(index) {
                  
       itemStr += '  <span class="tel">' + places[index].phone  + '</span><br>' ;
       
-      itemStr += '<a href="#" class="deletebtn" id="deletebtn" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL();" >삭제</a><br>';
+      itemStr += '<a href="#" class="deletebtn" id="deletebtn" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL();" >'
+			      +'<i class="fa fa-trash" aria-hidden="true" style="color:red;></i>'
+			      +'삭제</a><br>';
     
     el.innerHTML = itemStr;
     el.className = 'item2';
@@ -300,29 +305,37 @@ function displayPagination(pagination) {
    paginationEl = document.getElementById('pagination'),
     fragment = document.createDocumentFragment(),
     i; 
-
+   
     // 기존에 추가된 페이지번호를 삭제합니다
     while (paginationEl.hasChildNodes()) {
         paginationEl.removeChild (paginationEl.lastChild);
     }
+    
+    //페이징 css 적용 완료 - 진희
     for (i=1; i<=pagination.last; i++) {
-        var el = document.createElement('a');
-        el.href = "#";
+    	var li = document.createElement('li');
+    	var el = document.createElement('a');
+    	el.href = "#";
         el.innerHTML = i;
+        
+        li.appendChild(el);
 
         if (i===pagination.current) {
-            el.className = 'on';
+        	li.className = 'on';
+            li.className = 'active';
         } else {
-            el.onclick = (function(i) {
+            li.onclick = (function(i) {
                 return function() {
                     pagination.gotoPage(i);
                 }
             })(i);
         }
-        fragment.appendChild(el);
+        fragment.appendChild(li);
     }
     paginationEl.appendChild(fragment);
 }
+
+
 
 // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
 // 인포윈도우에 장소명을 표시합니다
