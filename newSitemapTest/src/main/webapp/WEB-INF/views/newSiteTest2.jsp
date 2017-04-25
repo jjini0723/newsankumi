@@ -12,8 +12,8 @@
 
 <script src="//apis.daum.net/maps/maps3.js?apikey=e5f9cd760a5dedf9f84cc76d41a6decd&libraries=services"></script> <!-- daum api -->
 <script src="./resources/js/jquery-3.1.1.js"></script> <!-- jquery-3.1.1.js -->
-<script src="./resources/js/1stBoardList.js?ver=2"></script>
-<script src="./resources/js/2ndBoardList.js?ver=2"></script>
+<script src="./resources/js/1stBoardList.js?ver=3"></script>
+<script src="./resources/js/2ndBoardList.js?ver=3"></script>
 <script src="./resources/js/radioToList.js"></script>
 <script src="./resources/js/js_plugin/jquery.avgrund.min.js"></script>
 <script src="./resources/js/selectThis.js"></script> <!-- 기준 지역 선택 -->
@@ -283,11 +283,11 @@ This variant is to be used when loading the separate styling modules -->
     Some of the standalone modules may have not been used with the current theme/module
     but ALL modules are 100% compatible -->
 
-	<link href="./resources/css/app/app.css?ver=1" rel="stylesheet" />
-	<link href="./resources/css/app/sidebar-skins.css" rel="stylesheet" />
-	<link href="./resources/css/app/sidebar.css?ver=2" rel="stylesheet" />
+	<link href="./resources/css/app/app.css?ver=2" rel="stylesheet" />
+	<link href="./resources/css/app/sidebar-skins.css?ver=3" rel="stylesheet" />
+	<link href="./resources/css/app/sidebar.css?ver=3" rel="stylesheet" />
 
-	<link href="./resources/css/app/essentials.css?ver=3" rel="stylesheet" />
+	<link href="./resources/css/app/essentials.css?ver=1" rel="stylesheet" />
 	<link href="./resources/css/app/layout.css" rel="stylesheet" />
 	<link href="./resources/css/app/navbar.css" rel="stylesheet" />
 	<link href="./resources/css/app/media.css" rel="stylesheet" />
@@ -473,7 +473,7 @@ This variant is to be used when loading the separate styling modules -->
 					title="현재 거주하고 있는 지역이나, 기준이 되는 지역을 선택합니다(서울,경기,인천 한정)<br>기준지역 미 선택시 전체 평균으로 선택됨"></i>
 					</h4>
 					<li>
-						<div class="cd-select" style="margin: 14px">
+						<div class="bootstrap-select cd-select" style="margin: 14px">
 							<select class="select1" name="selectThis1" id="mp_addcd_sido" onchange="searchThis(this)">
 								<option value="">시/도</option>
 								<option value="서울특별시">서울특별시</option>
@@ -932,7 +932,7 @@ This variant is to be used when loading the separate styling modules -->
 	<h4 class="category">결과보기</h4>
 		<div class="sidebar-block text-center filter_commit" onclick = "conditionSelect();  ">
 			<a data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList();" class="btn btn-primary btn-block toggle ">
-				<strong>NEXT PAGE</strong> <!-- test123.js 연결 -->
+				<strong style="color: white;">NEXT PAGE</strong> <!-- test123.js 연결 -->
 			</a>
 		</div>
 		
@@ -945,7 +945,8 @@ This variant is to be used when loading the separate styling modules -->
 <!-- 오른쪽 사이드바 시작-->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
     <aside class="sidebar right sidebar-size-xs-2 sidebar-size-lg-35pc sidebar-size-30pc sidebar-offset-0 sidebar-skin-white"
-    	id="sidebar-map" data-toggle-layout=sidebar-r-30pc-lg,sidebar-r-25pc data-toggle-bar=false data-overlay=false>
+    	id="sidebar-map" data-toggle-layout=sidebar-r-30pc-lg,sidebar-r-25pc data-toggle-bar=false data-overlay=false
+    	style="box-shadow: 0px 0px 20px black; ">
       <div id = "test123">
       	<!-- test123.js 삽입 -->
       </div>

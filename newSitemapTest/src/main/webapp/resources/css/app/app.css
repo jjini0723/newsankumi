@@ -32124,16 +32124,19 @@ html.app-mobile #content .container-fluid {
 }
 [data-scrollable] {
   position: relative;
-   height: 100%; 
+  height: 95%;
+   /* height: 100%; */ 
   /* height: 80%; */
   overflow-x: hidden;
 }
 [data-scrollable-h] {
-  position: relative;
+   position: relative;
+	max-width:95%;
+	height: 95%;
 /*   max-width: 80%;
   width: 80%; */
-  max-width: 100%;
-  width: 100%; 
+  /* max-width: 100%;
+  width: 100%; */ 
   overflow-x: scroll;
 }
 .list-group-item .cover.overlay {
@@ -41947,7 +41950,8 @@ fieldset[disabled] .sidebar.sidebar-skin-dark .btn-default.active {
 }
 .sidebar.sidebar-skin-white .sidebar-menu li.hasSubmenu.open > a,
 .sidebar.sidebar-skin-white .sidebar-menu li.hasSubmenu.open > a i {
-  color: #303030;
+  /* color: #303030; */
+  color: #26a69a;
 }
 .sidebar.sidebar-skin-white .sidebar-menu li.active > a {
   color: #303030;
@@ -41963,7 +41967,7 @@ fieldset[disabled] .sidebar.sidebar-skin-dark .btn-default.active {
   color: #ffffff;
 }
 .sidebar.sidebar-skin-white .sidebar-menu.sm-icons-block li > a i {
-  background: #ebebeb;
+  /* background: #ebebeb; */
   color: #bdbdbd;
 }
 .sidebar.sidebar-skin-white .sidebar-menu.sm-icons-block li.active > a i {

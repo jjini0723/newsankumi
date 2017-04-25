@@ -140,16 +140,16 @@ function getListItem(index, places) {
     var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
                 '<div class="info sidebar-block">' +
-                '   <h5>' + places.title + '</h5>';
+                '   <h5><strong>' + places.title + '</strong></h5>';
 
     if (places.newAddress) {
-        itemStr += '    <span>' + places.newAddress + '</span><br>' +
-                    '   <span class="jibun gray">' +  places.address  + '</span><br>';
+        itemStr += '    <span style="font-size:10px">' + places.newAddress + '</span><br>' +
+                    ' <span class="jibun gray" style="font-size:10px">' +  places.address  + '</span><br> ';
     } else {
         itemStr += '    <span>' +  places.address  + '</span><br>'; 
     }
                  
-      itemStr += '  <span class="tel">' + places.phone  + '</span><br>' ;
+      itemStr += '  <span class="tel" style="font-size:10px">' + places.phone  + '</span><br>' ;
       
       itemStr += '<select id="transport" name="transport"><option value="0">이동수단</option>' +
                  '<option value="1">자동차</option>' +
