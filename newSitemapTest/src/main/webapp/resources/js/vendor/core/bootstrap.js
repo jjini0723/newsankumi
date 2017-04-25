@@ -1280,7 +1280,7 @@ if (typeof jQuery === 'undefined') {
     title: '',
     delay: 0,
     html: false,
-    container: false,
+    container: 'body',
     viewport: {
       selector: 'body',
       padding: 0

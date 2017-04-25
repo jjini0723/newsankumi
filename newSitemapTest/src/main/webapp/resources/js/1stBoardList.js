@@ -1,5 +1,6 @@
 function boardList() {
 	//window.scroll(0,0);
+	$("#code").hide();
 	$(document).ready(function() {
 		console.log("boardlist1");
 		$.ajax({
@@ -16,20 +17,28 @@ function boardList() {
 				html += '<h4 class="ribbon-heading ribbon-primary">지역추가</h4>';
 				html += '<div class="panel-body text-center">';
 				
-				html += '<select class="filter3" name="selectThis3" id="selectThis3" style = "margin-left:30px;" onchange="addAddress(this)">';
+				html += '<select class="filter3" name="selectThis3" id="selectThis3" onchange="addAddress(this)" style="font-size:medium;">';
 				html += '<option value="">시/도</option>';
 				html += '<option value="서울특별시">서울특별시</option>';
 				html += '<option value="인천광역시">인천광역시</option>';
 				html += '<option value="경기도">경기도</option>';
 				html += '</select>';
-				html += '<select class="filter4" name="selectThis4" id="selectThis4" onchange="addAddress2(this)">';
+				
+				html += '&nbsp';
+				
+				html += '<select class="filter4" name="selectThis4" id="selectThis4" onchange="addAddress2(this)" style="font-size:medium;">';
 				html += '<option value="">군/구</option>';
 				html += '</select>';
-				html += '<select class="filter5" name="selectThis5" id="selectThis5" >';
+				
+				html += '&nbsp';
+				
+				html += '<select class="filter5" name="selectThis5" id="selectThis5" style="font-size:medium;">';
 				html += '<option value="">읍/면/동</option>';
 				html += '</select>';
+				
 				html += '<br>';
-				html += '&nbsp &nbsp<a href = "#" onclick = "addItem();"id = "addAddress">추가</a><br>';
+				
+				html += '<a href = "#" onclick = "addItem();"id = "addAddress">추가</a><br>';
 				html += '<div class="cd-filter-right-confirm">';
 				html += '</div>';
 				html += '</div>';

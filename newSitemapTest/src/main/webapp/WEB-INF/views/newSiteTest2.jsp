@@ -12,8 +12,8 @@
 
 <script src="//apis.daum.net/maps/maps3.js?apikey=e5f9cd760a5dedf9f84cc76d41a6decd&libraries=services"></script> <!-- daum api -->
 <script src="./resources/js/jquery-3.1.1.js"></script> <!-- jquery-3.1.1.js -->
-<script src="./resources/js/1stBoardList.js?ver=3"></script>
-<script src="./resources/js/2ndBoardList.js?ver=3"></script>
+<script src="./resources/js/1stBoardList.js?ver=4"></script>
+<script src="./resources/js/2ndBoardList.js?ver=5"></script>
 <script src="./resources/js/radioToList.js"></script>
 <script src="./resources/js/js_plugin/jquery.avgrund.min.js"></script>
 <script src="./resources/js/selectThis.js"></script> <!-- 기준 지역 선택 -->
@@ -22,7 +22,7 @@
 <script src="./resources/js/graph2.js"></script><!-- 그래프2 -->
 <script src="./resources/js/addAddress.js"></script><!-- 추천지역 리스트에 주소추가 -->
 <script src="./resources/js/resultList.js"></script><!-- 추천지역 리스트 출력 -->
-<script src="./resources/js/mapShowResult.js"></script><!-- 추천지역 리스트 출력 -->
+<script src="./resources/js/mapShowResult.js?ver=1"></script><!-- 추천지역 리스트 출력 -->
 <script src="./resources/js/la.js"></script><!-- 영석이 시간계산 로직 -->
 <script src="./resources/js/filter.js"></script><!-- 영석이 필터 로직 -->
 <script src="./resources/js/getTradeInfo.js"></script><!-- 영석이 가격정보 로직 -->
@@ -63,7 +63,6 @@ var circleArray = new Array();
 var finalAddList = new Array(); 
 var result300 = []; // 저장 할꺼 1번
 var dongScore = [];
-
 
 $(document).avgrund({
 	    openOnEvent: false
@@ -328,7 +327,7 @@ This variant is to be used when loading the separate styling modules -->
 		<div class="st-container">
 
 		    <!-- Fixed navbar -->
-		    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="box-shadow: 0 5px 4px -5px #333;">
 		    	<div class="container-fluid" >
 		        	<div class="navbar-header">
 		       		<!-- 모바일 부분 -->
@@ -387,7 +386,7 @@ This variant is to be used when loading the separate styling modules -->
 			        		
 			        		
 			        		<!-- 코드불러오기 -->
-			            	<li class="dropdown">
+			            	<li class="dropdown" id="code">
 			              		<a href="#" class="dropdown-toggle tip" data-toggle="dropdown" data-tip="이전에 저장해두었던 결과를 다시 볼수 있습니다" style = "color:#8a8a8a;">
 			              		<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" tooltip tooltip-direction="right" tooltip-content="이전에 저장해두었던 결과를 다시 볼수 있습니다"> -->
 			                		<i class="fa fa-fw fa-lock"></i>코드불러오기
@@ -476,7 +475,10 @@ This variant is to be used when loading the separate styling modules -->
 
 	<!-- 왼쪽 사이드바 시작 -->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
-	<aside class="sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" id=sidebar-menu data-type=collapse>
+    <aside class="sidebar left 
+		sidebar-size-1 sidebar-mini-reveal smr-size-3 sidebar-offset-0
+		sidebar-skin-white sidebar-visible-desktop" id=sidebar-menu data-type=collapse
+		style="box-shadow:0px 0px 15px 0px #333;">
 	<div data-scrollable>
 	
 	<!-- 폼시작 -->
@@ -964,9 +966,9 @@ This variant is to be used when loading the separate styling modules -->
 
 <!-- 오른쪽 사이드바 시작-->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
-    <aside class="sidebar right sidebar-size-xs-2 sidebar-size-lg-35pc sidebar-size-30pc sidebar-offset-0 sidebar-skin-white"
-    	id="sidebar-map" data-toggle-layout=sidebar-r-30pc-lg,sidebar-r-25pc data-toggle-bar=false data-overlay=false
-    	style="box-shadow: 0px 0px 20px black; ">
+    <aside class="sidebar right sidebar-size-xs-2 sidebar-size-lg-25pc sidebar-size-20pc sidebar-offset-0 sidebar-skin-white"
+    	id="sidebar-map" data-toggle-layout=sidebar-r-20pc-lg,sidebar-r-15pc data-toggle-bar=false data-overlay=false
+    	style="box-shadow: 0px 0px 20px #333; ">
       <div id = "test123">
       	<!-- test123.js 삽입 -->
       </div>
@@ -986,7 +988,7 @@ This variant is to be used when loading the separate styling modules -->
 
 	<!-- 중간쪽 코드 잠시 빼냄 -->
 	<!-- 중간쪽 코드 부분에 임시로 지도 삽입 -->
-		<div class="st-content-inner padding-top-none" id="content">
+		<div class="margin-none" id="content">
 
 		<!-- 지도삽입 -->
 			<div id="map" style="width:100%;height:800px; "></div>
@@ -1092,7 +1094,7 @@ This variant is to be used when loading the separate styling modules -->
 	<script src="./resources/js/app/essentials.js"></script>
 	
 	<script src="./resources/js/vender/core/all.js"></script>
-	<script src="./resources/js/vendor/core/bootstrap.js"></script>
+	<script src="./resources/js/vendor/core/bootstrap.js?ver=1"></script>
 	
 	<script src="./resources/js/vendor/forms/all.js"></script>
 	<script src="./resources/js/vendor/forms/bootstrap-datepicker.js"></script>
