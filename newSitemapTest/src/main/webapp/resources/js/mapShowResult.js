@@ -6,7 +6,7 @@ function call(sigunguName, ghName, finalAddList2){
 	finalAddList = finalAddList2;
 	console.log(sigunguName);
 	console.log(ghName);
-	console.log(finalAddList2);
+	console.log(finalAddList);
 	alert('호호');
 	var marker = null;
    
@@ -125,7 +125,7 @@ function call(sigunguName, ghName, finalAddList2){
 	            geocoder.addr2coord(item, function(status, result) {
 	                if (status === daum.maps.services.Status.OK) {
 	                    var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-	                    	marker = new daum.maps.Marker({
+	                    	var marker = new daum.maps.Marker({
 	                        map: map,
 	                        position: coords
 	                    });

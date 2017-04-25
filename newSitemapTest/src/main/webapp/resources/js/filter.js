@@ -209,11 +209,11 @@ function filterMarker(result){
     $.each(markerResult,function(index,item) {
                  var coords = new daum.maps.LatLng(item.y, item.x);
                  console.log(coords);
-                 var marker = new daum.maps.Marker({
+                 var marker22 = new daum.maps.Marker({
                      map: map,
                      position: coords
                  });
-                 marker2.push(marker);
+                 marker2.push(marker22);
     })
 
 }

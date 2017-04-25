@@ -55,7 +55,7 @@ function boardList2() {
             html += '<ul class="pagination margin-none">';
             html += '<li class="disabled"><a href="#">&laquo;</a></li>';
             html += '<li><a href="#" onclick = "boardList();">이전단계</a></li>';
-            html += '<li><a href="#" onclick = "boardList3(); searchBestLoc(); ">최적의 주거공간 찾기</a></li>';
+            html += '<li><a href="#" onclick = "boardList3(); searchBestLoc(); hoit();">최적의 주거공간 찾기</a></li>';
             html += '<li class="disabled"><a href="#">&raquo;</a></li>';
             html += '</ul></div></div>';
             $("#test123").html(html);

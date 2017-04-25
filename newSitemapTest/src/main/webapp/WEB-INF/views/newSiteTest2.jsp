@@ -90,19 +90,25 @@ $(function() {
 	 
 });
 
-$(document).ready(function() {
-	if(typeof(recLocationArray[0]) != 'undefined') {
+function hoit() {
+	console.log(finalAddList[0]);
+	if(typeof(finalAddList[0]) != 'undefined') {
 		var strRec = '<a href="#" class="dropdown-toggle" data-toggle="dropdown">';
 		strRec += '<i class="fa fa-fw fa-filter"></i> 추천지역</a>';
 		strRec += '<div class="dropdown-menu dropdown-size-280 recLocation">';
 		strRec += '<div class="form-group">';
 		strRec += '<div id="recLocation" class="input-group">';
+		strRec += '<ol>';
+		$.each(finalAddList, function(index, item) {
+			strRec += '<li><a href="#" onclick="moveMap2('+index+')">'+item+'</a></li>';
+		});
+		strRec += '</ol>';			
 		strRec += '</div>';
 		strRec += '</div>';
 		strRec += '</div>';
 		$(".dropdown1").html(strRec);
 	}
-	if(typeof(hopeDestinationArray[0]) != 'undefined') {
+	if(typeof(finalAddList[0]) != 'undefined') {
 		var strRec2 = '<a href="#" class="dropdown-toggle" data-toggle="dropdown">';
 		strRec2 += '<i class="fa fa-fw fa-filter"></i> 희망목적지</a>';
 		strRec2 += '<div class="dropdown-menu dropdown-size-280 hopeDestination">';
@@ -113,7 +119,7 @@ $(document).ready(function() {
 		strRec2 += '</div>';
 		$(".dropdown2").html(strRec2);
 	}
-});
+}
 
 
 
@@ -157,20 +163,35 @@ function conditionSelect(){
 
 
  //팝업
- $(function() {
- 	 $('#show').avgrund({
- 	 	 height : 350,
- 	 	 width : 640,
- 	 	 holderClass : 'custom',
- 	 	 showClose : true,
- 	 	 showCloseText : 'X',
- 	 	 enableStackAnimation : true,
- 	 	 closeByDocument : true,
- 	 	 openOnEvent : false,
- 	 	 onBlurContainer : '.container',
- 	 	 template : '<img src="./resources/images/main_popup_high.jpg" height="330" width="620">'
- 	 });
- }); 
+$(function() {
+	$('#show').avgrund({
+		height : 350,
+		width : 640,
+	    holderClass : 'custom',
+		showClose : true,
+		showCloseText : 'X',
+		enableStackAnimation : true,
+	 	closeByDocument : true,
+	 	openOnEvent : false,
+	 	onBlurContainer : '.container',
+	 	template : '<img src="./resources/images/main_popup_high.jpg" height="330" width="620">'
+	});
+});
+ 
+function moveMap2(index){
+	var geocoder = new daum.maps.services.Geocoder();
+	var callback = function(status, result) {
+	    if (status === daum.maps.services.Status.OK) {
+	        console.log(result);
+	        console.log(result.addr[0]);
+	        var obj = result.addr[0];
+	        console.log(obj.lat, obj.lng);
+	        setCenter(obj.lat, obj.lng);
+	    }
+	};
+	geocoder.addr2coord(finalAddList[index], callback);
+}
+ 
 	
 //체크박스 선택 개수 제한 (6개)
 function checkboxSelect(obj, cnt) {

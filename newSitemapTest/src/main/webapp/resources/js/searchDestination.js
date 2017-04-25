@@ -22,19 +22,21 @@ var paginationEl;
 // 페이지 번호 변수
 var i;
 
-function deleteList() {
-   $("#getItem>li>#deletebtn").on("click", function() {
-      // 희망목적지에 등록된 목적지의 개수를 파악하기 위해, 삭제가 되면 배열에서 꺼낸다.
-      var title = $(this).attr("title");
-      for(var i = 0; i < hopeList.length; i++) {
-         if(title == hopeList[i]) {
+function deleteL() {
+	console.log(hopeList.length);
+	console.log('유영이바보');
+    // 희망목적지에 등록된 목적지의 개수를 파악하기 위해, 삭제가 되면 배열에서 꺼낸다.
+    var title = $("#getItem>li>#deletebtn").attr("title");
+    console.log($("#getItem>li>#deletebtn").parent());
+    console.log(title.value);
+    for(var i = 0; i < hopeList.length; i++) {
+    	if(title == hopeList[i]) {
             removeThisMarker(i);
             hopeList.splice(i,1);
          }
-      }
-      $(this).parent().remove();
-      return false;
-   });
+    }
+    $("#getItem>li>#deletebtn").parent().remove();
+    return false;
 }
 
 
@@ -199,7 +201,7 @@ function getItem(index) {
                  
       itemStr += '  <span class="tel">' + places[index].phone  + '</span><br>' ;
       
-      itemStr += '<a href="#" class="deletebtn" id="deletebtn" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteList();");">삭제</a><br>';
+      itemStr += '<a href="#" class="deletebtn" id="deletebtn" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL();" >삭제</a><br>';
     
     el.innerHTML = itemStr;
     el.className = 'item2';
