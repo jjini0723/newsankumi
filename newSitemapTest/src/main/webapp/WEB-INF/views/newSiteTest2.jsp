@@ -988,7 +988,9 @@ This variant is to be used when loading the separate styling modules -->
 
 <!-- 오른쪽 사이드바 시작-->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
-    <aside class="sidebar right sidebar-size-xs-2 sidebar-size-lg-25pc sidebar-size-20pc sidebar-offset-0 sidebar-skin-white"
+    <!-- 필요한 경우 aside 클래스에 더해서 사용 
+    	sidebar-size-xs-30pc sidebar-size-sm-30pc sidebar-size-md-25pc sidebar-size-lg-25pc -->
+    <aside class="sidebar right sidebar-size-5 sidebar-offset-0 sidebar-skin-white st-effect-1"
     	id="sidebar-map" data-toggle-layout=sidebar-r-20pc-lg,sidebar-r-15pc data-toggle-bar=false data-overlay=false
     	style="box-shadow: 0px 0px 20px #333; ">
       <div id = "test123">
