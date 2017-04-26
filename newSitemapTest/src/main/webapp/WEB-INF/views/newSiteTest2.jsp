@@ -562,6 +562,7 @@ This variant is to be used when loading the separate styling modules -->
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_salon" name="ck" onclick="checkboxSelect('ck',6)">
 					<label for="welfare_salon" data-toggle="tooltip" data-placement="bottom" title="헤어관리 숍(미용실) 수를 행정구역 별로 나타냅니다.">미/이용 시설</label>
+
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_salon">
 					<input type="radio" id="rd_welfare_salon1" name="rd_welfare_salon" value="<%=SelectConditions.high %>">
@@ -640,6 +641,7 @@ This variant is to be used when loading the separate styling modules -->
 				<a href="#">
 					<input class="ck" type="checkbox" id="education_student" name="ck" onclick="checkboxSelect('ck',6)">
 					<label for="education_student" data-toggle="tooltip" data-placement="bottom" title="초중고 교원 1인이 담당하는 학생 수를 행정구역 별로 나타냅니다.">교원 1인당 학생수</label>
+
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="education_student">
 					<input type="radio" id="rd_education_student1" name="rd_education_student" value="<%=SelectConditions.high %>">
@@ -683,6 +685,7 @@ This variant is to be used when loading the separate styling modules -->
 				<a href="#">
 					<input class="ck" type="checkbox" id="safety_fire" name="ck" onclick="checkboxSelect('ck',6)">
 					<label for="safety_fire" data-toggle="tooltip" data-placement="bottom" title="행정구역 별 화재사고 수준을 나타내는 화재사고지수(등급)를 나타냅니다. 수치가 높을수록 안전합니다.">화재안전사고</label>
+
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_fire">
 					<input type="radio" id="rd_safety_fire1" name="rd_safety_fire" value="<%=SelectConditions.high %>">

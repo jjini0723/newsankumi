@@ -38816,6 +38816,12 @@ body > .sidebar,
 .sidebar-size-3 {
   width: 250px;
 }
+.sidebar-size-4 {
+  width: 300px;
+}
+.sidebar-size-5 {
+  width: 350px;
+}
 @media (min-width: 768px) {
   .sidebar-size-1 {
     width: 56px;
