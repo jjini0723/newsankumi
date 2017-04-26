@@ -192,14 +192,21 @@ function getItem(index) {
     }
       itemStr += '  <span class="tel">' + places[index].phone  + '</span><br>' ;
       
-<<<<<<< HEAD
-      itemStr += '<a href="#" class="deletebtn" id="'+paraparam1+'" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL(\''+paraparam1+'\');" >삭제</a><br>';
+      itemStr += '<a href="#" class="deletebtn" id="'+paraparam1+'" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL(\''+paraparam1+'\');" >'
+		      +'<span class="glyphicon glyphicon-trash" style="color:red;"></span>'
+		      +'</a><br>'; 
+/*
+ * 
+ * itemStr += '<a href="#" class="deletebtn" id="'+paraparam1+'" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL(\''+paraparam1+'\');" >'
+               +'<span class="glyphicon glyphicon-trash" style="color:red;"></span>'
+               +'</a><br>'; 
+ * 
+ * itemStr += '<a href="#" class="deletebtn" id="'+paraparam1+'" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL(\''+paraparam1+'\');" >'
+      		  +'<span class="glyphicon glyphicon-trash" style="color:red;"></span>'
+      		  +'</a><br>'; 
+ * 
+ */
 
-=======
-      itemStr += '<a href="#" class="deletebtn" id="deletebtn" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL();" >'
-			      +'<i class="fa fa-trash" aria-hidden="true" style="color:red;></i>'
-			      +'삭제</a><br>';
->>>>>>> 767f61e2419959811ad8f2f148e9905be8339002
     
     el.innerHTML = itemStr;
     el.className = 'item2';
