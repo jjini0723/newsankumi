@@ -60,7 +60,8 @@ var marker2 = [];
 var recLocationArray = new Array();
 var hopeDestinationArray = new Array();
 var circleArray = new Array();
-var finalAddList = new Array(); 
+var finalAddList = new Array();
+var finalHopeList = new Array();
 var result300 = []; // 저장 할꺼 1번
 var dongScore = [];
 
@@ -115,11 +116,11 @@ function hoit2() {
 		strRec2 += '<div class="dropdown-menu dropdown-size-280 hopeDestination">';
 		strRec2 += '<div class="form-group">';
 		strRec2 += '<div id="hopeDestination" class="input-group">';
-		strRec += '<ol>';
+		strRec2 += '<ol>';
 		$.each(hopeList, function(hopeListIndex, hopeItem) {
 			strRec2 += '<li><a href="#" onclick="moveMap2(1,'+hopeListIndex+');">'+hopeItem+'</a></li>';
 		});
-		strRec += '</ol>';
+		strRec2 += '</ol>';
 		strRec2 += '</div>';
 		strRec2 += '</div>';
 		strRec2 += '</div>';
@@ -132,7 +133,7 @@ function resultFinalAddList() {
 }
 
 function resultHopeList() {
-	return hopeList;
+	return finalHopeList;
 }
 
 //라디오버튼 값 보내기
@@ -211,12 +212,10 @@ function moveMap2(checkIndex, index) {
 	console.log("내려오냐");
 	var callback = function(status, result) {
 	    if (status === daum.maps.services.Status.OK) {
-	        console.log(result);
-	        console.log(result.addr[0]);
 	        var obj = result.addr[0];
-	        console.log(obj.lat, obj.lng);
-	        alert(obj.lat +''+obj.lng);
-	        setCenter(obj.lat, obj.lng);
+	        console.log(result.addr[0].lat, result.addr[0].lng);
+	        map.setLevel(8);
+	        setCenter(result.addr[0].lat, result.addr[0].lng);
 	    }
 	};
 	geocoder.addr2coord(resultList[index], callback);

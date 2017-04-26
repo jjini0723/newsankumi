@@ -57,12 +57,7 @@ function addItem() {
 	 var si = obj1.options[idx1].text;
 	 var gu = obj2.options[idx2].text;
 	 var dong = obj3.options[idx3].text;
-	 
-	/* var allKey = ["safety_fire", "safety_traffic", "safety_crime",  "safety_safety","safety_infection","safety_nature", 
-		 "people_foreign",  "people_density",  "nature_park",	"nature_pollution","life_convenient",
-		 "life_shopping", "life_restaurant", "life_publicTraffic", "education_student", "education_academy", "welfare_childCare",
-		 "welfare_medical", "welfare_society",  "welfare_culture",  "welfare_sports", "welfare_salon"];
-	 */
+	
 	 if (si != "시/도" || gu != "군/구" || dong != "읍/면/동") {
 		
 	 $.ajax({
@@ -88,7 +83,7 @@ function addItem() {
         		
         	console.log(data);
         	
-				
+		 initChart();
        	 items.push(data);
        	 buildList(items);
        	 
@@ -134,7 +129,7 @@ function setCircle(index) {
 		if (status === daum.maps.services.Status.OK) {
 		    if(lastChar == '읍' || lastChar == '면') {
 	    		circle = new daum.maps.Circle({
-		    		center : new daum.maps.LatLng(obj.lat, obj.lng),  // 원의 중심좌표 입니다 
+		    		center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
 		    		radius: 8000, // 미터 단위의 원의 반지름입니다 
 		    		strokeWeight: 5, // 선의 두께입니다 
 		    		strokeColor: '#75B8FA', // 선의 색깔입니다

@@ -30,6 +30,7 @@ function deleteL(paraparam1) {
     	if(title == hopeList[i]) {
             removeThisMarker(i);
             hopeList.splice(i,1);
+            finalHopeList.splice(i,1);
          }
     }
     $('#getItem>li>#'+paraparam1).parent().remove();
@@ -132,6 +133,7 @@ function displayPlaces(places) {
     menuEl.scrollTop = 0;
 
     // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+    map.setLevel(8);
     map.setBounds(bounds);
 }
 
@@ -232,6 +234,7 @@ function confirm(lat, lng, index) {
 					document.getElementById("keyword").value = "";
 					removeAllChildNods(listEl);
 					removeAllpaginationChildNods(paginationEl);
+					removeOtherMarker(index, transport);
 					return;
 				}
 			}
@@ -239,6 +242,7 @@ function confirm(lat, lng, index) {
 		// 중복된 희망목적지가 아닐 경우 배열에 해당 희망목적지의 이름을 저장한다.
 		if(hopeList.length < 6) {
 			hopeList.push(places[index].title);
+			finalHopeList.push(places[index].address);
 			displayPlace(index);
 			hoi(lat, lng, index);
 			removeOtherMarker(index, transport); // index는 검색결과의 리스트 배열의 인덱스.
