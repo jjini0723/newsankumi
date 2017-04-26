@@ -16,6 +16,7 @@ public class aptInfo {
 	private String kaptdaCnt; // 세대수
 	private String kaptBcompany; // 시공사
 	private String kaptTel; // 사무소 번호
+	private String dongScore; // ë ì ì
 	
 	
 	public aptInfo() {
@@ -25,7 +26,7 @@ public class aptInfo {
 
 	public aptInfo(String ghName, String kaptCode, String kaptAddr, String doroJuso, String codeHallNm, String kaptName,
 			String kaptMparea_135, String kaptMparea_60, String kaptMparea_85, String kaptUsedate, String codeHeatNm,
-			String kaptDongCnt, String kaptdaCnt, String kaptBcompany, String kaptTel) {
+			String kaptDongCnt, String kaptdaCnt, String kaptBcompany, String kaptTel, String dongScore) {
 		super();
 		this.ghName = ghName;
 		this.kaptCode = kaptCode;
@@ -42,6 +43,7 @@ public class aptInfo {
 		this.kaptdaCnt = kaptdaCnt;
 		this.kaptBcompany = kaptBcompany;
 		this.kaptTel = kaptTel;
+		this.dongScore = dongScore;
 	}
 
 
@@ -193,6 +195,16 @@ public class aptInfo {
 	public void setKaptTel(String kaptTel) {
 		this.kaptTel = kaptTel;
 	}
+	
+	
+	public String getDongScore() {
+		return dongScore;
+	}
+
+
+	public void setDongScore(String dongScore) {
+		this.dongScore = dongScore;
+	}
 
 
 	@Override
@@ -201,7 +213,8 @@ public class aptInfo {
 				+ doroJuso + ", codeHallNm=" + codeHallNm + ", kaptName=" + kaptName + ", kaptMparea_135="
 				+ kaptMparea_135 + ", kaptMparea_60=" + kaptMparea_60 + ", kaptMparea_85=" + kaptMparea_85
 				+ ", kaptUsedate=" + kaptUsedate + ", codeHeatNm=" + codeHeatNm + ", kaptDongCnt=" + kaptDongCnt
-				+ ", kaptdaCnt=" + kaptdaCnt + ", kaptBcompany=" + kaptBcompany + ", kaptTel=" + kaptTel + "]";
+				+ ", kaptdaCnt=" + kaptdaCnt + ", kaptBcompany=" + kaptBcompany + ", kaptTel=" + kaptTel 
+				+ ", dongScore=" + dongScore + "]";
 	}
 
 	

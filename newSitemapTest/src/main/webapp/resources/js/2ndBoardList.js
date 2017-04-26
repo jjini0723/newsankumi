@@ -22,7 +22,7 @@ function boardList2() {
              html += '<div data-toggle="gridalicious" data-width="400">';
             
              /////// 희망목적지 검색 및 검색결과 리스트 출력부분
-             html += '<div class="map_wrap text-center" style="color:black">';
+             html += '<div class="map_wrap panel-body text-center" style="color:black">';
              html += '<div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>';
              html += '<div id="menu_wrap" class="bg_white">';
              html += '<div class="option">';
@@ -58,9 +58,10 @@ function boardList2() {
              html += '</div></div>';
 
              //다음단계
-			 html += '<div class="sidebar-block text-center filter_commit">';
-			 html += '<a class="btn btn-primary btn-block" onclick = "boardList3(), searchBestLoc(), hoit2();"><strong style="color:white;">최적의 주거공간 찾기</strong></a>';
-			 html += '</div></div>';
+			 html += '<div class="panel-body sidebar-block text-center filter_commit">';
+			 html += '<ul class="pagination margin-none">';
+			 html += '<li><a class="btn btn-primary btn-block" onclick = "boardList3(), searchBestLoc(), hoit2();"><strong style="color:white;">최적의 주거공간 찾기</strong></a></li>';
+			 html += '</ul></div></div>';
              $("#test123").html(html);
          },
          error : function(e) {
@@ -72,7 +73,7 @@ function boardList2() {
 }
 
 function boardList3() {
-
+	var semo = null;
 	$(document).ready(function() {
 		console.log("여기까지333");
 		$.ajax({
@@ -88,16 +89,16 @@ function boardList3() {
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 				
 				//아파트정보
-				html += '<h4 class="ribbon-heading ribbon-primary">아파트 세부정보</h4>';
+				html += '<h4 class="ribbon-heading ribbon-primary" id="info">아파트 세부정보</h4>';
 
-				html += '<div style="overflow:auto;height:100px;" id = "aptInfo"></div>';
+				html += '<div style="overflow:auto;height:100px;" display:none; id = "aptInfo"></div>';
 				
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 				
 				//부동산거래정보
-				html += '<h4 class="ribbon-heading ribbon-primary">아파트 거래정보</h4>';
-				html += '<div style="overflow:auto;height:150px;" id = "aptTradeInfo"></div>';
+				html += '<h4 class="ribbon-heading ribbon-primary" id="tradeInfo">아파트 거래정보</h4>';
+				html += '<div style="overflow:auto;height:150px;display:none;" id = "aptTradeInfo" ></div>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 			
@@ -113,6 +114,29 @@ function boardList3() {
 				html += '</div></div>';
 
             $("#test123").html(html);
+            
+        	var height = document.getElementById("aptInfo");
+        	var tradewindow = document.getElementById("aptTradeInfo");
+//        	height.style.display="block";
+        	$("#info").mouseenter(function(){
+        		height.style.display="block";
+        	});
+        	$("#lll").mouseenter(function(){
+        		height.style.display="none";
+        	});
+        	$("#aptInfo").mouseleave(function(){
+        		height.style.display="none";
+        	})
+        	$("#tradeInfo").mouseenter(function(){
+        		tradewindow.style.display="block";
+        	});
+        	$("#info").mouseenter(function(){
+        		tradewindow.style.display="none";
+        	});
+        	$("#aptTradeInfo").mouseleave(function(){
+        		tradewindow.style.display="none";
+        	})
+        	
             if (html != "") {
             //   dfa();
             }
@@ -123,7 +147,9 @@ function boardList3() {
       });
    });
 }
-
+function showFilter(){
+	$("#filter").show();
+}
 //이메일 보내기
 function JSalert(){
 	var checknumber = null;

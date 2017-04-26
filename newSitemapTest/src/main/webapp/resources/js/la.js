@@ -334,12 +334,15 @@ function sendArray(){
    if(changepoint>5){
       percent=parseFloat(changepoint/5);
       $.each(perfect,function(index,item){
-         item.changepoint = (item.totalpoint/percent).toFixed(2);
+    	  var siscore = (parseFloat((item.totalpoint/percent).toFixed(2))+(parseFloat(item.dongScore)).toFixed(2)).toFixed(2);
+          item.changepoint = siscore;
       })
    }else if(changepoint<5){
       percent=parseFloat(5/changepoint);
       $.each(perfect,function(index,item){
-         item.changepoint = ((parseFloat(item.totalpoint))*percent).toFixed(2);
+    	  var score1 = parseFloat(item.totalpoint)*percent.toFixed(2);
+     	  var score2 = parseFloat(item.dongScore);
+          item.changepoint = (score1+score2).toFixed(2);
       })
    } 
 //   console.log(perfect);
@@ -389,9 +392,10 @@ function drawlist() {
    
    
 }
-function focuson(x,y){
+function focusin(x,y){
    var moveLatLon = new daum.maps.LatLng(y, x);
     
     // 지도 중심을 이동 시킵니다
     map.setCenter(moveLatLon);
+    map.setLevel(5);
 }

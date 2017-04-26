@@ -46,8 +46,9 @@ function call(sigunguName, ghName, finalAddList2){
         url : "getDoroCD",
    //   contentType : "application/json; charset=utf-8",
         data : {
-           sigunguName : sigunguName,
-            ghName : ghName
+        	sigunguName : sigunguName,
+            ghName : ghName,
+            dongScore : dongScore
         },
         success : function(data) {
            var ghNameArray = ghName.split(',');
@@ -108,6 +109,7 @@ function call(sigunguName, ghName, finalAddList2){
              // 주소랑 이름 함께
             var windowSet = new Array();
             var coordsList = [];
+            var dongScore = new Array();
             for(var i in data) {
                kaptUsedate.push(data[i].kaptUsedate);
                kaptAddr.push(data[i].kaptAddr);
@@ -122,6 +124,7 @@ function call(sigunguName, ghName, finalAddList2){
                kaptMparea_135.push(data[i].kaptMparea_135);
                var windowSet1 = {kaptAddr : data[i].kaptAddr,kaptName : data[i].kaptName};
                windowSet.push(windowSet1);
+               dongScore.push(data[i].dongScore);
                //alert('주소 : '+kaptAddr[i]+' 아파트이름 : '+kaptName[i]);
             }
             $.each(windowSet,function(index,item) {
@@ -148,6 +151,7 @@ function call(sigunguName, ghName, finalAddList2){
                                kaptMparea_60 : kaptMparea_60[index],
                                kaptMparea_85 : kaptMparea_85[index],
                                kaptMparea_135 : kaptMparea_135[index],
+                               dongScore : dongScore[index],
                                car1 : '',//자동차로 3곳을 설정할 경우를 대비해서 아예 1,2,3번만듬
                                car2 : '',
                                car3 : '',
@@ -198,7 +202,7 @@ function call(sigunguName, ghName, finalAddList2){
                        perfect.push(perfect2);
                    }
                    // 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
-                   var iwContent = '<div style="padding:15px; color:black;">'+item.kaptAddr+'   <br></div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                   var iwContent = '<div style="padding:20px; color:black;">'+item.kaptAddr+'   <br></div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                    // 인포윈도우를 생성합니다
                    var infowindow = new daum.maps.InfoWindow({
                        content : iwContent

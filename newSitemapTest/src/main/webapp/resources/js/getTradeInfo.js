@@ -32,9 +32,9 @@ function getTradeInfo(x){
         }
      })
       var html = "";
-      html += '<ul class = "category" data-width="200" id = "list2"><table>';
-            html += '<tr><td>주소 </td><td>'+info.kaptAddr+"</td><tr><td>아파트명 </td><td>"+info.kaptName+"</td></tr><tr><td>건축년도</td><td>"+info.kaptUsedate+'</td></tr>' ;
-      html += '</table></ul>';
+      html += '<ul class = "category" data-width="200" id = "list2">';
+      html += '주소:'+info.kaptAddr+"<br>아파트명:"+info.kaptName+"<br>건축년도:"+info.kaptUsedate+'<br>' ;
+      html += '</ul>';
       $('#aptInfo').html(html);
       //////////////////////////////////////////////////////////////////////////////////////////
       

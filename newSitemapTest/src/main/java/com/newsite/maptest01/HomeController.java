@@ -125,14 +125,16 @@ public class HomeController {
 	}
 	@ResponseBody
 	@RequestMapping(value = "getDoroCD", method = RequestMethod.POST)
-	public ArrayList<aptInfo> getDoroCD(String sigunguName, String ghName) {
+	public ArrayList<aptInfo> getDoroCD(String sigunguName, String ghName, String dongScore) {
 		System.out.println("sigunguName : "+sigunguName);
 		System.out.println("ghName : "+ghName);
+		System.out.println("dongScore: "+dongScore);
 		ArrayList<aptInfo> aptInfoList = new ArrayList<>();
 		ArrayList<aptInfo> aptInfoList2 = new ArrayList<>();
 		ArrayList<aptInfo> aptInfoList3 = new ArrayList<>();
 		String[] guArray = sigunguName.split(",");
 		String[] ghNameArray = ghName.split(",");
+		String[] scoreArray = dongScore.split(",");
 		for(int i = 0; i < guArray.length; i++) {
 			GuGwanhal gugh = new GuGwanhal(guArray[i], ghNameArray[i]);
 			try {
@@ -161,6 +163,19 @@ public class HomeController {
 	             }
 	         }
 	    }
+		for(int i=0; i<aptInfoList3.size();i++){
+			if(aptInfoList3.get(i).getGhName().equals(ghNameArray[0])){
+				aptInfoList3.get(i).setDongScore(scoreArray[0]);
+			}else if(aptInfoList3.get(i).getGhName().equals(ghNameArray[1])){
+				aptInfoList3.get(i).setDongScore(scoreArray[1]);
+			}else if(aptInfoList3.get(i).getGhName().equals(ghNameArray[2])){
+				aptInfoList3.get(i).setDongScore(scoreArray[2]);
+			}else if(aptInfoList3.get(i).getGhName().equals(ghNameArray[3])){
+				aptInfoList3.get(i).setDongScore(scoreArray[3]);
+			}else if(aptInfoList3.get(i).getGhName().equals(ghNameArray[4])){
+				aptInfoList3.get(i).setDongScore(scoreArray[4]);
+			}
+		}
 		System.out.println("aptInfoList : "+aptInfoList);
 		return aptInfoList3;
 	}

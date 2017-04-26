@@ -22,6 +22,9 @@ var paginationEl;
 // 페이지 번호 변수
 var i;
 
+var overlay = new daum.maps.CustomOverlay({});
+
+
 function deleteL(paraparam1) {
     // 희망목적지에 등록된 목적지의 개수를 파악하기 위해, 삭제가 되면 배열에서 꺼낸다.
 	var title = $('#getItem>li>#'+paraparam1).attr('title');
@@ -124,6 +127,7 @@ function displayPlaces(places) {
         })(marker, places[i].title);
 
         fragment.appendChild(itemEl);
+        infoList.push(infowindow);
     }
     // 수정부분
     $("#places").val(JSON.stringify(places));
@@ -152,7 +156,7 @@ function getListItem(index, places) {
                  '<option value="1">자동차</option>' +
                  '<option value="2">도보</option><option value="3">대중교통</option></select>' +'&nbsp &nbsp'+
 
-                 '<input type="submit" value="등록" class="btn" style="padding: 4px; font-size:12px; width: inherit;" onclick="confirm('+places.latitude+','+places.longitude+','+index+');"></div>';
+                 '<input type="submit" value="등록" class="btn" style="padding: 4px; font-size:12px; width: inherit;" onclick="confirm('+places.latitude+','+places.longitude+','+index+'); displayOverlay('+index+');"></div>';
 
     
     el.innerHTML = itemStr;
@@ -339,7 +343,51 @@ function displayPagination(pagination) {
     paginationEl.appendChild(fragment);
 }
 
+function closeOverlay() {
+    overlay.setMap(null);     
+}
 
+function displayOverlay(index) {
+	var places = JSON.parse($("#places").val());
+	
+	for(var i in infoList) {
+		infoList[i].close();
+	}
+	
+    var content = '<div class="wrap">';
+    content += 	      '<div class="info">';
+                  
+    content += 	  	      '<div class="title">'+places[index].title+'<div class="close" onclick="closeOverlay()" title="닫기"></div></div>';
+                  
+    content += '<div class="body">';
+    content +=     '<div class="img">';
+    content += 	       '<img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">';
+    content +=     '</div>';
+    content +=     '<div class="desc">';
+    content +=         '<div class="ellipsis">'+places[index].address+'</div>';
+    if(places[index].newAddress != '') {
+    	content +=     '<div class="jibun ellipsis">'+places[index].newAddress+'</div>';
+    }             
+    content +=     '</div>';
+    content += '</div>';
+    content +=        '</div>';
+    content +=    '</div>';
+     
+    
+	// 마커 위에 커스텀오버레이를 표시합니다
+	// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
+	var overlay2 = new daum.maps.CustomOverlay({
+	    content: content,
+	    map: map,
+	    position: newMarkers[index].getPosition()       
+	});
+	overlay = overlay2;
+	
+	// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
+	daum.maps.event.addListener(newMarkers[index], 'click', function() {
+	    overlay2.setMap(map);
+	});
+}
 
 // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
 // 인포윈도우에 장소명을 표시합니다
