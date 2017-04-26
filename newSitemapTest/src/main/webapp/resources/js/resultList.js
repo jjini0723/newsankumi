@@ -33,7 +33,13 @@ function buildList(list) {
 		+items[i].citycode+'" class = "'+items[i].gu +','+ items[i].dong+'" onclick = "initChart(); createChart1('+ i +'); setCircle('+ i +'); moveMap('+i+');"'+
 		'style="color:#333333";> ' 
 		+ items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="initChart(); removeItem(' + i + ');" style = "color:red";>   x   </a> '+ '</li>' ;
+		var score1 = parseFloat(items[i].totalScore/items[0].totalScore*5).toFixed(2);
+		
+		console.log(score1);
+		dongScore.push(score1);
 	}
+	
+	console.log("dongscore"+dongScore);
 	
 	html += '</ol>';
 	$('#req_loc1').html(html);
@@ -241,3 +247,9 @@ function sendData1(){ //코드 및 동 리스트 가져오기
 	
 }
 
+function deleteArray1(){
+	if (dongScore.length != 0) {
+		dongScore.length = 0;
+	}
+	
+}

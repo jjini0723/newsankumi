@@ -12,8 +12,8 @@
 
 <script src="//apis.daum.net/maps/maps3.js?apikey=e5f9cd760a5dedf9f84cc76d41a6decd&libraries=services"></script> <!-- daum api -->
 <script src="./resources/js/jquery-3.1.1.js"></script> <!-- jquery-3.1.1.js -->
-<script src="./resources/js/1stBoardList.js?ver=3"></script>
-<script src="./resources/js/2ndBoardList.js?ver=3"></script>
+<script src="./resources/js/1stBoardList.js?ver=1"></script>
+<script src="./resources/js/2ndBoardList.js?ver=1"></script>
 <script src="./resources/js/radioToList.js"></script>
 <script src="./resources/js/js_plugin/jquery.avgrund.min.js"></script>
 <script src="./resources/js/selectThis.js"></script> <!-- 기준 지역 선택 -->
@@ -22,7 +22,7 @@
 <script src="./resources/js/graph2.js"></script><!-- 그래프2 -->
 <script src="./resources/js/addAddress.js"></script><!-- 추천지역 리스트에 주소추가 -->
 <script src="./resources/js/resultList.js"></script><!-- 추천지역 리스트 출력 -->
-<script src="./resources/js/mapShowResult.js"></script><!-- 추천지역 리스트 출력 -->
+<script src="./resources/js/mapShowResult.js?ver=1"></script><!-- 추천지역 리스트 출력 -->
 <script src="./resources/js/la.js"></script><!-- 영석이 시간계산 로직 -->
 <script src="./resources/js/filter.js"></script><!-- 영석이 필터 로직 -->
 <script src="./resources/js/getTradeInfo.js"></script><!-- 영석이 가격정보 로직 -->
@@ -62,9 +62,7 @@ var hopeDestinationArray = new Array();
 var circleArray = new Array();
 var finalAddList = new Array(); 
 var result300 = []; // 저장 할꺼 1번
-/* var checknumber = null; // 인증 번호
-var checkemail = null; //인증 이멜 */
-
+var dongScore = [];
 
 $(document).avgrund({
 	    openOnEvent: false
@@ -352,7 +350,7 @@ This variant is to be used when loading the separate styling modules -->
 		<div class="st-container">
 
 		    <!-- Fixed navbar -->
-		    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+		    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="box-shadow: 0 5px 4px -5px #333;">
 		    	<div class="container-fluid" >
 		        	<div class="navbar-header">
 		       		<!-- 모바일 부분 -->
@@ -411,7 +409,7 @@ This variant is to be used when loading the separate styling modules -->
 			        		
 			        		
 			        		<!-- 코드불러오기 -->
-			            	<li class="dropdown">
+			            	<li class="dropdown" id="code">
 			              		<a href="#" class="dropdown-toggle tip" data-toggle="dropdown" data-tip="이전에 저장해두었던 결과를 다시 볼수 있습니다" style = "color:#8a8a8a;">
 			              		<!-- <a href="#" class="dropdown-toggle" data-toggle="dropdown" tooltip tooltip-direction="right" tooltip-content="이전에 저장해두었던 결과를 다시 볼수 있습니다"> -->
 			                		<i class="fa fa-fw fa-lock"></i>코드불러오기
@@ -500,7 +498,10 @@ This variant is to be used when loading the separate styling modules -->
 
 	<!-- 왼쪽 사이드바 시작 -->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
-	<aside class="sidebar left sidebar-size-1 sidebar-mini-reveal sidebar-offset-0 sidebar-skin-white sidebar-visible-desktop" id=sidebar-menu data-type=collapse>
+    <aside class="sidebar left 
+		sidebar-size-1 sidebar-mini-reveal smr-size-3 sidebar-offset-0
+		sidebar-skin-white sidebar-visible-desktop" id=sidebar-menu data-type=collapse
+		style="box-shadow:0px 0px 15px 0px #333; cursor:pointer;">
 	<div data-scrollable>
 	
 	<!-- 폼시작 -->
@@ -510,28 +511,28 @@ This variant is to be used when loading the separate styling modules -->
 	<ul class="sidebar-menu sm-bordered sm-icons-block sm-icons-right">
 		<li class="hasSubmenu open active">
 			<a><i class="fa fa-home"></i><span>1차 선택</span></a>
-				<ul class="in">
-					<h4 class="category">기준지역선택
-					<i class="fa fa-question-circle" 
-					data-toggle="tooltip" data-placement="right"
-					title="현재 거주하고 있는 지역이나, 기준이 되는 지역을 선택합니다(서울,경기,인천 한정)<br>기준지역 미 선택시 전체 평균으로 선택됨"></i>
-					</h4>
-					<li>
-						<div class="bootstrap-select cd-select" style="margin: 14px">
-							<select class="select1" name="selectThis1" id="mp_addcd_sido" onchange="searchThis(this)">
-								<option value="">시/도</option>
-								<option value="서울특별시">서울특별시</option>
-								<option value="인천광역시">인천광역시</option>
-								<option value="경기도">경기도</option>
-							</select>
-							<select class="select2" name="selectThis2" id="mp_addcd_gg">
-								<option value="">구/군</option>
-							</select>
-						</div>
-					</li> 
-				</ul>
-			</li>
-		</ul>
+			<ul class="in">
+				<h4 class="category">기준지역선택
+				<i class="fa fa-question-circle" 
+				data-toggle="tooltip" data-placement="right"
+				title="현재 거주하고 있는 지역이나, 기준이 되는 지역을 선택합니다(서울,경기,인천 한정)<br>기준지역 미 선택시 전체 평균으로 선택됨"></i>
+				</h4>
+				<li>
+					<div class="bootstrap-select cd-select" style="margin: 14px">
+						<select class="select1" name="selectThis1" id="mp_addcd_sido" onchange="searchThis(this)">
+							<option value="">시/도</option>
+							<option value="서울특별시">서울특별시</option>
+							<option value="인천광역시">인천광역시</option>
+							<option value="경기도">경기도</option>
+						</select>
+						<select class="select2" name="selectThis2" id="mp_addcd_gg">
+							<option value="">구/군</option>
+						</select>
+					</div>
+				</li> 
+			</ul>
+		</li>
+	</ul>
 
 <!-- 조건 카테고리 시작 -->
 	<ul class="sidebar-menu sm-bordered sm-icons-block sm-icons-right">
@@ -546,7 +547,7 @@ This variant is to be used when loading the separate styling modules -->
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_sports" name="ck" onclick="checkboxSelect('ck',6)">
 					<!-- 수정필요 -->
-					<label for="welfare_sports" data-toggle="tooltip" data-title="Agency"><span>체육시설</span></label>
+					<label for="welfare_sports" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수"><span>스포츠시설</span></label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_sports">
 					<input type="radio" id="rd_welfare_sports1" name="rd_welfare_sports" value="<%=SelectConditions.high %>" >
@@ -563,7 +564,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_culture" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="welfare_culture">문화시설</label>
+					<label for="welfare_culture"  data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">문화시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_culture">
 					<input type="radio" id="rd_welfare_culture1" name="rd_welfare_culture" value="<%=SelectConditions.high %>">
@@ -580,7 +581,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_salon" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="welfare_salon">미/이용 시설</label>
+					<label for="welfare_salon" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">미/이용 시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_salon">
 					<input type="radio" id="rd_welfare_salon1" name="rd_welfare_salon" value="<%=SelectConditions.high %>">
@@ -597,7 +598,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_society" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="welfare_society">사회복지시설</label>
+					<label for="welfare_society" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">사회복지시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_society">
 					<input type="radio" id="rd_welfare_society1" name="rd_welfare_society" value="<%=SelectConditions.high %>">
@@ -614,7 +615,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_medical" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="welfare_medical">의료시설</label>
+					<label for="welfare_medical" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">의료시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_medical">
 					<input type="radio" id="rd_welfare_medical1" name="rd_welfare_medical" value="<%=SelectConditions.high %>">
@@ -632,7 +633,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_childCare" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="welfare_childCare">보육시설</label>
+					<label for="welfare_childCare" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">보육시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_childCare">
 					<input type="radio" id="rd_welfare_childCare1" name="rd_welfare_childCare" value="<%=SelectConditions.high %>">
@@ -658,7 +659,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="education_student" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="education_student">1인당 교원수</label>
+					<label for="education_student" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">교원 당 학생수</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="education_student">
 					<input type="radio" id="rd_education_student1" name="rd_education_student" value="<%=SelectConditions.high %>">
@@ -675,7 +676,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="education_academy" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="education_academy">학원수</label>
+					<label for="education_academy" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">학원 수</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="education_academy">
 					<input type="radio" id="rd_education_academy1" name="rd_education_academy" value="<%=SelectConditions.high %>">
@@ -701,7 +702,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="safety_fire" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="safety_fire">화재안전사고</label>
+					<label for="safety_fire" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">화재안전사고</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_fire">
 					<input type="radio" id="rd_safety_fire1" name="rd_safety_fire" value="<%=SelectConditions.high %>">
@@ -718,7 +719,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="safety_traffic" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="safety_traffic">교통안전사고</label>
+					<label for="safety_traffic" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">교통안전사고</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_traffic">
 					<input type="radio" id="rd_safety_traffic1" name="rd_safety_traffic" value="<%=SelectConditions.high %>">
@@ -735,7 +736,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="safety_crime" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="safety_crime">범죄사고</label>
+					<label for="safety_crime" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">범죄사고</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_crime">
 					<input type="radio" id="rd_safety_crime1" name="rd_safety_crime" value="<%=SelectConditions.high %>">
@@ -752,7 +753,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="safety_safety" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="safety_safety">안전사고</label>
+					<label for="safety_safety" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">안전사고</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_safety">
 					<input type="radio" id="rd_safety_safety1" name="rd_safety_safety" value="<%=SelectConditions.high %>">
@@ -769,7 +770,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="safety_infection" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="safety_infection">전염병</label>
+					<label for="safety_infection" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">전염병</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_infection">
 					<input type="radio" id="rd_safety_infection1" name="rd_safety_infection" value="<%=SelectConditions.high %>">
@@ -787,7 +788,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="safety_nature" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="safety_nature">자연재해</label>
+					<label for="safety_nature" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">자연재해</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_nature">
 					<input type="radio" id="rd_safety_nature1" name="rd_safety_nature" value="<%=SelectConditions.high %>">
@@ -811,7 +812,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="life_convenient" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="life_convenient">편의시설</label>
+					<label for="life_convenient" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">편의시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="life_convenient">
 					<input type="radio" id="rd_life_convenient1" name="rd_life_convenient" value="<%=SelectConditions.high %>">
@@ -828,7 +829,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="life_shopping" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="life_shopping">쇼핑시설</label>
+					<label for="life_shopping" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">쇼핑시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="life_shopping" >
 					<input type="radio" id="rd_life_shopping1" name="rd_life_shopping" value="<%=SelectConditions.high %>">
@@ -845,7 +846,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="life_restaurant" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="life_restaurant">외식시설</label>
+					<label for="life_restaurant" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">외식시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="life_restaurant">
 					<input type="radio" id="rd_life_restaurant1" name="rd_life_restaurant" value="<%=SelectConditions.high %>">
@@ -862,7 +863,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="life_publicTraffic" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="life_publicTraffic">대중교통이용률</label>
+					<label for="life_publicTraffic" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">대중교통이용률</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="life_publicTraffic">
 					<input type="radio" id="rd_life_publicTraffic1" name="rd_life_publicTraffic" value="<%=SelectConditions.high %>">
@@ -887,7 +888,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="people_foreign" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="people_foreign">외국인거주비율</label>
+					<label for="people_foreign" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">외국인거주비율</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="people_foreign" class = "hml_list">
 					<input type="radio" id="rd_people_foreign1" name="rd_people_foreign" value="<%=SelectConditions.high %>">
@@ -904,7 +905,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="people_density" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="people_density">인구밀도</label>
+					<label for="people_density" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">인구밀도</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="people_density"class = "hml_list">
 					<input type="radio" id="rd_people_density1" name="rd_people_density"  value="<%=SelectConditions.high %>" class ="rd_people_density"  >
@@ -929,7 +930,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="nature_park" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="nature_park">주변 공원 수</label>
+					<label for="nature_park" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">주변 공원 수</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="nature_park" class = "hml_list">
 					<input type="radio" id="rd_nature_park1" name="rd_nature_park" value="<%=SelectConditions.high %>">
@@ -946,7 +947,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="nature_pollution" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="nature_pollution">미세먼지</label>
+					<label for="nature_pollution" data-toggle="tooltip" data-placement="bottom" title="여기에 툴팁을 적어주세요. 사용자가  이해하기 쉽게 해설을 써 주세요. 상중하에 대한 설명 필수">미세먼지</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="nature_pollution" >
 					<input type="radio" id="rd_nature_pollution1" name="rd_nature_pollution" value="<%=SelectConditions.high %>">
@@ -975,7 +976,7 @@ This variant is to be used when loading the separate styling modules -->
 	
 	<h4 class="category">결과보기</h4>
 		<div class="sidebar-block text-center filter_commit" onclick = "conditionSelect();  ">
-			<a data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList();" class="btn btn-primary btn-block toggle ">
+			<a data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList(); deleteArray1();" class="btn btn-primary btn-block toggle ">
 				<strong style="color: white;">추천지역찾기</strong> <!-- test123.js 연결 -->
 			</a>
 		</div>
@@ -988,9 +989,9 @@ This variant is to be used when loading the separate styling modules -->
 
 <!-- 오른쪽 사이드바 시작-->
     <!-- Sidebar component with st-effect-1 (set on the toggle button within the navbar) -->
-    <aside class="sidebar right sidebar-size-xs-2 sidebar-size-lg-35pc sidebar-size-30pc sidebar-offset-0 sidebar-skin-white"
-    	id="sidebar-map" data-toggle-layout=sidebar-r-30pc-lg,sidebar-r-25pc data-toggle-bar=false data-overlay=false
-    	style="box-shadow: 0px 0px 20px black; ">
+    <aside class="sidebar right sidebar-size-xs-2 sidebar-size-lg-25pc sidebar-size-20pc sidebar-offset-0 sidebar-skin-white"
+    	id="sidebar-map" data-toggle-layout=sidebar-r-20pc-lg,sidebar-r-15pc data-toggle-bar=false data-overlay=false
+    	style="box-shadow: 0px 0px 20px #333; ">
       <div id = "test123">
       	<!-- test123.js 삽입 -->
       </div>
@@ -1010,7 +1011,7 @@ This variant is to be used when loading the separate styling modules -->
 
 	<!-- 중간쪽 코드 잠시 빼냄 -->
 	<!-- 중간쪽 코드 부분에 임시로 지도 삽입 -->
-		<div class="st-content-inner padding-top-none" id="content">
+		<div class="margin-none" id="content">
 
 		<!-- 지도삽입 -->
 			<div id="map" style="width:100%;height:800px; "></div>
@@ -1116,7 +1117,7 @@ This variant is to be used when loading the separate styling modules -->
 	<script src="./resources/js/app/essentials.js"></script>
 	
 	<script src="./resources/js/vender/core/all.js"></script>
-	<script src="./resources/js/vendor/core/bootstrap.js"></script>
+	<script src="./resources/js/vendor/core/bootstrap.js?ver=1"></script>
 	
 	<script src="./resources/js/vendor/forms/all.js"></script>
 	<script src="./resources/js/vendor/forms/bootstrap-datepicker.js"></script>

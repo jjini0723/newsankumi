@@ -3,12 +3,11 @@
  */
 
 function call(sigunguName, ghName, finalAddList2){
-	finalAddList = finalAddList2;
-	console.log(sigunguName);
-	console.log(ghName);
-	console.log(finalAddList);
-	alert('호호');
-	var marker = null;
+   finalAddList = finalAddList2;
+   console.log(sigunguName);
+   console.log(ghName);
+   console.log(finalAddList2);
+   alert('호호');
    
     // 지도 타입 변경 컨트롤을 생성한다
     var mapTypeControl = new daum.maps.MapTypeControl();
@@ -31,7 +30,7 @@ function call(sigunguName, ghName, finalAddList2){
     });   
     // 지도 드래깅 이벤트를 등록한다 (드래그 시작 : dragstart, 드래그 종료 : dragend)
     daum.maps.event.addListener(map, 'drag', function () {
-    	var message = '지도를 드래그 하고 있습니다. ' + '지도의 중심 좌표는 ' + map.getCenter().toString() +' 입니다.';
+       var message = '지도를 드래그 하고 있습니다. ' + '지도의 중심 좌표는 ' + map.getCenter().toString() +' 입니다.';
     });
     //var emdName = '삼성동';
     var emdNameArray = new Array();
@@ -43,58 +42,58 @@ function call(sigunguName, ghName, finalAddList2){
     
     jQuery.ajaxSettings.traditional = true;
     $.ajax({
-    	type : "POST",
+       type : "POST",
         url : "getDoroCD",
    //   contentType : "application/json; charset=utf-8",
         data : {
-        	sigunguName : sigunguName,
+           sigunguName : sigunguName,
             ghName : ghName
         },
         success : function(data) {
-        	var ghNameArray = ghName.split(',');
-        	var sigunguNameArray = sigunguName.split(',');
-        	var ghNameStr = '';
-        	var lastChar = '';
-        	$.each(ghNameArray, function(index, item) {
-        		geocoder.addr2coord(sigunguNameArray[index]+" "+item, function(status, result) {
-        			// 정상적으로 검색이 완료됐으면 
-        			if (status === daum.maps.services.Status.OK) {
-        				ghNameStr = item;
-        				lastChar = ghNameStr.charAt(ghNameStr.length - 1);
-        				if(lastChar == '읍' || lastChar == '면') {
-        					// 지도에 표시할 원을 생성합니다
-        					var circle = new daum.maps.Circle({
-        						center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
-        						radius: 8000, // 미터 단위의 원의 반지름입니다 
-        						strokeWeight: 5, // 선의 두께입니다 
-        						strokeColor: '#75B8FA', // 선의 색깔입니다
-        						strokeOpacity: 0, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-        						strokeStyle: 'dashed', // 선의 스타일 입니다
-        						fillColor: '#26a69a', // 채우기 색깔입니다
-        						fillOpacity: 0.5  // 채우기 불투명도 입니다   
-        					}); 
-        				} else {
-        					// 지도에 표시할 원을 생성합니다
-        					var circle = new daum.maps.Circle({
-        						center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
-        						radius: 4000, // 미터 단위의 원의 반지름입니다 
-        						strokeWeight: 5, // 선의 두께입니다 
-        						strokeColor: '#75B8FA', // 선의 색깔입니다
-        						strokeOpacity: 0, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-        						strokeStyle: 'dashed', // 선의 스타일 입니다
-        						fillColor: '#26a69a', // 채우기 색깔입니다
-        						fillOpacity: 0.5  // 채우기 불투명도 입니다   
-        					}); 
-        				}
-        				// 지도에 원을 표시합니다 
-        				circle.setMap(map); 
-        			} 
-        		});    
-        		
-        	}); 
-        	
-        	
-        	//주소로 좌표를 검색합니다
+           var ghNameArray = ghName.split(',');
+           var sigunguNameArray = sigunguName.split(',');
+           var ghNameStr = '';
+           var lastChar = '';
+           $.each(ghNameArray, function(index, item) {
+              geocoder.addr2coord(sigunguNameArray[index]+" "+item, function(status, result) {
+                 // 정상적으로 검색이 완료됐으면 
+                 if (status === daum.maps.services.Status.OK) {
+                    ghNameStr = item;
+                    lastChar = ghNameStr.charAt(ghNameStr.length - 1);
+                    if(lastChar == '읍' || lastChar == '면') {
+                       // 지도에 표시할 원을 생성합니다
+                       var circle = new daum.maps.Circle({
+                          center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
+                          radius: 8000, // 미터 단위의 원의 반지름입니다 
+                          strokeWeight: 5, // 선의 두께입니다 
+                          strokeColor: '#75B8FA', // 선의 색깔입니다
+                          strokeOpacity: 0, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                          strokeStyle: 'dashed', // 선의 스타일 입니다
+                          fillColor: '#26a69a', // 채우기 색깔입니다
+                          fillOpacity: 0.5  // 채우기 불투명도 입니다   
+                       }); 
+                    } else {
+                       // 지도에 표시할 원을 생성합니다
+                       var circle = new daum.maps.Circle({
+                          center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
+                          radius: 4000, // 미터 단위의 원의 반지름입니다 
+                          strokeWeight: 5, // 선의 두께입니다 
+                          strokeColor: '#75B8FA', // 선의 색깔입니다
+                          strokeOpacity: 0, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                          strokeStyle: 'dashed', // 선의 스타일 입니다
+                          fillColor: '#26a69a', // 채우기 색깔입니다
+                          fillOpacity: 0.5  // 채우기 불투명도 입니다   
+                       }); 
+                    }
+                    // 지도에 원을 표시합니다 
+                    circle.setMap(map); 
+                 } 
+              });    
+              
+           }); 
+           
+           
+           //주소로 좌표를 검색합니다
             var kaptAddr = new Array();
             var kaptName = new Array();
             var kaptUsedate = new Array();
@@ -106,116 +105,120 @@ function call(sigunguName, ghName, finalAddList2){
             var kaptMparea_60 = new Array();
             var kaptMparea_85 = new Array();
             var kaptMparea_135 = new Array();
+             // 주소랑 이름 함께
+            var windowSet = new Array();
             var coordsList = [];
             for(var i in data) {
-	            kaptUsedate.push(data[i].kaptUsedate);
-	            kaptAddr.push(data[i].kaptAddr);
-	            kaptName.push(data[i].kaptName);
-	            codeHeatNm.push(data[i].codeHeatNm);
-	            kaptDongCnt.push(data[i].kaptDongCnt);
-	            kaptdaCnt.push(data[i].kaptdaCnt);
-	            kaptBcompany.push(data[i].kaptBcompany);
-	            kaptTel.push(data[i].kaptTel);
-	            kaptMparea_60.push(data[i].kaptMparea_60);
-	            kaptMparea_85.push(data[i].kaptMparea_85);
-	            kaptMparea_135.push(data[i].kaptMparea_135);
-	            //alert('주소 : '+kaptAddr[i]+' 아파트이름 : '+kaptName[i]);
+               kaptUsedate.push(data[i].kaptUsedate);
+               kaptAddr.push(data[i].kaptAddr);
+               kaptName.push(data[i].kaptName);
+               codeHeatNm.push(data[i].codeHeatNm);
+               kaptDongCnt.push(data[i].kaptDongCnt);
+               kaptdaCnt.push(data[i].kaptdaCnt);
+               kaptBcompany.push(data[i].kaptBcompany);
+               kaptTel.push(data[i].kaptTel);
+               kaptMparea_60.push(data[i].kaptMparea_60);
+               kaptMparea_85.push(data[i].kaptMparea_85);
+               kaptMparea_135.push(data[i].kaptMparea_135);
+               var windowSet1 = {kaptAddr : data[i].kaptAddr,kaptName : data[i].kaptName};
+               windowSet.push(windowSet1);
+               //alert('주소 : '+kaptAddr[i]+' 아파트이름 : '+kaptName[i]);
             }
-            $.each(kaptAddr,function(index,item) {
-	            geocoder.addr2coord(item, function(status, result) {
-	                if (status === daum.maps.services.Status.OK) {
-	                    var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
-	                    	var marker = new daum.maps.Marker({
-	                        map: map,
-	                        position: coords
-	                    });
-	                    marker2.push(marker);
-	                    var perfect2 = {
-	                    		y : result.addr[0].lat,//y좌표
-	                            x : result.addr[0].lng,//x좌표
-	                            kaptAddr : kaptAddr[index],//아파트주소
-	                            kaptName : kaptName[index],//아파트이름
-	                            changepoint : '',
-	                            codeHeatNm : codeHeatNm[index],
-	                            kaptUsedate : kaptUsedate[index],
-	                            kaptDongCnt : kaptDongCnt[index],
-	                            kaptdaCnt : kaptdaCnt[index],
-	                            kaptBcompany : kaptBcompany[index],
-	                            kaptTel : kaptTel[index],
-	                            kaptMparea_60 : kaptMparea_60[index],
-	                            kaptMparea_85 : kaptMparea_85[index],
-	                            kaptMparea_135 : kaptMparea_135[index],
-	                            car1 : '',//자동차로 3곳을 설정할 경우를 대비해서 아예 1,2,3번만듬
-	                            car2 : '',
-	                            car3 : '',
-	                            car4 : '',
-	                            car5 : '',
-	                            car1avg : '',
-	                            car2avg : '',
-	                            car3avg : '',
-	                            car4avg : '',
-	                            car5avg : '',
-	                            car1point : 0,
-	                            car2point : 0,
-	                            car3point : 0,
-	                            car4point : 0,
-	                            car5point : 0,
-	                            walk1 : '',//도보 동일
-	                            walk2 : '',
-	                            walk3 : '',
-	                            walk4 : '',
-	                            walk5 : '',
-	                            walk1avg :'',
-	                            walk2avg :'',
-	                            walk3avg :'',
-	                            walk4avg :'',
-	                            walk5avg :'',
-	                            walk1point : 0,
-	                            walk2point : 0,
-	                            walk3point : 0,
-	                            walk4point : 0,
-	                            walk5point : 0,
-	                            tradi1 : '',//대중교통 동일
-	                            tradi2 : '',
-	                            tradi3 : '',
-	                            tradi4 : '',
-	                            tradi5 : '',
-	                            tradi1avg :'',
-	                            tradi2avg :'',
-	                            tradi3avg :'',
-	                            tradi4avg :'',
-	                            tradi5avg :'',
-	                            tradi1point : 0,
-	                            tradi2point : 0,
-	                            tradi3point : 0,
-	                            tradi4point : 0,
-	                            tradi5point : 0,
-	                            totalpoint : ''
+            $.each(windowSet,function(index,item) {
+               geocoder.addr2coord(item.kaptAddr, function(status, result) {
+                   if (status === daum.maps.services.Status.OK) {
+                       var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
+                       var   marker = new daum.maps.Marker({
+                           map: map,
+                           position: coords
+                       });
+                       marker2.push(marker);
+                       var perfect2 = {
+                             y : result.addr[0].lat,//y좌표
+                               x : result.addr[0].lng,//x좌표
+                               kaptAddr : kaptAddr[index],//아파트주소
+                               kaptName : kaptName[index],//아파트이름
+                               changepoint : '',
+                               codeHeatNm : codeHeatNm[index],
+                               kaptUsedate : kaptUsedate[index],
+                               kaptDongCnt : kaptDongCnt[index],
+                               kaptdaCnt : kaptdaCnt[index],
+                               kaptBcompany : kaptBcompany[index],
+                               kaptTel : kaptTel[index],
+                               kaptMparea_60 : kaptMparea_60[index],
+                               kaptMparea_85 : kaptMparea_85[index],
+                               kaptMparea_135 : kaptMparea_135[index],
+                               car1 : '',//자동차로 3곳을 설정할 경우를 대비해서 아예 1,2,3번만듬
+                               car2 : '',
+                               car3 : '',
+                               car4 : '',
+                               car5 : '',
+                               car1avg : '',
+                               car2avg : '',
+                               car3avg : '',
+                               car4avg : '',
+                               car5avg : '',
+                               car1point : 0,
+                               car2point : 0,
+                               car3point : 0,
+                               car4point : 0,
+                               car5point : 0,
+                               walk1 : '',//도보 동일
+                               walk2 : '',
+                               walk3 : '',
+                               walk4 : '',
+                               walk5 : '',
+                               walk1avg :'',
+                               walk2avg :'',
+                               walk3avg :'',
+                               walk4avg :'',
+                               walk5avg :'',
+                               walk1point : 0,
+                               walk2point : 0,
+                               walk3point : 0,
+                               walk4point : 0,
+                               walk5point : 0,
+                               tradi1 : '',//대중교통 동일
+                               tradi2 : '',
+                               tradi3 : '',
+                               tradi4 : '',
+                               tradi5 : '',
+                               tradi1avg :'',
+                               tradi2avg :'',
+                               tradi3avg :'',
+                               tradi4avg :'',
+                               tradi5avg :'',
+                               tradi1point : 0,
+                               tradi2point : 0,
+                               tradi3point : 0,
+                               tradi4point : 0,
+                               tradi5point : 0,
+                               totalpoint : ''
                             };
-	                    perfect.push(perfect2);
-	                }
-	                // 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
-	                var iwContent = '<div style="padding:5px; color:black;">'+item+'</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-	                // 인포윈도우를 생성합니다
-	                var infowindow = new daum.maps.InfoWindow({
-	                    content : iwContent
-	                });
-	                // 마커에 마우스오버 이벤트를 등록합니다
-	                daum.maps.event.addListener(marker, 'mouseover', function() {
-	                  // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
-	                   infowindow.open(map, marker);
-	                });
-	                // 마커에 마우스아웃 이벤트를 등록합니다
-	                daum.maps.event.addListener(marker, 'mouseout', function() {
-	                   // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
-	                    infowindow.close();
-	                });
-	            });
+                       perfect.push(perfect2);
+                   }
+                   // 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
+                   var iwContent = '<div style="padding:15px; color:black;">'+item.kaptAddr+'   <br></div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                   // 인포윈도우를 생성합니다
+                   var infowindow = new daum.maps.InfoWindow({
+                       content : iwContent
+                   });
+                   // 마커에 마우스오버 이벤트를 등록합니다
+                   daum.maps.event.addListener(marker, 'mouseover', function() {
+                     // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+                      infowindow.open(map, marker);
+                   });
+                   // 마커에 마우스아웃 이벤트를 등록합니다
+                   daum.maps.event.addListener(marker, 'mouseout', function() {
+                      // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+                       infowindow.close();
+                   });
+               });
             });
             //alert(coordsList.sample.kaptName);
         },
         error : function(e) {
-        	console.log(e)
+           console.log(e)
         }
     });
 }

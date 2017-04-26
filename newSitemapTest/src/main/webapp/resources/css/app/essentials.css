@@ -605,6 +605,12 @@ fieldset[disabled] .btn-inverse.active {
 .ribbon-heading.ribbon-primary {
   background-color: #26a69a;
   color: #ffffff;
+  
+border-radius: 15px;
+margin-bottom: 15px;
+margin-left: 10px;
+margin-right: 10px;
+  
 }
 .ribbon-heading.ribbon-primary.bottom-left:before,
 .ribbon-heading.ribbon-primary.bottom-right:before,

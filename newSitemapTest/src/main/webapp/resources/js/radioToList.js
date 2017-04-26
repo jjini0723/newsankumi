@@ -116,7 +116,7 @@ function getRadios(selected) {
 		html += "<li id = 'education_student' value = "
 				+ education_student
 				+ ">"
-				+ '1인당 교원수'
+				+ '교원 당 학생수'
 				+ '<a href="#" class = "remove" onclick="removeList7();">   x   </a> '
 				+ "</li>";
 	}
@@ -308,7 +308,7 @@ function getRadios(selected) {
 		html += "<li id = 'people_foreign' value = "
 				+ people_foreign
 				+ ">"
-				+ '외국인비율'
+				+ '외국인거주비율'
 				+ '<a href="#" class = "remove" onclick="removeList19();">   x   </a> '
 				+ "</li>";
 	}
@@ -607,5 +607,4 @@ function removeList22() {
 	         }
 	    }
 	 
-	//  $('#nature_pollution ').trigger("click");
 }
