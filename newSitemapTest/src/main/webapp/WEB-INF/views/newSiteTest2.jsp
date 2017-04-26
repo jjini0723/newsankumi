@@ -335,9 +335,6 @@ This variant is to be used when loading the separate styling modules -->
 	<link href="./resources/css/app/colors-text.css" rel="stylesheet" />
 	<link href="./resources/css/app/hml_radio.css?ver=2" rel="stylesheet" />
 	<link href="./resources/css/introjs.css" rel="stylesheet">
-	<link href="./resources/css/introjs-rtl.css" rel="stylesheet">
-	<link href="./resources/css/introjs-flattener.css" rel="stylesheet">
-
 </head>
 
 
@@ -949,7 +946,7 @@ This variant is to be used when loading the separate styling modules -->
 <!-- //조건 카테고리 끝 -->
 	
 	<!-- 선택한 조건 -->
-	<h4 class="category" data-step="3" data-intro="22가지 조건들 중 필요한 조건을 선택하고 가중치를 주면 수도권 내 동네들의 점수를 계산해드립니다." data-position = "auto">선택한 조건</h4>">선택한 조건</h4> <a href = "#" onclick=""></a>
+	<h4 class="category" data-step="3" data-intro="22가지 조건들 중 필요한 조건을 선택하고 가중치를 주면 수도권 내 동네들의 점수를 계산해드립니다." data-position = "auto">선택한 조건</h4><a href = "#" onclick=""></a>
         <div class="sidebar-block" id = "sList" >
 				<ul class = "selectedList" id = "selectedList">
 				</ul>
