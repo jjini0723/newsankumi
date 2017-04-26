@@ -99,8 +99,8 @@ function hoit() {
 		strRec += '<div class="form-group">';
 		strRec += '<div id="recLocation" class="input-group">';
 		strRec += '<ol>';
-		$.each(finalAddList, function(index, item) {
-			strRec += '<li><a href="#" onclick="moveMap2('+index+')">'+item+'</a></li>';
+		$.each(finalAddList, function(finalAddListIndex, finalAddListItem) {
+			strRec += '<li><a href="#" onclick="moveMap2(0,'+finalAddListIndex+');">'+finalAddListItem+'</a></li>';
 		});
 		strRec += '</ol>';			
 		strRec += '</div>';
@@ -108,12 +108,20 @@ function hoit() {
 		strRec += '</div>';
 		$(".dropdown1").html(strRec);
 	}
-	if(typeof(finalAddList[0]) != 'undefined') {
+}
+
+function hoit2() {
+	if(typeof(hopeList[0]) != 'undefined') {
 		var strRec2 = '<a href="#" class="dropdown-toggle" data-toggle="dropdown">';
 		strRec2 += '<i class="fa fa-fw fa-filter"></i> 희망목적지</a>';
 		strRec2 += '<div class="dropdown-menu dropdown-size-280 hopeDestination">';
 		strRec2 += '<div class="form-group">';
 		strRec2 += '<div id="hopeDestination" class="input-group">';
+		strRec += '<ol>';
+		$.each(hopeList, function(hopeListIndex, hopeItem) {
+			strRec2 += '<li><a href="#" onclick="moveMap2(1,'+hopeListIndex+');">'+hopeItem+'</a></li>';
+		});
+		strRec += '</ol>';
 		strRec2 += '</div>';
 		strRec2 += '</div>';
 		strRec2 += '</div>';
@@ -121,7 +129,13 @@ function hoit() {
 	}
 }
 
+function resultFinalAddList() {
+	return finalAddList;
+}
 
+function resultHopeList() {
+	return hopeList;
+}
 
 //라디오버튼 값 보내기
 function conditionSelect(){
@@ -187,18 +201,27 @@ $(function() {
 	});
 });
  
-function moveMap2(index){
+function moveMap2(checkIndex, index) {
+	alert('hoit');
+	var resultList = new Array();
+	if(checkIndex == 0) {
+		resultList = resultFinalAddList();
+	} else {
+		resultList = resultHopeList();
+	}
 	var geocoder = new daum.maps.services.Geocoder();
+	console.log("내려오냐");
 	var callback = function(status, result) {
 	    if (status === daum.maps.services.Status.OK) {
 	        console.log(result);
 	        console.log(result.addr[0]);
 	        var obj = result.addr[0];
 	        console.log(obj.lat, obj.lng);
+	        alert(obj.lat +''+obj.lng);
 	        setCenter(obj.lat, obj.lng);
 	    }
 	};
-	geocoder.addr2coord(finalAddList[index], callback);
+	geocoder.addr2coord(resultList[index], callback);
 }
  
 	
@@ -953,7 +976,7 @@ This variant is to be used when loading the separate styling modules -->
 	<h4 class="category">결과보기</h4>
 		<div class="sidebar-block text-center filter_commit" onclick = "conditionSelect();  ">
 			<a data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList();" class="btn btn-primary btn-block toggle ">
-				<strong style="color: white;">NEXT PAGE</strong> <!-- test123.js 연결 -->
+				<strong style="color: white;">추천지역찾기</strong> <!-- test123.js 연결 -->
 			</a>
 		</div>
 		

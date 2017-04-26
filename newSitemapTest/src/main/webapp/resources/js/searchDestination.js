@@ -22,20 +22,17 @@ var paginationEl;
 // 페이지 번호 변수
 var i;
 
-function deleteL() {
-	console.log(hopeList.length);
-	console.log('유영이바보');
+function deleteL(paraparam1) {
     // 희망목적지에 등록된 목적지의 개수를 파악하기 위해, 삭제가 되면 배열에서 꺼낸다.
-    var title = $("#getItem>li>#deletebtn").attr("title");
-    console.log($("#getItem>li>#deletebtn").parent());
-    console.log(title.value);
+	var title = $('#getItem>li>#'+paraparam1).attr('title');
+    console.log(title);
     for(var i = 0; i < hopeList.length; i++) {
     	if(title == hopeList[i]) {
             removeThisMarker(i);
             hopeList.splice(i,1);
          }
     }
-    $("#getItem>li>#deletebtn").parent().remove();
+    $('#getItem>li>#'+paraparam1).parent().remove();
     return false;
 }
 
@@ -143,14 +140,9 @@ function getListItem(index, places) {
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
                 '<div class="info sidebar-block">' +
                 '   <h5><strong>' + places.title + '</strong></h5>';
-
-    if (places.newAddress) {
-        itemStr += '    <span style="font-size:10px">' + places.newAddress + '</span><br>' +
-                    ' <span class="jibun gray" style="font-size:10px">' +  places.address  + '</span><br> ';
-    } else {
-        itemStr += '    <span>' +  places.address  + '</span><br>'; 
+    if (places.address) {
+        itemStr += ' <span class="jibun gray" style="font-size:10px">' +  places.address  + '</span><br> ';
     }
-                 
       itemStr += '  <span class="tel" style="font-size:10px">' + places.phone  + '</span><br>' ;
       
       itemStr += '<select id="transport" name="transport"><option value="0">이동수단</option>' +
@@ -158,7 +150,6 @@ function getListItem(index, places) {
                  '<option value="2">도보</option><option value="3">대중교통</option></select>' +
 
                  '<input type="submit" value="등록" onclick="confirm('+places.latitude+','+places.longitude+','+index+');"></div>';
-
     
     el.innerHTML = itemStr;
     el.className = 'item';
@@ -185,6 +176,8 @@ function getItem(index) {
    var places = JSON.parse($("#places").val());
    var title = places[index].title;
    $("#title").val(title);
+   var paraparam = places[index].title+places[index].address;
+   var paraparam1 = paraparam.replace(/ /gi, "");
    
    
    var el = document.createElement('li'),
@@ -192,16 +185,13 @@ function getItem(index) {
                 /*'<div class="info">' +*/
                 '   <a href="#" style="text-decoration:none" onclick="focuson('+places[index].longitude+','+places[index].latitude+')"><h5>' + places[index].title + '</h5></a>';
 
-    if (places.newAddress) {
-        itemStr += '    <span>' + places[index].newAddress + '</span><br>' +
-                    '   <span class="jibun gray">' +  places[index].address  + '</span><br>';
-    } else {
-        itemStr += '    <span>' +  places[index].address  + '</span><br>';
+    if (places[index].address) {
+        itemStr += '   <span class="jibun gray">' +  places[index].address  + '</span><br>';
     }
-                 
       itemStr += '  <span class="tel">' + places[index].phone  + '</span><br>' ;
       
-      itemStr += '<a href="#" class="deletebtn" id="deletebtn" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL();" >삭제</a><br>';
+      itemStr += '<a href="#" class="deletebtn" id="'+paraparam1+'" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL(\''+paraparam1+'\');" >삭제</a><br>';
+
     
     el.innerHTML = itemStr;
     el.className = 'item2';

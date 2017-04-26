@@ -16,7 +16,7 @@ function boardList2() {
             
             //희망위치추가
             html += '<div data-scrollable id="sidebar-map1">';
-            html += '<h4 class="ribbon-heading ribbon-primary">희망위치추가</h4>';
+            html += '<h4 class="ribbon-heading ribbon-primary">생활권역구성</h4>';
             html += '<div class="panel-body text-center" id = "req_loc1">';
             html += '<div data-toggle="gridalicious" data-width="400">';
             
@@ -43,7 +43,7 @@ function boardList2() {
              
        //희망목적지      
             html += '</div></div>';
-            html += '<h4 class="category">희망 목적지</h4>';
+            html += '<h4 class="category">생활권역</h4>';
             html += '<div class="panel-body text-center">';
             html += '<div data-toggle="gridalicious" data-width="400">';
             
@@ -60,7 +60,7 @@ function boardList2() {
             html += '<ul class="pagination margin-none">';
            /* html += '<li class="disabled"><a href="#">&laquo;</a></li>';
             html += '<li><a href="#" onclick = "boardList();">이전단계</a></li>'; */
-            html += '<li><a href="#" onclick = "boardList3(); searchBestLoc(); hoit();">최적의 주거공간 찾기</a></li>';
+            html += '<li><a href="#" onclick = "boardList3(); searchBestLoc(); hoit2();">최적의 아파트 찾기</a></li>';
            /* html += '<li class="disabled"><a href="#">&raquo;</a></li>'; */
 
             html += '</ul></div></div>';
@@ -85,19 +85,19 @@ function boardList3() {
 				html += '<div data-scrollable id="sidebar-map1">';
 				
 				//주거지역검색결과
-				html += '<h4 class="ribbon-heading ribbon-primary">주거지역 검색 결과</h4>';
+				html += '<h4 class="ribbon-heading ribbon-primary">추천 아파트 리스트</h4>';
 				html += '<div style="overflow:auto;height:200px;" id = "lll"></div>';
 				html += '<div class="panel-body text-center">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 			
 				//아파트정보
-				html += '<h4 class="ribbon-heading ribbon-primary">아파트 정보</h4>';
+				html += '<h4 class="ribbon-heading ribbon-primary">아파트 세부정보</h4>';
 				html += '<div style="overflow:auto;height:100px;" id = "aptInfo"></div>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 				
 				//부동산거래정보
-				html += '<h4 class="ribbon-heading ribbon-primary">부동산 거래정보</h4>';
+				html += '<h4 class="ribbon-heading ribbon-primary">아파트 거래정보</h4>';
 				html += '<div style="overflow:auto;height:150px;" id = "aptTradeInfo"></div>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
