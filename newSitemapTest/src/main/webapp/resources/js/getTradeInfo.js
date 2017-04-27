@@ -31,12 +31,25 @@ function getTradeInfo(x){
            console.log(e)
         }
      })
-      var html = "";
-      html += '<ul class = "category" data-width="200" id = "list2">';
+     
+   //아파트 세부정보
+	var html = "";
+		html += '<p class="thum" style="float:left; width:65px; margin:15px;">';
+		html += '<img src="http://www.iconsfind.com/wp-content/uploads/2015/11/20151125_5655088ba5cdf.png" alt="" width="64" height="64">';
+		html += '</p>';
+		html += '<p class="location" id="list2" style="font-weight: 100;padding: 0;">';
+		html += '<h6 class="text-center">'+info.kaptUsedate+'건축</h6>';
+		html += '<h3 class="text-center">'+info.kaptName+'</h3>';
+		html += '<h6 class="text-center">'+info.kaptAddr+'</h6>';
+		html += '</p>';    
+    
+      /*html += '<ul class = "category" data-width="200" id = "list2">';
       html += '주소:'+info.kaptAddr+"<br>아파트명:"+info.kaptName+"<br>건축년도:"+info.kaptUsedate+'<br>' ;
-      html += '</ul>';
-      $('#aptInfo').html(html);
+      html += '</ul>';*/
+     
+		$('#aptInfo').html(html);
       //////////////////////////////////////////////////////////////////////////////////////////
+
       
 function drawAptTradeInfo(data){   
       var tradeInfo = data;

@@ -212,7 +212,6 @@ function moveMap2(checkIndex, index) {
 		resultList = resultHopeList();
 	}
 	var geocoder = new daum.maps.services.Geocoder();
-	console.log("내려오냐");
 	var callback = function(status, result) {
 	    if (status === daum.maps.services.Status.OK) {
 	        var obj = result.addr[0];
@@ -429,7 +428,7 @@ This variant is to be used when loading the separate styling modules -->
 										</div>
 				                
 										<div class="text-center">
-											<button type="button" class="btn btn-primary"  data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList3(); loadData();">코드불러오기 <i class="fa fa-sign-in"></i></button>
+											<button type="button" class="btn btn-primary" data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList3(); loadData();">코드불러오기 <i class="fa fa-sign-in"></i></button>
 										</div>
 					                </form>
 				                </div>
@@ -494,24 +493,24 @@ This variant is to be used when loading the separate styling modules -->
 		sidebar-size-1 sidebar-mini-reveal smr-size-3 sidebar-offset-0
 		sidebar-skin-white sidebar-visible-desktop" id=sidebar-menu data-type=collapse
 		style="box-shadow:0px 0px 15px 0px #333; cursor:pointer;">
-	<div data-scrollable>
+	<div data-scrollable id = "firstbar">
 	
 	<!-- 폼시작 -->
-	<form name = "myselection" onchange="getRadios(document.myselection)">
+	<form name = "myselection" onchange="getRadios(document.myselection)" >
 	
 	<!-- 1차선택 -->
 	<ul class="sidebar-menu sm-bordered sm-icons-block sm-icons-right">
 		<li class="hasSubmenu open active">
-			<a><i class="fa fa-info" onclick="javascript:introJs().start();"></i><span>1차 선택</span></a>
+			<a><i class="fa fa-info" id = "infoicon" onclick="javascript:introJs('#sidebar-menu').start();"></i><span>1차 선택</span></a>
 			<ul class="in">
-				<h4 class="category">기준지역선택
+				<h4 class="category" id = "select11" data-step="1" data-intro="현재 거주하고 있는 지역이나, 기준이 되는 지역을 선택합니다.(서울,경기,인천 한정)" data-position = "auto">기준지역선택
 				<i class="fa fa-question-circle" 
 				data-toggle="tooltip" data-placement="right"
 				title="현재 거주하고 있는 지역이나, 기준이 되는 지역을 선택합니다(서울,경기,인천 한정). 기준지역 미 선택시 전체 평균으로 선택됨"></i>
 				</h4>
 				<li>
-					<div class="bootstrap-select cd-select" style="margin: 14px"  data-step="1" data-intro="현재 거주하고 있는 지역이나, 기준이 되는 지역을 선택합니다.(서울,경기,인천 한정)" data-position = "auto">
-						<select class="select1" name="selectThis1" id="mp_addcd_sido" onchange="searchThis(this)">
+					<div class="bootstrap-select cd-select" style="margin: 14px">
+						<select class="select1" name="selectThis1" id="mp_addcd_sido" onchange="searchThis(this)" >
 							<option value="">시/도</option>
 							<option value="서울특별시">서울특별시</option>
 							<option value="인천광역시">인천광역시</option>
@@ -527,11 +526,11 @@ This variant is to be used when loading the separate styling modules -->
 	</ul>
 
 <!-- 조건 카테고리 시작 -->
-	<ul class="sidebar-menu sm-bordered sm-icons-block sm-icons-right" text-align="center" data-step="2" data-intro="d" data-position = "auto">
+	<ul class="sidebar-menu sm-bordered sm-icons-block sm-icons-right" text-align="center" data-step="2" data-intro="22개의 조건 중 당신이 고려하는 조건을 선택합니다. 최대 6개까지 선택이 가능합니다." data-position = "top">
 <!-- 복지문화 -->
 	<li class="hasSubmenu">
 	<a href="#welfare"><i class="fa fa-list"></i><span>복지문화</span></a>
-		<ul id="welfare" class="sidebar-menu sm-icons-block sm-active-item-bg sm-icons-right">
+		<ul id="welfare" class="sidebar-menu sm-icons-block sm-active-item-bg sm-icons-right" >
 		
 		<!-- 체육시설 -->
 		<div class="condition">
@@ -539,7 +538,7 @@ This variant is to be used when loading the separate styling modules -->
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_sports" name="ck" onclick="checkboxSelect('ck',6)">
 					<!-- 수정필요 -->
-					<label for="welfare_sports" data-toggle="tooltip" data-placement="bottom" title="체육공원, 스포츠 서비스업 등의 스포츠시설 수를 행정구역 별로 나타냅니다."><span>스포츠시설</span></label>
+					<label for="welfare_sports" data-toggle="tooltip" data-placement="top" title="체육공원, 스포츠 서비스업 등의 스포츠시설 수를 행정구역 별로 나타냅니다."><span>스포츠시설</span></label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_sports">
 					<input type="radio" id="rd_welfare_sports1" name="rd_welfare_sports" value="<%=SelectConditions.high %>" >
@@ -556,7 +555,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_culture" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="welfare_culture"  data-toggle="tooltip" data-placement="bottom" title="극장 영화관 등의 문화시설 수를 행정구역 별로 나타냅니다.">문화시설</label>
+					<label for="welfare_culture"  data-toggle="tooltip" data-placement="top" title="극장 영화관 등의 문화시설 수를 행정구역 별로 나타냅니다.">문화시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_culture">
 					<input type="radio" id="rd_welfare_culture1" name="rd_welfare_culture" value="<%=SelectConditions.high %>">
@@ -573,7 +572,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_salon" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="welfare_salon" data-toggle="tooltip" data-placement="bottom" title="헤어관리 숍(미용실) 수를 행정구역 별로 나타냅니다.">미/이용 시설</label>
+					<label for="welfare_salon" data-toggle="tooltip" data-placement="data-placement="top"" title="헤어관리 숍(미용실) 수를 행정구역 별로 나타냅니다.">미/이용 시설</label>
 
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_salon">
@@ -591,7 +590,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_society" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="welfare_society" data-toggle="tooltip" data-placement="bottom" title="지역별 사회복지 수준을 확인할 수 있는 지표입니다. 인구 대비 사회복지시설의 비율을 행정구역 별로 나타냅니다.">사회복지시설</label>
+					<label for="welfare_society" data-toggle="tooltip" data-placement="top" title="지역별 사회복지 수준을 확인할 수 있는 지표입니다. 인구 대비 사회복지시설의 비율을 행정구역 별로 나타냅니다.">사회복지시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_society">
 					<input type="radio" id="rd_welfare_society1" name="rd_welfare_society" value="<%=SelectConditions.high %>">
@@ -608,7 +607,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_medical" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="welfare_medical" data-toggle="tooltip" data-placement="bottom" title="병의원 및 약국은 의료수준이 좋은 지역을 확인할 수 있는 지표입니다. 인구 대비 병의원, 약국의 비율을 행정구역 별로 나타냅니다.">의료시설</label>
+					<label for="welfare_medical" data-toggle="tooltip" data-placement="top" title="병의원 및 약국은 의료수준이 좋은 지역을 확인할 수 있는 지표입니다. 인구 대비 병의원, 약국의 비율을 행정구역 별로 나타냅니다.">의료시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_medical">
 					<input type="radio" id="rd_welfare_medical1" name="rd_welfare_medical" value="<%=SelectConditions.high %>">
@@ -626,7 +625,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_childCare" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="welfare_childCare" data-toggle="tooltip" data-placement="bottom" title="5세 미만의 유아를 위한 교육시설을 의미하며, 5세 미만 인구 대비 유치원 및 보육시설의 비율을 행정구역 별로 나타냅니다.">보육시설</label>
+					<label for="welfare_childCare" data-toggle="tooltip" data-placement="top" title="5세 미만의 유아를 위한 교육시설을 의미하며, 5세 미만 인구 대비 유치원 및 보육시설의 비율을 행정구역 별로 나타냅니다.">보육시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_childCare">
 					<input type="radio" id="rd_welfare_childCare1" name="rd_welfare_childCare" value="<%=SelectConditions.high %>">
@@ -652,7 +651,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="education_student" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="education_student" data-toggle="tooltip" data-placement="bottom" title="초중고 교원 1인이 담당하는 학생 수를 행정구역 별로 나타냅니다.">교원 1인당 학생수</label>
+					<label for="education_student" data-toggle="tooltip" data-placement="top" title="초중고 교원 1인이 담당하는 학생 수를 행정구역 별로 나타냅니다.">교원 1인당 학생수</label>
 
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="education_student">
@@ -670,7 +669,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="education_academy" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="education_academy" data-toggle="tooltip" data-placement="bottom" title="지역내 교육과 관련된 학원 현황을 확인할 수 있는 지표입니다. 행정구역 별 학원 수를 나타냅니다.">학원 수</label>
+					<label for="education_academy" data-toggle="tooltip" data-placement="top" title="지역내 교육과 관련된 학원 현황을 확인할 수 있는 지표입니다. 행정구역 별 학원 수를 나타냅니다.">학원 수</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="education_academy">
 					<input type="radio" id="rd_education_academy1" name="rd_education_academy" value="<%=SelectConditions.high %>">
@@ -696,7 +695,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="safety_fire" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="safety_fire" data-toggle="tooltip" data-placement="bottom" title="행정구역 별 화재사고 수준을 나타내는 화재사고지수(등급)를 나타냅니다. 수치가 높을수록 안전합니다.">화재안전사고</label>
+					<label for="safety_fire" data-toggle="tooltip" data-placement="top" title="행정구역 별 화재사고 수준을 나타내는 화재사고지수(등급)를 나타냅니다. 수치가 높을수록 안전합니다.">화재안전사고</label>
 
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_fire">
@@ -714,7 +713,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="safety_traffic" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="safety_traffic" data-toggle="tooltip" data-placement="bottom" title="행정구역 별 교통안전사고 수준을 나타내는 교통안전사고지수(등급)를 나타냅니다. 수치가 높을수록 안전합니다.">교통안전사고</label>
+					<label for="safety_traffic" data-toggle="tooltip" data-placement="top" title="행정구역 별 교통안전사고 수준을 나타내는 교통안전사고지수(등급)를 나타냅니다. 수치가 높을수록 안전합니다.">교통안전사고</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_traffic">
 					<input type="radio" id="rd_safety_traffic1" name="rd_safety_traffic" value="<%=SelectConditions.high %>">
@@ -731,7 +730,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="safety_crime" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="safety_crime" data-toggle="tooltip" data-placement="bottom" title="행정구역 별 범죄사고 수준을 나타내는 범죄사고지수(등급)를 나타냅니다. 수치가 높을수록 안전합니다.">범죄사고</label>
+					<label for="safety_crime" data-toggle="tooltip" data-placement="top" title="행정구역 별 범죄사고 수준을 나타내는 범죄사고지수(등급)를 나타냅니다. 수치가 높을수록 안전합니다.">범죄사고</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_crime">
 					<input type="radio" id="rd_safety_crime1" name="rd_safety_crime" value="<%=SelectConditions.high %>">
@@ -748,7 +747,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="safety_safety" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="safety_safety" data-toggle="tooltip" data-placement="bottom" title="행정구역 별 종합안전사고 수준을 나타내는 종합안전사고지수(등급)를 나타냅니다. 수치가 높을수록 안전합니다.">안전사고</label>
+					<label for="safety_safety" data-toggle="tooltip" data-placement="top" title="행정구역 별 종합안전사고 수준을 나타내는 종합안전사고지수(등급)를 나타냅니다. 수치가 높을수록 안전합니다.">안전사고</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_safety">
 					<input type="radio" id="rd_safety_safety1" name="rd_safety_safety" value="<%=SelectConditions.high %>">
@@ -765,7 +764,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="safety_infection" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="safety_infection" data-toggle="tooltip" data-placement="bottom" title="행정구역 별 전염병안전 수준을 나타내는 전염병안전지수(등급)를 나타냅니다. 수치가 높을수록 안전합니다.">전염병</label>
+					<label for="safety_infection" data-toggle="tooltip" data-placement="top" title="행정구역 별 전염병안전 수준을 나타내는 전염병안전지수(등급)를 나타냅니다. 수치가 높을수록 안전합니다.">전염병</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_infection">
 					<input type="radio" id="rd_safety_infection1" name="rd_safety_infection" value="<%=SelectConditions.high %>">
@@ -783,7 +782,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="safety_nature" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="safety_nature" data-toggle="tooltip" data-placement="bottom" title="행정구역 별 자연재해안전 수준을 나타내는 자연재해안전지수(등급)를 나타냅니다. 수치가 높을수록 안전합니다.">자연재해</label>
+					<label for="safety_nature" data-toggle="tooltip" data-placement="top" title="행정구역 별 자연재해안전 수준을 나타내는 자연재해안전지수(등급)를 나타냅니다. 수치가 높을수록 안전합니다.">자연재해</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_nature">
 					<input type="radio" id="rd_safety_nature1" name="rd_safety_nature" value="<%=SelectConditions.high %>">
@@ -807,7 +806,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="life_convenient" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="life_convenient" data-toggle="tooltip" data-placement="bottom" title="생활편의시설이 많은 지역을 확인할 수 있는 지표입니다. 생활 편의에 관련된 사업체 수를 행정구역 별로 나타냅니다.">편의시설</label>
+					<label for="life_convenient" data-toggle="tooltip" data-placement="top" title="생활편의시설이 많은 지역을 확인할 수 있는 지표입니다. 생활 편의에 관련된 사업체 수를 행정구역 별로 나타냅니다.">편의시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="life_convenient">
 					<input type="radio" id="rd_life_convenient1" name="rd_life_convenient" value="<%=SelectConditions.high %>">
@@ -824,7 +823,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="life_shopping" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="life_shopping" data-toggle="tooltip" data-placement="bottom" title="쇼핑시설이 많은 지역을 확인할 수 있는 지표입니다. 쇼핑에 관련된 사업체 수를 행정구역 별로 나타냅니다.">쇼핑시설</label>
+					<label for="life_shopping" data-toggle="tooltip" data-placement="top" title="쇼핑시설이 많은 지역을 확인할 수 있는 지표입니다. 쇼핑에 관련된 사업체 수를 행정구역 별로 나타냅니다.">쇼핑시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="life_shopping" >
 					<input type="radio" id="rd_life_shopping1" name="rd_life_shopping" value="<%=SelectConditions.high %>">
@@ -841,7 +840,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="life_restaurant" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="life_restaurant" data-toggle="tooltip" data-placement="bottom" title="외식시설이 많은 지역을 확인할 수 있는 지표입니다. 외식과 관련된 음식점 사업체 수를 행정구역 별로 보실 수 있습니다. ">외식시설</label>
+					<label for="life_restaurant" data-toggle="tooltip" data-placement="top" title="외식시설이 많은 지역을 확인할 수 있는 지표입니다. 외식과 관련된 음식점 사업체 수를 행정구역 별로 보실 수 있습니다. ">외식시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="life_restaurant">
 					<input type="radio" id="rd_life_restaurant1" name="rd_life_restaurant" value="<%=SelectConditions.high %>">
@@ -858,7 +857,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="life_publicTraffic" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="life_publicTraffic" data-toggle="tooltip" data-placement="bottom" title="생활편의와 관련된 대중교통이 잘되어 있는 지역을 확인할 수 있는 지표로써 행정구역 내의 버스 정류장 수, 지하철 역 수에 따른 이용률을 나타냅니다.">대중교통이용률</label>
+					<label for="life_publicTraffic" data-toggle="tooltip" data-placement="top" title="생활편의와 관련된 대중교통이 잘되어 있는 지역을 확인할 수 있는 지표로써 행정구역 내의 버스 정류장 수, 지하철 역 수에 따른 이용률을 나타냅니다.">대중교통이용률</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="life_publicTraffic">
 					<input type="radio" id="rd_life_publicTraffic1" name="rd_life_publicTraffic" value="<%=SelectConditions.high %>">
@@ -883,7 +882,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="people_foreign" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="people_foreign" data-toggle="tooltip" data-placement="bottom" title="지역인구 대비 외국인 거주자의 비율을 행정구역 별로 나타냅니다.">외국인거주비율</label>
+					<label for="people_foreign" data-toggle="tooltip" data-placement="top" title="지역인구 대비 외국인 거주자의 비율을 행정구역 별로 나타냅니다.">외국인거주비율</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="people_foreign" class = "hml_list">
 					<input type="radio" id="rd_people_foreign1" name="rd_people_foreign" value="<%=SelectConditions.high %>">
@@ -900,7 +899,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="people_density" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="people_density" data-toggle="tooltip" data-placement="bottom" title="지역의 인구분포의 조밀도를 행정지역 별로 나타냅니다.">인구밀도</label>
+					<label for="people_density" data-toggle="tooltip" data-placement="top" title="지역의 인구분포의 조밀도를 행정지역 별로 나타냅니다.">인구밀도</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="people_density"class = "hml_list">
 					<input type="radio" id="rd_people_density1" name="rd_people_density"  value="<%=SelectConditions.high %>" class ="rd_people_density"  >
@@ -925,7 +924,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="nature_park" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="nature_park" data-toggle="tooltip" data-placement="bottom" title="공원의 수를 행정구역 별로 나타냅니다.">주변 공원 수</label>
+					<label for="nature_park" data-toggle="tooltip" data-placement="top" title="공원의 수를 행정구역 별로 나타냅니다.">주변 공원 수</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="nature_park" class = "hml_list">
 					<input type="radio" id="rd_nature_park1" name="rd_nature_park" value="<%=SelectConditions.high %>">
@@ -942,7 +941,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="nature_pollution" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="nature_pollution" data-toggle="tooltip" data-placement="bottom" title="미세먼지에 의한 평균 오염정도를 행정구역 별로 나타냅니다. 수치가 높을수록 오염도가 낮습니다.">미세먼지</label>
+					<label for="nature_pollution" data-toggle="tooltip" data-placement="top" title="미세먼지에 의한 평균 오염정도를 행정구역 별로 나타냅니다. 수치가 높을수록 오염도가 낮습니다.">미세먼지</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="nature_pollution" >
 					<input type="radio" id="rd_nature_pollution1" name="rd_nature_pollution" value="<%=SelectConditions.high %>">
@@ -961,7 +960,7 @@ This variant is to be used when loading the separate styling modules -->
 <!-- //조건 카테고리 끝 -->
 	
 	<!-- 선택한 조건 -->
-	<h4 class="category" data-step="3" data-intro="22가지 조건들 중 필요한 조건을 선택하고 가중치를 주면 수도권 내 동네들의 점수를 계산해드립니다." data-position = "auto">선택한 조건</h4><a href = "#" onclick=""></a>
+	<h4 class="category">선택한 조건</h4><a href = "#" onclick=""></a>
         <div class="sidebar-block" id = "sList" >
 				<ul class = "selectedList" id = "selectedList">
 				</ul>
@@ -969,10 +968,10 @@ This variant is to be used when loading the separate styling modules -->
 	</form>
 <!-- 폼 끝 (조건 카테고리, 선택한 조건 포함) -->
 	
-	<!-- <h4 class="category">결과보기</h4> -->
-		<div class="sidebar-block text-center filter_commit" onclick = "conditionSelect();  ">
+	<h4 class="category" data-step="3" data-intro="조건을 선택하여 클릭 시, 당신만의 맞춤형 동네를 찾아드립니다." data-position = "auto">결과보기</h4>
+		<div class="sidebar-block text-center filter_commit" onclick = "conditionSelect();" >
 			<a data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList(); deleteArray1();" class="btn btn-primary btn-block toggle ">
-				<strong style="color: white;">추천지역찾기</strong> <!-- test123.js 연결 -->
+				<strong style="color: white;" >추천지역찾기</strong> <!-- test123.js 연결 -->
 			</a>
 		</div>
 		
@@ -988,7 +987,7 @@ This variant is to be used when loading the separate styling modules -->
     	sidebar-size-xs-30pc sidebar-size-sm-30pc sidebar-size-md-25pc sidebar-size-lg-25pc -->
     <aside class="sidebar right sidebar-size-5 sidebar-offset-0 sidebar-skin-white st-effect-1"
     	id="sidebar-map" data-toggle-layout=sidebar-r-20pc-lg,sidebar-r-15pc data-toggle-bar=false data-overlay=false
-    	style="box-shadow: 0px 0px 20px #333; ">
+    	style="box-shadow: 0px 0px 20px #333;">
       <div id = "test123">
       	<!-- test123.js 삽입 -->
       </div>
@@ -1146,7 +1145,6 @@ This variant is to be used when loading the separate styling modules -->
 	<input type = "hidden" id = "graphData">
 	<input type = "hidden" id = "keylist">
 	<input type = "hidden" id = "titleList">
-	<input type = "hidden" id = "overlay">
 	
 	
 </body>
