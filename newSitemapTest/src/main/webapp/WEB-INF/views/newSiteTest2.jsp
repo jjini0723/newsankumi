@@ -230,10 +230,12 @@ function checkboxSelect(obj, cnt) {
 	var i, sum = 1;
 	var chk = document.getElementsByName(obj);
 	var tot = chk.length;
-	for (i = 0; i < tot; i++)
-		if (chk[i].checked == true)
-			sum++;
-	if (sum > cnt) {
+// 	for (i = 0; i < tot; i++)
+// 		if (chk[i].checked == true)
+// 			sum++;
+	
+	var radioCount = radioCheck();
+	if (radioCount > cnt) {
 		for (i = 0; i < tot; i++)
 			if (chk[i].checked == false)
 				chk[i].disabled = true;
@@ -251,6 +253,19 @@ function checkboxSelect(obj, cnt) {
 	}
 }
 
+
+function radioCheck(){
+	var radioCount = 0;
+	var hml = $(".hml");	
+	
+	$.each(hml, function(index,item){
+		if($(this).children("input[type=radio]:checked").val() != null){
+			radioCount++;
+		}
+	});	
+	
+	return radioCount;
+}
 	
     //필터링용
     $(function() {
