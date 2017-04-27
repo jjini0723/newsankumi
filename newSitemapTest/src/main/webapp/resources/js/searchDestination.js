@@ -22,7 +22,11 @@ var paginationEl;
 // 페이지 번호 변수
 var i;
 
-var overlay = new daum.maps.CustomOverlay({});
+var overlay = new daum.maps.CustomOverlay({
+    content: null,
+    map: null,
+    position: null
+});
 
 
 function deleteL(paraparam1) {
@@ -34,6 +38,8 @@ function deleteL(paraparam1) {
             removeThisMarker(i);
             hopeList.splice(i,1);
             finalHopeList.splice(i,1);
+            overlayList[i].olay.setMap(null);
+			overlayList.splice(i,1);
          }
     }
     $('#getItem>li>#'+paraparam1).parent().remove();
@@ -127,6 +133,7 @@ function displayPlaces(places) {
         })(marker, places[i].title);
 
         fragment.appendChild(itemEl);
+        map.setLevel(10);
         infoList.push(infowindow);
     }
     // 수정부분
@@ -343,25 +350,60 @@ function displayPagination(pagination) {
     paginationEl.appendChild(fragment);
 }
 
-function closeOverlay() {
-    overlay.setMap(null);     
+function closeOverlay(paraparam1) {
+	for(var i = 0; i < overlayList.length; i++) {
+		if(overlayList[i].paraparameter == paraparam1) {
+			overlayList[i].olay.setMap(null);
+			overlayList.splice(i,1);
+			return false;
+		}
+	}
 }
-
 function displayOverlay(index) {
 	var places = JSON.parse($("#places").val());
-	
-	for(var i in infoList) {
+    var thumbnailAddr = '';
+	$.ajax({
+		url : "http://apis.daum.net/search/image?apikey=e5f9cd760a5dedf9f84cc76d41a6decd&result=1&pageno=1&q="+places[index].title+"&output=json",
+		dataType : "jsonp",
+		type : "post",
+		jsonp : "callback",
+		contentType : "application/json; charset=utf-8",
+		async : true,
+		//data : {
+		//apikey : "932263ae205c74344400b444f7788cb3", //다음 API KEY 입력
+		//q : places[index].title,             // search keyword
+		//result : "1",                 // result set length
+		//pageno : "1",   // pageNo
+		//output : "json"                // JSONP type format json
+		//},
+		success : function(r){
+			console.log(r);
+			thumbnailAddr += r.channel.item[0].thumbnail;
+			console.log(thumbnailAddr);
+			searchImage(thumbnailAddr, index);
+		},
+		error : function(e) {
+			console.log(e);
+		}
+	});
+}
+
+function searchImage(thumbnailAddr, index) {
+	var places = JSON.parse($("#places").val());
+	var paraparam = places[index].title+places[index].address;
+    var paraparam1 = paraparam.replace(/ /gi, "");
+    for(var i = 0; i < infoList.length; i++) {
 		infoList[i].close();
 	}
-	
+	console.log(places[index].title);
     var content = '<div class="wrap">';
     content += 	      '<div class="info">';
                   
-    content += 	  	      '<div class="title">'+places[index].title+'<div class="close" onclick="closeOverlay()" title="닫기"></div></div>';
+    content += 	  	      '<div class="title">'+places[index].title+'<div class="" onclick="" title="닫기"></div></div>';
                   
     content += '<div class="body">';
     content +=     '<div class="img">';
-    content += 	       '<img src="http://cfile181.uf.daum.net/image/250649365602043421936D" width="73" height="70">';
+    content += 	       '<img src="'+thumbnailAddr+'" width="73" height="70" id="imgSearch">';
     content +=     '</div>';
     content +=     '<div class="desc">';
     content +=         '<div class="ellipsis">'+places[index].address+'</div>';
@@ -372,21 +414,18 @@ function displayOverlay(index) {
     content += '</div>';
     content +=        '</div>';
     content +=    '</div>';
-     
+    
+    
     
 	// 마커 위에 커스텀오버레이를 표시합니다
 	// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
 	var overlay2 = new daum.maps.CustomOverlay({
 	    content: content,
 	    map: map,
-	    position: newMarkers[index].getPosition()       
+	    position: newMarkers[newMarkers.length-1].getPosition(),
 	});
 	overlay = overlay2;
-	
-	// 마커를 클릭했을 때 커스텀 오버레이를 표시합니다
-	daum.maps.event.addListener(newMarkers[index], 'click', function() {
-	    overlay2.setMap(map);
-	});
+	overlayList.push({olay: overlay2, paraparameter: paraparam1});
 }
 
 // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
