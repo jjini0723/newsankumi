@@ -59,7 +59,7 @@ function boardList2() {
 
              //다음단계
 			 html += '<div class="sidebar-block text-center filter_commit">';
-			 html += '<a class="btn btn-primary btn-block" onclick = "boardList3(), searchBestLoc(), hoit2();"><strong style="color:white;">최적의 주거공간 찾기</strong></a>';
+			 html += '<a class="btn btn-primary btn-block" onclick = "boardList3(), searchBestLoc(), hoit2(), filtering();"><strong style="color:white;">최적의 주거공간 찾기</strong></a>';
 			 html += '</div></div>';
              $("#test123").html(html);
          },

@@ -5,6 +5,7 @@ public class saveData {
 	private String checkemail;
 	private String gu;
 	private String dong;
+	private String dongscore;
 	private String car1;
 	private String car2;
 	private String car3;
@@ -26,14 +27,15 @@ public class saveData {
 		// TODO Auto-generated constructor stub
 	}
 
-	public saveData(String checknumber, String checkemail, String gu, String dong, String car1, String car2,
-			String car3, String car4, String car5, String walk1, String walk2, String walk3, String walk4, String walk5,
-			String tradi1, String tradi2, String tradi3, String tradi4, String tradi5, String count) {
+	public saveData(String checknumber, String checkemail, String gu, String dong, String dongscore, String car1,
+			String car2, String car3, String car4, String car5, String walk1, String walk2, String walk3, String walk4,
+			String walk5, String tradi1, String tradi2, String tradi3, String tradi4, String tradi5, String count) {
 		super();
 		this.checknumber = checknumber;
 		this.checkemail = checkemail;
 		this.gu = gu;
 		this.dong = dong;
+		this.dongscore = dongscore;
 		this.car1 = car1;
 		this.car2 = car2;
 		this.car3 = car3;
@@ -82,6 +84,14 @@ public class saveData {
 
 	public void setDong(String dong) {
 		this.dong = dong;
+	}
+
+	public String getDongscore() {
+		return dongscore;
+	}
+
+	public void setDongscore(String dongscore) {
+		this.dongscore = dongscore;
 	}
 
 	public String getCar1() {
@@ -215,11 +225,11 @@ public class saveData {
 	@Override
 	public String toString() {
 		return "saveData [checknumber=" + checknumber + ", checkemail=" + checkemail + ", gu=" + gu + ", dong=" + dong
-				+ ", car1=" + car1 + ", car2=" + car2 + ", car3=" + car3 + ", car4=" + car4 + ", car5=" + car5
-				+ ", walk1=" + walk1 + ", walk2=" + walk2 + ", walk3=" + walk3 + ", walk4=" + walk4 + ", walk5=" + walk5
-				+ ", tradi1=" + tradi1 + ", tradi2=" + tradi2 + ", tradi3=" + tradi3 + ", tradi4=" + tradi4
-				+ ", tradi5=" + tradi5 + ", count=" + count + "]";
+				+ ", dongscore=" + dongscore + ", car1=" + car1 + ", car2=" + car2 + ", car3=" + car3 + ", car4=" + car4
+				+ ", car5=" + car5 + ", walk1=" + walk1 + ", walk2=" + walk2 + ", walk3=" + walk3 + ", walk4=" + walk4
+				+ ", walk5=" + walk5 + ", tradi1=" + tradi1 + ", tradi2=" + tradi2 + ", tradi3=" + tradi3 + ", tradi4="
+				+ tradi4 + ", tradi5=" + tradi5 + ", count=" + count + "]";
 	}
-	
+
 	
 }

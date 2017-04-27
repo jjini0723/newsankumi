@@ -61,7 +61,7 @@ function dfa(carArray, walkArray, tradiArray){
          $.each(perfect,function(index,item1){ // 선택되어있는 아파트만큼 돈다
             $.ajax({
                type : "POST",   
-                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=360a72a6-2781-35ea-b877-98cd58c69b91",
+                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=2bb28cd1-f268-3af6-8329-e6b49122331b",
                 success : function(data){//succes 안에서 길이만큼 반복 후 2번 돌아야 할시 2번돌고 true로 변경
                    console.log(data);
                    yebi = data.features[0].properties.totalTime//시간만 빼온다
@@ -139,7 +139,7 @@ function dfa(carArray, walkArray, tradiArray){
          $.each(perfect,function(index,item1){//아파트 개수만큼 돈다 ex)도보로 2개 설정 된상태에서 아파트가 200개 면 url400번 날린다
             $.ajax({
                type : "POST",      
-                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=360a72a6-2781-35ea-b877-98cd58c69b91",
+                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=2bb28cd1-f268-3af6-8329-e6b49122331b",
                 success : function(data){
                    yebi = data.features[0].properties.totalTime//총 시간만 출력
                    console.log(data);
@@ -334,7 +334,7 @@ function sendArray(){
    if(changepoint>5){
       percent=parseFloat(changepoint/5);
       $.each(perfect,function(index,item){
-    	  var siscore = (parseFloat((item.totalpoint/percent).toFixed(2))+(parseFloat(item.dongScore)).toFixed(2)).toFixed(2);
+    	  var siscore = parseFloat(item.totalpoint)/percent.toFixed(2)  +  parseFloat(item.dongScore).toFixed(2);
           item.changepoint = siscore;
       })
    }else if(changepoint<5){
@@ -342,7 +342,7 @@ function sendArray(){
       $.each(perfect,function(index,item){
     	  var score1 = parseFloat(item.totalpoint)*percent.toFixed(2);
      	  var score2 = parseFloat(item.dongScore);
-          item.changepoint = (score1+score2).toFixed(2);
+          item.changepoint = parseFloat(score1+score2).toFixed(2);
       })
    } 
 //   console.log(perfect);
@@ -366,7 +366,7 @@ function drawlist() {
    console.log("drawlist");
    $("#graphData").val(JSON.stringify(perfect));
    getTradeInfo(perfect[0].x);
-   focuson(perfect[0].x,perfect[0].y);
+   focusin(perfect[0].x,perfect[0].y);
    getChartData2(0);
    var newperfect = new Array();
 //   $.each(perfect, function(key, value){ 
@@ -385,7 +385,7 @@ function drawlist() {
    html += '<ul class = "category" data-width="400" id = "list2"><table><tr><td>아파트 명</td><td>평점</td></tr>';
    console.log(perfect);
       for (var i = 0; i < perfect.length; i++) {
-         html += '<tr><td><a href = "#" id = "" value = "" onclick = "initChart2(); getTradeInfo('+perfect[i].x+'),focuson('+perfect[i].x+','+perfect[i].y+'); getChartData2('+i+');">'+perfect[i].kaptName+'</a></td><td>'+perfect[i].changepoint+'</td></tr>' ;
+         html += '<tr><td><a href = "#" id = "" value = "" onclick = "initChart2(); getTradeInfo('+perfect[i].x+'),focusin('+perfect[i].x+','+perfect[i].y+'); getChartData2('+i+');">'+perfect[i].kaptName+'</a></td><td>'+perfect[i].changepoint+'</td></tr>' ;
       };                                       
    html += '</table></ul>';
    $('#lll').html(html);

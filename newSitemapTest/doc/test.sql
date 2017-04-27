@@ -59,3 +59,28 @@ select distinct(bjd_cd), sigungu_nm, emd_nm, gwanhal from mp_loc_info where emd_
 
 
 select * from SAVEDATA
+drop table savedata
+commit
+create table SAVEDATA(
+checknumber varchar2(30),
+checkemail varchar2(50),
+gu varchar2(100),
+dong varchar2(100),
+dongscore varchar2(30),
+car1 varchar2(100),
+car2 varchar2(100),
+car3 varchar2(100),
+car4 varchar2(100),
+car5 varchar2(100),
+walk1 varchar2(100),
+walk2 varchar2(100),
+walk3 varchar2(100),
+walk4 varchar2(100),
+walk5 varchar2(100),
+tradi1 varchar2(100),
+tradi2 varchar2(100),
+tradi3 varchar2(100),
+tradi4 varchar2(100),
+tradi5 varchar2(100),
+count varchar2(30)
+)

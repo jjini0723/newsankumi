@@ -3,19 +3,16 @@
  */
 
 function save(checknumber,checkemail){
-	alert('aefaef');
-	console.log(checknumber);
-	console.log(checkemail);
-	console.log(result300);
-	console.log(carArray);
-	console.log(walkArray);
-	console.log(tradiArray);
 	var carindex = carArray.length;
 	var walkindex = walkArray.length;
 	var tradiindex = tradiArray.length;
 	var gu = result300[0];
 	var dong = result300[1];
+	var dongscore = dongScore[0]+","+dongScore[1]+","+dongScore[2]+","+dongScore[3]+","+dongScore[4];
 	var count = perfect.length;
+	console.log(gu);
+	console.log(dong);
+	console.log(dongscore);
 	if(carArray.length<5){
 		for(var i =carindex;i<5;i++){
 			var carInfo = {title:'no',x:'no',y:'no'};
@@ -69,6 +66,7 @@ function save(checknumber,checkemail){
 				checkemail:checkemail,
 				gu:gu,
 				dong:dong,
+				dongscore:dongscore,
 				car1:car1,
 				car2:car2,
 				car3:car3,

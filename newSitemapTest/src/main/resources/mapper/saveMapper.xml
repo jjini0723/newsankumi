@@ -7,7 +7,7 @@
 <mapper namespace="com.newsite.maptest01.DAO.saveMapper">
 	
 	<insert id="save" parameterType = "saveData">
-		insert into saveData(checknumber,checkemail,gu,dong,car1,car2,car3,car4,car5,walk1,walk2,walk3,walk4,walk5,tradi1,tradi2,tradi3,tradi4,tradi5,count) values(#{checknumber},#{checkemail},#{gu},#{dong},#{car1},#{car2},#{car3},#{car4},#{car5},#{walk1},#{walk2},#{walk3},#{walk4},#{walk5},#{tradi1},#{tradi2},#{tradi3},#{tradi4},#{tradi5},#{count})
+		insert into saveData(checknumber,checkemail,gu,dong,dongscore,car1,car2,car3,car4,car5,walk1,walk2,walk3,walk4,walk5,tradi1,tradi2,tradi3,tradi4,tradi5,count) values(#{checknumber},#{checkemail},#{gu},#{dong},#{dongscore},#{car1},#{car2},#{car3},#{car4},#{car5},#{walk1},#{walk2},#{walk3},#{walk4},#{walk5},#{tradi1},#{tradi2},#{tradi3},#{tradi4},#{tradi5},#{count})
 	</insert>
 	<select id="loadData" parameterType="String" resultType="saveData">
 		select * from saveData where checknumber=#{1} and checkemail=#{0}

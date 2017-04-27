@@ -428,14 +428,14 @@ This variant is to be used when loading the separate styling modules -->
 										</div>
 				                
 										<div class="text-center">
-											<button type="button" class="btn btn-primary" data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList3(); loadData();">코드불러오기 <i class="fa fa-sign-in"></i></button>
+											<button type="button" class="btn btn-primary" data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList3(); loadData();filtering();hideload();">코드불러오기 <i class="fa fa-sign-in"></i></button>
 										</div>
 					                </form>
 				                </div>
 				            </li>
 				            <!-- // END login -->
 				            <!-- 드롭다운 left 테스트 -->
-				            <li class="dropdown">
+				            <li class="dropdown" id="filtering" style="display:none">
 				            	<a href="#" class="dropdown-toggle" data-toggle="dropdown" style = "color:#8a8a8a;">
 				                	<i class="fa fa-fw fa-filter"></i> 필터링
 				                </a>
