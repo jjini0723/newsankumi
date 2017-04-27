@@ -26,6 +26,7 @@ $.ajax({
 function loadaction(data){
 	var gu = data[0].gu;
 	var dong = data[0].dong;
+	var dongscore = data[0].dongscore;
 	var car1info = [];
 	var car2info = [];
 	var car3info = [];
@@ -120,11 +121,12 @@ function loadaction(data){
 	}
 	console.log(gu);
 	console.log(dong);
+	console.log(dongscore);
 	console.log(carArray);
 	console.log(walkArray);
 	console.log(tradiArray);
 	
-	loadcall(gu,dong,count);
+	loadcall(gu,dong,dongscore,count);
 	
 	
 	
@@ -138,7 +140,7 @@ function loadaction(data){
 
 
 
-function loadcall(sigunguName, ghName,count){
+function loadcall(sigunguName, ghName,dongscore,count){
 	alert('호호');
 	var countFlag=0;
 	var count=count;
@@ -181,15 +183,16 @@ function loadcall(sigunguName, ghName,count){
    //   contentType : "application/json; charset=utf-8",
         data : {
         	sigunguName : sigunguName,
-            ghName : ghName
+            ghName : ghName,
+            dongScore : dongscore
         },
         success : function(data) {
         	var ghNameArray = ghName.split(',');
         	var sigunguNameArray = sigunguName.split(',');
         	var ghNameStr = '';
         	var lastChar = '';
-        	alert(ghNameArray);
-        	alert(sigunguNameArray);
+        	console.log("로드데이터ajax"+data);
+        	
         	$.each(ghNameArray, function(index, item) {
         		geocoder.addr2coord(sigunguNameArray[index]+" "+item, function(status, result) {
         			// 정상적으로 검색이 완료됐으면 
@@ -234,6 +237,7 @@ function loadcall(sigunguName, ghName,count){
             var kaptName = new Array();
             var kaptUsedate = new Array();
             var codeHeatNm = new Array();
+            var loadDongScore = new Array();
             var kaptDongCnt = new Array();
             var kaptdaCnt = new Array();
             var kaptBcompany = new Array();
@@ -247,6 +251,8 @@ function loadcall(sigunguName, ghName,count){
 	            kaptAddr.push(data[i].kaptAddr);
 	            kaptName.push(data[i].kaptName);
 	            codeHeatNm.push(data[i].codeHeatNm);
+	            loadDongScore.push(data[i].dongScore);
+	            console.log(data[i].dongScore);
 	            kaptDongCnt.push(data[i].kaptDongCnt);
 	            kaptdaCnt.push(data[i].kaptdaCnt);
 	            kaptBcompany.push(data[i].kaptBcompany);
@@ -264,6 +270,7 @@ function loadcall(sigunguName, ghName,count){
 	                        map: map,
 	                        position: coords
 	                    });
+	                    marker2.push(marker);
 	                    var perfect2 = {
 	                    		y : result.addr[0].lat,//y좌표
 	                            x : result.addr[0].lng,//x좌표
@@ -279,6 +286,7 @@ function loadcall(sigunguName, ghName,count){
 	                            kaptMparea_60 : kaptMparea_60[index],
 	                            kaptMparea_85 : kaptMparea_85[index],
 	                            kaptMparea_135 : kaptMparea_135[index],
+	                            dongScore : loadDongScore[index],
 	                            car1 : '',//자동차로 3곳을 설정할 경우를 대비해서 아예 1,2,3번만듬
 	                            car2 : '',
 	                            car3 : '',
@@ -367,4 +375,8 @@ function loadcall(sigunguName, ghName,count){
         	console.log(e)
         }
     });
+}
+
+function hideload(){
+	$('#code').hide();
 }

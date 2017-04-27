@@ -58,10 +58,9 @@ function boardList2() {
              html += '</div></div>';
 
              //다음단계
-			 html += '<div class="panel-body sidebar-block text-center filter_commit">';
-			 html += '<ul class="pagination margin-none">';
-			 html += '<li><a class="btn btn-primary btn-block" onclick = "boardList3(), searchBestLoc(), hoit2();"><strong style="color:white;">최적의 주거공간 찾기</strong></a></li>';
-			 html += '</ul></div></div>';
+			 html += '<div class="sidebar-block text-center filter_commit">';
+			 html += '<a class="btn btn-primary btn-block" onclick = "boardList3(), searchBestLoc(), hoit2(), filtering();"><strong style="color:white;">최적의 주거공간 찾기</strong></a>';
+			 html += '</div></div>';
              $("#test123").html(html);
          },
          error : function(e) {
@@ -91,7 +90,7 @@ function boardList3() {
 				//아파트정보
 				html += '<h4 class="ribbon-heading ribbon-primary" id="info">아파트 세부정보</h4>';
 
-				html += '<div style="overflow:auto;height:100px;" display:none; id = "aptInfo"></div>';
+				html += '<div style="border:1px solid #dedede; margin:10px;" id = "aptInfo"></div>';
 				
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
