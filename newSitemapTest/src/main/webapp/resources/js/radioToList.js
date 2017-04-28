@@ -8,6 +8,52 @@ $(document).on("click", ".remove", function(e) {
 });
 
 function getRadios(selected) {
+	var radioCount = radioCheck();
+	var hml = document.getElementsByClassName('hml');
+	var hmlTotal = hml.length;
+	var chk = document.getElementsByName('ck');
+	
+		
+	//라디오 막는용
+	if(radioCount > 6){
+		//라디오체크한거 삭제하는거
+		var lastCheck = document.getElementsByName(radio7th);
+		for(var i=0; i < lastCheck.length; i++){
+			if(lastCheck[i].checked){
+				lastCheck[i].checked = false;
+			}
+		}
+			
+		for(var i=0; i < hmlTotal; i++){				
+			if(chk[i].checked == true){	
+				var rdCount = 0;
+				$.each(hml, function(index,item){
+					if(index == i){							
+						if($(this).children("input[type=radio]").is(":checked")){
+							rdCount++;	
+							return;
+						}
+					}	
+				});	
+				if(rdCount == 0){
+					chk[i].click();
+					chk[i].disabled = true;
+				}
+			}
+			else{
+				chk[i].disabled = true;
+			}
+		}		
+		return;		
+	}
+	else{
+		if(radioCount < 6){
+			for(var i=0; i < hmlTotal; i++){
+				chk[i].disabled = false;
+			}
+		}		
+	}
+	
 	var html = "";
 	// 스포츠
 	var welfare_sports = "";

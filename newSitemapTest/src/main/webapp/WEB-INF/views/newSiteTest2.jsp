@@ -68,6 +68,7 @@ var result300 = []; // 저장 할꺼 1번
 var dongScore = [];
 var infoList = new Array(); // 인포윈도우를 저장할 배열
 var overlayList = new Array(); // 오버레이를 저장할 배열
+var radio7th='';//라디오버튼체크용
 
 $(document).avgrund({
 	    openOnEvent: false
@@ -254,17 +255,23 @@ function checkboxSelect(obj, cnt) {
 }
 
 
+//현재 라디오 몇개 클릭됫는지
 function radioCheck(){
-	var radioCount = 0;
+	var radioCountCur = 0;
 	var hml = $(".hml");	
 	
 	$.each(hml, function(index,item){
 		if($(this).children("input[type=radio]:checked").val() != null){
-			radioCount++;
+			radioCountCur++;
 		}
 	});	
 	
-	return radioCount;
+	return radioCountCur;
+}
+
+
+function radio7thCheck(name){
+	radio7th = name;
 }
 	
     //필터링용
@@ -542,11 +549,11 @@ This variant is to be used when loading the separate styling modules -->
 					<label for="welfare_sports" data-toggle="tooltip" data-placement="top" title="체육공원, 스포츠 서비스업 등의 스포츠시설 수를 행정구역 별로 나타냅니다."><span>스포츠시설</span></label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_sports">
-					<input type="radio" id="rd_welfare_sports1" name="rd_welfare_sports" value="<%=SelectConditions.high %>" >
+					<input type="radio" id="rd_welfare_sports1" name="rd_welfare_sports" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_welfare_sports')">
 					<label for="rd_welfare_sports1">상</label>
-					<input type="radio" id="rd_welfare_sports2" name="rd_welfare_sports" value="<%=SelectConditions.mid %>" >
+					<input type="radio" id="rd_welfare_sports2" name="rd_welfare_sports" value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_welfare_sports')">
 					<label for="rd_welfare_sports2">중</label>
-					<input type="radio" id="rd_welfare_sports3" name="rd_welfare_sports" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_welfare_sports3" name="rd_welfare_sports" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_welfare_sports')">
 					<label for="rd_welfare_sports3">하</label>
 				</span>	
 				</a>
@@ -559,11 +566,11 @@ This variant is to be used when loading the separate styling modules -->
 					<label for="welfare_culture"  data-toggle="tooltip" data-placement="top" title="극장 영화관 등의 문화시설 수를 행정구역 별로 나타냅니다.">문화시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_culture">
-					<input type="radio" id="rd_welfare_culture1" name="rd_welfare_culture" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_welfare_culture1" name="rd_welfare_culture" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_welfare_culture')">
 					<label for="rd_welfare_culture1">상</label>
-					<input type="radio" id="rd_welfare_culture2" name="rd_welfare_culture" value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_welfare_culture2" name="rd_welfare_culture" value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_welfare_culture')">
 					<label for="rd_welfare_culture2">중</label>
-					<input type="radio" id="rd_welfare_culture3" name="rd_welfare_culture" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_welfare_culture3" name="rd_welfare_culture" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_welfare_culture')">
 					<label for="rd_welfare_culture3">하</label>
 				</span>	
 				</a>
@@ -577,11 +584,11 @@ This variant is to be used when loading the separate styling modules -->
 
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_salon">
-					<input type="radio" id="rd_welfare_salon1" name="rd_welfare_salon" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_welfare_salon1" name="rd_welfare_salon" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_welfare_salon')">
 					<label for="rd_welfare_salon1">상</label>
-					<input type="radio" id="rd_welfare_salon2" name="rd_welfare_salon" value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_welfare_salon2" name="rd_welfare_salon" value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_welfare_salon')">
 					<label for="rd_welfare_salon2">중</label>
-					<input type="radio" id="rd_welfare_salon3" name="rd_welfare_salon" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_welfare_salon3" name="rd_welfare_salon" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_welfare_salon')">
 					<label for="rd_welfare_salon3">하</label>
 				</span>	
 				</a>
@@ -594,11 +601,11 @@ This variant is to be used when loading the separate styling modules -->
 					<label for="welfare_society" data-toggle="tooltip" data-placement="top" title="지역별 사회복지 수준을 확인할 수 있는 지표입니다. 인구 대비 사회복지시설의 비율을 행정구역 별로 나타냅니다.">사회복지시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_society">
-					<input type="radio" id="rd_welfare_society1" name="rd_welfare_society" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_welfare_society1" name="rd_welfare_society" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_welfare_society')">
 					<label for="rd_welfare_society1">상</label>
-					<input type="radio" id="rd_welfare_society2" name="rd_welfare_society" value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_welfare_society2" name="rd_welfare_society" value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_welfare_society')">
 					<label for="rd_welfare_society2">중</label>
-					<input type="radio" id="rd_welfare_society3" name="rd_welfare_society" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_welfare_society3" name="rd_welfare_society" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_welfare_society')">
 					<label for="rd_welfare_society3">하</label>
 				</span>	
 				</a>
@@ -611,11 +618,11 @@ This variant is to be used when loading the separate styling modules -->
 					<label for="welfare_medical" data-toggle="tooltip" data-placement="top" title="병의원 및 약국은 의료수준이 좋은 지역을 확인할 수 있는 지표입니다. 인구 대비 병의원, 약국의 비율을 행정구역 별로 나타냅니다.">의료시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_medical">
-					<input type="radio" id="rd_welfare_medical1" name="rd_welfare_medical" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_welfare_medical1" name="rd_welfare_medical" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_welfare_medical')">
 					<label for="rd_welfare_medical1">상</label>
-					<input type="radio" id="rd_welfare_medical2" name="rd_welfare_medical" value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_welfare_medical2" name="rd_welfare_medical" value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_welfare_medical')">
 					<label for="rd_welfare_medical2">중</label>
-					<input type="radio" id="rd_welfare_medical3" name="rd_welfare_medical" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_welfare_medical3" name="rd_welfare_medical" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_welfare_medical')">
 					<label for="rd_welfare_medical3">하</label>
 				</span>	
 				</a>
@@ -629,11 +636,11 @@ This variant is to be used when loading the separate styling modules -->
 					<label for="welfare_childCare" data-toggle="tooltip" data-placement="top" title="5세 미만의 유아를 위한 교육시설을 의미하며, 5세 미만 인구 대비 유치원 및 보육시설의 비율을 행정구역 별로 나타냅니다.">보육시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_childCare">
-					<input type="radio" id="rd_welfare_childCare1" name="rd_welfare_childCare" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_welfare_childCare1" name="rd_welfare_childCare" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_welfare_childCare')">
 					<label for="rd_welfare_childCare1">상</label>
-					<input type="radio" id="rd_welfare_childCare2" name="rd_welfare_childCare"value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_welfare_childCare2" name="rd_welfare_childCare"value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_welfare_childCare')">
 					<label for="rd_welfare_childCare2">중</label>
-					<input type="radio" id="rd_welfare_childCare3" name="rd_welfare_childCare" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_welfare_childCare3" name="rd_welfare_childCare" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_welfare_childCare')">
 					<label for="rd_welfare_childCare3">하</label>
 				</span>	
 				</a>
@@ -656,11 +663,11 @@ This variant is to be used when loading the separate styling modules -->
 
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="education_student">
-					<input type="radio" id="rd_education_student1" name="rd_education_student" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_education_student1" name="rd_education_student" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_education_student')">
 					<label for="rd_education_student1">상</label>
-					<input type="radio" id="rd_education_student2" name="rd_education_student"value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_education_student2" name="rd_education_student"value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_education_student')">
 					<label for="rd_education_student2">중</label>
-					<input type="radio" id="rd_education_student3" name="rd_education_student" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_education_student3" name="rd_education_student" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_education_student')">
 					<label for="rd_education_student3">하</label>
 				</span>	
 				</a>
@@ -673,11 +680,11 @@ This variant is to be used when loading the separate styling modules -->
 					<label for="education_academy" data-toggle="tooltip" data-placement="top" title="지역내 교육과 관련된 학원 현황을 확인할 수 있는 지표입니다. 행정구역 별 학원 수를 나타냅니다.">학원 수</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="education_academy">
-					<input type="radio" id="rd_education_academy1" name="rd_education_academy" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_education_academy1" name="rd_education_academy" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_education_academy')">
 					<label for="rd_education_academy1">상</label>
-					<input type="radio" id="rd_education_academy2" name="rd_education_academy"value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_education_academy2" name="rd_education_academy"value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_education_academy')">
 					<label for="rd_education_academy2">중</label>
-					<input type="radio" id="rd_education_academy3" name="rd_education_academy" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_education_academy3" name="rd_education_academy" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_education_academy')">
 					<label for="rd_education_academy3">하</label>
 				</span>	
 				</a>
@@ -700,11 +707,11 @@ This variant is to be used when loading the separate styling modules -->
 
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_fire">
-					<input type="radio" id="rd_safety_fire1" name="rd_safety_fire" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_safety_fire1" name="rd_safety_fire" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_safety_fire')">
 					<label for="rd_safety_fire1">상</label>
-					<input type="radio" id="rd_safety_fire2" name="rd_safety_fire"value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_safety_fire2" name="rd_safety_fire"value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_safety_fire')">
 					<label for="rd_safety_fire2">중</label>
-					<input type="radio" id="rd_safety_fire3" name="rd_safety_fire" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_safety_fire3" name="rd_safety_fire" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_safety_fire')">
 					<label for="rd_safety_fire3">하</label>
 				</span>	
 				</a>
@@ -717,11 +724,11 @@ This variant is to be used when loading the separate styling modules -->
 					<label for="safety_traffic" data-toggle="tooltip" data-placement="top" title="행정구역 별 교통안전사고 수준을 나타내는 교통안전사고지수(등급)를 나타냅니다. 수치가 높을수록 안전합니다.">교통안전사고</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_traffic">
-					<input type="radio" id="rd_safety_traffic1" name="rd_safety_traffic" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_safety_traffic1" name="rd_safety_traffic" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_safety_traffic')">
 					<label for="rd_safety_traffic1">상</label>
-					<input type="radio" id="rd_safety_traffic2" name="rd_safety_traffic"value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_safety_traffic2" name="rd_safety_traffic"value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_safety_traffic')">
 					<label for="rd_safety_traffic2">중</label>
-					<input type="radio" id="rd_safety_traffic3" name="rd_safety_traffic" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_safety_traffic3" name="rd_safety_traffic" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_safety_traffic')">
 					<label for="rd_safety_traffic3">하</label>
 				</span>	
 				</a>
@@ -734,11 +741,11 @@ This variant is to be used when loading the separate styling modules -->
 					<label for="safety_crime" data-toggle="tooltip" data-placement="top" title="행정구역 별 범죄사고 수준을 나타내는 범죄사고지수(등급)를 나타냅니다. 수치가 높을수록 안전합니다.">범죄사고</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_crime">
-					<input type="radio" id="rd_safety_crime1" name="rd_safety_crime" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_safety_crime1" name="rd_safety_crime" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_safety_crime')">
 					<label for="rd_safety_crime1">상</label>
-					<input type="radio" id="rd_safety_crime2" name="rd_safety_crime"value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_safety_crime2" name="rd_safety_crime"value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_safety_crime')">
 					<label for="rd_safety_crime2">중</label>
-					<input type="radio" id="rd_safety_crime3" name="rd_safety_crime" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_safety_crime3" name="rd_safety_crime" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_safety_crime')">
 					<label for="rd_safety_crime3">하</label>
 				</span>	
 				</a>
@@ -751,11 +758,11 @@ This variant is to be used when loading the separate styling modules -->
 					<label for="safety_safety" data-toggle="tooltip" data-placement="top" title="행정구역 별 종합안전사고 수준을 나타내는 종합안전사고지수(등급)를 나타냅니다. 수치가 높을수록 안전합니다.">안전사고</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_safety">
-					<input type="radio" id="rd_safety_safety1" name="rd_safety_safety" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_safety_safety1" name="rd_safety_safety" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_safety_safety')">
 					<label for="rd_safety_safety1">상</label>
-					<input type="radio" id="rd_safety_safety2" name="rd_safety_safety"value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_safety_safety2" name="rd_safety_safety"value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_safety_safety')">
 					<label for="rd_safety_safety2">중</label>
-					<input type="radio" id="rd_safety_safety3" name="rd_safety_safety" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_safety_safety3" name="rd_safety_safety" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_safety_safety')">
 					<label for="rd_safety_safety3">하</label>
 				</span>	
 				</a>
@@ -768,11 +775,11 @@ This variant is to be used when loading the separate styling modules -->
 					<label for="safety_infection" data-toggle="tooltip" data-placement="top" title="행정구역 별 전염병안전 수준을 나타내는 전염병안전지수(등급)를 나타냅니다. 수치가 높을수록 안전합니다.">전염병</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_infection">
-					<input type="radio" id="rd_safety_infection1" name="rd_safety_infection" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_safety_infection1" name="rd_safety_infection" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_safety_infection')">
 					<label for="rd_safety_infection1">상</label>
-					<input type="radio" id="rd_safety_infection2" name="rd_safety_infection"value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_safety_infection2" name="rd_safety_infection"value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_safety_infection')">
 					<label for="rd_safety_infection2">중</label>
-					<input type="radio" id="rd_safety_infection3" name="rd_safety_infection" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_safety_infection3" name="rd_safety_infection" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_safety_infection')">
 					<label for="rd_safety_infection3">하</label>
 				</span>	
 				</a>
@@ -786,11 +793,11 @@ This variant is to be used when loading the separate styling modules -->
 					<label for="safety_nature" data-toggle="tooltip" data-placement="top" title="행정구역 별 자연재해안전 수준을 나타내는 자연재해안전지수(등급)를 나타냅니다. 수치가 높을수록 안전합니다.">자연재해</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="safety_nature">
-					<input type="radio" id="rd_safety_nature1" name="rd_safety_nature" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_safety_nature1" name="rd_safety_nature" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_safety_nature')">
 					<label for="rd_safety_nature1">상</label>
-					<input type="radio" id="rd_safety_nature2" name="rd_safety_nature"value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_safety_nature2" name="rd_safety_nature"value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_safety_nature')">
 					<label for="rd_safety_nature2">중</label>
-					<input type="radio" id="rd_safety_nature3" name="rd_safety_nature" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_safety_nature3" name="rd_safety_nature" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_safety_nature')">
 					<label for="rd_safety_nature3">하</label>
 				</span>	
 				</a>
@@ -810,11 +817,11 @@ This variant is to be used when loading the separate styling modules -->
 					<label for="life_convenient" data-toggle="tooltip" data-placement="top" title="생활편의시설이 많은 지역을 확인할 수 있는 지표입니다. 생활 편의에 관련된 사업체 수를 행정구역 별로 나타냅니다.">편의시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="life_convenient">
-					<input type="radio" id="rd_life_convenient1" name="rd_life_convenient" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_life_convenient1" name="rd_life_convenient" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_life_convenient')">
 					<label for="rd_life_convenient1">상</label>
-					<input type="radio" id="rd_life_convenient2" name="rd_life_convenient"value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_life_convenient2" name="rd_life_convenient"value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_life_convenient')">
 					<label for="rd_life_convenient2">중</label>
-					<input type="radio" id="rd_life_convenient3" name="rd_life_convenient" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_life_convenient3" name="rd_life_convenient" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_life_convenient')">
 					<label for="rd_life_convenient3">하</label>
 				</span>	
 				</a>
@@ -827,11 +834,11 @@ This variant is to be used when loading the separate styling modules -->
 					<label for="life_shopping" data-toggle="tooltip" data-placement="top" title="쇼핑시설이 많은 지역을 확인할 수 있는 지표입니다. 쇼핑에 관련된 사업체 수를 행정구역 별로 나타냅니다.">쇼핑시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="life_shopping" >
-					<input type="radio" id="rd_life_shopping1" name="rd_life_shopping" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_life_shopping1" name="rd_life_shopping" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_life_shopping')">
 					<label for="rd_life_shopping1">상</label>
-					<input type="radio" id="rd_life_shopping2" name="rd_life_shopping"value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_life_shopping2" name="rd_life_shopping"value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_life_shopping')">
 					<label for="rd_life_shopping2">중</label>
-					<input type="radio" id="rd_life_shopping3" name="rd_life_shopping" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_life_shopping3" name="rd_life_shopping" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_life_shopping')">
 					<label for="rd_life_shopping3">하</label>
 				</span>	
 				</a>
@@ -844,11 +851,11 @@ This variant is to be used when loading the separate styling modules -->
 					<label for="life_restaurant" data-toggle="tooltip" data-placement="top" title="외식시설이 많은 지역을 확인할 수 있는 지표입니다. 외식과 관련된 음식점 사업체 수를 행정구역 별로 보실 수 있습니다. ">외식시설</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="life_restaurant">
-					<input type="radio" id="rd_life_restaurant1" name="rd_life_restaurant" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_life_restaurant1" name="rd_life_restaurant" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_life_restaurant')">
 					<label for="rd_life_restaurant1">상</label>
-					<input type="radio" id="rd_life_restaurant2" name="rd_life_restaurant"value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_life_restaurant2" name="rd_life_restaurant"value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_life_restaurant')">
 					<label for="rd_life_restaurant2">중</label>
-					<input type="radio" id="rd_life_restaurant3" name="rd_life_restaurant" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_life_restaurant3" name="rd_life_restaurant" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_life_restaurant')">
 					<label for="rd_life_restaurant3">하</label>
 				</span>	
 				</a>
@@ -861,11 +868,11 @@ This variant is to be used when loading the separate styling modules -->
 					<label for="life_publicTraffic" data-toggle="tooltip" data-placement="top" title="생활편의와 관련된 대중교통이 잘되어 있는 지역을 확인할 수 있는 지표로써 행정구역 내의 버스 정류장 수, 지하철 역 수에 따른 이용률을 나타냅니다.">대중교통이용률</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="life_publicTraffic">
-					<input type="radio" id="rd_life_publicTraffic1" name="rd_life_publicTraffic" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_life_publicTraffic1" name="rd_life_publicTraffic" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_life_publicTraffic')">
 					<label for="rd_life_publicTraffic1">상</label>
-					<input type="radio" id="rd_life_publicTraffic2" name="rd_life_publicTraffic"value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_life_publicTraffic2" name="rd_life_publicTraffic"value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_life_publicTraffic')">
 					<label for="rd_life_publicTraffic2">중</label>
-					<input type="radio" id="rd_life_publicTraffic3" name="rd_life_publicTraffic" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_life_publicTraffic3" name="rd_life_publicTraffic" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_life_publicTraffic')">
 					<label for="rd_life_publicTraffic3">하</label>
 				</span>	
 				</a>
@@ -886,11 +893,11 @@ This variant is to be used when loading the separate styling modules -->
 					<label for="people_foreign" data-toggle="tooltip" data-placement="top" title="지역인구 대비 외국인 거주자의 비율을 행정구역 별로 나타냅니다.">외국인거주비율</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="people_foreign" class = "hml_list">
-					<input type="radio" id="rd_people_foreign1" name="rd_people_foreign" value="<%=SelectConditions.high %>">
+					<input type="radio" id="rd_people_foreign1" name="rd_people_foreign" value="<%=SelectConditions.high %>" onclick="radio7thCheck('rd_people_foreign')">
 					<label for="rd_people_foreign1">상</label>
-					<input type="radio" id="rd_people_foreign2" name="rd_people_foreign"value="<%=SelectConditions.mid %>">
+					<input type="radio" id="rd_people_foreign2" name="rd_people_foreign"value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_people_foreign')">
 					<label for="rd_people_foreign2">중</label>
-					<input type="radio" id="rd_people_foreign3" name="rd_people_foreign" value="<%=SelectConditions.low %>">
+					<input type="radio" id="rd_people_foreign3" name="rd_people_foreign" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_people_foreign')">
 					<label for="rd_people_foreign3">하</label>
 				</span>	
 				</a>
@@ -903,11 +910,11 @@ This variant is to be used when loading the separate styling modules -->
 					<label for="people_density" data-toggle="tooltip" data-placement="top" title="지역의 인구분포의 조밀도를 행정지역 별로 나타냅니다.">인구밀도</label>
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="people_density"class = "hml_list">
-					<input type="radio" id="rd_people_density1" name="rd_people_density"  value="<%=SelectConditions.high %>" class ="rd_people_density"  >
+					<input type="radio" id="rd_people_density1" name="rd_people_density"  value="<%=SelectConditions.high %>"  onclick="radio7thCheck('rd_people_density')" class ="rd_people_density"  >
 					<label for="rd_people_density1">상</label>
-					<input type="radio" id="rd_people_density2" name="rd_people_density"value="<%=SelectConditions.mid %>" class ="rd_people_density">
+					<input type="radio" id="rd_people_density2" name="rd_people_density"value="<%=SelectConditions.mid %>" onclick="radio7thCheck('rd_people_density')"  class ="rd_people_density">
 					<label for="rd_people_density2">중</label>
-					<input type="radio" id="rd_people_density3" name="rd_people_density" value="<%=SelectConditions.low %>" class ="rd_people_density">
+					<input type="radio" id="rd_people_density3" name="rd_people_density" value="<%=SelectConditions.low %>" onclick="radio7thCheck('rd_people_density')" class ="rd_people_density">
 					<label for="rd_people_density3">하</label>
 				</span>	
 				</a>
