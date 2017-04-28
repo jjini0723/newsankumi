@@ -345,6 +345,15 @@ function sendArray(){
           item.changepoint = parseFloat(score1+score2).toFixed(2);
       })
    } 
+   perfect.sort(function(a,b){
+	      if(a.changepoint>b.changepoint){
+	         return -1;
+	      }
+	      if(a.changepoint<b.changepoint){
+	         return 1;
+	      }
+	      return 0;
+	   })
 //   console.log(perfect);
 //   console.log("drawlist");
 //   var html = "";
