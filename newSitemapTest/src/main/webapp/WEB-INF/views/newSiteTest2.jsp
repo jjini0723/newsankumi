@@ -28,6 +28,7 @@
 <script src="./resources/js/getTradeInfo.js"></script><!-- 영석이 가격정보 로직 -->
 <script src="./resources/js/save.js"></script><!-- 영석이 저장 로직 -->
 <script src="./resources/js/loadData.js"></script><!-- 영석이 불러오기 로직 -->
+<script src="./resources/js/init.js"></script><!-- 영석이 홈으로 돌아가는 초기화 로직 -->
 <script src="./resources/js/searchDestination.js"></script><!-- 희망목적지 관련 js -->
 <script src="./resources/js/sweetalert.min.js"></script><!-- sweetalert/email 보내기 팝업 관련 js -->
 <script src="./resources/js/js_plugin/jquery.blockUI.js"></script><!-- 데이터 로딩 표시 -->
@@ -375,7 +376,7 @@ This variant is to be used when loading the separate styling modules -->
 		    
 		          		<a href="#sidebar-map1" data-toggle="sidebar-menu" class="toggle pull-right visible-xs" style = "opacity:0.5;"><i class="fa fa-map-marker"></i></a>
 		     
-		          		<a href = "/maptest01/" class="navbar-brand"
+		          		<a href = "/maptest01/" onclick = "init();" class="navbar-brand"
 		     
 			          		style="width: 400px; position: absolute; left: 50%; margin-left: -200px; border: 0; outline: 0;
 			          		-ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none; color : #141414;">
@@ -387,7 +388,7 @@ This variant is to be used when loading the separate styling modules -->
 			        	<ul class="nav navbar-nav navbar-right ">
 			        		
 			        		<!-- 추천지역 드롭다운 -->
-			        		<li class="dropdown dropdown1">
+			        		<li class="dropdofwn dropdown1">
 				            	
 				            </li>
 				            <!-- // END 드롭다운 left 테스트 -->
