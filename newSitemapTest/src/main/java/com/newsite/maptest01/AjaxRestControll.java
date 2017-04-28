@@ -75,15 +75,6 @@ public class AjaxRestControll {
 		return finalList;
 	}
 	
-	//모든도시 전체정보 가져오기
-	@ResponseBody
-	@RequestMapping(value = "allInfo", method = RequestMethod.POST)
-	public ArrayList<ConditionResult> selectAllInfo(){
-		ArrayList<ConditionResult> allInfoList = dataDao.selectAllInfo();		
-		return allInfoList;
-	}
-	
-		
 
 	@RequestMapping(value = "selectGungu", method = RequestMethod.POST)
 	public ArrayList<String> selectGungu(String sido){
