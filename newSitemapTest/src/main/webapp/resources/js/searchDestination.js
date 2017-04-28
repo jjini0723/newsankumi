@@ -422,7 +422,7 @@ function searchImage(thumbnailAddr, index) {
 	var overlay2 = new daum.maps.CustomOverlay({
 	    content: content,
 	    map: map,
-	    position: newMarkers[newMarkers.length-1].getPosition(),
+	    position: newMarkers[newMarkers.length-1].getPosition()
 	});
 	overlay = overlay2;
 	overlayList.push({olay: overlay2, paraparameter: paraparam1});
@@ -460,6 +460,7 @@ function hoi(lat, lng, index) {
    var idx1 = obj1[index].options.selectedIndex; // 해당 selectbox index 구하기
 
    var transport = obj1[index].options[idx1].value; // 선택된 selectbox의 value값 가져오기
+   // 각 이동수단의 배열에 x, y좌표와 해당 희망목적지의 이름을 저장한다.
    if(transport == 1) {
       var car = { x : lat, y: lng, title: places[index].title};
       carArray.push(car);
@@ -491,6 +492,8 @@ function listReset(index) {
 }
 function focuson(x,y){
 	var moveLatLon = new daum.maps.LatLng(y, x);
+	map.setLevel(8);
+	
 	    
 	// 지도 중심을 이동 시킵니다
 	map.setCenter(moveLatLon);
