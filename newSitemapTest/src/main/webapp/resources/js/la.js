@@ -334,8 +334,11 @@ function sendArray(){
    if(changepoint>5){
       percent=parseFloat(changepoint/5);
       $.each(perfect,function(index,item){
-    	  var siscore = parseFloat(item.totalpoint)/percent.toFixed(2)  +  parseFloat(item.dongScore).toFixed(2);
-          item.changepoint = siscore;
+//    	  var siscore = parseFloat(item.totalpoint)/percent.toFixed(2)  +  parseFloat(item.dongScore).toFixed(2);
+//          item.changepoint = siscore;
+    	  var scorex = parseFloat(item.totalpoint)/percent.toFixed(2);
+    	  var scorey = parseFloat(item.dongScore);
+    	  item.changepoint = parseFloat(scorex+scorey).toFixed(2);
       })
    }else if(changepoint<5){
       percent=parseFloat(5/changepoint);
