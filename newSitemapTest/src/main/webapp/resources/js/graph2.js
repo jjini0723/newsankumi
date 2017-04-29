@@ -76,7 +76,7 @@ function createChart2(titlelist, lineData, barData){
                    label: '평균 소요시간 (분)',
                    data: lineData,
                    pointBackgroundColor : "gray",
-                   backgroundColor : "#fff",
+                   backgroundColor : "rgba(255,255,255,0)",
                    opacity : "0"
                }
            ]
