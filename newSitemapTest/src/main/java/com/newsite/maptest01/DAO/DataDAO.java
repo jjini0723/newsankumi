@@ -19,18 +19,11 @@ public class DataDAO {
 	public ArrayList<ConditionResult> selectCondition(ArrayList<String> list){
 		DataMapper mapper = sqlSession.getMapper(DataMapper.class);
 		
-		ArrayList<ConditionResult> conditionList = mapper.selectCondition(list);		
-		//HashMap<String, ConditionResult> conditionList = mapper.selectCondition(list);
+		ArrayList<ConditionResult> conditionList = mapper.selectCondition(list);	
 		
 		return conditionList;
 	}
 	
-	//전체. 조건(x)
-	public ArrayList<ConditionResult> selectAllInfo(){
-		DataMapper mapper = sqlSession.getMapper(DataMapper.class);
-		ArrayList<ConditionResult> allInfoList = mapper.selectAllInfo();
-		return allInfoList;
-	}
 		
 		
 		
