@@ -17,7 +17,7 @@ function createChart1(index){
    var obj = listData[index];
    
    $.each(obj, function(key, value){
-      if (value != 0 && key != "si" && key != "gu" && key != "dong" &&key != "citycode" && key != "totalScore") {
+      if (value != 0 && key != "si" && key != "gu" && key != "dong" &&key != "citycode" && key != "totalScore"&& key != "salePrice"&& key != "leasingPrice") {
          rawKeyList.push(key);
          valueList.push(value);
       }

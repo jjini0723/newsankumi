@@ -124,19 +124,19 @@ public class ConditionResult{
 		this.totalScore = totalScore;
 	}
 
-	public double getLeasingPrice() {
+	public double getleasingPrice() {
 		return leasingPrice;
 	}
 
-	public void setLeasingPrice(double leasingPrice) {
+	public void setleasingPrice(double leasingPrice) {
 		this.leasingPrice = leasingPrice;
 	}
 
-	public double getSalePrice() {
+	public double getsalePrice() {
 		return salePrice;
 	}
 
-	public void setSalePrice(double salePrice) {
+	public void setsalePrice(double salePrice) {
 		this.salePrice = salePrice;
 	}
 

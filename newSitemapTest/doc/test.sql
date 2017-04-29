@@ -84,3 +84,7 @@ tradi4 varchar2(100),
 tradi5 varchar2(100),
 count varchar2(30)
 )
+
+select * from mp_Data_3 where gu = '부평구';
+ALTER TABLE mp_Data_3 RENAME COLUMN price_lease to leasingPrice;
+ALTER TABLE mp_Data_3 RENAME COLUMN price_buy to salePrice;

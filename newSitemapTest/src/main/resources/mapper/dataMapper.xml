@@ -9,7 +9,7 @@
 	<!-- 조건 -->
 	<select id="selectCondition" resultType="ConditionResult">
 		select
-			citycode, si, dong, gu,	<!-- leasingPrice, salePrice, 테이블컬럼명맞춰주고 이거 넣어주셈-->	 
+			citycode, si, dong, gu,	leasingPrice, salePrice,
 			<foreach collection="list" item="list" separator=",">
 				${list}
 			</foreach>

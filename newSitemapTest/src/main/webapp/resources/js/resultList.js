@@ -17,7 +17,6 @@ $(document).ready(function() {
 });
 
 //리스트 뿌리기
-//createChart1(list,index)
 function buildList(list) {
 	$("#dongitem").val(JSON.stringify(list));
 	items = list; //전역변수에 담기
@@ -26,16 +25,17 @@ function buildList(list) {
 
 	moveMap(0);
 	createChart1(0);
-	//makeChart();
 	
 	for (var i = 0; i < items.length; i++) {
 		html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "'
-		+items[i].citycode+'" class = "'+items[i].gu +','+ items[i].dong+'" onclick = "initChart(); createChart1('+ i +'); setCircle('+ i +'); moveMap('+i+');"'+
+		+items[i].citycode+'" class = "'+items[i].gu +','+ items[i].dong+'" onclick = '+
+		'"initChart(); createChart1('+ i +'); setCircle('+items[i].leasingPrice+','+items[i].salePrice+','+i+'); moveMap('+i+');"'+
 		'style="color:#333333";> ' 
 		+ items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="initChart(); removeItem(' + i + ');" style = "color:red";>   x   </a> '+ '</li>' ;
 		var score1 = parseFloat(items[i].totalScore/items[0].totalScore*5).toFixed(2);
 		
 		console.log(score1);
+		console.log(items[0].leasingPrice+','+items[0].salePrice);
 		dongScore.push(score1);
 	}
 	
@@ -110,7 +110,8 @@ function removeItem(index) {
 	buildList(items);
 }
 
-function setCircle(index) {
+function setCircle(buy, lease, index) {
+	console.log(buy,lease);
 	var geocoder = new daum.maps.services.Geocoder();
 	var circle = new daum.maps.Circle({});
 
@@ -120,10 +121,14 @@ function setCircle(index) {
     var item = listData[index];
     var ghNameStr = item.dong;
     var lastChar = ghNameStr.charAt(ghNameStr.length - 1);
-    if(circleArray.length != 0) {
+    
+    if(circleArray.length != 0 || priceArray.length != 0) {
     	circleArray[0].setMap(null);
     	circleArray.splice(0,1);
+    	priceArray[0].close();
+    	priceArray.splice(0,1);
     }
+    
     geocoder.addr2coord(item.gu+" "+item.dong, function(status, result) {
 		// 정상적으로 검색이 완료됐으면 
 		if (status === daum.maps.services.Status.OK) {
@@ -138,7 +143,20 @@ function setCircle(index) {
                      fillColor: '#b7b7b7', // 채우기 색깔입니다
                      fillOpacity: 0.4  // 채우기 불투명도 입니다   
 		    	});
+
+	    		var iwContent = '<div style="padding:5px;">'+buy+lease+'</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+	    		    iwPosition = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng), //인포윈도우 표시 위치입니다
+	    		    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+	    		// 인포윈도우를 생성하고 지도에 표시합니다
+	    		 infowindow = new daum.maps.InfoWindow({
+	    		    map: map, // 인포윈도우가 표시될 지도
+	    		    position : iwPosition, 
+	    		    content : iwContent,
+	    		    removable : iwRemoveable
+	    		});
 	    		circle.setMap(map);
+	    		
 		    } else {
 	    		circle = new daum.maps.Circle({
 		    		center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
@@ -150,9 +168,23 @@ function setCircle(index) {
                      fillColor: '#7c6557', // 채우기 색깔입니다
                      fillOpacity: 0.4  // 채우기 불투명도 입니다   
 		    	});
+	    		
+	    		var iwContent = '<div style="padding:5px;">'+'매매가'+buy+' / '+'전세가'+lease+'</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+    		    iwPosition = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng), //인포윈도우 표시 위치입니다
+    		    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+    		// 인포윈도우를 생성하고 지도에 표시합니다
+    		 infowindow = new daum.maps.InfoWindow({
+    		    map: map, // 인포윈도우가 표시될 지도
+    		    position : iwPosition, 
+    		    content : iwContent,
+    		    removable : iwRemoveable
+    		});
 	    		circle.setMap(map);
 		    }
+		    console.log(infowindow);
 		    circleArray.push(circle);
+		    priceArray.push(infowindow);
 		}
     });
 }

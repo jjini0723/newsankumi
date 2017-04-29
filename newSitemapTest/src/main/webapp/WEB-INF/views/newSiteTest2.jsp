@@ -63,6 +63,7 @@ var marker2 = [];
 var recLocationArray = new Array();
 var hopeDestinationArray = new Array();
 var circleArray = new Array();
+var priceArray = new Array();
 var finalAddList = new Array();
 var finalHopeList = new Array();
 var result300 = []; // 저장 할꺼 1번
