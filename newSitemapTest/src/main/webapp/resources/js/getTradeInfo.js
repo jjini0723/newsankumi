@@ -39,7 +39,7 @@ function getTradeInfo(x){
       html += '<a href="#" class="overlay overlay-full">';
       html += '<span class="v-center">';
       /*html += '점수래요';*/
-      html += '<span class="btn btn-circle btn-white"><i class="fa fa-eye"></i></span>';
+      html += '<span class="btn btn-circle btn-white"><i class="fa fa-eye">'+info.changepoint+'</i></span>';
       html += '</span></a>';
       html += '</div>';
       html += '<p class="location" id="list2" style="font-weight: 100;padding: 0;">';

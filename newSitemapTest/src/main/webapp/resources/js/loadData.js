@@ -245,6 +245,7 @@ function loadcall(sigunguName, ghName,dongscore,count){
             var kaptMparea_60 = new Array();
             var kaptMparea_85 = new Array();
             var kaptMparea_135 = new Array();
+            var windowSet = new Array();
             var coordsList = [];
             for(var i in data) {
 	            kaptUsedate.push(data[i].kaptUsedate);
@@ -260,23 +261,28 @@ function loadcall(sigunguName, ghName,dongscore,count){
 	            kaptMparea_60.push(data[i].kaptMparea_60);
 	            kaptMparea_85.push(data[i].kaptMparea_85);
 	            kaptMparea_135.push(data[i].kaptMparea_135);
+	            var windowSet1 = {kaptAddr : data[i].kaptAddr,kaptName : data[i].kaptName};
+	               windowSet.push(windowSet1);
 	            //alert('주소 : '+kaptAddr[i]+' 아파트이름 : '+kaptName[i]);
             }
-            $.each(kaptAddr,function(index,item) {
-	            geocoder.addr2coord(item, function(status, result) {
+            $.each(windowSet,function(index,item) {
+	            geocoder.addr2coord(item.kaptAddr, function(status, result) {
 	                if (status === daum.maps.services.Status.OK) {
 	                    var coords = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);
 	                    var marker = new daum.maps.Marker({
 	                        map: map,
 	                        position: coords
 	                    });
+	                    marker3.push(marker);
 	                    marker2.push(marker);
+	                    markerAddr.push(item.kaptName);
 	                    var perfect2 = {
 	                    		y : result.addr[0].lat,//y좌표
 	                            x : result.addr[0].lng,//x좌표
 	                            kaptAddr : kaptAddr[index],//아파트주소
 	                            kaptName : kaptName[index],//아파트이름
 	                            changepoint : '',
+	                            sortpoint : '',
 	                            codeHeatNm : codeHeatNm[index],
 	                            kaptUsedate : kaptUsedate[index],
 	                            kaptDongCnt : kaptDongCnt[index],
