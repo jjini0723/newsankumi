@@ -580,7 +580,7 @@ This variant is to be used when loading the separate styling modules -->
 			<li>
 				<a href="#">
 					<input class="ck" type="checkbox" id="welfare_salon" name="ck" onclick="checkboxSelect('ck',6)">
-					<label for="welfare_salon" data-toggle="tooltip" data-placement="data-placement="top"" title="헤어관리 숍(미용실) 수를 행정구역 별로 나타냅니다.">미/이용 시설</label>
+					<label for="welfare_salon" data-toggle="tooltip" data-placement="top" title="미용, 욕탕 및 유사시설을 행정구역 별로 나타냅니다.">미/이용 시설</label>
 
 				<!-- 상중하 라디오 -->
 				<span class="hml" id="welfare_salon">
