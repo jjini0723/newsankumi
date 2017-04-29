@@ -264,28 +264,17 @@ function confirm(lat, lng, index) {
 	}
 }
 
-function resetMarker(index) {
-	if(index == 0) {
-		for(var i = 0; i < marker3.length; i++) {
-			marker3[i].setMap(null);
-		}
-		for(var i = 0; i < marker2.length; i++) {
-			marker2[i].setMap(null);
-		}
-	} else {
-		for(var i = 0; i < marker3.length; i++) {
-			marker3[i].setMap(null);
-		}
-		for(var i = 0; i < marker2.length; i++) {
-			marker2[i].setMap(null);
-		}
-		marker2 = [];
-		marker3 = [];
+function resetMarker() {
+	for(var i = 0; i < marker3.length; i++) {
+		marker3[i].setMap(null);
+	}
+	for(var i = 0; i < marker2.length; i++) {
+		marker2[i].setMap(null);
 	}
 }
 
-function changeMarker(index1, index2) {
-	resetMarker(index1);
+function changeMarker(index2) {
+	resetMarker();
 	for(var i = 0; i < filterAddr.length; i++) {
 		if(markerAddr[i] == filterAddr[index2].kaptName) {
 			var coordsss = new daum.maps.LatLng(filterAddr[index2].y, filterAddr[index2].x);
