@@ -264,8 +264,61 @@ function confirm(lat, lng, index) {
 	}
 }
 
+function resetMarker() {
+	for(var i = 0; i < marker3.length; i++) {
+		marker3[i].setMap(null);
+	}
+	for(var i = 0; i < marker2.length; i++) {
+		marker2[i].setMap(null);
+	}
+}
+
+function changeMarker(index) {
+	resetMarker();
+	for(var i = 0; i < markerAddr.length; i++) {
+		if(markerAddr[i] == perfect[index].kaptName) {
+			var coordsss = new daum.maps.LatLng(perfect[index].y, perfect[index].x);
+			var imageSrc = './resources/images/markers/building-10.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+	        	imageSize = new daum.maps.Size(41, 40),  // 마커 이미지의 크기
+	        	imgOptions =  {
+	            	spriteSize : new daum.maps.Size(41, 40), // 스프라이트 이미지의 크기
+	            	spriteOrigin : new daum.maps.Point(0, 0), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+	            	offset: new daum.maps.Point(20, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+	        	},
+	        markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+	            marker = new daum.maps.Marker({
+	            map: map,
+	            position: coordsss,
+            	image: markerImage
+            });
+			// 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
+            var iwContent = '<div style="padding:20px; color:black;">'+perfect[index].kaptAddr+'   <br></div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            // 인포윈도우를 생성합니다
+            var infowindow = new daum.maps.InfoWindow({
+                content : iwContent
+            });
+            // 마커에 마우스오버 이벤트를 등록합니다
+            daum.maps.event.addListener(marker, 'mouseover', function() {
+              // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+               infowindow.open(map, marker);
+            });
+            // 마커에 마우스아웃 이벤트를 등록합니다
+            daum.maps.event.addListener(marker, 'mouseout', function() {
+               // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+                infowindow.close();
+            });
+			marker2[i] = marker;
+			marker.setMap(map); // 지도 위에 마커를 표출합니다
+		} else {
+			marker3[i].setMap(map);
+		}
+	}
+	return false;
+}
+
 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다 
 function addMarker(position, idx, title) {
+	console.log(position);
     var imageSrc = './resources/images/markers/user-01.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
         imageSize = new daum.maps.Size(41, 40),  // 마커 이미지의 크기
         imgOptions =  {

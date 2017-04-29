@@ -188,7 +188,7 @@ function filter(){
 //   createSelectedChart(items[0]);
    console.log(result[0]);
       for (var i = 0; i < result.length; i++) {
-         html += '<tr><td><a href = "#" id = "" value = "" onclick = "getTradeInfo('+perfect[i].x+'),focuson('+perfect[i].x+','+perfect[i].y+');">'+perfect[i].kaptName+'</a></td><td>'+perfect[i].changepoint+'</td></tr>' ;
+         html += '<tr><td><a href = "#" id = "" value = "" onclick = "getTradeInfo('+perfect[i].x+'),focuson('+perfect[i].x+','+perfect[i].y+'); changeMarker('+i+');">'+perfect[i].kaptName+'</a></td><td>'+perfect[i].changepoint+'</td></tr>' ;
       };                                       
    html += '</table></ul>';
    $('#lll').html(html);
@@ -198,6 +198,9 @@ function removeMarker1() {
        marker2[i].setMap(null);
     }   
     marker2 = [];
+    for(var i = 0; i < marker3.length; i++) {
+    	marker3[i].setMap(null);
+    }
 }
 function filterMarker(result){
     // 주소-좌표 변환 객체를 생성합니다
@@ -214,6 +217,7 @@ function filterMarker(result){
                      position: coords
                  });
                  marker2.push(marker);
+                 marker3.push(marker);
                  var iwContent = '<div style="padding:20px; color:black;">'+item.kaptAddr+'   <br></div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                  // 인포윈도우를 생성합니다
                  var infowindow = new daum.maps.InfoWindow({
