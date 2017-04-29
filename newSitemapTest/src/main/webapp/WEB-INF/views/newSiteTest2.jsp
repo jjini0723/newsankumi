@@ -397,7 +397,7 @@ This variant is to be used when loading the separate styling modules -->
 			        	<ul class="nav navbar-nav navbar-right ">
 			        		
 			        		<!-- 추천지역 드롭다운 -->
-			        		<li class="dropdofwn dropdown1">
+			        		<li class="dropdown dropdown1">
 				            	
 				            </li>
 				            <!-- // END 드롭다운 left 테스트 -->
