@@ -339,6 +339,7 @@ function sendArray(){
     	  var scorex = parseFloat(item.totalpoint)/percent.toFixed(2);
     	  var scorey = parseFloat(item.dongScore);
     	  item.changepoint = parseFloat(scorex+scorey).toFixed(2);
+    	  item.sortpoint = parseFloat(item.changepoint)*100;
       })
    }else if(changepoint<5){
       percent=parseFloat(5/changepoint);
@@ -346,6 +347,7 @@ function sendArray(){
     	  var score1 = parseFloat(item.totalpoint)*percent.toFixed(2);
      	  var score2 = parseFloat(item.dongScore);
           item.changepoint = parseFloat(score1+score2).toFixed(2);
+          item.sortpoint = parseFloat(item.changepoint)*100;
       })
    } 
    perfect.sort(function(a,b){
@@ -353,6 +355,15 @@ function sendArray(){
 	         return -1;
 	      }
 	      if(a.changepoint<b.changepoint){
+	         return 1;
+	      }
+	      return 0;
+	   })
+	   perfect.sort(function(a,b){
+	      if(a.sortpoint>b.sortpoint){
+	         return -1;
+	      }
+	      if(a.sortpoint<b.sortpoint){
 	         return 1;
 	      }
 	      return 0;

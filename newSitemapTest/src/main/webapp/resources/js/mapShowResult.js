@@ -144,6 +144,7 @@ function call(sigunguName, ghName, finalAddList2){
                                kaptAddr : kaptAddr[index],//아파트주소
                                kaptName : kaptName[index],//아파트이름
                                changepoint : '',
+                               sortpoint : '',
                                codeHeatNm : codeHeatNm[index],
                                kaptUsedate : kaptUsedate[index],
                                kaptDongCnt : kaptDongCnt[index],
