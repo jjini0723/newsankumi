@@ -264,20 +264,31 @@ function confirm(lat, lng, index) {
 	}
 }
 
-function resetMarker() {
-	for(var i = 0; i < marker3.length; i++) {
-		marker3[i].setMap(null);
-	}
-	for(var i = 0; i < marker2.length; i++) {
-		marker2[i].setMap(null);
+function resetMarker(index) {
+	if(index == 0) {
+		for(var i = 0; i < marker3.length; i++) {
+			marker3[i].setMap(null);
+		}
+		for(var i = 0; i < marker2.length; i++) {
+			marker2[i].setMap(null);
+		}
+	} else {
+		for(var i = 0; i < marker3.length; i++) {
+			marker3[i].setMap(null);
+		}
+		for(var i = 0; i < marker2.length; i++) {
+			marker2[i].setMap(null);
+		}
+		marker2 = [];
+		marker3 = [];
 	}
 }
 
-function changeMarker(index) {
-	resetMarker();
-	for(var i = 0; i < markerAddr.length; i++) {
-		if(markerAddr[i] == perfect[index].kaptName) {
-			var coordsss = new daum.maps.LatLng(perfect[index].y, perfect[index].x);
+function changeMarker(index1, index2) {
+	resetMarker(index1);
+	for(var i = 0; i < filterAddr.length; i++) {
+		if(markerAddr[i] == filterAddr[index2].kaptName) {
+			var coordsss = new daum.maps.LatLng(filterAddr[index2].y, filterAddr[index2].x);
 			var imageSrc = './resources/images/markers/building-10.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
 	        	imageSize = new daum.maps.Size(41, 40),  // 마커 이미지의 크기
 	        	imgOptions =  {
@@ -292,7 +303,7 @@ function changeMarker(index) {
             	image: markerImage
             });
 			// 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
-            var iwContent = '<div style="padding:20px; color:black;">'+perfect[index].kaptAddr+'   <br></div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+            var iwContent = '<div style="padding:20px; color:black;">'+filterAddr[index2].kaptAddr+'   <br></div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
             // 인포윈도우를 생성합니다
             var infowindow = new daum.maps.InfoWindow({
                 content : iwContent

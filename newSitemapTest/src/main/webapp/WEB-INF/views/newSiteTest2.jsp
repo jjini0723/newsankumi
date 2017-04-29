@@ -72,6 +72,7 @@ var overlayList = new Array(); // 오버레이를 저장할 배열
 var markerAddr = new Array(); // 마커의 주소를 저장할 배열
 var marker3 = new Array();
 var radio7th='';//라디오버튼체크용
+var filterAddr = new Array();
 
 $(document).avgrund({
 	    openOnEvent: false
@@ -1089,51 +1090,73 @@ This variant is to be used when loading the separate styling modules -->
     <!-- /st-pusher -->
     
     <!--modal div  -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content" style="width:700px; margin:100px;">
                 <div class="modal-header">
                     <a class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
                     <h4 class="modal-title" id="myModalLabel">SMAP 사용방법</h4>
                 </div>
+                
                 <div class="modal-body wizard-content">
                     <div class="wizard-step">
-                    <img src="./resources/images/main_popup_high.jpg">
-                    
-                     <h5 style="font-weight:bold;"> 22가지의 조건들 중 최대 6개의 조건을 선택해보세요.
-                        	당신만의 맞춤형 동네를 찾아드립니다.</h5>  
+                    <span class = "popupimg"style="width: 20%;"><img src="./resources/images/bar1.png"></span>
+                   <span class="popuptext"> 
+                        <h5 style="font-weight:bold;">기준 지역 선택</h5>
+							&nbsp&nbsp비교하고 싶은 지역을 선택하세요. 
+						<br><br>
+					<h5 style="font-weight:bold;">메뉴</h5>
+						22가지의 조건들 중 최대 6개의 조건을 선택해보세요.
+						당신만의 맞춤형동네를 찾아드립니다.
+						<br><br>
+					<h5 style="font-weight:bold;">선택한 조건</h5>
+						당신이 선택한 조건을 한 눈에 볼 수 있습니다. 
+                        	</span>
                   </div>
                     <div class="wizard-step">
-                        <h5 style="font-weight:bold;">추천지역리스트</h5>
+                    <span class = "popupimg"style="width: 20%;"><img src="./resources/images/bar2.png"></span>
+                      <span class="popuptext">
+                       <h5 style="font-weight:bold;">추천지역리스트</h5>
 							&nbsp&nbsp앞서 선택한 조건들에 가중치를 더하여 당신만의 맞춤형 동네를 1위부터 10위까지 추천해 드립니다. 최대 5개의 동을 선택하여 다음 단계로 넘어갈 수 있습니다. 
+						<br><br>
 						<h5 style="font-weight:bold;">지역추가</h5>
 							&nbsp&nbsp마음에 담고 있는 지역의 정보를 알고 싶은 경우, 직접 추가해서 볼 수 있습니다.
+						<br><br>
 						<h5 style="font-weight:bold;">지역현황비교</h5>
 						&nbsp&nbsp앞서 선택한 기준 지역과 현재 목록에서 선택된 지역의 정보를 시각화해서 보여드립니다. 
+						</span>
 					 </div>
+					 
                     <div class="wizard-step">
+                    <span class = "popupimg"style="width: 20%;"><img src="./resources/images/bar3.png"></span>
+				      <span class="popuptext">
 				       	<h5 style="font-weight:bold;"> 생활권역 추가</h5>
 						&nbsp&nbsp최대 5개 선택 된 동들을 가지고 당신의 생활의 목적지를 추가합니다. 
 						<h5 style="font-weight:bold;">생활권역구성</h5>
 						&nbsp&nbsp당신의 생활권을 만들어 봅시다. 자주 다니는 곳들과 이동수단을 최대 5개 까지 선택할 수 있습니다. 
 						<h5 style="font-weight:bold;">최적의 주거공간 찾기</h5>
 						&nbsp&nbsp당신의 생활권 내에서 최적의 주거공간을 찾습니다. 
+						</span>
 				 </div>
+				 
                     <div class="wizard-step">
-                    <h5 style="font-weight:bold;">추천 아파트 리스트</h5> 
-						&nbsp&nbsp앞서 선택된 지역들의 점수와 생활 권역에 따른 아파트 별 합산 점수 순으로 보여줍니다.
-					<h5 style="font-weight:bold;">아파트 세부정보</h5>
-						&nbsp&nbsp아파트의 상세정보 및 아파트 명, 건축년도를 확인 할 수 있습니다.
-					<h5 style="font-weight:bold;">아파트 거래정보</h5>
-						&nbsp&nbsp아파트 별 거래 정보가 있을 경우 확인이 가능합니다.
-					<h5 style="font-weight:bold;">소요시간 비교</h5>
-						&nbsp&nbsp아파트 별 당신이 선택한 목적지까지의 소요시간과 지역 내 아파트의 평균 소요시간을 비교해 볼 수 있습니다.
-					<h5 style="font-weight:bold;">검색결과저장</h5>
-						&nbsp&nbsp이메일을 통해 고유코드를 발급받아서, 현재 결과 화면을 저장하여 다시 볼 수 있습니다.
-					<h5 style="font-weight:bold;">희망목적지</h5>
-						&nbsp&nbsp앞서 선택한 목적지들을 확인 할 수 있습니다.
-					<h5 style="font-weight:bold;">필터링</h5>
-						&nbsp&nbsp준공년도와 평수의 조건을 선택 할 경우, 선택한 범위 내의 아파트만 볼 수 있습니다.
+                    <!-- <span class = "popupimg"style="width: 20%;"><img src="./resources/images/bar4.png"></span> -->
+                    <span class="popuptext">
+	                    <h5 style="font-weight:bold;">추천 아파트 리스트</h5> 
+							&nbsp&nbsp앞서 선택된 지역들의 점수와 생활 권역에 따른 아파트 별 합산 점수 순으로 보여줍니다.
+						<h5 style="font-weight:bold;">아파트 세부정보</h5>
+							&nbsp&nbsp아파트의 상세정보 및 아파트 명, 건축년도를 확인 할 수 있습니다.
+						<h5 style="font-weight:bold;">아파트 거래정보</h5>
+							&nbsp&nbsp아파트 별 거래 정보가 있을 경우 확인이 가능합니다.
+						<h5 style="font-weight:bold;">소요시간 비교</h5>
+							&nbsp&nbsp아파트 별 당신이 선택한 목적지까지의 소요시간과 지역 내 아파트의 평균 소요시간을 비교해 볼 수 있습니다.
+						<h5 style="font-weight:bold;">검색결과저장</h5>
+							&nbsp&nbsp이메일을 통해 고유코드를 발급받아서, 현재 결과 화면을 저장하여 다시 볼 수 있습니다.
+						<h5 style="font-weight:bold;">희망목적지</h5>
+							&nbsp&nbsp앞서 선택한 목적지들을 확인 할 수 있습니다.
+						<h5 style="font-weight:bold;">필터링</h5>
+							&nbsp&nbsp준공년도와 평수의 조건을 선택 할 경우, 선택한 범위 내의 아파트만 볼 수 있습니다.
+							</span>
 				</div>
                     
                 </div>

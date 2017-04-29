@@ -188,12 +188,13 @@ function filter(){
 //   createSelectedChart(items[0]);
    console.log(result[0]);
       for (var i = 0; i < result.length; i++) {
-         html += '<tr><td><a href = "#" id = "" value = "" onclick = "getTradeInfo('+perfect[i].x+'),focuson('+perfect[i].x+','+perfect[i].y+'); changeMarker('+i+');">'+perfect[i].kaptName+'</a></td><td>'+perfect[i].changepoint+'</td></tr>' ;
+         html += '<tr><td><a href = "#" id = "" value = "" onclick = "getTradeInfo('+result[i].x+'),focuson('+result[i].x+','+result[i].y+'); changeMarker(1,'+i+');">'+result[i].kaptName+'</a></td><td>'+result[i].changepoint+'</td></tr>' ;
       };                                       
    html += '</table></ul>';
    $('#lll').html(html);
 }
 function removeMarker1() {
+	markerAddr = [];
     for ( var i = 0; i < marker2.length; i++ ) {
        marker2[i].setMap(null);
     }   
@@ -208,6 +209,7 @@ function filterMarker(result){
 	alert(result);
 	var markerResult = new Array();
 	markerResult = result;
+	filterAddr = result;
 	console.log(markerResult);
     var geocoder = new daum.maps.services.Geocoder();
     $.each(markerResult,function(index,item) {

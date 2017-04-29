@@ -45131,3 +45131,22 @@ fieldset[disabled] .owl-preview .owl-controls .owl-nav > div {
 [data-pagination="true"][data-pagination-position*="BOTTOM"] + .map-overlay-top {
   top: 0;
 }
+.wizard-step {
+	display: inline-flex;
+	
+}
+.popupimg{
+	width: 20%;
+	display:table;
+	
+}
+
+.popuptext{
+	width: 50%;
+    display: inline-block;
+    margin-top : 100px;
+    margin-left : 10px;
+    font-size: 15px;
+}
+
+
