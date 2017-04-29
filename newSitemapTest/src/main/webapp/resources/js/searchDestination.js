@@ -313,7 +313,6 @@ function changeMarker(index) {
 			marker3[i].setMap(map);
 		}
 	}
-	return false;
 }
 
 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다 

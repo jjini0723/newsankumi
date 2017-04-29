@@ -201,6 +201,7 @@ function removeMarker1() {
     for(var i = 0; i < marker3.length; i++) {
     	marker3[i].setMap(null);
     }
+    marker3 = [];
 }
 function filterMarker(result){
     // 주소-좌표 변환 객체를 생성합니다
@@ -210,29 +211,30 @@ function filterMarker(result){
 	console.log(markerResult);
     var geocoder = new daum.maps.services.Geocoder();
     $.each(markerResult,function(index,item) {
-                 var coords = new daum.maps.LatLng(item.y, item.x);
-                 console.log(coords);
-                 var marker = new daum.maps.Marker({
-                     map: map,
-                     position: coords
-                 });
-                 marker2.push(marker);
-                 marker3.push(marker);
-                 var iwContent = '<div style="padding:20px; color:black;">'+item.kaptAddr+'   <br></div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-                 // 인포윈도우를 생성합니다
-                 var infowindow = new daum.maps.InfoWindow({
-                     content : iwContent
-                 });
-                 // 마커에 마우스오버 이벤트를 등록합니다
-                 daum.maps.event.addListener(marker, 'mouseover', function() {
-                   // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
-                    infowindow.open(map, marker);
-                 });
-                 // 마커에 마우스아웃 이벤트를 등록합니다
-                 daum.maps.event.addListener(marker, 'mouseout', function() {
-                    // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
-                     infowindow.close();
-                 });
+         var coords = new daum.maps.LatLng(item.y, item.x);
+         console.log(coords);
+         var marker = new daum.maps.Marker({
+             map: map,
+             position: coords
+         });
+         marker2.push(marker);
+         marker3.push(marker);
+         markerAddr.push(item.kaptName);
+         var iwContent = '<div style="padding:20px; color:black;">'+item.kaptAddr+'   <br></div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+         // 인포윈도우를 생성합니다
+         var infowindow = new daum.maps.InfoWindow({
+             content : iwContent
+         });
+         // 마커에 마우스오버 이벤트를 등록합니다
+         daum.maps.event.addListener(marker, 'mouseover', function() {
+           // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+            infowindow.open(map, marker);
+         });
+         // 마커에 마우스아웃 이벤트를 등록합니다
+         daum.maps.event.addListener(marker, 'mouseout', function() {
+            // 마커에 마우스아웃 이벤트가 발생하면 인포윈도우를 제거합니다
+             infowindow.close();
+         });
     })
     // 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
    
