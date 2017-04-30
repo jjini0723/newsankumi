@@ -405,7 +405,7 @@ function drawlist() {
    
    var html = "";
    var rank = 0;
-   html += '<ul class = "category" data-width="400" id = "list2"><table><tr><td>아파트 명</td><td>평점</td></tr>';
+   html += '<ul class = "category" data-width="400" id = "list2"><table class="blueone"><tr><td>아파트 명</td><td>평점</td></tr>';
    console.log(perfect);
    filterAddr = perfect;
       for (var i = 0; i < perfect.length; i++) {

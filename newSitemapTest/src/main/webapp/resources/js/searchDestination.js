@@ -196,18 +196,23 @@ function getItem(index) {
    
    
    var el = document.createElement('li'),
-    itemStr = '<span class="markerbg marker_' + (index+1) + '" title="'+places[index].title+'"></span>' +
+	itemStr = '<span class="markerbg marker_' + (index+1) + '" title="'+places[index].title+'"></span>' +
                 /*'<div class="info">' +*/
                 '   <a href="#" style="text-decoration:none" onclick="focuson('+places[index].longitude+','+places[index].latitude+')"><h5>' + places[index].title + '</h5></a>';
+	itemStr += '<a href="#" class="deletebtn" id="'+paraparam1+'" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL(\''+paraparam1+'\');" >'
+	+'<span class="glyphicon glyphicon-trash" style="color:red;"></span>'
+	+'</a><br>'; 
+   	
+   
 
-    if (places[index].address) {
+/*    if (places[index].address) {
         itemStr += '   <span class="jibun gray">' +  places[index].address  + '</span><br>';
     }
       itemStr += '  <span class="tel">' + places[index].phone  + '</span><br>' ;
       
       itemStr += '<a href="#" class="deletebtn" id="'+paraparam1+'" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL(\''+paraparam1+'\');" >'
 		      +'<span class="glyphicon glyphicon-trash" style="color:red;"></span>'
-		      +'</a><br>'; 
+		      +'</a><br>'; */
 /*
  * 
  * itemStr += '<a href="#" class="deletebtn" id="'+paraparam1+'" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL(\''+paraparam1+'\');" >'
