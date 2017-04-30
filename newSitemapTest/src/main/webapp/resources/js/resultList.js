@@ -74,7 +74,7 @@ function addItem() {
         	
         		$.each(data, function(key, value){
         			if (key == keylist[0] || key == keylist[1] ||key == keylist[2] ||key == keylist[3] ||key == keylist[4] 
-        			||key == keylist[5] || key == "si" || key =="gu" || key =="dong" ) {
+        			||key == keylist[5] || key == "si" || key =="gu" || key =="dong" || key == "leasingPrice" || key == "salePrice" ) {
 						
 					}else{
 						delete data[key];

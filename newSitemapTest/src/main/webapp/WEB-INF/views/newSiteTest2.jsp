@@ -1093,7 +1093,7 @@ This variant is to be used when loading the separate styling modules -->
     <!--modal div  -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
-            <div class="modal-content" style="width:700px; margin:100px;">
+            <div class="modal-content" style="width:800px; margin:20px;">
                 <div class="modal-header">
                     <a class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
                     <h4 class="modal-title" id="myModalLabel">SMAP 사용방법</h4>
@@ -1101,8 +1101,8 @@ This variant is to be used when loading the separate styling modules -->
                 
                 <div class="modal-body wizard-content">
                     <div class="wizard-step">
-                    <span class = "popupimg"style="width: 20%;"><img src="./resources/images/bar1.png"></span>
-                   <span class="popuptext"> 
+                    <span class = "popupimg"><img style = "width:90%;" src="./resources/images/bar1.png"></span>
+                   <span class="popuptext" style = "margin-left:15px; margin-top:-5px;"> 
                         <h5 style="font-weight:bold;">기준 지역 선택</h5>
 							&nbsp&nbsp비교하고 싶은 지역을 선택하세요. 
 						<br><br>
@@ -1115,8 +1115,8 @@ This variant is to be used when loading the separate styling modules -->
                         	</span>
                   </div>
                     <div class="wizard-step">
-                    <span class = "popupimg"style="width: 20%;"><img src="./resources/images/bar2.png"></span>
-                      <span class="popuptext">
+                     <span class = "popupimg"><img style = "width:90%;" src="./resources/images/bar2.png"></span>
+                   <span class="popuptext" style = "margin-left:15px; margin-top:-5px;"> 
                        <h5 style="font-weight:bold;">추천지역리스트</h5>
 							&nbsp&nbsp앞서 선택한 조건들에 가중치를 더하여 당신만의 맞춤형 동네를 1위부터 10위까지 추천해 드립니다. 최대 5개의 동을 선택하여 다음 단계로 넘어갈 수 있습니다. 
 						<br><br>
@@ -1129,8 +1129,8 @@ This variant is to be used when loading the separate styling modules -->
 					 </div>
 					 
                     <div class="wizard-step">
-                    <span class = "popupimg"style="width: 20%;"><img src="./resources/images/bar3.png"></span>
-				      <span class="popuptext">
+                      <span class = "popupimg"><img style = "width:90%;" src="./resources/images/bar3.png"></span>
+                   <span class="popuptext" style = "margin-left:15px; margin-top:-5px;"> 
 				       	<h5 style="font-weight:bold;"> 생활권역 추가</h5>
 						&nbsp&nbsp최대 5개 선택 된 동들을 가지고 당신의 생활의 목적지를 추가합니다. 
 						<h5 style="font-weight:bold;">생활권역구성</h5>
@@ -1141,8 +1141,8 @@ This variant is to be used when loading the separate styling modules -->
 				 </div>
 				 
                     <div class="wizard-step">
-                    <!-- <span class = "popupimg"style="width: 20%;"><img src="./resources/images/bar4.png"></span> -->
-                    <span class="popuptext">
+                 <!--      <span class = "popupimg"><img style = "width:90%;" src="./resources/images/bar1.png"></span>
+ -->                   <span class="popuptext" style = "margin-left:15px; margin-top:-5px;"> 
 	                    <h5 style="font-weight:bold;">추천 아파트 리스트</h5> 
 							&nbsp&nbsp앞서 선택된 지역들의 점수와 생활 권역에 따른 아파트 별 합산 점수 순으로 보여줍니다.
 						<h5 style="font-weight:bold;">아파트 세부정보</h5>
