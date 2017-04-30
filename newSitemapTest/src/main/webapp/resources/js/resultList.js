@@ -125,7 +125,7 @@ function setCircle(buy, lease, index) {
     if(circleArray.length != 0 || priceArray.length != 0) {
     	circleArray[0].setMap(null);
     	circleArray.splice(0,1);
-    	priceArray[0].close();
+    	priceArray[0].setMap(null);
     	priceArray.splice(0,1);
     }
     
@@ -144,17 +144,21 @@ function setCircle(buy, lease, index) {
                      fillOpacity: 0.4  // 채우기 불투명도 입니다   
 		    	});
 
-	    		var iwContent = '<div style="padding:5px;">'+buy+lease+'</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-	    		    iwPosition = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng), //인포윈도우 표시 위치입니다
-	    		    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+	    		var content = '<div style="padding:10px; font-size:40px; opacity:0.7; color:#4f4f4f; margin-left:-45px;'
+		    	    +'margin-top: 70px; font-weight: bold;">'+'평당 매매가 '+buy+' (3.3㎡)<br><br>'+'평당 전세가 '+lease+'(3.3㎡)</div>';  
+	    		// 커스텀 오버레이가 표시될 위치입니다 
+	    		var position = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);  
 
-	    		// 인포윈도우를 생성하고 지도에 표시합니다
-	    		 infowindow = new daum.maps.InfoWindow({
-	    		    map: map, // 인포윈도우가 표시될 지도
-	    		    position : iwPosition, 
-	    		    content : iwContent,
-	    		    removable : iwRemoveable
+	    		// 커스텀 오버레이를 생성합니다
+	    		var customOverlay = new daum.maps.CustomOverlay({
+	    		    position: position,
+	    		    content: content,
+	    		    xAnchor: 0.3,
+	    		    yAnchor: 0.91
 	    		});
+	    		console.log(customOverlay);
+	    		// 커스텀 오버레이를 지도에 표시합니다
+	    		customOverlay.setMap(map);
 	    		circle.setMap(map);
 	    		
 		    } else {
@@ -165,26 +169,28 @@ function setCircle(buy, lease, index) {
                      strokeColor: '#333', // 선의 색깔입니다
                      strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
                      strokeStyle: 'stroke', // 선의 스타일 입니다
-                     fillColor: '#7c6557', // 채우기 색깔입니다
+                     fillColor: '#b7b7b7', // 채우기 색깔입니다
                      fillOpacity: 0.4  // 채우기 불투명도 입니다   
 		    	});
-	    		
-	    		var iwContent = '<div style="padding:5px;">'+'매매가'+buy+' / '+'전세가'+lease+'</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-    		    iwPosition = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng), //인포윈도우 표시 위치입니다
-    		    iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
-
-    		// 인포윈도우를 생성하고 지도에 표시합니다
-    		 infowindow = new daum.maps.InfoWindow({
-    		    map: map, // 인포윈도우가 표시될 지도
-    		    position : iwPosition, 
-    		    content : iwContent,
-    		    removable : iwRemoveable
-    		});
+	    		var content = '<div style="padding:10px; font-size:40px; opacity:0.7; color:#4f4f4f; margin-left:-45px;'
+		    	    +'margin-top: 70px; font-weight: bold;">'+'평당 매매가 '+buy+' (3.3㎡)<br><br>'+'평당 전세가 '+lease+'(3.3㎡)</div>'; 
+	    		// 커스텀 오버레이가 표시될 위치입니다 
+	    		var position = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);  
+	    		// 커스텀 오버레이를 생성합니다
+	    		var customOverlay = new daum.maps.CustomOverlay({
+	    		    position: position,
+	    		    content: content,
+	    		    xAnchor: 0.3,
+	    		    yAnchor: 0.91
+	    		});
+	    		console.log(customOverlay);
+	    		// 커스텀 오버레이를 지도에 표시합니다
+	    		customOverlay.setMap(map);
 	    		circle.setMap(map);
 		    }
-		    console.log(infowindow);
+		    //console.log(infowindow);
 		    circleArray.push(circle);
-		    priceArray.push(infowindow);
+		    priceArray.push(customOverlay);
 		}
     });
 }
