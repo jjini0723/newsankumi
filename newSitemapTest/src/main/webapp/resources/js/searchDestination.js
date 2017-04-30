@@ -152,7 +152,7 @@ function displayPlaces(places) {
 function getListItem(index, places) {
 	var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
-                '<div class="info sidebar-block">' +
+                '<div style="line-height: 0.5;" class="info sidebar-block" >' +
                 '   <h5><strong>' + places.title + '</strong></h5>';
     if (places.address) {
         itemStr += ' <span class="jibun gray" style="font-size:12px">' +  places.address  + '</span><br> ';
@@ -198,7 +198,7 @@ function getItem(index) {
    var el = document.createElement('li'),
 	itemStr = '<span class="markerbg marker_' + (index+1) + '" title="'+places[index].title+'"></span>' +
                 /*'<div class="info">' +*/
-                '   <a href="#" style="text-decoration:none" onclick="focuson('+places[index].longitude+','+places[index].latitude+')"><h5>' + places[index].title + '</h5></a>';
+                '   <a style="text-decoration:none" onclick="focuson('+places[index].longitude+','+places[index].latitude+')"><h5>' + places[index].title + '</h5></a>';
 	itemStr += '<a href="#" class="deletebtn" id="'+paraparam1+'" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL(\''+paraparam1+'\');" >'
 	+'<span class="glyphicon glyphicon-trash" style="color:red;"></span>'
 	+'</a><br>'; 

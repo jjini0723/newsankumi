@@ -36,8 +36,8 @@ function getTradeInfo(x){
      var html = "";
       html += '<div class="thum cover hover overlay" style="float:left; width:65px; margin:15px;">';
       html += '<img src="http://www.iconsfind.com/wp-content/uploads/2015/11/20151125_5655088ba5cdf.png" alt="" width="64" height="64">';
-      html += '<a href="#" class="overlay overlay-full">';
-      html += '<span class="v-center">';
+      html += '<a class="overlay overlay-full" style="top: 25px;left: 4px;">';
+      html += '<span class="v-bottom" style="color:white; font-weight:bold; font-size:20px; text-shadow: -1px 0 #4374D9, 0 1px #4374D9, 1px 0 #4374D9, 0 -1px #4374D9;">';
       html += info.changepoint;
       /*html += '<span class="btn btn-circle btn-white"><i class="fa fa-eye">'+info.changepoint+'</i></span>';*/
       html += '</span></a>';
