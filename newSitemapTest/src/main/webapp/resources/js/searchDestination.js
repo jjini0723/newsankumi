@@ -54,8 +54,12 @@ function searchPlaces() {
 
     if (!keyword.replace(/^\s+|\s+$/g, '')) {
     	//sweetalert을 적용할까 생각중-진희
-    	alert('키워드를 입력해주세요!');
-        return false;
+    	sweetAlert({
+			title: "삐비빗!", 
+		    text: "키워드를 입력해주세요!", 
+		    type: "error"
+		});
+		return false;
     }
 
     // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
@@ -75,15 +79,20 @@ function placesSearchCB(status, data, pagination) {
         displayPagination(pagination);
 
     } else if (status === daum.maps.services.Status.ZERO_RESULT) {
-
-        alert('검색 결과가 존재하지 않습니다.');
-        return;
+        sweetAlert({
+			title: "삐비빗!", 
+		    text: "검색 결과가 존재하지 않습니다.", 
+		    type: "error"
+		});
+		return false;
 
     } else if (status === daum.maps.services.Status.ERROR) {
-
-        alert('검색 결과 중 오류가 발생했습니다.');
-        return;
-
+        sweetAlert({
+			title: "삐비빗!", 
+		    text: "검색 결과 중 오류가 발생했습니다.", 
+		    type: "error"
+		});
+		return false;
     }
 }
 
@@ -163,7 +172,7 @@ function getListItem(index, places) {
                  '<option value="1">자동차</option>' +
                  '<option value="2">도보</option><option value="3">대중교통</option></select>' +'&nbsp &nbsp'+
 
-                 '<input type="submit" value="등록" class="btn" style="padding: 4px; font-size:12px; width: inherit;" onclick="confirm('+places.latitude+','+places.longitude+','+index+'); displayOverlay('+index+');"></div>';
+                 '<input type="submit" value="등록" class="btn" style="padding: 4px; font-size:12px; width: inherit;" onclick="confirm('+places.latitude+','+places.longitude+','+index+');"></div>';
 
     
     el.innerHTML = itemStr;
@@ -237,7 +246,12 @@ function confirm(lat, lng, index) {
 	var idx1 = obj1[index].options.selectedIndex; // 해당 selectbox index 구하기
 	var transport = obj1[index].options[idx1].value; // 선택된 selectbox의 value값 가져오기
 	if(transport == 0) {
-	    alert('이동수단을 선택해주세요.');
+	    sweetAlert({
+			title: "삐비빗!", 
+		    text: "이동수단을 선택해주세요.", 
+		    type: "error"
+		});
+		return false;
 	} else {
 		// 검색결과로 넘어온 리스트의 길이 만큼 반복문 진행
 		for(var j = 0; j < places.length; j++) {
@@ -245,25 +259,40 @@ function confirm(lat, lng, index) {
 			for(var k = 0; k < hopeList.length; k++) {
 				// 검색결과 리스트에 있는 이름과 희망목적지가 저장된 배열이 같은지 비교. 같으면 중복존재, 없으면 중복된 희망목적지 없음.
 				if(places[index].title == hopeList[k]) {
-					alert('중복존재');
+					sweetAlert({
+						title: "삐비빗!", 
+					    text: "중복존재", 
+					    type: "error"
+					});
+					return false;
 					var listEl = document.getElementById('placesList');
 					document.getElementById("keyword").value = "";
 					removeAllChildNods(listEl);
 					removeAllpaginationChildNods(paginationEl);
-					removeOtherMarker(index, transport);
+					removeOtherMarker(index);
 					return;
 				}
 			}
 		}
 		// 중복된 희망목적지가 아닐 경우 배열에 해당 희망목적지의 이름을 저장한다.
-		if(hopeList.length < 6) {
+		console.log('hopeList.length : '+hopeList.length);
+		if(hopeList.length < 5) {
 			hopeList.push(places[index].title);
 			finalHopeList.push(places[index].address);
 			displayPlace(index);
+			displayOverlay(index);
 			hoi(lat, lng, index);
 			removeOtherMarker(index, transport); // index는 검색결과의 리스트 배열의 인덱스.
 		} else {
-			alert('희망목적지는 5개까지만 가능합니다.');
+			sweetAlert({
+				title: "삐비빗!", 
+			    text: "희망목적지는 5개까지만 가능합니다.", 
+			    type: "error"
+			});
+			return false;
+			removeOtherMarker(index, transport); // index는 검색결과의 리스트 배열의 인덱스.
+			newMarkers[newMarkers.length-1].setMap(null);
+			infowindow.close();
 			listReset();
 		}
 	}
@@ -352,7 +381,7 @@ function removeMarker() {
 }
 
 // 등록한 마커를 제외하고 삭제
-function removeOtherMarker(index, transport) {
+function removeOtherMarker(index) {
     for ( var i = 0; i < markers.length; i++) {
         if(index != i) {
            markers[i].setMap(null);
@@ -418,7 +447,7 @@ function closeOverlay(paraparam1) {
 }
 function displayOverlay(index) {
 	var places = JSON.parse($("#places").val());
-    var thumbnailAddr = '';
+	var thumbnailAddr = '';
 	$.ajax({
 		url : "http://apis.daum.net/search/image?apikey=e5f9cd760a5dedf9f84cc76d41a6decd&result=1&pageno=1&q="+places[index].title+"&output=json",
 		dataType : "jsonp",
@@ -426,13 +455,6 @@ function displayOverlay(index) {
 		jsonp : "callback",
 		contentType : "application/json; charset=utf-8",
 		async : true,
-		//data : {
-		//apikey : "932263ae205c74344400b444f7788cb3", //다음 API KEY 입력
-		//q : places[index].title,             // search keyword
-		//result : "1",                 // result set length
-		//pageno : "1",   // pageNo
-		//output : "json"                // JSONP type format json
-		//},
 		success : function(r){
 			console.log(r);
 			thumbnailAddr += r.channel.item[0].thumbnail;
@@ -554,4 +576,27 @@ function focuson(x,y){
 	    
 	// 지도 중심을 이동 시킵니다
 	map.setCenter(moveLatLon);
+}
+
+function hopeListSizeChk() {
+	if(hopeList.length < 2) {
+		sweetAlert({
+			title: "삐비빗!", 
+		    text: "생활권역은 최소 2개 이상 등록하셔야 합니다.", 
+		    type: "error"
+		});
+		return false;
+	}
+	if(hopeList.length > 5) {
+		sweetAlert({
+			title: "삐비빗!", 
+		    text: "생활권역은 최대 5개 등록가능합니다.", 
+		    type: "error"
+		});
+		return false;
+	}
+	boardList3();
+	searchBestLoc();
+	hoit2();
+	filtering(); 
 }

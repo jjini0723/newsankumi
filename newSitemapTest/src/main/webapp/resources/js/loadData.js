@@ -204,24 +204,24 @@ function loadcall(sigunguName, ghName,dongscore,count){
         					var circle = new daum.maps.Circle({
         						center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
         						radius: 8000, // 미터 단위의 원의 반지름입니다 
-        						strokeWeight: 5, // 선의 두께입니다 
-        						strokeColor: '#75B8FA', // 선의 색깔입니다
-        						strokeOpacity: 0, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-        						strokeStyle: 'dashed', // 선의 스타일 입니다
-        						fillColor: '#26a69a', // 채우기 색깔입니다
-        						fillOpacity: 0.5  // 채우기 불투명도 입니다   
+        						strokeWeight: 1, // 선의 두께입니다 
+        						strokeColor: '#333', // 선의 색깔입니다
+        						strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+        						strokeStyle: 'stroke', // 선의 스타일 입니다
+        						fillColor: '#b7b7b7', // 채우기 색깔입니다
+        						fillOpacity: 0.4  // 채우기 불투명도 입니다   
         					}); 
         				} else {
         					// 지도에 표시할 원을 생성합니다
         					var circle = new daum.maps.Circle({
         						center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
         						radius: 4000, // 미터 단위의 원의 반지름입니다 
-        						strokeWeight: 5, // 선의 두께입니다 
-        						strokeColor: '#75B8FA', // 선의 색깔입니다
-        						strokeOpacity: 0, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-        						strokeStyle: 'dashed', // 선의 스타일 입니다
-        						fillColor: '#26a69a', // 채우기 색깔입니다
-        						fillOpacity: 0.5  // 채우기 불투명도 입니다   
+        						strokeWeight: 1, // 선의 두께입니다 
+        						strokeColor: '#333', // 선의 색깔입니다
+        						strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+        						strokeStyle: 'stroke', // 선의 스타일 입니다
+        						fillColor: '#b7b7b7', // 채우기 색깔입니다
+        						fillOpacity: 0.4  // 채우기 불투명도 입니다   
         					}); 
         				}
         				// 지도에 원을 표시합니다 

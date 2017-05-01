@@ -82,7 +82,7 @@ function call(sigunguName, ghName, finalAddList2){
                           strokeColor: '#333', // 선의 색깔입니다
                           strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
                           strokeStyle: 'stroke', // 선의 스타일 입니다
-                          fillColor: '#7c6557', // 채우기 색깔입니다
+                          fillColor: '#b7b7b7', // 채우기 색깔입니다
                           fillOpacity: 0.4  // 채우기 불투명도 입니다   
                        }); 
                     }

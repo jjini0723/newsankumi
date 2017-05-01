@@ -37,7 +37,7 @@ function getChartData2(index){
       
    });
    //console.log(itemkey + "," + itemvalue + "," + itemvalueavg);
-   
+   console.log('titlelist'+titlelist);
    createChart2(titlelist, itemvalueavg, itemvalue);
 }
 
