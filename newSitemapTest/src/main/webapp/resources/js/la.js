@@ -7,7 +7,7 @@ walkFlag = true;
 tradiFlag = true;
 
 function dfa(carArray, walkArray, tradiArray){
-   //선택된 애들 false로 변경
+    //선택된 애들 false로 변경
 	var carNum = carArray.length * perfect.length;
     var walkNum = walkArray.length * perfect.length;
     var tradiNum = tradiArray.length * perfect.length;
@@ -26,7 +26,6 @@ function dfa(carArray, walkArray, tradiArray){
     console.log(carFlag);
     console.log(walkFlag);
     console.log(tradiFlag);
-    alert('호잇');
     console.log(carArray);
     console.log(walkArray);
     console.log(tradiArray);

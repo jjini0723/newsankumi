@@ -7,7 +7,6 @@ function call(sigunguName, ghName, finalAddList2){
    console.log(sigunguName);
    console.log(ghName);
    console.log(finalAddList2);
-   alert('호호');
    
     // 지도 타입 변경 컨트롤을 생성한다
     var mapTypeControl = new daum.maps.MapTypeControl();

@@ -217,7 +217,6 @@ $(function() {
 });
  
 function moveMap2(checkIndex, index) {
-	alert('hoit');
 	var resultList = new Array();
 	if(checkIndex == 0) {
 		resultList = resultFinalAddList();

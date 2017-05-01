@@ -2,7 +2,6 @@
  * 
  */
 function init(){
-	alert('완전초기화');
 	var coords2 = new Array();
 	var perfect = new Array();
 	var yebi ='';

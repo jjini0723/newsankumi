@@ -33,7 +33,6 @@ function filter(){
    var save = new Array(); // 임시 저장 어레이
 
    if(startkaptUsedate!=null){ //건축년도 필터를 사용 하겠다
-      alert('asdf');
       $.each(perfect,function(index,item){
          if(parseInt(item.kaptUsedate.substring(0,4))>=parseInt(startkaptUsedate)&&parseInt(item.kaptUsedate.substring(0,4))<=parseInt(endkaptUsedate)){
             result.push(item);
@@ -42,7 +41,6 @@ function filter(){
        if(kaptMparea_60!=null||kaptMparea_85!=null||kaptMparea_135!=null){
          if(kaptMparea_60!=null&&kaptMparea_85!=null){
             $.each(result,function(index,item){
-               alert(item.kaptMparea_60);
                if(parseInt(item.kaptMparea_60)!=0||parseInt(item.kaptMparea_85)!=0){
                   save.push(item);
                }
@@ -113,7 +111,6 @@ function filter(){
        if(kaptMparea_60!=null||kaptMparea_85!=null||kaptMparea_135!=null){
          if(kaptMparea_60!=null&&kaptMparea_85!=null){
             $.each(result,function(index,item){
-               alert(item.kaptMparea_60);
                if(parseInt(item.kaptMparea_60)!=0||parseInt(item.kaptMparea_85)!=0){
                   save.push(item);
                }
@@ -206,7 +203,6 @@ function removeMarker1() {
 }
 function filterMarker(result){
     // 주소-좌표 변환 객체를 생성합니다
-	alert(result);
 	var markerResult = new Array();
 	markerResult = result;
 	filterAddr = result;
@@ -242,6 +238,5 @@ function filterMarker(result){
    
 }
 function filtering(){
-	alert('필터');
 	$('#filtering').show();
 }

@@ -141,7 +141,6 @@ function loadaction(data){
 
 
 function loadcall(sigunguName, ghName,dongscore,count){
-	alert('호호');
 	var countFlag=0;
 	var count=count;
    

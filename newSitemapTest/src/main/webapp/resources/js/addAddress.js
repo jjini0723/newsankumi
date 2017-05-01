@@ -33,8 +33,12 @@ function addAddress(obj){
 			}
 		},
 		error : function(err){
-			alert(err);
-			alert("처리 중 오류가 발생했습니다. 관리자에게 문의하세요.");
+			sweetAlert({
+				title: "삐비빗!", 
+			    text: "처리 중 오류가 발생했습니다. 관리자에게 문의하세요.", 
+			    type: "error"
+			});
+			return false;
 			
 		}
 	});
@@ -61,8 +65,12 @@ function addAddress(obj){
 				
 			},
 			error : function(err){
-				alert(err);
-				alert("처리 중 오류가 발생했습니다. 관리자에게 문의하세요.");
+				sweetAlert({
+					title: "삐비빗!", 
+				    text: "처리 중 오류가 발생했습니다. 관리자에게 문의하세요.", 
+				    type: "error"
+				});
+				return false;
 			}
 			
 		});

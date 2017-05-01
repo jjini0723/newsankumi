@@ -40,6 +40,10 @@ function deleteL(paraparam1) {
             finalHopeList.splice(i,1);
             overlayList[i].olay.setMap(null);
 			overlayList.splice(i,1);
+			console.log(hopeList);
+			console.log(finalHopeList);
+			console.log(overlayList);
+			console.log(newMarkers);
          }
     }
     $('#getItem>li>#'+paraparam1).parent().remove();
@@ -252,25 +256,21 @@ function confirm(lat, lng, index) {
 		});
 		return false;
 	} else {
-		// 검색결과로 넘어온 리스트의 길이 만큼 반복문 진행
-		for(var j = 0; j < places.length; j++) {
-			// 희망목적지가 저장된 배열의 길이만큼 반복.
-			for(var k = 0; k < hopeList.length; k++) {
-				// 검색결과 리스트에 있는 이름과 희망목적지가 저장된 배열이 같은지 비교. 같으면 중복존재, 없으면 중복된 희망목적지 없음.
-				if(places[index].title == hopeList[k]) {
-					sweetAlert({
-						title: "삐비빗!", 
-					    text: "중복존재", 
-					    type: "error"
-					});
-					return false;
-					var listEl = document.getElementById('placesList');
-					document.getElementById("keyword").value = "";
-					removeAllChildNods(listEl);
-					removeAllpaginationChildNods(paginationEl);
-					removeOtherMarker(index);
-					return;
-				}
+		// 희망목적지가 저장된 배열의 길이만큼 반복.
+		for(var k = 0; k < hopeList.length; k++) {
+			// 검색결과 리스트에 있는 이름과 희망목적지가 저장된 배열이 같은지 비교. 같으면 중복존재, 없으면 중복된 희망목적지 없음.
+			if(places[index].title == hopeList[k]) {
+				sweetAlert({
+					title: "삐비빗!", 
+				    text: "중복존재", 
+				    type: "error"
+				});
+				var listEl = document.getElementById('placesList');
+				document.getElementById("keyword").value = "";
+				removeAllChildNods(listEl);
+				removeAllpaginationChildNods(paginationEl);
+				removeMarker();
+				return false;
 			}
 		}
 		// 중복된 희망목적지가 아닐 경우 배열에 해당 희망목적지의 이름을 저장한다.
@@ -280,21 +280,21 @@ function confirm(lat, lng, index) {
 			finalHopeList.push(places[index].address);
 			displayPlace(index);
 			displayOverlay(index);
+			removeOtherMarker(index); // index는 검색결과의 리스트 배열의 인덱스.
 			hoi(lat, lng, index);
-			removeOtherMarker(index, transport); // index는 검색결과의 리스트 배열의 인덱스.
 		} else {
 			sweetAlert({
 				title: "삐비빗!", 
 			    text: "희망목적지는 5개까지만 가능합니다.", 
 			    type: "error"
 			});
-			return false;
-			removeOtherMarker(index, transport); // index는 검색결과의 리스트 배열의 인덱스.
-			newMarkers[newMarkers.length-1].setMap(null);
+			removeMarker(); // index는 검색결과의 리스트 배열의 인덱스.
 			infowindow.close();
 			listReset();
+			return false;
 		}
 	}
+	console.log('hopeList.length : '+hopeList.length);
 }
 
 function resetMarker() {
@@ -531,7 +531,6 @@ function removeAllpaginationChildNods(paginationEl) {
 }
 
 function hoi(lat, lng, index) {
-   alert(lat+", "+lng);
    var places = JSON.parse($("#places").val()); 
    var obj1 = document.getElementsByName("transport");
    var idx1 = obj1[index].options.selectedIndex; // 해당 selectbox index 구하기
