@@ -296,11 +296,6 @@ function radio7thCheck(name){
 
 	
 	//title 툴팁용
-	$(document).ready(function() {
-    	$('.tip').tipr();
-	});
-	
-
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip()
 	})
