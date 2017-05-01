@@ -332,6 +332,9 @@ function sendArray(){
 	    	    var scorex = parseFloat(item.totalpoint)/percent.toFixed(2);
 	    	    var scorey = parseFloat(item.dongScore);
 	    	    item.changepoint = parseFloat(scorex+scorey).toFixed(2);
+	    	    if(parseFloat(item.changepoint)>10){
+	      		  item.changepoint = '10.00';
+	      	  }
 	    	    item.sortpoint = parseFloat(item.changepoint)*100;
 			})
 		}else if(changepoint<5){
@@ -340,6 +343,9 @@ function sendArray(){
 	    	    var score1 = parseFloat(item.totalpoint)*percent.toFixed(2);
 	     	    var score2 = parseFloat(item.dongScore);
 	            item.changepoint = parseFloat(score1+score2).toFixed(2);
+	            if(parseFloat(item.changepoint)>10){
+	      		  item.changepoint = '10.00';
+	      	  }
 	            item.sortpoint = parseFloat(item.changepoint)*100;
 			})
 		} 
