@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.newsite.maptest01.DAO.saveDAO;
 import com.newsite.maptest01.vo.SendMail;
 import com.newsite.maptest01.vo.saveData;
+import com.newsite.maptest01.vo.saveKeyCount;
 
 @Controller
 public class MailController {
@@ -87,6 +88,28 @@ public class MailController {
       }
        System.out.println("콘트롤러"+result);
        return result;
+    }
+    @ResponseBody
+    @RequestMapping(value="loadKeyCount", method=RequestMethod.POST)
+    public ArrayList<saveKeyCount> loadKeyCount(){
+       ArrayList<saveKeyCount> result = new ArrayList<>();
+       try {
+         result = dao.loadKeyCount();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+       System.out.println("콘트롤러"+result);
+       return result;
+    }
+    
+    @ResponseBody
+    @RequestMapping(value = "saveKeyCount" , method=RequestMethod.POST)
+    public void saveKeyCount(@RequestBody saveKeyCount savekeycount){
+       try {
+          dao.saveKeyCount(savekeycount);
+       } catch (Exception e) {
+          e.printStackTrace();
+       }
     }
    
 }

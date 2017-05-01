@@ -5,12 +5,36 @@
 carFlag = true;
 walkFlag = true;
 tradiFlag = true;
-
 function dfa(carArray, walkArray, tradiArray){
+	if(parseInt(tmapCarKeyCount) <= parseInt(tmapLine)){
+		carusekey = tmapCarKey1;
+	}else if(parseInt(tmapLine)<parseInt(tmapCarKeyCount)&&parseInt(tmapCarKeyCount)<=parseInt(tmapLine)*2){
+		carusekey = tmapCarKey2;
+	}else if(parseInt(tmapLine)*2<parseInt(tmapCarKeyCount)){
+		carusekey = tmapCarKey3;
+	}
+	if(parseInt(tmapWalkKeyCount) <= parseInt(tmapLine)){
+		walkusekey = tmapWalkKey1;
+	}else if(parseInt(tmapLine)<parseInt(tmapWalkKeyCount)&&parseInt(tmapWalkKeyCount)<=parseInt(tmapLine)*2){
+		walkusekey = tmapWalkKey2;
+	}else if(parseInt(tmapLine)*2<parseInt(tmapWalkKeyCount)){
+		walkusekey = tmapWalkKey3;
+	}
+	if(parseInt(googleKeyCount) <= parseInt(googleLine)){
+		tradiusekey = googleKey1;
+	}else if(parseInt(googleLine)<parseInt(googleKeyCount)&&parseInt(googleKeyCount)<=parseInt(googleLine)*2){
+		tradiusekey = googleKey2;
+	}else if(parseInt(googleLine)*2<parseInt(googleKeyCount)){
+		tradiusekey = googleKey3;
+	}
+	console.log(tmapCarKeyCount+","+carusekey);
+	console.log(tmapWalkKeyCount+","+walkusekey);
+	console.log(googleKeyCount+","+tradiusekey);
+	
     //선택된 애들 false로 변경
-	var carNum = carArray.length * perfect.length;
-    var walkNum = walkArray.length * perfect.length;
-    var tradiNum = tradiArray.length * perfect.length;
+	carNum = carArray.length * perfect.length;
+    walkNum = walkArray.length * perfect.length;
+    tradiNum = tradiArray.length * perfect.length;
     console.log(carNum);
     console.log(walkNum);
     console.log(tradiNum);
@@ -59,7 +83,7 @@ function dfa(carArray, walkArray, tradiArray){
             $.each(perfect,function(index,item1){ // 선택되어있는 아파트만큼 돈다
             	$.ajax({
 	                type : "POST",   
-	                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=360a72a6-2781-35ea-b877-98cd58c69b91",
+	                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey="+carusekey,
 	                success : function(data){//succes 안에서 길이만큼 반복 후 2번 돌아야 할시 2번돌고 true로 변경
 	                	console.log(data);
 	                    yebi = data.features[0].properties.totalTime//시간만 빼온다
@@ -115,6 +139,7 @@ function dfa(carArray, walkArray, tradiArray){
 	                        }
 	                    }
 	                    flag1++;
+	                    tmapCarKeyCount++;
 	                    console.log(flag1);
 	                    if(flag1==carNum){
 	                        carFlag=true;
@@ -191,6 +216,7 @@ function dfa(carArray, walkArray, tradiArray){
                         }
                     }
                     flag2++;
+                    tmapWalkKeyCount++;
                     console.log(flag2);
                     if(flag2==walkNum){
                         walkFlag=true;
@@ -215,7 +241,7 @@ function dfa(carArray, walkArray, tradiArray){
 	               type:"post",
 	               contentType : "application/json;charset=utf-8",
 	               dataType : "json",
-	               url:"https://maps.googleapis.com/maps/api/directions/json?origin="+item1.y+","+item1.x+"&destination="+item.x+","+item.y+"&mode=transit&key=AIzaSyD1SXZMCJFk4dRd7MZCDWHk0jINUtI9v2Y",
+	               url:"https://maps.googleapis.com/maps/api/directions/json?origin="+item1.y+","+item1.x+"&destination="+item.x+","+item.y+"&mode=transit&key="+tradiusekey,
 	               success:function(data){
 	                   console.log(data);
 	                   yebi = data.routes[0].legs[0].duration.value;//소요시간만 뺀다
@@ -271,6 +297,7 @@ function dfa(carArray, walkArray, tradiArray){
 	                       }
 	                   }
 	                   flag3++;
+	                   googleKeyCount++;
 	                   console.log(flag3);
 	                   if(flag3==tradiNum){
 	                       tradiFlag=true;
@@ -291,6 +318,7 @@ function dfa(carArray, walkArray, tradiArray){
     	   sendArray();
     	   drawlist();
     	   clearInterval(setInt);
+    	   saveKeyCount(carNum,walkNum,tradiNum);
        }
    }, 1000);
    

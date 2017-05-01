@@ -15,6 +15,7 @@
 		<typeAlias type="com.newsite.maptest01.vo.aptInfo" alias="aptInfo" />
 		<typeAlias type="com.newsite.maptest01.vo.GuGwanhal" alias="GuGwanhal" />
 		<typeAlias type="com.newsite.maptest01.vo.saveData" alias="saveData" />
+		<typeAlias type="com.newsite.maptest01.vo.saveKeyCount" alias="savekeycount" />
 	</typeAliases>	
 		
 	<mappers>

@@ -7,6 +7,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+<!-- 폰트적용 -->
+<style>
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+@import url(http://cdn.jsdelivr.net/font-nanum/1.0/nanumbarungothic/nanumbarungothic.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+*, body,table, div, p ,a, span, h1, h2, h3, h4, h5, h6{ font-family: 'nanumgothic', sans-serif;}
+.normal * { font-weight: normal; }
+</style>
+
 <link rel="stylesheet" href="./resources/css/avgrund.css?ver=1"> <!-- 첫번째 팝업 style -->
 <link rel="stylesheet" href="./resources/css/sweetalert.css"> <!-- sweetalert/email 보내기 팝업 관련 style -->
 
@@ -29,6 +46,7 @@
 <script src="./resources/js/save.js"></script><!-- 영석이 저장 로직 -->
 <script src="./resources/js/loadData.js"></script><!-- 영석이 불러오기 로직 -->
 <script src="./resources/js/init.js"></script><!-- 영석이 홈으로 돌아가는 초기화 로직 -->
+<script src="./resources/js/saveKeyCount.js"></script><!-- 영석이 키 자동 변경 로직 -->
 <script src="./resources/js/searchDestination.js"></script><!-- 희망목적지 관련 js -->
 <script src="./resources/js/sweetalert.min.js"></script><!-- sweetalert/email 보내기 팝업 관련 js -->
 <script src="./resources/js/js_plugin/jquery.blockUI.js"></script><!-- 데이터 로딩 표시 -->
@@ -70,6 +88,32 @@ var marker3 = new Array();
 var radio7th='';//라디오버튼체크용
 var filterAddr = new Array();
 
+//자동 키값 변환기
+var tmapCarKey1='2bb28cd1-f268-3af6-8329-e6b49122331b';
+var tmapCarKey2='5466b076-3f62-3faf-ac9d-c3002f0fec2d';
+var tmapCarKey3='250b188d-21df-3751-a05f-225464a8462f';
+var tmapWalkKey3='360a72a6-2781-35ea-b877-98cd58c69b91';
+var tmapWalkKey2='f7e2ff7f-9451-3d04-8492-bbed4ab4e206';
+var tmapWalkKey1='a2b681cd-140a-3af2-bea9-5d90bef42f84';
+var googleKey1='AIzaSyD1SXZMCJFk4dRd7MZCDWHk0jINUtI9v2Y';
+var googleKey2='AIzaSyBi_ry4zkLWVMMzETciWyu0JnCGbm7WQiQ';
+var googleKey3='AIzaSyBKWZBV932x9UcDs4ey8TVQ-oV8fiXxPpI';
+var googleKey4='AIzaSyD1SXZMCJFk4dRd7MZCDWHk0jINUtI9v2Y';
+var googleKey5='AIzaSyDcQztLBVLCFxG_SSYxR_BJAldkQMMe5PQ';
+var tmapCarKeyCount = 0;
+var tmapWalkKeyCount = 0;
+var googleKeyCount = 0;
+var tmapLine = 850;
+var googleLine = 2350;
+var carusekey = '';
+var walkusekey = '';
+var tradiusekey = '';
+var carNum = '';
+var walkNum = '';
+var tradiNum = '';
+
+
+loadKeyCount();
 $(document).avgrund({
 	    openOnEvent: false
 	}); 
@@ -285,7 +329,7 @@ function radio7thCheck(name){
     		range:true,
             min: 1980,
             max: 2017,
-            values: [ 1991, 2010 ],
+            values: [ 1980, 2017 ],
             slide: function( event, ui ) {
             	$( "#price" ).val(  ui.values[ 0 ]+"년 -" + ui.values[ 1 ] +"년");
             }
@@ -389,7 +433,7 @@ This variant is to be used when loading the separate styling modules -->
 		     			<a href = "/maptest01/" onclick = "init();" class="navbar-brand"
 			          		style="width: 400px; position: absolute; left: 50%; margin-left: -200px; border: 0; outline: 0;
 			          		-ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none; color : #141414;">
-							<img src="./resources/images/test111.png" style="width:auto; height: inherit; ">
+							<img src="./resources/images/title2.png" style="width:auto; height: inherit; ">
 							<!-- エッ！スマップ？ S(SMART)・MAP -->
 							</a>
 							<button class = "btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" style = "margin-top:15px;" id="infobtn">
@@ -450,10 +494,10 @@ This variant is to be used when loading the separate styling modules -->
 				            <!-- // END login -->
 				            <!-- 드롭다운 left 테스트 -->
 				            <li class="dropdown" id="filtering" style="display:none">
-				            	<a href="#" class="dropdown-toggle" data-toggle="dropdown" style = "color:#8a8a8a;">
+				            	<a href="#" onclick = "view();" class="dropdown-toggle" data-toggle="dropdown" style = "color:#8a8a8a;">
 				                	<i class="fa fa-fw fa-filter"></i> 필터링
 				                </a>
-				                <div class="dropdown-menu dropdown-size-280">
+				                <div class="dropdown-menu dropdown-size-280" id="filtering2">
 				                	<form>
 				                  		<div class="form-group">
 				                    		<div class="input-group">
@@ -488,6 +532,7 @@ This variant is to be used when loading the separate styling modules -->
 				                  		</div>
 				                  		<div class="text-center">
 				                    		<button type="button" class="btn btn-primary" onclick="filter();">적용하기 <i class="fa fa-sign-in"></i></button>
+				                    		<button type="button" class="btn btn-primary" onclick="delfilter();">해제하기 <i class="fa fa-sign-in"></i></button>
 				                  		</div>
 				                	</form>
 				              	</div>
@@ -1134,8 +1179,7 @@ This variant is to be used when loading the separate styling modules -->
 				 </div>
 				 
                     <div class="wizard-step">
-                 <!--      <span class = "popupimg"><img style = "width:90%;" src="./resources/images/bar1.png"></span>
- -->                   <span class="popuptext" style = "margin-left:15px; margin-top:-5px;"> 
+                       <span class = "popupimg"><img style = "width:90%;" src="./resources/images/lastview.jpg"></span>                   <span class="popuptext" style = "margin-left:15px; margin-top:-5px;"> 
 	                    <h5 style="font-weight:bold;">추천 아파트 리스트</h5> 
 							&nbsp&nbsp앞서 선택된 지역들의 점수와 생활 권역에 따른 아파트 별 합산 점수 순으로 보여줍니다.
 						<h5 style="font-weight:bold;">아파트 세부정보</h5>
