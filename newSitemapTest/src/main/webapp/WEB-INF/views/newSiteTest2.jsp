@@ -329,7 +329,7 @@ function radio7thCheck(name){
     		range:true,
             min: 1980,
             max: 2017,
-            values: [ 1991, 2010 ],
+            values: [ 1980, 2017 ],
             slide: function( event, ui ) {
             	$( "#price" ).val(  ui.values[ 0 ]+"년 -" + ui.values[ 1 ] +"년");
             }
@@ -494,10 +494,10 @@ This variant is to be used when loading the separate styling modules -->
 				            <!-- // END login -->
 				            <!-- 드롭다운 left 테스트 -->
 				            <li class="dropdown" id="filtering" style="display:none">
-				            	<a href="#" class="dropdown-toggle" data-toggle="dropdown" style = "color:#8a8a8a;">
+				            	<a href="#" onclick = "view();" class="dropdown-toggle" data-toggle="dropdown" style = "color:#8a8a8a;">
 				                	<i class="fa fa-fw fa-filter"></i> 필터링
 				                </a>
-				                <div class="dropdown-menu dropdown-size-280">
+				                <div class="dropdown-menu dropdown-size-280" id="filtering2">
 				                	<form>
 				                  		<div class="form-group">
 				                    		<div class="input-group">
@@ -532,6 +532,7 @@ This variant is to be used when loading the separate styling modules -->
 				                  		</div>
 				                  		<div class="text-center">
 				                    		<button type="button" class="btn btn-primary" onclick="filter();">적용하기 <i class="fa fa-sign-in"></i></button>
+				                    		<button type="button" class="btn btn-primary" onclick="delfilter();">해제하기 <i class="fa fa-sign-in"></i></button>
 				                  		</div>
 				                	</form>
 				              	</div>

@@ -16,7 +16,16 @@ $.ajax({
 	//dataType: "JSON",
 	success:function(data){
 		console.log(data)
-		loadaction(data);
+		if(data.length==0){ 	
+			sweetAlert({
+				title: "삐비빗!", 
+			    text: "잘못된 정보입니다. 확인 후 입력해주세요", 
+			    type: "error"
+			});
+			return false;
+		}else{
+			loadaction(data);
+		}
 	},
 	error:function(e){
 		console.log(e)

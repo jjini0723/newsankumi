@@ -1,7 +1,12 @@
+function view(){
+	$("#filtering2").show();	
+}
+
 
 function filter(){
    removeMarker1();
    console.log(perfect);
+   $("#filtering2").hide();
    var price = document.getElementById("price").value;
    var startkaptUsedate = price.substring(0,4);
    var endkaptUsedate = price.substring(7,11);
@@ -189,6 +194,31 @@ function filter(){
       };                                       
    html += '</table></ul>';
    $('#lll').html(html);
+}
+
+function delfilter(){
+	   removeMarker1();
+	   console.log(perfect);
+	   $("#kaptMparea60").checked=false;
+	   $("#kaptMparea85").checked=false;
+	   $("#kaptMparea135").checked=false;
+	   $("#filtering2").hide();
+	   var result = new Array(); // 결과 리턴 어레이
+	   result = perfect;
+	   console.log(result);
+	   console.log("drawlist");
+	   filterMarker(result);
+	   var html = "";
+	   var index =0;
+	   html += '<ul class = "category" data-width="400" id = "list2" style="padding-top: 0;"><table class="blueone" style="width: 270px;"><tr><td style="width: 80%;">아파트 명</td><td style="width: 20%;">평점</td></tr>';
+	//   polyMap(items[0].citycode);
+	//   createSelectedChart(items[0]);
+	   console.log(result[0]);
+	      for (var i = 0; i < result.length; i++) {
+	         html += '<tr><td><a href = "#" id = "" value = "" onclick = "getTradeInfo('+result[i].x+'),focuson('+result[i].x+','+result[i].y+'); changeMarker('+i+');">'+result[i].kaptName+'</a></td><td>'+result[i].changepoint+'</td></tr>' ;
+	      };                                       
+	   html += '</table></ul>';
+	   $('#lll').html(html);
 }
 function removeMarker1() {
 	markerAddr = [];

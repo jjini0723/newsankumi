@@ -416,7 +416,7 @@ function displayOverlay(index) {
 	var places = JSON.parse($("#places").val());
 	var thumbnailAddr = '';
 	$.ajax({
-		url : "http://apis.daum.net/search/image?apikey=e5f9cd760a5dedf9f84cc76d41a6decd&result=1&pageno=1&q="+places[index].title+"&output=json",
+		url : "http://apis.daum.net/search/image?apikey=932263ae205c74344400b444f7788cb3&result=1&pageno=1&q="+places[index].title+"&output=json",
 		dataType : "jsonp",
 		type : "post",
 		jsonp : "callback",
