@@ -151,7 +151,7 @@ function displayPlaces(places) {
 function getListItem(index, places) {
 	var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
-                '<div style="line-height: 0.5;" class="info sidebar-block" >' +
+                '<div style="line-height: 1.0;" class="info sidebar-block" >' +
                 '   <h5><strong>' + places.title + '</strong></h5>';
     if (places.address) {
         itemStr += ' <span class="jibun gray" style="font-size:12px">' +  places.address  + '</span><br> ';

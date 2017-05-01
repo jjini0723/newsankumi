@@ -249,7 +249,8 @@ function sendData1(){ //코드 및 동 리스트 가져오기
          return false;
       }
       else{
-      if (typeof firstlist[6] == undefined ||firstlist[6] == null ) {
+    	  
+      if (typeof firstlist[6] == undefined ||firstlist[6] == null ) {//3개
          var split1 = firstlist[0].split(',');
          var split2 = firstlist[2].split(',');
          var split3 = firstlist[4].split(',');
@@ -258,7 +259,8 @@ function sendData1(){ //코드 및 동 리스트 가져오기
          finalAddList.push(addList1[0]);
          finalAddList.push(addList1[2]);
          finalAddList.push(addList1[4]);
-      }else if (typeof firstlist[8] == undefined ||firstlist[8] == null ) {
+         console.log(firstlist);
+      	}else if (typeof firstlist[8] == undefined ||firstlist[8] == null ) { //4개
          var split1 = firstlist[0].split(',');
          var split2 = firstlist[2].split(',');
          var split3 = firstlist[4].split(',');
@@ -269,6 +271,7 @@ function sendData1(){ //코드 및 동 리스트 가져오기
          finalAddList.push(addList1[2]);
          finalAddList.push(addList1[4]);
          finalAddList.push(addList1[6]);
+         console.log(firstlist);
       }
       else{
          var split1 = firstlist[0].split(',');
@@ -284,12 +287,12 @@ function sendData1(){ //코드 및 동 리스트 가져오기
          finalAddList.push(addList1[6]);
          finalAddList.push(addList1[8]);
 
+      	}
       result300 = [gustr, dongstr, finalAddList];
       console.log(result300);
       
-       boardList2(result300); 
-       hoit();
-      }
+      boardList2(result300); 
+      hoit();
       }
       
 }
