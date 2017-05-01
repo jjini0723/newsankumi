@@ -396,18 +396,18 @@ function drawlist() {
 //         }
 //      }
 //   }
-    
-    var html = "";
-    var rank = 0;
-    html += '<ul class = "category" data-width="400" id = "list2"><table class="blueone"><tr><td>아파트 명</td><td>평점</td></tr>';
-    console.log(perfect);
-    filterAddr = perfect;
-    for (var i = 0; i < perfect.length; i++) {
-        html += '<tr><td><a href = "#" id = "" value = "" onclick = "initChart2(); getTradeInfo('+perfect[i].x+'); focusin('+perfect[i].x+','+perfect[i].y+'); getChartData2('+i+'); changeMarker('+i+'); return false;">'+perfect[i].kaptName+'</a></td><td>'+perfect[i].changepoint+'</td></tr>' ;
-    };                                       
-    html += '</table></ul>';
-    $('#lll').html(html);
+   var html = "";
+   var rank = 0;
+   html += '<ul class = "category" data-width="400" id = "list2" style="padding-top: 0;"><table class="blueone" style="width: 270px;"><tr><td style="width: 80%;">아파트 명</td><td style="width: 20%;">평점</td></tr>';
+   console.log(perfect);
+   filterAddr = perfect;
+   for (var i = 0; i < perfect.length; i++) {
+	   html += '<tr><td><a href = "#" id = "" value = "" onclick = "initChart2(); getTradeInfo('+perfect[i].x+'); focusin('+perfect[i].x+','+perfect[i].y+'); getChartData2('+i+'); changeMarker('+i+'); return false;">'+perfect[i].kaptName+'</a></td><td>'+perfect[i].changepoint+'</td></tr>' ;
+   };                                       
+   html += '</table></ul>';
+   $('#lll').html(html);
 }
+
 function focusin(x,y) {
 	var moveLatLon = new daum.maps.LatLng(y, x);
     // 지도 중심을 이동 시킵니다

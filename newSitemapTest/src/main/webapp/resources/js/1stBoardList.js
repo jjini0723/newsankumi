@@ -56,7 +56,7 @@ function boardList() {
 				//다음단계
 
 				html += '<div class="sidebar-block text-center filter_commit">';
-				html += '<a class="btn btn-primary btn-block" onclick = "boardList2(); hoit();"><strong style="color:white;">생활권역 추가</strong></a>';
+				html += '<a class="btn btn-primary btn-block" onclick = "sendData1();"><strong style="color:white;">생활권역 추가</strong></a>';
 				html += '</div></div>';
 				
 				$("#test123").html(html);

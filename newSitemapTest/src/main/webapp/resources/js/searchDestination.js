@@ -73,7 +73,6 @@ function placesSearchCB(status, data, pagination) {
         // 정상적으로 검색이 완료됐으면
         // 검색 목록과 마커를 표출합니다.
         displayPlaces(data.places);
-        
 
         // 페이지 번호를 표출합니다
         displayPagination(pagination);
@@ -161,7 +160,7 @@ function displayPlaces(places) {
 function getListItem(index, places) {
 	var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
-                '<div class="info sidebar-block">' +
+                '<div style="line-height: 1.0;" class="info sidebar-block" >' +
                 '   <h5><strong>' + places.title + '</strong></h5>';
     if (places.address) {
         itemStr += ' <span class="jibun gray" style="font-size:12px">' +  places.address  + '</span><br> ';
@@ -180,8 +179,8 @@ function getListItem(index, places) {
     return el;
 }
 
+// itemEl 검색결과 저장 -> itemEl을 fragment의 child로 저장 -> fragment를  id가 placesList의 div태그 listEl의 child로 저장.
 function displayPlace(index) {
-    // itemEl 검색결과 저장 -> itemEl을 fragment의 child로 저장 -> fragment를  id가 placesList의 div태그 listEl의 child로 저장.
     var listEl = document.getElementById('getItem'), 
     menuEl = document.getElementById('menu_wrap'),
     fragment = document.createDocumentFragment(), 
@@ -207,7 +206,7 @@ function getItem(index) {
    var el = document.createElement('li'),
 	itemStr = '<span class="markerbg marker_' + (index+1) + '" title="'+places[index].title+'"></span>' +
                 /*'<div class="info">' +*/
-                '   <a href="#" style="text-decoration:none" onclick="focuson('+places[index].longitude+','+places[index].latitude+')"><h5>' + places[index].title + '</h5></a>';
+                '   <a style="text-decoration:none" onclick="focuson('+places[index].longitude+','+places[index].latitude+')"><h5>' + places[index].title + '</h5></a>';
 	itemStr += '<a href="#" class="deletebtn" id="'+paraparam1+'" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL(\''+paraparam1+'\');" >'
 	+'<span class="glyphicon glyphicon-trash" style="color:red;"></span>'
 	+'</a><br>'; 
@@ -493,7 +492,6 @@ function searchImage(thumbnailAddr, index) {
     content += '</div>';
     content +=        '</div>';
     content +=    '</div>';
-    
     
     
 	// 마커 위에 커스텀오버레이를 표시합니다

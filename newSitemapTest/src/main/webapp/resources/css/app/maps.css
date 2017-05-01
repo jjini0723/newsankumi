@@ -193,7 +193,7 @@
 	color: #888;
 	overflow: hidden;
 }
-.info:after {
+/* .info:after {
 	content: '';
 	position: absolute;
 	margin-left: -12px;
@@ -201,7 +201,7 @@
 	bottom: 0;
 	width: 22px;
 	height: 12px;
-	background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png');
+	background: url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png'); */
 }
 .info .link {
 	color: #5085BB;

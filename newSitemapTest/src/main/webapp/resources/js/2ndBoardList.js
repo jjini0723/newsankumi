@@ -3,9 +3,7 @@
  */
 
 
-function boardList2() {
-   //emdName = "삼성동,역삼동";
-   var result = sendData1();
+function boardList2(result) {
    
    call(result[0], result[1], result[2]);
    $(document).ready(function() {
