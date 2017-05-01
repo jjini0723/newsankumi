@@ -340,7 +340,7 @@ function radio7thCheck(name){
 	<link href="./resources/css/vendor/select2.css" rel="stylesheet">
 	
 	<!-- 아파트목록 table css 관련 -->
-	<link href="./resources/css/tablecss.css?ver=2" rel="stylesheet">
+	<link href="./resources/css/tablecss.css?ver=1" rel="stylesheet">
   
 
   <!-- App CSS CORE

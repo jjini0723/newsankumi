@@ -180,7 +180,7 @@ function filter(){
    filterMarker(result);
    var html = "";
    var index =0;
-   html += '<ul class = "category" data-width="400" id = "list2"><table><tr><td>아파트 명</td><td>평점</td></tr>';
+   html += '<ul class = "category" data-width="400" id = "list2" style="padding-top: 0;"><table class="blueone" style="width: 270px;"><tr><td style="width: 80%;">아파트 명</td><td style="width: 20%;">평점</td></tr>';
 //   polyMap(items[0].citycode);
 //   createSelectedChart(items[0]);
    console.log(result[0]);
