@@ -1238,6 +1238,7 @@ This variant is to be used when loading the separate styling modules -->
 	<input type = "hidden" id = "graphData">
 	<input type = "hidden" id = "keylist">
 	<input type = "hidden" id = "titleList">
+    <input type = "hidden" id = "overlay">
 	
 	
 </body>

@@ -281,9 +281,9 @@ function changeMarker(index2) {
 		if(markerAddr[i] == filterAddr[index2].kaptName) {
 			var coordsss = new daum.maps.LatLng(filterAddr[index2].y, filterAddr[index2].x);
 			var imageSrc = './resources/images/selectedMarker.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-	        	imageSize = new daum.maps.Size(41, 40),  // 마커 이미지의 크기
+	        	imageSize = new daum.maps.Size(51, 50),  // 마커 이미지의 크기
 	        	imgOptions =  {
-	            	spriteSize : new daum.maps.Size(41, 40), // 스프라이트 이미지의 크기
+	            	spriteSize : new daum.maps.Size(51, 50), // 스프라이트 이미지의 크기
 	            	spriteOrigin : new daum.maps.Point(0, 0), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
 	            	offset: new daum.maps.Point(20, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
 	        	},
@@ -416,12 +416,19 @@ function displayOverlay(index) {
 	var places = JSON.parse($("#places").val());
 	var thumbnailAddr = '';
 	$.ajax({
-		url : "http://apis.daum.net/search/image?apikey=e5f9cd760a5dedf9f84cc76d41a6decd&result=1&pageno=1&q="+places[index].title+"&output=json",
+		url : "http://apis.daum.net/search/image?apikey=a5c19e52396246ea4ba28842359b1675&result=1&pageno=1&q="+places[index].title+"&output=json",
 		dataType : "jsonp",
 		type : "post",
 		jsonp : "callback",
 		contentType : "application/json; charset=utf-8",
 		async : true,
+		//data : {
+		//apikey : "932263ae205c74344400b444f7788cb3", //다음 API KEY 입력
+		//q : places[index].title,             // search keyword
+		//result : "1",                 // result set length
+		//pageno : "1",   // pageNo
+		//output : "json"                // JSONP type format json
+		//},
 		success : function(r){
 			console.log(r);
 			thumbnailAddr += r.channel.item[0].thumbnail;
@@ -499,7 +506,7 @@ function removeAllpaginationChildNods(paginationEl) {
 }
 
 function hoi(lat, lng, index) {
-    var places = JSON.parse($("#places").val()); 
+    var places = JSON.parse($("#places").val());
     var obj1 = document.getElementsByName("transport");
     var idx1 = obj1[index].options.selectedIndex; // 해당 selectbox index 구하기
 
@@ -523,7 +530,6 @@ function hoi(lat, lng, index) {
     infowindow.close();
 }
 
-
 function searchBestLoc() {
     dfa(carArray, walkArray, tradiArray); // dfa()에  carArray, walkArray, tradiArray를 보내서 dfa에서 각 Array의 length를 체크해보는 건 어떨까?
 }
@@ -537,7 +543,7 @@ function listReset(index) {
 function focuson(x,y){
 	var moveLatLon = new daum.maps.LatLng(y, x);
 	map.setLevel(8);
-	    
+
 	// 지도 중심을 이동 시킵니다
 	map.setCenter(moveLatLon);
 }
@@ -545,16 +551,16 @@ function focuson(x,y){
 function hopeListSizeChk() {
 	if(hopeList.length < 2) {
 		sweetAlert({
-			title: "삐비빗!", 
-		    text: "생활권역은 최소 2개 이상 등록하셔야 합니다.", 
+			title: "삐비빗!",
+		    text: "생활권역은 최소 2개 이상 등록하셔야 합니다.",
 		    type: "error"
 		});
 		return false;
 	}
 	if(hopeList.length > 5) {
 		sweetAlert({
-			title: "삐비빗!", 
-		    text: "생활권역은 최대 5개 등록가능합니다.", 
+			title: "삐비빗!",
+		    text: "생활권역은 최대 5개 등록가능합니다.",
 		    type: "error"
 		});
 		return false;
@@ -562,5 +568,5 @@ function hopeListSizeChk() {
 	boardList3();
 	searchBestLoc();
 	hoit2();
-	filtering(); 
+	filtering();
 }
