@@ -29,6 +29,7 @@
 <script src="./resources/js/save.js"></script><!-- 영석이 저장 로직 -->
 <script src="./resources/js/loadData.js"></script><!-- 영석이 불러오기 로직 -->
 <script src="./resources/js/init.js"></script><!-- 영석이 홈으로 돌아가는 초기화 로직 -->
+<script src="./resources/js/saveKeyCount.js"></script><!-- 영석이 키 자동 변경 로직 -->
 <script src="./resources/js/searchDestination.js"></script><!-- 희망목적지 관련 js -->
 <script src="./resources/js/sweetalert.min.js"></script><!-- sweetalert/email 보내기 팝업 관련 js -->
 <script src="./resources/js/js_plugin/jquery.blockUI.js"></script><!-- 데이터 로딩 표시 -->
@@ -70,6 +71,32 @@ var marker3 = new Array();
 var radio7th='';//라디오버튼체크용
 var filterAddr = new Array();
 
+//자동 키값 변환기
+var tmapCarKey1='2bb28cd1-f268-3af6-8329-e6b49122331b';
+var tmapCarKey2='5466b076-3f62-3faf-ac9d-c3002f0fec2d';
+var tmapCarKey3='250b188d-21df-3751-a05f-225464a8462f';
+var tmapWalkKey3='360a72a6-2781-35ea-b877-98cd58c69b91';
+var tmapWalkKey2='f7e2ff7f-9451-3d04-8492-bbed4ab4e206';
+var tmapWalkKey1='a2b681cd-140a-3af2-bea9-5d90bef42f84';
+var googleKey1='AIzaSyD1SXZMCJFk4dRd7MZCDWHk0jINUtI9v2Y';
+var googleKey2='AIzaSyBi_ry4zkLWVMMzETciWyu0JnCGbm7WQiQ';
+var googleKey3='AIzaSyBKWZBV932x9UcDs4ey8TVQ-oV8fiXxPpI';
+var googleKey4='AIzaSyD1SXZMCJFk4dRd7MZCDWHk0jINUtI9v2Y';
+var googleKey5='AIzaSyDcQztLBVLCFxG_SSYxR_BJAldkQMMe5PQ';
+var tmapCarKeyCount = 0;
+var tmapWalkKeyCount = 0;
+var googleKeyCount = 0;
+var tmapLine = 850;
+var googleLine = 2350;
+var carusekey = '';
+var walkusekey = '';
+var tradiusekey = '';
+var carNum = '';
+var walkNum = '';
+var tradiNum = '';
+
+
+loadKeyCount();
 $(document).avgrund({
 	    openOnEvent: false
 	}); 

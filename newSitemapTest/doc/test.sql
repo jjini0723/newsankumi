@@ -56,8 +56,14 @@ select
 			
 select distinct(bjd_cd), sigungu_nm, emd_nm, gwanhal from mp_loc_info where emd_nm in (select distinct(emd_nm) from mp_loc_info where gwanhal in(select distinct(gwanhal) from mp_loc_info));
 
-
-
+create table saveKeyCount(
+tmapCarKeyCount varchar2(20),
+tmapWalkKeyCount varchar2(20),
+googleKeyCount varchar2(20),
+dayth date default sysdate
+)
+drop table savekeycount
+select * from SAVEKEYCOUNT
 select * from SAVEDATA
 drop table savedata
 commit

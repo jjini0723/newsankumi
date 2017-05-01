@@ -12,4 +12,10 @@
 	<select id="loadData" parameterType="String" resultType="saveData">
 		select * from saveData where checknumber=#{1} and checkemail=#{0}
 	</select>
+	<insert id="saveKeyCount" parameterType = "savekeycount">
+		insert into saveKeyCount(tmapCarKeyCount,tmapWalkKeyCount,googleKeyCount) values(#{tmapCarKeyCount},#{tmapWalkKeyCount},#{googleKeyCount})
+	</insert>
+	<select id="loadKeyCount" resultType="savekeycount">
+		select * from saveKeyCount where dayth like sysdate
+	</select>
 </mapper>
