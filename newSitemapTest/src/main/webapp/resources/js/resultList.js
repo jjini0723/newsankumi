@@ -18,208 +18,207 @@ $(document).ready(function() {
 
 //리스트 뿌리기
 function buildList(list) {
-	$("#dongitem").val(JSON.stringify(list));
-	items = list; //전역변수에 담기
-	var html = "";
-	html += '<ol class = "decimal" data-width="400" id = "resultList">';
+   $("#dongitem").val(JSON.stringify(list));
+   items = list; //전역변수에 담기
+   var html = "";
+   html += '<ol class = "decimal" data-width="400" id = "resultList">';
 
-	moveMap(0);
-	createChart1(0);
-	
-	for (var i = 0; i < items.length; i++) {
-		html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "'
-		+items[i].citycode+'" class = "'+items[i].gu +','+ items[i].dong+'" onclick = '+
-		'"initChart(); createChart1('+ i +'); setCircle('+items[i].leasingPrice+','+items[i].salePrice+','+i+'); moveMap('+i+');"'+
-		'style="color:#333333";> ' 
-		+ items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="initChart(); removeItem(' + i + ');" style = "color:red";>   x   </a> '+ '</li>' ;
-		var score1 = parseFloat(items[i].totalScore/items[0].totalScore*5).toFixed(2);
-		
-		console.log(score1);
-		console.log(items[0].leasingPrice+','+items[0].salePrice);
-		dongScore.push(score1);
-	}
-	
-	console.log("dongscore"+dongScore);
-	
-	html += '</ol>';
-	$('#req_loc1').html(html);
+   moveMap(0);
+   createChart1(0);
+   
+   for (var i = 0; i < items.length; i++) {
+      html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "'
+      +items[i].citycode+'" class = "'+items[i].gu +','+ items[i].dong+'" onclick = '+
+      '"initChart(); createChart1('+ i +'); setCircle('+items[i].leasingPrice+','+items[i].salePrice+','+i+'); moveMap('+i+');"'+
+      'style="color:#333333";> ' 
+      + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="initChart(); removeItem(' + i + ');" style = "color:red";>   x   </a> '+ '</li>' ;
+      var score1 = parseFloat(items[i].totalScore/items[0].totalScore*5).toFixed(2);
+      
+      console.log(score1);
+      console.log(items[0].leasingPrice+','+items[0].salePrice);
+      dongScore.push(score1);
+   }
+   
+   console.log("dongscore"+dongScore);
+   
+   html += '</ol>';
+   $('#req_loc1').html(html);
 }
 
 
 function addItem() {
-	 var obj1 = document.getElementById("selectThis3"); // 시
-	 var obj2 = document.getElementById("selectThis4"); // 구군
-	 var obj3 = document.getElementById("selectThis5"); // 읍면동
-	 var idx1 = obj1.options.selectedIndex; // obj1의 선택값인덱스 구하기
-	 var idx2 = obj2.options.selectedIndex;
-	 var idx3 = obj3.options.selectedIndex;
-	 
-	 var si = obj1.options[idx1].text;
-	 var gu = obj2.options[idx2].text;
-	 var dong = obj3.options[idx3].text;
-	
-	 if (si != "시/도" || gu != "군/구" || dong != "읍/면/동") {
-		
-	 $.ajax({
-		 
-		 url : "getAddress",
-		 type : "post",
-		 async: false,
-		 data : {
-			 dong : dong
-		 },
+    var obj1 = document.getElementById("selectThis3"); // 시
+    var obj2 = document.getElementById("selectThis4"); // 구군
+    var obj3 = document.getElementById("selectThis5"); // 읍면동
+    var idx1 = obj1.options.selectedIndex; // obj1의 선택값인덱스 구하기
+    var idx2 = obj2.options.selectedIndex;
+    var idx3 = obj3.options.selectedIndex;
+    
+    var si = obj1.options[idx1].text;
+    var gu = obj2.options[idx2].text;
+    var dong = obj3.options[idx3].text;
+   
+    if (si != "시/도" || gu != "군/구" || dong != "읍/면/동") {
+      
+    $.ajax({
+       
+       url : "getAddress",
+       type : "post",
+       async: false,
+       data : {
+          dong : dong
+       },
         success : function(data) {
-        	var keylist = JSON.parse($("#keylist").val());
-        	console.log(keylist);
-        	
-        		$.each(data, function(key, value){
-        			if (key == keylist[0] || key == keylist[1] ||key == keylist[2] ||key == keylist[3] ||key == keylist[4] 
-        			||key == keylist[5] || key == "si" || key =="gu" || key =="dong" || key == "leasingPrice" || key == "salePrice" ) {
-						
-					}else{
-						delete data[key];
-					}
-        		});
-        		
-        	console.log(data);
-        	
-		 initChart();
-       	 items.push(data);
-       	 buildList(items);
-       	 
-       	$("#selectThis3").empty().data('options');
-       	$("#selectThis3").append('<option value="">시/도</option><option value="서울특별시">서울특별시</option>'
-       			+'<option value="인천광역시">인천광역시</option><option value="경기도">경기도</option>');
-       	$("#selectThis4").empty().data('options');
-       	$("#selectThis4").append("<option>군/구</option>");
-       	$("#selectThis5").empty().data('options');
-       	$("#selectThis5").append("<option>읍/면/동</option>");
+           var keylist = JSON.parse($("#keylist").val());
+           console.log(keylist);
+           
+              $.each(data, function(key, value){
+                 if (key == keylist[0] || key == keylist[1] ||key == keylist[2] ||key == keylist[3] ||key == keylist[4] 
+                 ||key == keylist[5] || key == "si" || key =="gu" || key =="dong" || key == "leasingPrice" || key == "salePrice" ) {
+                  
+               }else{
+                  delete data[key];
+               }
+              });
+              
+           console.log(data);
+           
+       initChart();
+           items.push(data);
+           buildList(items);
+           
+          $("#selectThis3").empty().data('options');
+          $("#selectThis3").append('<option value="">시/도</option><option value="서울특별시">서울특별시</option>'
+                +'<option value="인천광역시">인천광역시</option><option value="경기도">경기도</option>');
+          $("#selectThis4").empty().data('options');
+          $("#selectThis4").append("<option>군/구</option>");
+          $("#selectThis5").empty().data('options');
+          $("#selectThis5").append("<option>읍/면/동</option>");
         },
         error : function(e){
-       	 console.log(e);
-       	 
+           console.log(e);
+           
         }
-		 
-	 });
-	 }
-	 
+       
+    });
+    }
+    
 }
 
 function removeItem(index) {
-	items.splice(index, 1);
-	buildList(items);
+   items.splice(index, 1);
+   buildList(items);
 }
 
 function setCircle(buy, lease, index) {
-	console.log(buy,lease);
-	var geocoder = new daum.maps.services.Geocoder();
-	var circle = new daum.maps.Circle({});
+   console.log(buy,lease);
+   var geocoder = new daum.maps.services.Geocoder();
+   var circle = new daum.maps.Circle({});
 
-	var listData = JSON.parse($("#dongitem").val());
-	///////태훈 추가 수정부분
+   var listData = JSON.parse($("#dongitem").val());
+   ///////태훈 추가 수정부분
     
     var item = listData[index];
     var ghNameStr = item.dong;
     var lastChar = ghNameStr.charAt(ghNameStr.length - 1);
     
     if(circleArray.length != 0 || priceArray.length != 0) {
-    	circleArray[0].setMap(null);
-    	circleArray.splice(0,1);
-    	priceArray[0].setMap(null);
-    	priceArray.splice(0,1);
+       circleArray[0].setMap(null);
+       circleArray.splice(0,1);
+       priceArray[0].setMap(null);
+       priceArray.splice(0,1);
     }
     
     geocoder.addr2coord(item.gu+" "+item.dong, function(status, result) {
-		// 정상적으로 검색이 완료됐으면 
-		if (status === daum.maps.services.Status.OK) {
-		    if(lastChar == '읍' || lastChar == '면') {
-	    		circle = new daum.maps.Circle({
-		    		center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
-		    		 radius: 8000, // 미터 단위의 원의 반지름입니다 
+      // 정상적으로 검색이 완료됐으면 
+      if (status === daum.maps.services.Status.OK) {
+          if(lastChar == '읍' || lastChar == '면') {
+             circle = new daum.maps.Circle({
+                center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
+                 radius: 8000, // 미터 단위의 원의 반지름입니다 
                      strokeWeight: 1, // 선의 두께입니다 
                      strokeColor: '#333', // 선의 색깔입니다
                      strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
                      strokeStyle: 'stroke', // 선의 스타일 입니다
                      fillColor: '#b7b7b7', // 채우기 색깔입니다
                      fillOpacity: 0.4  // 채우기 불투명도 입니다   
-		    	});
+             });
 
-	    		var content = '<div style="padding:10px; font-size:40px; opacity:0.7; color:#4f4f4f; margin-left:-45px;'
-		    	    +'margin-top: 70px; font-weight: bold;">'+'평당 매매가 '+buy+' (3.3㎡)<br><br>'+'평당 전세가 '+lease+'(3.3㎡)</div>';  
-	    		// 커스텀 오버레이가 표시될 위치입니다 
-	    		var position = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);  
+             var content = '<div style="padding:10px; font-size:3rem; opacity:0.7; color:#4f4f4f; margin-left:-45px;'
+                 +'margin-top: 70px; font-weight: bold;">'+'평당 매매가 '+buy+' (3.3㎡)<br><br>'+'평당 전세가 '+lease+'(3.3㎡)</div>';  
+             // 커스텀 오버레이가 표시될 위치입니다 
+             var position = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);  
 
-	    		// 커스텀 오버레이를 생성합니다
-	    		var customOverlay = new daum.maps.CustomOverlay({
-	    		    position: position,
-	    		    content: content,
-	    		    xAnchor: 0.3,
-	    		    yAnchor: 0.91
-	    		});
-	    		console.log(customOverlay);
-	    		// 커스텀 오버레이를 지도에 표시합니다
-	    		customOverlay.setMap(map);
-	    		circle.setMap(map);
-	    		
-		    } else {
-	    		circle = new daum.maps.Circle({
-		    		center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
-		    		 radius: 4000, // 미터 단위의 원의 반지름입니다 
+             // 커스텀 오버레이를 생성합니다
+             var customOverlay = new daum.maps.CustomOverlay({
+                 position: position,
+                 content: content,
+                 xAnchor: 0.3,
+                 yAnchor: 0.91
+             });
+             console.log(customOverlay);
+             // 커스텀 오버레이를 지도에 표시합니다
+             customOverlay.setMap(map);
+             circle.setMap(map);
+             
+          } else {
+             circle = new daum.maps.Circle({
+                center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
+                 radius: 4000, // 미터 단위의 원의 반지름입니다 
                      strokeWeight: 1, // 선의 두께입니다 
                      strokeColor: '#333', // 선의 색깔입니다
                      strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
                      strokeStyle: 'stroke', // 선의 스타일 입니다
                      fillColor: '#b7b7b7', // 채우기 색깔입니다
                      fillOpacity: 0.4  // 채우기 불투명도 입니다   
-		    	});
-	    		var content = '<div style="padding:10px; font-size:40px; opacity:0.7; color:#4f4f4f; margin-left:-45px;'
-		    	    +'margin-top: 70px; font-weight: bold;">'+'평당 매매가 '+buy+' (3.3㎡)<br><br>'+'평당 전세가 '+lease+'(3.3㎡)</div>'; 
-	    		// 커스텀 오버레이가 표시될 위치입니다 
-	    		var position = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);  
-	    		// 커스텀 오버레이를 생성합니다
-	    		var customOverlay = new daum.maps.CustomOverlay({
-	    		    position: position,
-	    		    content: content,
-	    		    xAnchor: 0.3,
-	    		    yAnchor: 0.91
-	    		});
-	    		console.log(customOverlay);
-	    		// 커스텀 오버레이를 지도에 표시합니다
-	    		customOverlay.setMap(map);
-	    		circle.setMap(map);
-		    }
-		    //console.log(infowindow);
-		    circleArray.push(circle);
-		    priceArray.push(customOverlay);
-		}
+             });
+             var content = '<div style="padding:10px; font-size:3rem; opacity:0.7; color:#4f4f4f; margin-left:-45px;'
+                 +'margin-top: 70px; font-weight: bold;">'+'평당 매매가 '+buy+' (3.3㎡)<br><br>'+'평당 전세가 '+lease+'(3.3㎡)</div>'; 
+             // 커스텀 오버레이가 표시될 위치입니다 
+             var position = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);  
+             // 커스텀 오버레이를 생성합니다
+             var customOverlay = new daum.maps.CustomOverlay({
+                 position: position,
+                 content: content,
+                 xAnchor: 0.3,
+                 yAnchor: 0.91
+             });
+             console.log(customOverlay);
+             // 커스텀 오버레이를 지도에 표시합니다
+             customOverlay.setMap(map);
+             circle.setMap(map);
+          }
+          //console.log(infowindow);
+          circleArray.push(circle);
+          priceArray.push(customOverlay);
+      }
     });
 }
 
 function moveMap(index){
-	
-	var listData = JSON.parse($("#dongitem").val());
-	
-	var item = listData[index];
-	var geocoder = new daum.maps.services.Geocoder();
-	var callback = function(status, result) {
-	    if (status === daum.maps.services.Status.OK) {
-	        console.log(result);
-	        console.log(result.addr[0]);
-	        var obj = result.addr[0];
-	        console.log(obj.lat, obj.lng);
-	        setCenter(obj.lat, obj.lng);
-	    }
-	};
-	geocoder.addr2coord(item.gu + " " + item.dong, callback);
-	
+   
+   var listData = JSON.parse($("#dongitem").val());
+   
+   var item = listData[index];
+   var geocoder = new daum.maps.services.Geocoder();
+   var callback = function(status, result) {
+       if (status === daum.maps.services.Status.OK) {
+           console.log(result);
+           console.log(result.addr[0]);
+           var obj = result.addr[0];
+           console.log(obj.lat, obj.lng);
+           setCenter(obj.lat, obj.lng);
+       }
+   };
+   geocoder.addr2coord(item.gu + " " + item.dong, callback);
+   
 
 }
 
-
 function setCenter(lat, lng) {  
-	console.log(lat);
-	console.log(lng);
-	
+   console.log(lat);
+   console.log(lng);
+   
     // 이동할 위도 경도 위치를 생성합니다 
     var moveLatLon = new daum.maps.LatLng(lat, lng);
     
@@ -229,60 +228,74 @@ function setCenter(lat, lng) {
 
 
 function sendData1(){ //코드 및 동 리스트 가져오기
-	var firstlist = [];
-	var resultList = [];
-	var addList1 = [];
-	var finalAddList=[];
-	
-	for (var i = 0; i < 10; i++) {
-		firstlist[i] = $(".decimal").find("a").eq(i).attr('class');
-		addList1[i] = $(".decimal").find("a").eq(i).text();
-	}
-		if (typeof firstlist[6] == undefined ||firstlist[6] == null ) {
-			var split1 = firstlist[0].split(',');
-			var split2 = firstlist[2].split(',');
-			var split3 = firstlist[4].split(',');
-			var gustr = split1[0]+','+split2[0]+','+split3[0];
-			var dongstr = split1[1]+','+ split2[1]+','+split3[1];
-			finalAddList.push(addList1[0]);
-			finalAddList.push(addList1[2]);
-			finalAddList.push(addList1[4]);
-		}else if (typeof firstlist[8] == undefined ||firstlist[8] == null ) {
-			var split1 = firstlist[0].split(',');
-			var split2 = firstlist[2].split(',');
-			var split3 = firstlist[4].split(',');
-			var split4 = firstlist[6].split(',');
-			var gustr = split1[0]+','+split2[0]+','+split3[0]+','+split4[0];
-			var dongstr = split1[1]+','+ split2[1]+','+split3[1]+','+split4[1];
-			finalAddList.push(addList1[0]);
-			finalAddList.push(addList1[2]);
-			finalAddList.push(addList1[4]);
-			finalAddList.push(addList1[6]);
-		}
-		else{
-			var split1 = firstlist[0].split(',');
-			var split2 = firstlist[2].split(',');
-			var split3 = firstlist[4].split(',');
-			var split4 = firstlist[6].split(',');
-			var split5 = firstlist[8].split(',');
-			var gustr = split1[0]+','+split2[0]+','+split3[0]+','+split4[0]+','+split5[0];
-			var dongstr = split1[1]+','+ split2[1]+','+split3[1]+','+split4[1]+','+split5[1];
-			finalAddList.push(addList1[0]);
-			finalAddList.push(addList1[2]);
-			finalAddList.push(addList1[4]);
-			finalAddList.push(addList1[6]);
-			finalAddList.push(addList1[8]);
-		}
+   var firstlist = [];
+   var resultList = [];
+   var addList1 = [];
+   var finalAddList=[];
+   
+   for (var i = 0; i < 10; i++) {
+      firstlist[i] = $(".decimal").find("a").eq(i).attr('class');
+      addList1[i] = $(".decimal").find("a").eq(i).text();
+   }
+   
+   console.log(firstlist.length);
+   
+      if (firstlist.length<5 && typeof firstlist[4] == undefined ||firstlist[4] == null ||typeof firstlist[2] == undefined ||firstlist[2] == null  ) {
+         sweetAlert({
+            title: "이런!", 
+             text: "최소 3개 이상 선택 해 주세요!", 
+             type: "error"
+         });
+         return false;
+      }
+      else{
+      if (typeof firstlist[6] == undefined ||firstlist[6] == null ) {
+         var split1 = firstlist[0].split(',');
+         var split2 = firstlist[2].split(',');
+         var split3 = firstlist[4].split(',');
+         var gustr = split1[0]+','+split2[0]+','+split3[0];
+         var dongstr = split1[1]+','+ split2[1]+','+split3[1];
+         finalAddList.push(addList1[0]);
+         finalAddList.push(addList1[2]);
+         finalAddList.push(addList1[4]);
+      }else if (typeof firstlist[8] == undefined ||firstlist[8] == null ) {
+         var split1 = firstlist[0].split(',');
+         var split2 = firstlist[2].split(',');
+         var split3 = firstlist[4].split(',');
+         var split4 = firstlist[6].split(',');
+         var gustr = split1[0]+','+split2[0]+','+split3[0]+','+split4[0];
+         var dongstr = split1[1]+','+ split2[1]+','+split3[1]+','+split4[1];
+         finalAddList.push(addList1[0]);
+         finalAddList.push(addList1[2]);
+         finalAddList.push(addList1[4]);
+         finalAddList.push(addList1[6]);
+      }
+      else{
+         var split1 = firstlist[0].split(',');
+         var split2 = firstlist[2].split(',');
+         var split3 = firstlist[4].split(',');
+         var split4 = firstlist[6].split(',');
+         var split5 = firstlist[8].split(',');
+         var gustr = split1[0]+','+split2[0]+','+split3[0]+','+split4[0]+','+split5[0];
+         var dongstr = split1[1]+','+ split2[1]+','+split3[1]+','+split4[1]+','+split5[1];
+         finalAddList.push(addList1[0]);
+         finalAddList.push(addList1[2]);
+         finalAddList.push(addList1[4]);
+         finalAddList.push(addList1[6]);
+         finalAddList.push(addList1[8]);
 
-		result300 = [gustr, dongstr, finalAddList];
-		console.log(result300);
-		return result300;
-	
+      result300 = [gustr, dongstr, finalAddList];
+      console.log(result300);
+      
+       boardList2(result300); 
+       hoit();
+      }
+      }
+      
 }
 
 function deleteArray1(){
-	if (dongScore.length != 0) {
-		dongScore.length = 0;
-	}
-	
+   if (dongScore.length != 0) {
+      dongScore.length = 0;
+   }
 }

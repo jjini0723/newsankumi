@@ -525,7 +525,7 @@ This variant is to be used when loading the separate styling modules -->
 	<!-- 1차선택 -->
 	<ul class="sidebar-menu sm-bordered sm-icons-block sm-icons-right">
 		<li class="hasSubmenu open active">
-			<a><i class="fa fa-info" id = "infoicon" onclick="javascript:introJs('#sidebar-menu').start();"></i><span>1차 선택</span></a>
+			<a><i class="fa fa-info" id = "infoicon" onclick=""></i><span>1차 선택</span></a>
 			<ul class="in">
 				<h4 class="category" id = "select11" data-step="1" data-intro="현재 거주하고 있는 지역이나, 기준이 되는 지역을 선택합니다.(서울,경기,인천 한정)" data-position = "auto">기준지역선택
 				<i class="fa fa-question-circle" 

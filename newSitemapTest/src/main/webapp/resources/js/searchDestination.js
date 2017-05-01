@@ -69,7 +69,6 @@ function placesSearchCB(status, data, pagination) {
         // 정상적으로 검색이 완료됐으면
         // 검색 목록과 마커를 표출합니다.
         displayPlaces(data.places);
-        
 
         // 페이지 번호를 표출합니다
         displayPagination(pagination);
@@ -171,8 +170,8 @@ function getListItem(index, places) {
     return el;
 }
 
+// itemEl 검색결과 저장 -> itemEl을 fragment의 child로 저장 -> fragment를  id가 placesList의 div태그 listEl의 child로 저장.
 function displayPlace(index) {
-    // itemEl 검색결과 저장 -> itemEl을 fragment의 child로 저장 -> fragment를  id가 placesList의 div태그 listEl의 child로 저장.
     var listEl = document.getElementById('getItem'), 
     menuEl = document.getElementById('menu_wrap'),
     fragment = document.createDocumentFragment(), 
