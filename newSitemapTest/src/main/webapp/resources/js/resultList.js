@@ -144,7 +144,7 @@ function setCircle(buy, lease, index) {
                      fillOpacity: 0.4  // 채우기 불투명도 입니다   
              });
 
-             var content = '<div style="padding:10px; font-size:3rem; opacity:0.7; color:#4f4f4f; margin-left:-45px;'
+             var content = '<div style="padding:10px; font-size:2rem; opacity:1; color:white; margin-left:-120px; text-shadow: 0 0 57px black;'
                  +'margin-top: 70px; font-weight: bold;">'+'평당 매매가 '+buy+' (3.3㎡)<br><br>'+'평당 전세가 '+lease+'(3.3㎡)</div>';  
              // 커스텀 오버레이가 표시될 위치입니다 
              var position = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);  
@@ -172,7 +172,7 @@ function setCircle(buy, lease, index) {
                      fillColor: '#b7b7b7', // 채우기 색깔입니다
                      fillOpacity: 0.4  // 채우기 불투명도 입니다   
              });
-             var content = '<div style="padding:10px; font-size:3rem; opacity:0.7; color:#4f4f4f; margin-left:-45px;'
+             var content = '<div style="padding:10px; font-size:2rem; opacity:1; color:white; margin-left:-120px; text-shadow: 0 0 57px black;'
                  +'margin-top: 70px; font-weight: bold;">'+'평당 매매가 '+buy+' (3.3㎡)<br><br>'+'평당 전세가 '+lease+'(3.3㎡)</div>'; 
              // 커스텀 오버레이가 표시될 위치입니다 
              var position = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);  
