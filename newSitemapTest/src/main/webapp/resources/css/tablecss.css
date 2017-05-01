@@ -8,18 +8,20 @@ body { background: #fff; }
   padding: 4px;
   font-size: 14px;
   text-align : center;
-  color: #858585;
+  color:#333;
+  /* color: #858585; */
   border-bottom: 4px solid #212121;
   text-align: left;
 }
 .blueone td {
-  color: #858585;
+	color:#333;
+  /* color: #858585; */
   padding: 4px;
   border-bottom: 1px solid #ddd;
 }
-.blueone tr:hover td {
+/* .blueone tr:hover td {
   color: #26a69a;
 }
-
+ */
 /* #858585
 #212121 */

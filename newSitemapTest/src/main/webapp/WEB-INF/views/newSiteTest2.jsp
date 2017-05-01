@@ -39,11 +39,6 @@
 <link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
 <script src = "https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
-
-<!-- 툴팁 관련 -->
-<link href="./resources/tipr/tipr.css?ver=3" rel ="stylesheet">
-<script src="./resources/tipr/tipr.min.js?ver=3"></script>
-
 <!-- 부트스트랩 tooltip용 -->
 <script src="./resources/js/tether-1.3.3/tether.js?ver=1"></script>
 <script src="./resources/js/tether-1.3.3/tether.css?ver=1"></script>
@@ -397,10 +392,11 @@ This variant is to be used when loading the separate styling modules -->
 		    
 		          		<a href="#sidebar-map1" data-toggle="sidebar-menu" class="toggle pull-right visible-xs" style = "opacity:0.5;"><i class="fa fa-map-marker"></i></a>
 		     			<a href = "/maptest01/" onclick = "init();" class="navbar-brand"
-		     
 			          		style="width: 400px; position: absolute; left: 50%; margin-left: -200px; border: 0; outline: 0;
 			          		-ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none; color : #141414;">
-							エッ！スマップ？ S(SMART)・MAP</a>
+							<img src="./resources/images/test111.png" style="width:auto; height: inherit; ">
+							<!-- エッ！スマップ？ S(SMART)・MAP -->
+							</a>
 							<button class = "btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" style = "margin-top:15px;" id="infobtn">
 	           				 도움말 보기</button>	
 		        	</div>
@@ -425,8 +421,8 @@ This variant is to be used when loading the separate styling modules -->
 			        		
 			        		<!-- 코드불러오기 -->
 			            	<li class="dropdown" id="code">
-			              		<a href="#" class="dropdown-toggle tip" data-toggle="dropdown" data-tip="이전에 저장해두었던 결과를 다시 볼수 있습니다" style = "color:#8a8a8a;">
-			                		<i class="fa fa-fw fa-lock"></i>코드불러오기
+			              		<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+			                		<i class="fa fa-fw fa-lock" data-toggle="tooltip" data-placement="bottom" title="이전에 저장해두었던 결과를 다시 볼수 있습니다" style = "color:#8a8a8a;"></i>코드불러오기
 			              		</a>
 								<div class="dropdown-menu dropdown-size-280">
 									<form>
