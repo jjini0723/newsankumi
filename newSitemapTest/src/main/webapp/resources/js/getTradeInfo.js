@@ -71,12 +71,14 @@ function drawAptTradeInfo(data){
       
       
       var html1 = "";
-      
+      var html2 = "";
       if(tradeInfo.length==0){
          html1 += '<ul class = "category" data-width="200" id = "list2">';
                html1 += '<li style="color:#333;">부동산거래내역이없습니다</li>' ;
          html1 += '</ul>';
+         html2 += '';
          $('#aptTradeInfo').html(html1);
+         $('#aptTradeInfo2').html(html2);
       }else{
          var size = new Array();
          var type = new Array();
@@ -103,7 +105,7 @@ function drawAptTradeInfo(data){
                html1 += '('+(parseInt(newsize[i])/3.3).toFixed(0)+'평)';
                html1 += '</a>';
                html1 += '</li>';
-               html1 += '</div>';
+               html1 += '';
 
                $.each(tradeInfo,function(index,item){
                   if(newsize[i]==parseInt(item.aptsize).toFixed(0)){
@@ -162,38 +164,38 @@ function drawAptTradeInfo(data){
 </div>
 
  * */
-               html1 += '<div class="tab-content">';
-               html1 += '<div class="tab-pane fade in active" style= "display:none" id=call2'+i+'>';
+               html2 += '<div class="tab-content" style="text-align:center">';
+               html2 += '<div class="tab-pane fade in active" style= "display:none" id=call2'+i+'>';
                if(newTradeInfo1!=null&&newTradeInfo2!=null&&newTradeInfo3!=null){
-            	   html1 += '<p id=call2'+i+'>';
-            	   html1 += '매매 /'+newTradeInfo1.sale+'만원 / '+ newTradeInfo1.commitdate+'<br>';
-                   html1 += '전세 /'+newTradeInfo2.sale+'만원/ '+ newTradeInfo2.commitdate+'<br>';
-                   html1 += '월세 / 보증금('+newTradeInfo3.sale+'만원)'; 
-                   html1 += '월세('+newTradeInfo3.wolse+'만원) / '+newTradeInfo3.commitdate+'</p>' ;
+            	   html2 += '<p id=call2'+i+'>';
+            	   html2 += '매매 /'+newTradeInfo1.sale+'만원 / '+ newTradeInfo1.commitdate+'<br>';
+            	   html2 += '전세 /'+newTradeInfo2.sale+'만원/ '+ newTradeInfo2.commitdate+'<br>';
+            	   html2 += '월세 / 보증금('+newTradeInfo3.sale+'만원)'; 
+            	   html2 += '월세('+newTradeInfo3.wolse+'만원) / '+newTradeInfo3.commitdate+'</p>' ;
                }else if(newTradeInfo1!=null&&newTradeInfo2!=null){
-            	   html1 += '<p id=call2'+i+'>';
-                   html1 += '매매 /'+newTradeInfo1.sale+'만원 / '+ newTradeInfo1.commitdate+'<br>';
-                   html1 += '전세 /'+newTradeInfo2.sale+'만원/ '+ newTradeInfo2.commitdate+'</p>' ;
+            	   html2 += '<p id=call2'+i+'>';
+            	   html2 += '매매 /'+newTradeInfo1.sale+'만원 / '+ newTradeInfo1.commitdate+'<br>';
+            	   html2 += '전세 /'+newTradeInfo2.sale+'만원/ '+ newTradeInfo2.commitdate+'</p>' ;
                 }else if(newTradeInfo2!=null&&newTradeInfo3!=null){
-                	html1 += '<p id=call2'+i+'>';
-                    html1 += '전세 /'+newTradeInfo2.sale+'만원/ '+ newTradeInfo2.commitdate+'<br>';
-                    html1 += '월세 / 보증금('+newTradeInfo3.sale+'만원)'; 
-                    html1 += '월세('+newTradeInfo3.wolse+'만원) / '+newTradeInfo3.commitdate+'</p>' ;
+                	html2 += '<p id=call2'+i+'>';
+                	html2 += '전세 /'+newTradeInfo2.sale+'만원/ '+ newTradeInfo2.commitdate+'<br>';
+                	html2 += '월세 / 보증금('+newTradeInfo3.sale+'만원)'; 
+                	html2 += '월세('+newTradeInfo3.wolse+'만원) / '+newTradeInfo3.commitdate+'</p>' ;
                 }else if(newTradeInfo1!=null&&newTradeInfo3!=null){
-                	html1 += '<p id=call2'+i+'>';	
-                	html1 += '매매 /'+newTradeInfo1.sale+'만원 / '+ newTradeInfo1.commitdate+'<br>';
-                    html1 += '월세 / 보증금('+newTradeInfo3.sale+'만원)'; 
-                    html1 += '월세('+newTradeInfo3.wolse+'만원) / '+newTradeInfo3.commitdate+'</p>' ;
+                	html2 += '<p id=call2'+i+'>';	
+                	html2 += '매매 /'+newTradeInfo1.sale+'만원 / '+ newTradeInfo1.commitdate+'<br>';
+                	html2 += '월세 / 보증금('+newTradeInfo3.sale+'만원)'; 
+                	html2 += '월세('+newTradeInfo3.wolse+'만원) / '+newTradeInfo3.commitdate+'</p>' ;
                 }else if(newTradeInfo1!=null){
-                	html1 += '<p id=call2'+i+'>';
-                    html1 += '매매 /'+newTradeInfo1.sale+'만원 / '+newTradeInfo1.commitdate+'</p>' ;
+                	html2 += '<p id=call2'+i+'>';
+                	html2 += '매매 /'+newTradeInfo1.sale+'만원 / '+newTradeInfo1.commitdate+'</p>' ;
                 }else if(newTradeInfo2!=null){
-                	html1 += '<p id=call2'+i+'>';
-                	html1 += '전세 /'+newTradeInfo2.sale+'만원/ '+ newTradeInfo2.commitdate+'</p>' ;
+                	html2 += '<p id=call2'+i+'>';
+                	html2 += '전세 /'+newTradeInfo2.sale+'만원/ '+ newTradeInfo2.commitdate+'</p>' ;
                 }else if(newTradeInfo3!=null){
-                	html1 += '<p id=call2'+i+'>';
-                    html1 += '월세 / 보증금('+newTradeInfo3.sale+'만원)'; 
-                    html1 += '월세('+newTradeInfo3.wolse+'만원) / '+newTradeInfo3.commitdate+'</p>' ;
+                	html2 += '<p id=call2'+i+'>';
+                	html2 += '월세 / 보증금('+newTradeInfo3.sale+'만원)'; 
+                	html2 += '월세('+newTradeInfo3.wolse+'만원) / '+newTradeInfo3.commitdate+'</p>' ;
                 }
                
                /*if(newTradeInfo1!=null&&newTradeInfo2!=null&&newTradeInfo3!=null){
@@ -211,8 +213,8 @@ function drawAptTradeInfo(data){
                }else if(newTradeInfo3!=null){
                   html1 += '<div class="tab-pane fade in active" style= "display:none" id=call2'+i+'>월세 / 보증금('+newTradeInfo3.sale+'만원) 월세('+newTradeInfo3.wolse+'만원) / '+newTradeInfo3.commitdate+'</div>' ;
                }*/
-               html1 += '</div>';
-               html1 += '</div>';
+               html2 += '</div>';
+               html2 += '</div>';
                
             }
          
@@ -223,12 +225,14 @@ function drawAptTradeInfo(data){
 //            }
 ////               html1 += '<li>'+(parseInt(tradeInfo[0].aptsize)/3.3).toFixed(1)+'평형</li>' ;
 //         })
-         html1 += '</ul>';
+         html2 += '</ul>';
          $('#aptTradeInfo').html(html1);
+         $('#aptTradeInfo2').html(html2);
       }
    }
 }
 function itekute(id){
+   $('#aptTradeInfo2').show();
    $('#call20').hide();
    $('#call21').hide();
    $('#call22').hide();

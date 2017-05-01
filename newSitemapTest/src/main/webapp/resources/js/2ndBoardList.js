@@ -97,12 +97,13 @@ function boardList3() {
 				
 				//부동산거래정보
 				html += '<h4 class="ribbon-heading ribbon-primary" id="tradeInfo">아파트 거래정보</h4>';
-				html += '<div style="overflow:auto;height:150px;display:none;" id = "aptTradeInfo" ></div>';
+				html += '<div style="overflow:auto;height:120px;display:none;" id = "aptTradeInfo" ></div>';
+				html += '<div style="overflow:auto;height:70px;display:none;" id = "aptTradeInfo2" ></div>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 			
 				//소요시간비교
-				html += '<h4 class="ribbon-heading ribbon-primary">소요시간 비교</h4>';
+				html += '<h4 class="ribbon-heading ribbon-primary" id="timegraph">소요시간 비교</h4>';
 				html += '<div class="sidebar-block padding-none"></div>';
 				html += '<div data-toggle="gridalicious" data-width="400" style="display:block; text-align:center;">';
 				html += '<canvas id = "myChart2" width = "300px" height = "300px" style="z-index:15; left:50%; display:inline-block;"></canvas></div>';
@@ -116,6 +117,7 @@ function boardList3() {
             
         	var height = document.getElementById("aptInfo");
         	var tradewindow = document.getElementById("aptTradeInfo");
+        	var tradewindow2 = document.getElementById("aptTradeInfo2");
 //        	height.style.display="block";
         	$("#info").mouseenter(function(){
         		height.style.display="block";
@@ -128,12 +130,23 @@ function boardList3() {
         	})
         	$("#tradeInfo").mouseenter(function(){
         		tradewindow.style.display="block";
+        	//	tradewindow2.style.display="block";
+        	});
+        	$("#aptTradeInfo2").mouseenter(function(){
+        		tradewindow.style.display="block";
+        		tradewindow2.style.display="block";
         	});
         	$("#info").mouseenter(function(){
         		tradewindow.style.display="none";
+        		tradewindow2.style.display="none";
         	});
         	$("#aptTradeInfo").mouseleave(function(){
         		tradewindow.style.display="none";
+        		tradewindow2.style.display="none";
+        	})
+        	$("#timegraph").mouseenter(function(){
+        		tradewindow.style.display="none";
+        		tradewindow2.style.display="none";
         	})
         	
             if (html != "") {

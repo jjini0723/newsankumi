@@ -110,7 +110,7 @@ function removeItem(index) {
    buildList(items);
 }
 
-function setCircle(buy, lease, index) {
+function setCircle(lease, buy, index) {
    console.log(buy,lease);
    var geocoder = new daum.maps.services.Geocoder();
    var circle = new daum.maps.Circle({});
@@ -145,7 +145,7 @@ function setCircle(buy, lease, index) {
              });
 
              var content = '<div style="padding:10px; font-size:2rem; opacity:1; color:white; margin-left:-120px; text-shadow: 0 0 57px black;'
-                 +'margin-top: 70px; font-weight: bold;">'+'평당 매매가 '+buy+' (3.3㎡)<br><br>'+'평당 전세가 '+lease+'(3.3㎡)</div>';  
+                 +'margin-top: 70px; font-weight: bold;">'+'평당 매매가 '+buy+' (3.3㎡)<br><br>'+'평당 전세가 '+lease+' (3.3㎡)</div>';  
              // 커스텀 오버레이가 표시될 위치입니다 
              var position = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);  
 
@@ -304,7 +304,8 @@ function deleteArray1(){
 }
 
 function deletePrice(){
-	if(priceArray.length != 0) {
-		priceArray.length = 0;
+	if (priceArray.length != 0) {
+		 priceArray[0].setMap(null);
+	       priceArray.splice(0,1);
 	}
 }

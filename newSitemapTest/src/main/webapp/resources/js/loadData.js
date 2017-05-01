@@ -204,11 +204,11 @@ function loadcall(sigunguName, ghName,dongscore,count){
         						center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
         						radius: 8000, // 미터 단위의 원의 반지름입니다 
         						strokeWeight: 1, // 선의 두께입니다 
-        						strokeColor: '#333', // 선의 색깔입니다
-        						strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-        						strokeStyle: 'stroke', // 선의 스타일 입니다
-        						fillColor: '#b7b7b7', // 채우기 색깔입니다
-        						fillOpacity: 0.4  // 채우기 불투명도 입니다   
+                                strokeColor: '#333', // 선의 색깔입니다
+                                strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                strokeStyle: 'stroke', // 선의 스타일 입니다
+                                fillColor: '#b7b7b7', // 채우기 색깔입니다
+                                fillOpacity: 0.4  // 채우기 불투명도 입니다  
         					}); 
         				} else {
         					// 지도에 표시할 원을 생성합니다
@@ -216,11 +216,11 @@ function loadcall(sigunguName, ghName,dongscore,count){
         						center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
         						radius: 4000, // 미터 단위의 원의 반지름입니다 
         						strokeWeight: 1, // 선의 두께입니다 
-        						strokeColor: '#333', // 선의 색깔입니다
-        						strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-        						strokeStyle: 'stroke', // 선의 스타일 입니다
-        						fillColor: '#b7b7b7', // 채우기 색깔입니다
-        						fillOpacity: 0.4  // 채우기 불투명도 입니다   
+                                strokeColor: '#333', // 선의 색깔입니다
+                                strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                                strokeStyle: 'stroke', // 선의 스타일 입니다
+                                fillColor: '#b7b7b7', // 채우기 색깔입니다
+                                fillOpacity: 0.4  // 채우기 불투명도 입니다   
         					}); 
         				}
         				// 지도에 원을 표시합니다 
@@ -342,7 +342,7 @@ function loadcall(sigunguName, ghName,dongscore,count){
 	                    perfect.push(perfect2);
 	                }
 	                // 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
-	                var iwContent = '<div style="padding:5px; color:black;">'+item+'</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+	                var iwContent = '<div style="padding:20px; color:black;">'+item.kaptAddr+'   <br></div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 	                // 인포윈도우를 생성합니다
 	                var infowindow = new daum.maps.InfoWindow({
 	                    content : iwContent
