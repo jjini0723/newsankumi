@@ -57,7 +57,6 @@ function searchPlaces() {
     var keyword = document.getElementById('keyword').value;
 
     if (!keyword.replace(/^\s+|\s+$/g, '')) {
-    	//sweetalert을 적용할까 생각중-진희
     	sweetAlert({
 			title: "삐비빗!", 
 		    text: "키워드를 입력해주세요!", 
@@ -208,8 +207,7 @@ function getItem(index) {
    
    
    var el = document.createElement('li'),
-	itemStr = '<span class="markerbg marker_' + (index+1) + '" title="'+places[index].title+'"></span>' +
-                /*'<div class="info">' +*/
+   itemStr = '<span class="markerbg marker_' + (index+1) + '" title="'+places[index].title+'"></span>' +
                 '   <a style="text-decoration:none" onclick="focuson('+places[index].longitude+','+places[index].latitude+')"><h5>' + places[index].title + '</h5></a>';
 	itemStr += '<a href="#" class="deletebtn" id="'+paraparam1+'" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL(\''+paraparam1+'\');" >'
 	+'<span class="glyphicon glyphicon-trash" style="color:red;"></span>'

@@ -24,16 +24,18 @@ function boardList2(result) {
              html += '<div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>';
              html += '<div id="menu_wrap" class="bg_white">';
              html += '<div class="option">';
-             html += '<div>';
-             html += '<form class="text-center panel-boby" onsubmit="searchPlaces(); return false;">';
              
-             html += '<input class="col-sm-9 col-ms-9" type="text" value="" id="keyword" size="25" placeholder="희망목적지를 입력해주세요.">'; 
-             html += '&nbsp'
-             html += '<button class="btn col-sm-2 col-ms-2" type="submit" style="padding: 4px; font-size:12px; width: inherit;">검색하기</button>'; 
+             //검색부분
+             html += '<form class="text-center panel-boby" onsubmit="searchPlaces(); return false;">';
+             html += '<div class="input-group">';
+             html += '<input type="text" class="form-control" placeholder="희망목적지를 입력해주세요." id="keyword">'; 
+             html += '<div class="input-group-btn">';
+             html += '<button class="btn btn-default" type="submit">검색</button>';
+             html += '</div>';
+             html += '</div>';
              html += '</form>';
+
              html += '</div>';
-             html += '</div>';
-             /*html += '<hr>';*/
              html += '<ul id="placesList"></ul>';
              html += '<ul class="pagination margin-none" id="pagination"></ul>';
              html += '</div>';
@@ -44,11 +46,11 @@ function boardList2(result) {
              //희망목적지      
              html += '</div></div>';
              html += '<h4 class="category">생활권역</h4>';
-             html += '<div class="panel-body text-center">';
+             html += '<div class="text-center">';
              html += '<div data-toggle="gridalicious" data-width="400">';
              
              ///////////// 등록된 희망목적지가 추가될 부분
-             html += '<div class="map_wrap panel-body text-center" style="color:black">';
+             html += '<div class="map_wrap text-center panel-boby" style="display: inline-flex;color:black;">';
              html += '<ul id="getItem"></ul>';
              html += '</div>';
              /////////////
@@ -57,7 +59,7 @@ function boardList2(result) {
 
              //다음단계
 			 html += '<div class="sidebar-block text-center filter_commit">';
-			 html += '<a class="btn btn-primary btn-block" onclick = "hopeListSizeChk();"><strong style="color:white;">최적의 주거공간 찾기</strong></a>';
+			 html += '<a class="btn btn-primary btn-block" onclick = "boardList3(), searchBestLoc(), hoit2(), filtering();"><strong style="color:white;">최적의 주거공간 찾기</strong></a>';
 			 html += '</div></div>';
              $("#test123").html(html);
          },
