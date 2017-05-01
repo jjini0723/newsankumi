@@ -160,7 +160,11 @@ function dfa(carArray, walkArray, tradiArray){
             $.each(perfect,function(index,item1){//아파트 개수만큼 돈다 ex)도보로 2개 설정 된상태에서 아파트가 200개 면 url400번 날린다
                 $.ajax({
                 type : "POST",      
+<<<<<<< HEAD
                 url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey="+walkusekey,
+=======
+                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=a2b681cd-140a-3af2-bea9-5d90bef42f84",
+>>>>>>> origin/master
                 success : function(data){
                     yebi = data.features[0].properties.totalTime//총 시간만 출력
                     console.log(data);

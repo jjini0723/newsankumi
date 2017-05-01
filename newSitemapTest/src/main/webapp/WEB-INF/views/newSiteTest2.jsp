@@ -7,6 +7,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+<!-- 폰트적용 -->
+<style>
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+@import url(http://cdn.jsdelivr.net/font-nanum/1.0/nanumbarungothic/nanumbarungothic.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+*, body,table, div, p ,a, span, h1, h2, h3, h4, h5, h6{ font-family: 'nanumgothic', sans-serif;}
+.normal * { font-weight: normal; }
+</style>
+
 <link rel="stylesheet" href="./resources/css/avgrund.css?ver=1"> <!-- 첫번째 팝업 style -->
 <link rel="stylesheet" href="./resources/css/sweetalert.css"> <!-- sweetalert/email 보내기 팝업 관련 style -->
 
@@ -323,11 +340,6 @@ function radio7thCheck(name){
 
 	
 	//title 툴팁용
-	$(document).ready(function() {
-    	$('.tip').tipr();
-	});
-	
-
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip()
 	})
@@ -367,7 +379,7 @@ function radio7thCheck(name){
 	<link href="./resources/css/vendor/select2.css" rel="stylesheet">
 	
 	<!-- 아파트목록 table css 관련 -->
-	<link href="./resources/css/tablecss.css?ver=2" rel="stylesheet">
+	<link href="./resources/css/tablecss.css?ver=1" rel="stylesheet">
   
 
   <!-- App CSS CORE
@@ -421,7 +433,7 @@ This variant is to be used when loading the separate styling modules -->
 		     			<a href = "/maptest01/" onclick = "init();" class="navbar-brand"
 			          		style="width: 400px; position: absolute; left: 50%; margin-left: -200px; border: 0; outline: 0;
 			          		-ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none; color : #141414;">
-							<img src="./resources/images/test111.png" style="width:auto; height: inherit; ">
+							<img src="./resources/images/title2.png" style="width:auto; height: inherit; ">
 							<!-- エッ！スマップ？ S(SMART)・MAP -->
 							</a>
 							<button class = "btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" style = "margin-top:15px;" id="infobtn">
@@ -1166,8 +1178,7 @@ This variant is to be used when loading the separate styling modules -->
 				 </div>
 				 
                     <div class="wizard-step">
-                 <!--      <span class = "popupimg"><img style = "width:90%;" src="./resources/images/bar1.png"></span>
- -->                   <span class="popuptext" style = "margin-left:15px; margin-top:-5px;"> 
+                       <span class = "popupimg"><img style = "width:90%;" src="./resources/images/lastview.jpg"></span>                   <span class="popuptext" style = "margin-left:15px; margin-top:-5px;"> 
 	                    <h5 style="font-weight:bold;">추천 아파트 리스트</h5> 
 							&nbsp&nbsp앞서 선택된 지역들의 점수와 생활 권역에 따른 아파트 별 합산 점수 순으로 보여줍니다.
 						<h5 style="font-weight:bold;">아파트 세부정보</h5>

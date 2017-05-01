@@ -59,7 +59,7 @@ function boardList2(result) {
 
              //다음단계
 			 html += '<div class="sidebar-block text-center filter_commit">';
-			 html += '<a class="btn btn-primary btn-block" onclick = "boardList3(), searchBestLoc(), hoit2(), filtering();"><strong style="color:white;">최적의 주거공간 찾기</strong></a>';
+			 html += '<a class="btn btn-primary btn-block" onclick = "hopeListSizeChk();"><strong style="color:white;">최적의 주거공간 찾기</strong></a>';
 			 html += '</div></div>';
              $("#test123").html(html);
          },
@@ -97,8 +97,8 @@ function boardList3() {
 				
 				//부동산거래정보
 				html += '<h4 class="ribbon-heading ribbon-primary" id="tradeInfo">아파트 거래정보</h4>';
-				html += '<div style="overflow:auto;height:120px;display:none;" id = "aptTradeInfo" ></div>';
-				html += '<div style="overflow:auto;height:70px;display:none;" id = "aptTradeInfo2" ></div>';
+				html += '<div style="overflow:hidden;height:70px;display:none;" id = "aptTradeInfo" ></div>';
+				html += '<div style="overflow:hidden;height:70px;display:none;" id = "aptTradeInfo2" ></div>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
 			

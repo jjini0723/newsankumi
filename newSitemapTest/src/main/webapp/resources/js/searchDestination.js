@@ -53,9 +53,7 @@ function deleteL(paraparam1) {
 
 // 키워드 검색을 요청하는 함수입니다
 function searchPlaces() {
-
     var keyword = document.getElementById('keyword').value;
-
     if (!keyword.replace(/^\s+|\s+$/g, '')) {
     	sweetAlert({
 			title: "삐비빗!", 
@@ -64,7 +62,6 @@ function searchPlaces() {
 		});
 		return false;
     }
-
     // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
     ps.keywordSearch( keyword, placesSearchCB); 
 }
@@ -72,14 +69,12 @@ function searchPlaces() {
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearchCB(status, data, pagination) {
     if (status === daum.maps.services.Status.OK) {
-
         // 정상적으로 검색이 완료됐으면
         // 검색 목록과 마커를 표출합니다.
         displayPlaces(data.places);
 
         // 페이지 번호를 표출합니다
         displayPagination(pagination);
-
     } else if (status === daum.maps.services.Status.ZERO_RESULT) {
         sweetAlert({
 			title: "삐비빗!", 
@@ -199,48 +194,24 @@ function displayPlace(index) {
 }
 
 function getItem(index) {
-   var places = JSON.parse($("#places").val());
-   var title = places[index].title;
-   $("#title").val(title);
-   var paraparam = places[index].title+places[index].address;
-   var paraparam1 = paraparam.replace(/ /gi, "");
+    var places = JSON.parse($("#places").val());
+    var title = places[index].title;
+    $("#title").val(title);
+    var paraparam = places[index].title+places[index].address;
+    var paraparam1 = paraparam.replace(/ /gi, "");
    
-   
-   var el = document.createElement('li'),
-   itemStr = '<span class="markerbg marker_' + (index+1) + '" title="'+places[index].title+'"></span>' +
+    var el = document.createElement('li'),
+    itemStr = '<span class="markerbg marker_' + (index+1) + '" title="'+places[index].title+'"></span>' +
                 '   <a style="text-decoration:none" onclick="focuson('+places[index].longitude+','+places[index].latitude+')"><h5>' + places[index].title + '</h5></a>';
 	itemStr += '<a href="#" class="deletebtn" id="'+paraparam1+'" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL(\''+paraparam1+'\');" >'
 	+'<span class="glyphicon glyphicon-trash" style="color:red;"></span>'
 	+'</a><br>'; 
-   	
-   
 
-/*    if (places[index].address) {
-        itemStr += '   <span class="jibun gray">' +  places[index].address  + '</span><br>';
-    }
-      itemStr += '  <span class="tel">' + places[index].phone  + '</span><br>' ;
-      
-      itemStr += '<a href="#" class="deletebtn" id="'+paraparam1+'" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL(\''+paraparam1+'\');" >'
-		      +'<span class="glyphicon glyphicon-trash" style="color:red;"></span>'
-		      +'</a><br>'; */
-/*
- * 
- * itemStr += '<a href="#" class="deletebtn" id="'+paraparam1+'" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL(\''+paraparam1+'\');" >'
-               +'<span class="glyphicon glyphicon-trash" style="color:red;"></span>'
-               +'</a><br>'; 
- * 
- * itemStr += '<a href="#" class="deletebtn" id="'+paraparam1+'" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL(\''+paraparam1+'\');" >'
-      		  +'<span class="glyphicon glyphicon-trash" style="color:red;"></span>'
-      		  +'</a><br>'; 
- * 
- */
-
-    
     el.innerHTML = itemStr;
     el.className = 'item2';
     return el;
 }
-////////////////////////////다시 짜기
+
 function confirm(lat, lng, index) {
 	var places = JSON.parse($("#places").val());
 	var obj1 = document.getElementsByName("transport");
@@ -309,7 +280,7 @@ function changeMarker(index2) {
 	for(var i = 0; i < filterAddr.length; i++) {
 		if(markerAddr[i] == filterAddr[index2].kaptName) {
 			var coordsss = new daum.maps.LatLng(filterAddr[index2].y, filterAddr[index2].x);
-			var imageSrc = './resources/images/markers/building-10.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+			var imageSrc = './resources/images/selectedMarker.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
 	        	imageSize = new daum.maps.Size(41, 40),  // 마커 이미지의 크기
 	        	imgOptions =  {
 	            	spriteSize : new daum.maps.Size(41, 40), // 스프라이트 이미지의 크기
@@ -364,7 +335,6 @@ function addMarker(position, idx, title) {
 
     marker.setMap(map); // 지도 위에 마커를 표출합니다
     markers.push(marker);  // 배열에 생성된 마커를 추가합니다
-    
 
     return marker;
 }
@@ -393,14 +363,14 @@ function removeOtherMarker(index) {
 
 //삭제한 희망목적지의 마커를  새로운 마커배열에서 삭제
 function removeThisMarker(index) {
-   newMarkers[index].setMap(null);
-   newMarkers.splice(index,1);
+    newMarkers[index].setMap(null);
+    newMarkers.splice(index,1);
 }
 
 
 // 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
 function displayPagination(pagination) {
-   paginationEl = document.getElementById('pagination'),
+    paginationEl = document.getElementById('pagination'),
     fragment = document.createDocumentFragment(),
     i; 
    
@@ -521,53 +491,52 @@ function removeAllChildNods(el) {
 
 // 검색결과 목록의 페이지 번호 삭제하는 함수입니다.
 function removeAllpaginationChildNods(paginationEl) {
-   while (paginationEl.hasChildNodes()) {
-      paginationEl.removeChild (paginationEl.lastChild);
+    while (paginationEl.hasChildNodes()) {
+        paginationEl.removeChild (paginationEl.lastChild);
     }
-   // i에 1을 설정해주지 않으면 검색결과 삭제 후 i가 undefined라는 에러 발생.
-   i = 1;
+    // i에 1을 설정해주지 않으면 검색결과 삭제 후 i가 undefined라는 에러 발생.
+    i = 1;
 }
 
 function hoi(lat, lng, index) {
-   var places = JSON.parse($("#places").val()); 
-   var obj1 = document.getElementsByName("transport");
-   var idx1 = obj1[index].options.selectedIndex; // 해당 selectbox index 구하기
+    var places = JSON.parse($("#places").val()); 
+    var obj1 = document.getElementsByName("transport");
+    var idx1 = obj1[index].options.selectedIndex; // 해당 selectbox index 구하기
 
-   var transport = obj1[index].options[idx1].value; // 선택된 selectbox의 value값 가져오기
-   // 각 이동수단의 배열에 x, y좌표와 해당 희망목적지의 이름을 저장한다.
-   if(transport == 1) {
-      var car = { x : lat, y: lng, title: places[index].title};
-      carArray.push(car);
-   }
-   if(transport == 2) {
-      var walk = { x : lat, y : lng, title: places[index].title};
-      walkArray.push(walk);
-   }
-   if(transport == 3) {
-      var tradi = { x : lat, y :  lng, title: places[index].title};
-      tradiArray.push(tradi);
-   }
-   if(transport != 0) {
-      listReset(index);
-   }
-   infowindow.close();
+    var transport = obj1[index].options[idx1].value; // 선택된 selectbox의 value값 가져오기
+    // 각 이동수단의 배열에 x, y좌표와 해당 희망목적지의 이름을 저장한다.
+    if(transport == 1) {
+        var car = { x : lat, y: lng, title: places[index].title};
+        carArray.push(car);
+    }
+    if(transport == 2) {
+        var walk = { x : lat, y : lng, title: places[index].title};
+        walkArray.push(walk);
+    }
+    if(transport == 3) {
+        var tradi = { x : lat, y :  lng, title: places[index].title};
+        tradiArray.push(tradi);
+    }
+    if(transport != 0) {
+        listReset(index);
+    }
+    infowindow.close();
 }
 
 
 function searchBestLoc() {
-   dfa(carArray, walkArray, tradiArray); // dfa()에  carArray, walkArray, tradiArray를 보내서 dfa에서 각 Array의 length를 체크해보는 건 어떨까?
+    dfa(carArray, walkArray, tradiArray); // dfa()에  carArray, walkArray, tradiArray를 보내서 dfa에서 각 Array의 length를 체크해보는 건 어떨까?
 }
 
 function listReset(index) {
-   var listEl = document.getElementById('placesList');
-   document.getElementById("keyword").value = "";
-   removeAllChildNods(listEl);
-   removeAllpaginationChildNods(paginationEl);
+    var listEl = document.getElementById('placesList');
+    document.getElementById("keyword").value = "";
+    removeAllChildNods(listEl);
+    removeAllpaginationChildNods(paginationEl);
 }
 function focuson(x,y){
 	var moveLatLon = new daum.maps.LatLng(y, x);
 	map.setLevel(8);
-	
 	    
 	// 지도 중심을 이동 시킵니다
 	map.setCenter(moveLatLon);
