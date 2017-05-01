@@ -342,7 +342,7 @@ function loadcall(sigunguName, ghName,dongscore,count){
 	                    perfect.push(perfect2);
 	                }
 	                // 마커에 커서가 오버됐을 때 마커 위에 표시할 인포윈도우를 생성합니다
-	                var iwContent = '<div style="padding:5px; color:black;">'+item.kaptAddr+'</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+	                var iwContent = '<div style="padding:20px; color:black;">'+item.kaptAddr+'   <br></div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 	                // 인포윈도우를 생성합니다
 	                var infowindow = new daum.maps.InfoWindow({
 	                    content : iwContent

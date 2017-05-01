@@ -304,6 +304,8 @@ function deleteArray1(){
 }
 
 function deletePrice(){
+	if (priceArray.length != 0) {
 		 priceArray[0].setMap(null);
 	       priceArray.splice(0,1);
+	}
 }
