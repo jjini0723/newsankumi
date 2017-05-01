@@ -302,3 +302,9 @@ function deleteArray1(){
       dongScore.length = 0;
    }
 }
+
+function deletePrice(){
+	if(priceArray.length != 0) {
+		priceArray.length = 0;
+	}
+}

@@ -215,7 +215,7 @@ function dfa(carArray, walkArray, tradiArray){
 	               type:"post",
 	               contentType : "application/json;charset=utf-8",
 	               dataType : "json",
-	               url:"https://maps.googleapis.com/maps/api/directions/json?origin="+item1.y+","+item1.x+"&destination="+item.x+","+item.y+"&mode=transit&key=AIzaSyBKWZBV932x9UcDs4ey8TVQ-oV8fiXxPpI",
+	               url:"https://maps.googleapis.com/maps/api/directions/json?origin="+item1.y+","+item1.x+"&destination="+item.x+","+item.y+"&mode=transit&key=AIzaSyD1SXZMCJFk4dRd7MZCDWHk0jINUtI9v2Y",
 	               success:function(data){
 	                   console.log(data);
 	                   yebi = data.routes[0].legs[0].duration.value;//소요시간만 뺀다
