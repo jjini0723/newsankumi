@@ -59,7 +59,7 @@ function dfa(carArray, walkArray, tradiArray){
             $.each(perfect,function(index,item1){ // 선택되어있는 아파트만큼 돈다
             	$.ajax({
 	                type : "POST",   
-	                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=360a72a6-2781-35ea-b877-98cd58c69b91",
+	                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=a2b681cd-140a-3af2-bea9-5d90bef42f84",
 	                success : function(data){//succes 안에서 길이만큼 반복 후 2번 돌아야 할시 2번돌고 true로 변경
 	                	console.log(data);
 	                    yebi = data.features[0].properties.totalTime//시간만 빼온다
@@ -135,7 +135,7 @@ function dfa(carArray, walkArray, tradiArray){
             $.each(perfect,function(index,item1){//아파트 개수만큼 돈다 ex)도보로 2개 설정 된상태에서 아파트가 200개 면 url400번 날린다
                 $.ajax({
                 type : "POST",      
-                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=360a72a6-2781-35ea-b877-98cd58c69b91",
+                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=a2b681cd-140a-3af2-bea9-5d90bef42f84",
                 success : function(data){
                     yebi = data.features[0].properties.totalTime//총 시간만 출력
                     console.log(data);
