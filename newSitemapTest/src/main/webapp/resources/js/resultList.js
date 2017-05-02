@@ -106,92 +106,92 @@ function addItem() {
 }
 
 function removeItem(index) {
-   items.splice(index, 1);
-   buildList(items);
+    items.splice(index, 1);
+    buildList(items);
 }
 
 function setCircle(lease, buy, index) {
-   console.log(buy,lease);
-   var geocoder = new daum.maps.services.Geocoder();
-   var circle = new daum.maps.Circle({});
+    console.log(buy,lease);
+    var geocoder = new daum.maps.services.Geocoder();
+    var circle = new daum.maps.Circle({});
 
-   var listData = JSON.parse($("#dongitem").val());
-   ///////태훈 추가 수정부분
+    var listData = JSON.parse($("#dongitem").val());
+    ///////태훈 추가 수정부분
     
     var item = listData[index];
     var ghNameStr = item.dong;
     var lastChar = ghNameStr.charAt(ghNameStr.length - 1);
     
     if(circleArray.length != 0 || priceArray.length != 0) {
-       circleArray[0].setMap(null);
-       circleArray.splice(0,1);
-       priceArray[0].setMap(null);
-       priceArray.splice(0,1);
+        circleArray[0].setMap(null);
+        circleArray.splice(0,1);
+        priceArray[0].setMap(null);
+        priceArray.splice(0,1);
     }
     
     geocoder.addr2coord(item.gu+" "+item.dong, function(status, result) {
-      // 정상적으로 검색이 완료됐으면 
-      if (status === daum.maps.services.Status.OK) {
-          if(lastChar == '읍' || lastChar == '면') {
-             circle = new daum.maps.Circle({
-                center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
-                 radius: 8000, // 미터 단위의 원의 반지름입니다 
-                     strokeWeight: 1, // 선의 두께입니다 
-                     strokeColor: '#333', // 선의 색깔입니다
-                     strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-                     strokeStyle: 'stroke', // 선의 스타일 입니다
-                     fillColor: '#b7b7b7', // 채우기 색깔입니다
-                     fillOpacity: 0.4  // 채우기 불투명도 입니다   
-             });
+        // 정상적으로 검색이 완료됐으면 
+        if (status === daum.maps.services.Status.OK) {
+            if(lastChar == '읍' || lastChar == '면') {
+                circle = new daum.maps.Circle({
+                    center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
+                    radius: 8000, // 미터 단위의 원의 반지름입니다 
+                    strokeWeight: 1, // 선의 두께입니다 
+                    strokeColor: '#333', // 선의 색깔입니다
+                    strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                    strokeStyle: 'stroke', // 선의 스타일 입니다
+                    fillColor: '#b7b7b7', // 채우기 색깔입니다
+                    fillOpacity: 0.4  // 채우기 불투명도 입니다   
+                });
 
-             var content = '<div style="padding:10px; font-size:2rem; opacity:1; color:white; margin-left:-120px; text-shadow: 0 0 57px black;'
-                 +'margin-top: 70px; font-weight: bold;">'+'평당 매매가 '+buy+' (3.3㎡)<br><br>'+'평당 전세가 '+lease+' (3.3㎡)</div>';  
-             // 커스텀 오버레이가 표시될 위치입니다 
-             var position = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);  
+                var content = '<div style="padding:10px; font-size:2rem; opacity:1; color:white; margin-left:-120px; text-shadow: 0 0 57px black;'
+                          +'margin-top: 70px; font-weight: bold;">'+'평당 매매가 '+buy+' (3.3㎡)<br><br>'+'평당 전세가 '+lease+' (3.3㎡)</div>';  
+                // 커스텀 오버레이가 표시될 위치입니다 
+                var position = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);  
 
-             // 커스텀 오버레이를 생성합니다
-             var customOverlay = new daum.maps.CustomOverlay({
-                 position: position,
-                 content: content,
-                 xAnchor: 0.3,
-                 yAnchor: 0.91
-             });
-             console.log(customOverlay);
-             // 커스텀 오버레이를 지도에 표시합니다
-             customOverlay.setMap(map);
-             circle.setMap(map);
+                // 커스텀 오버레이를 생성합니다
+                var customOverlay = new daum.maps.CustomOverlay({
+                    position: position,
+                    content: content,
+                    xAnchor: 0.3,
+                    yAnchor: 0.91
+                });
+                console.log(customOverlay);
+                // 커스텀 오버레이를 지도에 표시합니다
+                customOverlay.setMap(map);
+                circle.setMap(map);
              
-          } else {
-             circle = new daum.maps.Circle({
+            } else {
+                circle = new daum.maps.Circle({
                 center : new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng),  // 원의 중심좌표 입니다 
-                 radius: 4000, // 미터 단위의 원의 반지름입니다 
-                     strokeWeight: 1, // 선의 두께입니다 
-                     strokeColor: '#333', // 선의 색깔입니다
-                     strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
-                     strokeStyle: 'stroke', // 선의 스타일 입니다
-                     fillColor: '#b7b7b7', // 채우기 색깔입니다
-                     fillOpacity: 0.4  // 채우기 불투명도 입니다   
-             });
-             var content = '<div style="padding:10px; font-size:2rem; opacity:1; color:white; margin-left:-120px; text-shadow: 0 0 57px black;'
-                 +'margin-top: 70px; font-weight: bold;">'+'평당 매매가 '+buy+' (3.3㎡)<br><br>'+'평당 전세가 '+lease+'(3.3㎡)</div>'; 
-             // 커스텀 오버레이가 표시될 위치입니다 
-             var position = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);  
-             // 커스텀 오버레이를 생성합니다
-             var customOverlay = new daum.maps.CustomOverlay({
-                 position: position,
-                 content: content,
-                 xAnchor: 0.3,
-                 yAnchor: 0.91
-             });
-             console.log(customOverlay);
-             // 커스텀 오버레이를 지도에 표시합니다
-             customOverlay.setMap(map);
-             circle.setMap(map);
-          }
-          //console.log(infowindow);
-          circleArray.push(circle);
-          priceArray.push(customOverlay);
-      }
+                radius: 4000, // 미터 단위의 원의 반지름입니다 
+                    strokeWeight: 1, // 선의 두께입니다 
+                    strokeColor: '#333', // 선의 색깔입니다
+                    strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                    strokeStyle: 'stroke', // 선의 스타일 입니다
+                    fillColor: '#b7b7b7', // 채우기 색깔입니다
+                    fillOpacity: 0.4  // 채우기 불투명도 입니다   
+                });
+                var content = '<div style="padding:10px; font-size:2rem; opacity:1; color:white; margin-left:-120px; text-shadow: 0 0 57px black;'
+                           +'margin-top: 70px; font-weight: bold;">'+'평당 매매가 '+buy+' (3.3㎡)<br><br>'+'평당 전세가 '+lease+'(3.3㎡)</div>'; 
+                // 커스텀 오버레이가 표시될 위치입니다 
+                var position = new daum.maps.LatLng(result.addr[0].lat, result.addr[0].lng);  
+                // 커스텀 오버레이를 생성합니다
+                var customOverlay = new daum.maps.CustomOverlay({
+                    position: position,
+                    content: content,
+                    xAnchor: 0.3,
+                    yAnchor: 0.91
+                });
+                console.log(customOverlay);
+                // 커스텀 오버레이를 지도에 표시합니다
+                customOverlay.setMap(map);
+                circle.setMap(map);
+            }
+            //console.log(infowindow);
+            circleArray.push(circle);
+            priceArray.push(customOverlay);
+        }
     });
 }
 
