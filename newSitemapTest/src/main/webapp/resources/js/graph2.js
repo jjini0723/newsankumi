@@ -6,6 +6,35 @@
 //평균  - line / 아파트의 교통수단 별 
 var myChart2 = {};
 
+function filterChartData(index){
+	var titlelist2 = JSON.parse($("#titleList").val());
+	var barData2 = []; //
+	var line_data2= []; // 전국평균
+	var listData3 = JSON.parse($("#graphData2").val());
+	 var item2 = listData3[index];
+	 var itemkey2 = [];
+	 var itemvalue2 = [];
+	 var itemvalueavg2 = [];
+	
+	 
+	 $.each(item2, function(key, value){
+	      if (!isNaN(value) && value != 0) {
+	         if (key == "car1" || key =="car2" || key == "car3" || key == "car4" || key == "car5" ||
+	               key == "tradi1"|| key == "tradi2" ||key == "tradi3" ||key == "tradi4" ||key == "tradi5" ||
+	               key == "walk1" || key == "walk2" ||key == "walk3" ||key == "walk4" || key == "walk5") {
+	                  itemvalue2.push(Math.round(value/60,2));
+	         }else if (key == "car1avg" || key =="car2avg" || key == "car3avg" || key == "car4avg" || key == "car5avg" ||
+	               key == "tradi1avg"|| key == "tradi2avg" ||key == "tradi3avg" ||key == "tradi4avg" ||key == "tradi5avg" ||
+	               key == "walk1avg" || key == "walk2avg" ||key == "walk3avg" ||key == "walk4avg" || key == "walk5avg"){
+	               itemvalueavg2.push(Math.round(value/60,2));
+	         }
+	      }
+	   });
+	   console.log('titlelist'+titlelist2);
+	   createChart2(titlelist2, itemvalueavg2, itemvalue2);
+	 
+}
+
 function getChartData2(index){
    var titlelist = JSON.parse($("#titleList").val());
    var barData = []; //
@@ -102,3 +131,4 @@ function initChart2(){
 	
    }
 }
+

@@ -183,6 +183,8 @@ function filter(){
    console.log(result);
    console.log("drawlist");
    filterMarker(result);
+   
+   $("#graphData2").val(JSON.stringify(result));
    var html = "";
    var index =0;
    html += '<ul class = "category" data-width="400" id = "list2" style="padding-top: 0;"><table class="blueone" style="width: 270px;"><tr><td style="width: 80%;">아파트 명</td><td style="width: 20%;">평점</td></tr>';
