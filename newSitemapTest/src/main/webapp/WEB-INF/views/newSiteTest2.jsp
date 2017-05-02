@@ -7,22 +7,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<!-- 폰트적용 -->
-<style>
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
-@import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
-@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
-@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
-@import url(http://cdn.jsdelivr.net/font-nanum/1.0/nanumbarungothic/nanumbarungothic.css);
-
-@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
-
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-
-*, body,table, div, p ,a, span, h1, h2, h3, h4, h5, h6{ font-family: 'nanumgothic', sans-serif;}
-.normal * { font-weight: normal; }
-</style>
 
 <link rel="stylesheet" href="./resources/css/avgrund.css?ver=1"> <!-- 첫번째 팝업 style -->
 <link rel="stylesheet" href="./resources/css/sweetalert.css"> <!-- sweetalert/email 보내기 팝업 관련 style -->
@@ -94,6 +78,10 @@ var circleList = new Array();
 var tmapCarKey1='2bb28cd1-f268-3af6-8329-e6b49122331b';
 var tmapCarKey2='5466b076-3f62-3faf-ac9d-c3002f0fec2d';
 var tmapCarKey3='250b188d-21df-3751-a05f-225464a8462f';
+var tmapCarKey4='32b893de-a5dc-30c0-b49d-bfc3aab6a131';
+var tmapCarKey5='f6c0bf22-c93e-398a-9960-39df244edfc5';
+var tmapWalkKey5='1fb8283b-44f9-314b-8fa7-ce0b235a86d9';
+var tmapWalkKey4='b4e63eae-0a43-394e-b641-e38dfbb4f1b5';
 var tmapWalkKey3='360a72a6-2781-35ea-b877-98cd58c69b91';
 var tmapWalkKey2='f7e2ff7f-9451-3d04-8492-bbed4ab4e206';
 var tmapWalkKey1='a2b681cd-140a-3af2-bea9-5d90bef42f84';
@@ -503,7 +491,7 @@ This variant is to be used when loading the separate styling modules -->
 										</div>
 				                
 										<div class="text-center">
-											<button type="button" class="btn btn-primary" data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList3(); loadData();filtering();hideload();">코드불러오기 <i class="fa fa-sign-in"></i></button>
+											<button type="button" class="btn btn-primary" id = "code321" data-toggle="sidebar-menu" href="#sidebar-map" onclick = "loadData();">코드불러오기 <i class="fa fa-sign-in"></i></button>
 										</div>
 					                </form>
 				                </div>
