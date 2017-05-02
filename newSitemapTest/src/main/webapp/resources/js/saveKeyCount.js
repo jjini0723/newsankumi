@@ -27,10 +27,9 @@ function loadKeyCount(){
 				tmapWalkKeyCount += parseInt(item.tmapWalkKeyCount),
 				googleKeyCount += parseInt(item.googleKeyCount)
 			})
-			
 		},
 		error:function(e){
 			console.log(e)
 		}
-		})
+	})
 }

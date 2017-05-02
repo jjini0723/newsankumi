@@ -18,7 +18,6 @@ function getChartData2(index){
    var item = listData2[index];
    var itemkey = [];
    var itemvalue = [];
-   //var itemkeyavg = [];
    var itemvalueavg = [];
    
    $.each(item, function(key, value){
@@ -98,6 +97,8 @@ function createChart2(titlelist, lineData, barData){
 }
 
 function initChart2(){
-   
-   myChart2.destroy();
+   if (myChart2 != null) {
+	   myChart2.destroy();
+	
+   }
 }
