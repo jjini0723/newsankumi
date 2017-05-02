@@ -65,6 +65,7 @@ function call(sigunguName, ghName, finalAddList2){
 	                            fillColor: '#b7b7b7', // 채우기 색깔입니다
 	                            fillOpacity: 0.4  // 채우기 불투명도 입니다   
 	                        });
+	                        circleList.push(circle);
 	                    } else {
 	                        // 지도에 표시할 원을 생성합니다
 	                        var circle = new daum.maps.Circle({
@@ -77,6 +78,7 @@ function call(sigunguName, ghName, finalAddList2){
 	                            fillColor: '#b7b7b7', // 채우기 색깔입니다
 	                            fillOpacity: 0.4  // 채우기 불투명도 입니다   
 	                        }); 
+	                        circleList.push(circle);
 	                    }
 	                    // 지도에 원을 표시합니다 
 	                    circle.setMap(map); 

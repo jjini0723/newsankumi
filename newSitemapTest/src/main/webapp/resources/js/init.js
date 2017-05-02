@@ -21,4 +21,5 @@ function init(){
 	 dongScore = [];
 	 infoList = new Array(); // 인포윈도우를 저장할 배열
 	 overlayList = new Array(); // 오버레이를 저장할 배열
+	 circleList = new Array();//맵쇼리스트에서 보여주는 원들 초기화
 }

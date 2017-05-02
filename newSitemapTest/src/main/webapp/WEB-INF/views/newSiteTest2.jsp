@@ -87,6 +87,8 @@ var markerAddr = new Array(); // 마커의 주소를 저장할 배열
 var marker3 = new Array();
 var radio7th='';//라디오버튼체크용
 var filterAddr = new Array();
+var searchCheck = false;
+var circleList = new Array();
 
 //자동 키값 변환기
 var tmapCarKey1='2bb28cd1-f268-3af6-8329-e6b49122331b';
@@ -187,7 +189,22 @@ function resultHopeList() {
 
 //라디오버튼 값 보내기
 function conditionSelect(){
-		
+	if(searchCheck == true){
+		$('#searchLocation').removeAttr('href');
+		for(var i=0; i < circleList.length; i++){
+			circleList[i].setMap(null);
+		}		
+		for(var i=0; i < overlayList.length; i++){
+			overlayList[i].olay.setMap(null);
+		}		
+		removeMarker1();
+		removeAllMarkers();
+		init();
+	}	
+	else{		
+		searchCheck = true;
+	}		
+	
 	var arr = new Array();	
 	var hml = $(".hml");
 	
@@ -1030,7 +1047,7 @@ This variant is to be used when loading the separate styling modules -->
 	
 	<h4 class="category" data-step="3" data-intro="조건을 선택하여 클릭 시, 당신만의 맞춤형 동네를 찾아드립니다." data-position = "auto">결과보기</h4>
 		<div class="sidebar-block text-center filter_commit" onclick = "conditionSelect();" >
-			<a data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList(); deleteArray1();" class="btn btn-primary btn-block toggle ">
+			<a id="searchLocation" data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList(); deleteArray1();" class="btn btn-primary btn-block toggle ">
 				<strong style="color: white;" >추천지역찾기</strong> <!-- test123.js 연결 -->
 			</a>
 		</div>

@@ -361,6 +361,12 @@ function removeOtherMarker(index) {
     }
 }
 
+function removeAllMarkers(){
+	for(var i = 0; i < newMarkers.length; i++){
+		newMarkers[i].setMap(null);
+	}
+}
+
 //삭제한 희망목적지의 마커를  새로운 마커배열에서 삭제
 function removeThisMarker(index) {
     newMarkers[index].setMap(null);
