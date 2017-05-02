@@ -22,9 +22,10 @@ $.ajax({
 			    text: "잘못된 정보입니다. 확인 후 입력해주세요", 
 			    type: "error"
 			});
-			return false;
 		}else{
+			boardList3();filtering();hideload();
 			loadaction(data);
+			
 		}
 	},
 	error:function(e){

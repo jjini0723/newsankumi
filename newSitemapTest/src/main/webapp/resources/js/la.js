@@ -10,22 +10,34 @@ function dfa(carArray, walkArray, tradiArray){
 		carusekey = tmapCarKey1;
 	}else if(parseInt(tmapLine)<parseInt(tmapCarKeyCount)&&parseInt(tmapCarKeyCount)<=parseInt(tmapLine)*2){
 		carusekey = tmapCarKey2;
-	}else if(parseInt(tmapLine)*2<parseInt(tmapCarKeyCount)){
+	}else if(parseInt(tmapLine)*2<parseInt(tmapCarKeyCount)&&parseInt(tmapCarKeyCount)<=parseInt(tmapLine)*3){
 		carusekey = tmapCarKey3;
+	}else if(parseInt(tmapLine)*3<parseInt(tmapCarKeyCount)&&parseInt(tmapCarKeyCount)<=parseInt(tmapLine)*4){
+		carusekey = tmapCarKey4;
+	}else if(parseInt(tmapLine)*4<parseInt(tmapCarKeyCount)&&parseInt(tmapCarKeyCount)<=parseInt(tmapLine)*5){
+		carusekey = tmapCarKey5;
 	}
 	if(parseInt(tmapWalkKeyCount) <= parseInt(tmapLine)){
 		walkusekey = tmapWalkKey1;
 	}else if(parseInt(tmapLine)<parseInt(tmapWalkKeyCount)&&parseInt(tmapWalkKeyCount)<=parseInt(tmapLine)*2){
 		walkusekey = tmapWalkKey2;
-	}else if(parseInt(tmapLine)*2<parseInt(tmapWalkKeyCount)){
+	}else if(parseInt(tmapLine)*2<parseInt(tmapWalkKeyCount)&&parseInt(tmapWalkKeyCount)<=parseInt(tmapLine)*3){
 		walkusekey = tmapWalkKey3;
+	}else if(parseInt(tmapLine)*3<parseInt(tmapWalkKeyCount)&&parseInt(tmapWalkKeyCount)<=parseInt(tmapLine)*4){
+		walkusekey = tmapWalkKey4;
+	}else if(parseInt(tmapLine)*4<parseInt(tmapWalkKeyCount)&&parseInt(tmapWalkKeyCount)<=parseInt(tmapLine)*5){
+		walkusekey = tmapWalkKey5;
 	}
 	if(parseInt(googleKeyCount) <= parseInt(googleLine)){
 		tradiusekey = googleKey1;
 	}else if(parseInt(googleLine)<parseInt(googleKeyCount)&&parseInt(googleKeyCount)<=parseInt(googleLine)*2){
 		tradiusekey = googleKey2;
-	}else if(parseInt(googleLine)*2<parseInt(googleKeyCount)){
+	}else if(parseInt(googleLine)*2<parseInt(googleKeyCount)&&parseInt(googleKeyCount)<=parseInt(googleLine)*3){
 		tradiusekey = googleKey3;
+	}else if(parseInt(googleLine)*3<parseInt(googleKeyCount)&&parseInt(googleKeyCount)<=parseInt(googleLine)*4){
+		tradiusekey = googleKey4;
+	}else if(parseInt(googleLine)*5<parseInt(googleKeyCount)&&parseInt(googleKeyCount)<=parseInt(googleLine)*5){
+		tradiusekey = googleKey5;
 	}
 	console.log(tmapCarKeyCount+","+carusekey);
 	console.log(tmapWalkKeyCount+","+walkusekey);

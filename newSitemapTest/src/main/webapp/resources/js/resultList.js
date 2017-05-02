@@ -308,4 +308,9 @@ function deletePrice(){
 		 priceArray[0].setMap(null);
 	       priceArray.splice(0,1);
 	}
+	
+	if (circleArray.length != 0) {
+		circleArray[0].setMap(null);
+		circleArray.splice(0,1);
+	}
 }

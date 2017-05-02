@@ -7,22 +7,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<!-- 폰트적용 -->
-<style>
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
-@import url(http://fonts.googleapis.com/earlyaccess/nanummyeongjo.css);
-@import url(http://fonts.googleapis.com/earlyaccess/nanumbrushscript.css);
-@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
-@import url(http://cdn.jsdelivr.net/font-nanum/1.0/nanumbarungothic/nanumbarungothic.css);
-
-@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
-
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-
-*, body,table, div, p ,a, span, h1, h2, h3, h4, h5, h6{ font-family: 'nanumgothic', sans-serif;}
-.normal * { font-weight: normal; }
-</style>
 
 <link rel="stylesheet" href="./resources/css/avgrund.css?ver=1"> <!-- 첫번째 팝업 style -->
 <link rel="stylesheet" href="./resources/css/sweetalert.css"> <!-- sweetalert/email 보내기 팝업 관련 style -->
@@ -507,7 +491,7 @@ This variant is to be used when loading the separate styling modules -->
 										</div>
 				                
 										<div class="text-center">
-											<button type="button" class="btn btn-primary" data-toggle="sidebar-menu" href="#sidebar-map" onclick = "boardList3(); loadData();filtering();hideload();">코드불러오기 <i class="fa fa-sign-in"></i></button>
+											<button type="button" class="btn btn-primary" id = "code321" data-toggle="sidebar-menu" href="#sidebar-map" onclick = "loadData();">코드불러오기 <i class="fa fa-sign-in"></i></button>
 										</div>
 					                </form>
 				                </div>
