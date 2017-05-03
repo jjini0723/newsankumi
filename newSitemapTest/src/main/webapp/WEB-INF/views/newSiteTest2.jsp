@@ -110,8 +110,6 @@ $(document).avgrund({
 	
 //check box 클릭시 radio box 활성화
 $(function() {
-	
-	
 	$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
 	
 	$('input:checkbox').click(function(e){
