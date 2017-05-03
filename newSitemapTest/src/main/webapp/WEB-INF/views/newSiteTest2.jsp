@@ -230,12 +230,18 @@ function conditionSelect(){
          list : arr
       }),
       success : function(data){
+    	  var data2 =new Array();
     	 conditionResultList = data;
     	 console.log(conditionResultList[0].si);
     	 console.log(conditionResultList[0].gu);
     	 console.log(conditionResultList[0].dong);
     	 console.log(conditionResultList[0].totalScore);
-         buildList(data);
+    	 
+    	 for (var i = 0; i < 10; i++) {
+			data2.push(conditionResultList[i]);
+		}
+    	 console.log(data2);
+         buildList(data2);
       },
       error : function(e){
          console.log(e);
