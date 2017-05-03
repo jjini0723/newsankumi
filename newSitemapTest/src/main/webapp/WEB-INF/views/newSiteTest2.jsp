@@ -452,7 +452,7 @@ This variant is to be used when loading the separate styling modules -->
 		     			<a href = "/maptest01/" onclick = "init();" class="navbar-brand"
 			          		style="width: 400px; position: absolute; left: 50%; margin-left: -200px; border: 0; outline: 0;
 			          		-ms-user-select: none; -moz-user-select: -moz-none; -khtml-user-select: none; -webkit-user-select: none; user-select: none; color : #141414;">
-							<img src="./resources/images/title2.png" style="width:auto; height: inherit; ">
+							<img src="./resources/images/title2-1.png" style="width:auto; height: inherit; padding:8px;">
 							<!-- エッ！スマップ？ S(SMART)・MAP -->
 							</a>
 							<button class = "btn btn-primary" type="button" data-toggle="modal" data-target="#myModal" style = "margin-top:15px;" id="infobtn">

@@ -65,7 +65,7 @@ function getRadios(selected) {
 				+ welfare_sports
 				+ ">"
 				+ '스포츠시설'
-				+ '<a href="#" class = "remove" onclick="removeList1();" name = "welfare_sports">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList1();" name = "welfare_sports" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -80,7 +80,7 @@ function getRadios(selected) {
 				+ welfare_culture
 				+ ">"
 				+ '문화시설'
-				+ '<a href="#" class = "remove" onclick="removeList2();" value ="welfare_culture" >   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList2();" value ="welfare_culture" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -95,7 +95,7 @@ function getRadios(selected) {
 				+ welfare_salon
 				+ ">"
 				+ '미/이용 시설'
-				+ '<a href="#" class = "remove" onclick="removeList3();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList3();" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -112,7 +112,7 @@ function getRadios(selected) {
 				+ welfare_society
 				+ ">"
 				+ '사회복지시설'
-				+ '<a href="#" class = "remove" onclick="removeList4();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList4();" style="color:red;">   x   </a> '
 				+ "</li>";
 
 	}
@@ -129,7 +129,7 @@ function getRadios(selected) {
 				+ welfare_medical
 				+ ">"
 				+ '의료시설'
-				+ '<a href="#" class = "remove" onclick="removeList5();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList5();" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -145,7 +145,7 @@ function getRadios(selected) {
 				+ welfare_childCare
 				+ ">"
 				+ '보육시설'
-				+ '<a href="#" class = "remove" onclick="removeList6();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList6();" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -161,7 +161,7 @@ function getRadios(selected) {
 				+ education_student
 				+ ">"
 				+ '교원 당 학생수'
-				+ '<a href="#" class = "remove" onclick="removeList7();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList7();" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -177,7 +177,7 @@ function getRadios(selected) {
 				+ education_academy
 				+ ">"
 				+ '학원수'
-				+ '<a href="#" class = "remove" onclick="removeList8();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList8();" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -193,7 +193,7 @@ function getRadios(selected) {
 				+ safety_fire
 				+ ">"
 				+ '화재안전사고'
-				+ '<a href="#" class = "remove" onclick="removeList9();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList9();" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -209,7 +209,7 @@ function getRadios(selected) {
 				+ safety_traffic
 				+ ">"
 				+ '교통안전사고'
-				+ '<a href="#" class = "remove" onclick="removeList10();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList10();" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -225,7 +225,7 @@ function getRadios(selected) {
 				+ safety_crime
 				+ ">"
 				+ '범죄사고'
-				+ '<a href="#" class = "remove" onclick="removeList11();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList11();" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -241,7 +241,7 @@ function getRadios(selected) {
 				+ safety_safety
 				+ ">"
 				+ '안전사고'
-				+ '<a href="#" class = "remove" onclick="removeList12();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList12();" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -257,7 +257,7 @@ function getRadios(selected) {
 				+ safety_infection
 				+ ">"
 				+ '전염병'
-				+ '<a href="#" class = "remove" onclick="removeList13();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList13();" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -273,7 +273,7 @@ function getRadios(selected) {
 				+ safety_nature
 				+ ">"
 				+ '자연재해'
-				+ '<a href="#" class = "remove" click="onremoveList14();">   x   </a> '
+				+ '<a href="#" class = "remove" click="onremoveList14();" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -289,7 +289,7 @@ function getRadios(selected) {
 				+ life_convenient
 				+ ">"
 				+ '편의시설'
-				+ '<a href="#" class = "remove" onclick="removeList15();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList15();" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -305,7 +305,7 @@ function getRadios(selected) {
 				+ life_shopping
 				+ ">"
 				+ '쇼핑시설'
-				+ '<a href="#" class = "remove" onclick="removeList16();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList16();" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -321,7 +321,7 @@ function getRadios(selected) {
 				+ life_restaurant
 				+ ">"
 				+ '외식시설'
-				+ '<a href="#" class = "remove" onclick="removeList17();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList17();" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -337,7 +337,7 @@ function getRadios(selected) {
 				+ life_publicTraffic
 				+ ">"
 				+ '대중교통 이용률'
-				+ '<a href="#" class = "remove" onclick="removeList18();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList18();" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -353,7 +353,7 @@ function getRadios(selected) {
 				+ people_foreign
 				+ ">"
 				+ '외국인거주비율'
-				+ '<a href="#" class = "remove" onclick="removeList19();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList19();" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -369,7 +369,7 @@ function getRadios(selected) {
 				+ people_density
 				+ ">"
 				+ '인구밀도'
-				+ '<a href="#" class = "remove" onclick="removeList20();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList20();" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -385,7 +385,7 @@ function getRadios(selected) {
 				+ nature_park
 				+ ">"
 				+ '주변 공원 수'
-				+ '<a href="#" class = "remove" onclick="removeList21();">   x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList21();" style="color:red;">   x   </a> '
 				+ "</li>";
 	}
 
@@ -401,7 +401,7 @@ function getRadios(selected) {
 				+ nature_pollution
 				+ ">"
 				+ '미세먼지'
-				+ '<a href="#" class = "remove" onclick="removeList22();" id = "x22">  x   </a> '
+				+ '<a href="#" class = "remove" onclick="removeList22();" id = "x22" style="color:red;">  x   </a> '
 				+ "</li>";
 		/*
 		 * +'<a href="#" class = "remove" onchange="removeList('+ selected +

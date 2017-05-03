@@ -38,7 +38,7 @@ function buildList(list) {
       +items[i].citycode+'" class = "'+items[i].gu +','+ items[i].dong+'" onclick = '+
       '"initChart(); createChart1('+ i +'); setCircle('+items[i].leasingPrice+','+items[i].salePrice+','+i+'); moveMap('+i+');"'+
       'style="color:#333333";> ' 
-      + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + " "+ '<a href="#" onclick="initChart(); removeItem(' + i + ');" style = "color:red";>   x   </a><a style = "float:right;">'+parseFloat(items[i].totalScore/top123*5).toFixed(2)+'</a></li>' ;
+      + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + " "+ '<a href="#" onclick="deletePrice(); initChart(); removeItem(' + i + ');" style = "color:red";>   x   </a><a style = "float:right;text-decoration: none;padding-right: 30px;">'+parseFloat(items[i].totalScore/top123*5).toFixed(2)+'</a></li>' ;
       var score1 = parseFloat(items[i].totalScore/top123*5).toFixed(2);
       
    }
