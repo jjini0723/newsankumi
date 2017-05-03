@@ -32,7 +32,7 @@ function call(sigunguName, ghName, finalAddList2){
         var message = '지도를 드래그 하고 있습니다. ' + '지도의 중심 좌표는 ' + map.getCenter().toString() +' 입니다.';
     });
     var emdNameArray = new Array();
-    
+    console.log("check"+sigunguName+ ' '+ ghName+ ' ' +dongScore);
     jQuery.ajaxSettings.traditional = true;
     $.ajax({
         type : "POST",

@@ -280,7 +280,7 @@ function changeMarker(index2) {
 	for(var i = 0; i < filterAddr.length; i++) {
 		if(markerAddr[i] == filterAddr[index2].kaptName) {
 			var coordsss = new daum.maps.LatLng(filterAddr[index2].y, filterAddr[index2].x);
-			var imageSrc = './resources/images/selectedMarker.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+			var imageSrc = './resources/images/red_marker.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
 	        	imageSize = new daum.maps.Size(51, 50),  // 마커 이미지의 크기
 	        	imgOptions =  {
 	            	spriteSize : new daum.maps.Size(51, 50), // 스프라이트 이미지의 크기
@@ -320,7 +320,7 @@ function changeMarker(index2) {
 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다 
 function addMarker(position, idx, title) {
 	console.log(position);
-    var imageSrc = './resources/images/markers/user-01.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+    var imageSrc = './resources/images/yellow_marker.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
         imageSize = new daum.maps.Size(41, 40),  // 마커 이미지의 크기
         imgOptions =  {
             spriteSize : new daum.maps.Size(41, 40), // 스프라이트 이미지의 크기

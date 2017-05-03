@@ -23,27 +23,28 @@ function buildList(list) {
 	items.push(list[j]); //전역변수에 담기
 }*/
    items = list; //전역변수에 담기
-   console.log(items);
    
    var html = "";
    html += '<ol class = "decimal" data-width="400" id = "resultList">';
 
    moveMap(0);
    createChart1(0);
-   
+  /* var top = parseFloat(list[0].totalScore).toFixed(2);
+   console.log(parseFloat(items[0].totalScore/top).toFixed(2));
+   console.log("top"+top);*/
    for (var i = 0; i < items.length; i++) {
+	   
       html += '<li ><a href = "#" id = "'+items[i].citycode+'" value = "'
       +items[i].citycode+'" class = "'+items[i].gu +','+ items[i].dong+'" onclick = '+
       '"initChart(); createChart1('+ i +'); setCircle('+items[i].leasingPrice+','+items[i].salePrice+','+i+'); moveMap('+i+');"'+
       'style="color:#333333";> ' 
-      + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + " "+ '<a href="#" onclick="initChart(); removeItem(' + i + ');" style = "color:red";>   x   </a><a style = "float:right;">'+parseFloat(items[i].totalScore/items[0].totalScore*5).toFixed(2)+'</a></li>' ;
-      var score1 = parseFloat(items[i].totalScore/items[0].totalScore*5).toFixed(2);
+      + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + " "+ '<a href="#" onclick="initChart(); removeItem(' + i + ');" style = "color:red";>   x   </a><a style = "float:right;">'+parseFloat(items[i].totalScore/top123*5).toFixed(2)+'</a></li>' ;
+      var score1 = parseFloat(items[i].totalScore/top123*5).toFixed(2);
       
-      console.log(score1);
-      console.log(items[0].leasingPrice+','+items[0].salePrice);
-      dongScore.push(score1);
    }
-   
+   for (var j = 0; j < items.length; j++) {
+	  dongScore.push(parseFloat(items[j].totalScore/top123*5).toFixed(2));
+   }
    console.log("dongscore"+dongScore);
    
    html += '</ol>';
@@ -86,20 +87,6 @@ function addItem() {
     		
     	});
     	items.push(re);
-    	/*
-    	
-    	for (var i = 0; i < conditionResultList.length; i++) {
-			if (dong == conditionResultList[i].dong) {
-				$.each(conditionResultList[i], function(key, value){
-					 if (key == keylist[0] || key == keylist[1] ||key == keylist[2] ||key == keylist[3] ||key == keylist[4] 
-	                 ||key == keylist[5] || key == "si" || key =="gu" || key =="dong" || key == "leasingPrice" || key == "salePrice" || key == "totalScore" ) {
-	                  
-	               }else{
-	                  delete conditionResultList[i][key];
-	               }
-				});
-			}
-    	}*/
 			
 			 initChart();
 	         console.log(items);
@@ -113,52 +100,12 @@ function addItem() {
 	          $("#selectThis5").empty().data('options');
 	          $("#selectThis5").append("<option>읍/면/동</option>");
     }
-   /* $.ajax({
-       
-       url : "getAddress",
-       type : "post",
-       async: false,
-       data : {
-          dong : dong
-       },
-        success : function(data) {
-           var keylist = JSON.parse($("#keylist").val());
-           console.log(keylist);
-           
-              $.each(data, function(key, value){
-                 if (key == keylist[0] || key == keylist[1] ||key == keylist[2] ||key == keylist[3] ||key == keylist[4] 
-                 ||key == keylist[5] || key == "si" || key =="gu" || key =="dong" || key == "leasingPrice" || key == "salePrice" || key == "totalScore" ) {
-                  
-               }else{
-                  delete data[key];
-               }
-              });
-              
-           console.log(data);
-           
-       initChart();
-           items.push(data);
-           buildList(items);
-           
-          $("#selectThis3").empty().data('options');
-          $("#selectThis3").append('<option value="">시/도</option><option value="서울특별시">서울특별시</option>'
-                +'<option value="인천광역시">인천광역시</option><option value="경기도">경기도</option>');
-          $("#selectThis4").empty().data('options');
-          $("#selectThis4").append("<option>군/구</option>");
-          $("#selectThis5").empty().data('options');
-          $("#selectThis5").append("<option>읍/면/동</option>");
-        },
-        error : function(e){
-           console.log(e);
-           
-        }
-       
-    });*/
     
 }
 
 function removeItem(index) {
     items.splice(index, 1);
+    deleteArray1();
     buildList(items);
 }
 

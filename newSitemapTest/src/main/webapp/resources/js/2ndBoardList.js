@@ -97,7 +97,7 @@ function boardList3() {
 				
 				//부동산거래정보
 				html += '<h4 class="ribbon-heading ribbon-primary" id="tradeInfo">아파트 거래정보</h4>';
-				html += '<div style="overflow:hidden;height:70px;display:none;" id = "aptTradeInfo" ></div>';
+				html += '<div style="overflow:auto;height:70px;display:none;" id = "aptTradeInfo" ></div>';
 				html += '<div style="overflow:hidden;height:70px;display:none;" id = "aptTradeInfo2" ></div>';
 				html += '<div class="sidebar-block padding-none">';
 				html += '<div data-toggle="gridalicious" data-width="400"></div></div>';
