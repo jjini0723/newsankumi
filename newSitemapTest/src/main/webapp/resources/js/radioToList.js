@@ -13,7 +13,6 @@ function getRadios(selected) {
 	var hmlTotal = hml.length;
 	var chk = document.getElementsByName('ck');
 	
-		
 	//라디오 막는용
 	if(radioCount > 6){
 		//라디오체크한거 삭제하는거
