@@ -231,6 +231,10 @@ function conditionSelect(){
       }),
       success : function(data){
     	 conditionResultList = data;
+    	 console.log(conditionResultList[0].si);
+    	 console.log(conditionResultList[0].gu);
+    	 console.log(conditionResultList[0].dong);
+    	 console.log(conditionResultList[0].totalScore);
          buildList(data);
       },
       error : function(e){
