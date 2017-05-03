@@ -73,6 +73,7 @@ var radio7th='';//라디오버튼체크용
 var filterAddr = new Array();
 var searchCheck = false;
 var circleList = new Array();
+var conditionResultList = new Array();
 
 //자동 키값 변환기
 var tmapCarKey1='2bb28cd1-f268-3af6-8329-e6b49122331b';
@@ -229,6 +230,7 @@ function conditionSelect(){
          list : arr
       }),
       success : function(data){
+    	 conditionResultList = data;
          buildList(data);
       },
       error : function(e){

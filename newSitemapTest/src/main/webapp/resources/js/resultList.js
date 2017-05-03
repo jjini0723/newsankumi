@@ -26,7 +26,7 @@ function buildList(list) {
    moveMap(0);
    createChart1(0);
    
-   for (var i = 0; i < items.length; i++) {
+   for (var i = 0; i < 10; i++) {
       html += '<li ><a href = "#" id = "'+items[i].citycode+'" value = "'
       +items[i].citycode+'" class = "'+items[i].gu +','+ items[i].dong+'" onclick = '+
       '"initChart(); createChart1('+ i +'); setCircle('+items[i].leasingPrice+','+items[i].salePrice+','+i+'); moveMap('+i+');"'+
