@@ -4,7 +4,6 @@
 $(document).on("click", ".remove", function(e) {
 	$(this).parent().remove();
 	
-	
 });
 
 function getRadios(selected) {

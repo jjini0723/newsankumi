@@ -199,7 +199,6 @@ function JSalert(){
 			},				
 			success : function(data)
 			{
-				//alert("입력하신 메일로 인증번호가 전송되었습니다.");
 				console.log("메일로 인증번호가 전송되었습니다.");	
 				checknumber=data;
 				save(checknumber,checkemail);

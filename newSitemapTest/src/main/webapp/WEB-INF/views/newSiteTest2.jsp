@@ -189,6 +189,7 @@ function conditionSelect(){
    }   
    else{   
       var radioCt = radioCheck();
+      console.log(radioCt);
       if(radioCt < 3){//라디오버튼 클릭수가 3개이하면
          $('#searchLocation').attr('href','#sidebar-mapNoooo');
          sweetAlert({
@@ -217,7 +218,6 @@ function conditionSelect(){
             level : radioValue
          };               
          arr.push(obj);
-         
       }
    })            
    
@@ -323,20 +323,6 @@ function radioCheck(){
 	return radioCountCur;
 }
 
-
-function check3(){
-	var current = radioCheck();
-	if (current <3) {
-		sweetAlert({
-			title: "이런!", 
-		    text: "최소 3개 이상 선택 해 주세요!", 
-		    type: "error"
-		});
-		$('#searchLocation').removeAttr('href');
-		return ;
-	}
-	
-}
 
 function radio7thCheck(name){
 	radio7th = name;
@@ -1049,7 +1035,7 @@ This variant is to be used when loading the separate styling modules -->
 	
 	<h4 class="category" data-step="3" data-intro="조건을 선택하여 클릭 시, 당신만의 맞춤형 동네를 찾아드립니다." data-position = "auto">결과보기</h4>
 		<div class="sidebar-block text-center filter_commit" onclick = "conditionSelect();" >
-			<a id="searchLocation" data-toggle="sidebar-menu" href="#sidebar-map" onclick = "check3(); boardList(); deleteArray1();" class="btn btn-primary btn-block toggle ">
+			<a id="searchLocation" data-toggle="sidebar-menu" href="#sidebar-map" onclick = " boardList(); deleteArray1();" class="btn btn-primary btn-block toggle ">
 				<strong style="color: white;" >추천지역찾기</strong> <!-- test123.js 연결 -->
 			</a>
 		</div>
@@ -1113,29 +1099,6 @@ This variant is to be used when loading the separate styling modules -->
 		<!-- 지도끝 -->
 			
 	<!-- 우선 상단바 아래로 낑겨넣음 -->
-<!-- 		<nav class="navbar navbar-default navbar-size-large navbar-static-top navbar-map-overlay">
-			<a data-toggle="sidebar-menu" href="#sidebar-map" class="toggle pull-right hidden-xs margin-none"><i class="fa fa-list"></i></a>
-  <div class="navbar-header">
-           <div class="container-fluid">
-				<div class="navbar-text pull-left"><i class="fa fa-fw fa-info"></i> Discover thousands of locations</div>
-					<a class="toggle pull-right margin-none visible-xs" data-toggle="collapse" data-target="#map-nav"><i class="fa fa-sliders fa-rotate-90"></i></a>
-				</div>
-			</div>-->
-		<!-- Collect the nav links, forms, and other content for toggling -->
-			<!-- <div class="collapse navbar-collapse" id="map-nav">
-				<form class="navbar-form  navbar-left">
-					<div class="search-2">
-						<div class="input-group">
-						<input type="text" class="form-control form-control-w-150" placeholder="Search ..">
-							<span class="input-group-btn">
-								<button class="btn btn-inverse" type="button"><i class="fa fa-search"></i></button>
-							</span>
-						</div>
-					</div>
-				</form>
-            </div>
-		</nav>
-		-->
 	<!-- 상단바 끝 -->
 		
 		

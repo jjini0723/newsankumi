@@ -27,11 +27,11 @@ function buildList(list) {
    createChart1(0);
    
    for (var i = 0; i < items.length; i++) {
-      html += '<li><a href = "#" id = "'+items[i].citycode+'" value = "'
+      html += '<li ><a href = "#" id = "'+items[i].citycode+'" value = "'
       +items[i].citycode+'" class = "'+items[i].gu +','+ items[i].dong+'" onclick = '+
       '"initChart(); createChart1('+ i +'); setCircle('+items[i].leasingPrice+','+items[i].salePrice+','+i+'); moveMap('+i+');"'+
       'style="color:#333333";> ' 
-      + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + " "+Math.round(items[i].totalScore/items[0].totalScore*5,2)+ '<a href="#" onclick="initChart(); removeItem(' + i + ');" style = "color:red";>   x   </a> '+ '</li>' ;
+      + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + " "+ '<a href="#" onclick="initChart(); removeItem(' + i + ');" style = "color:red";>   x   </a><a style = "float:right;">'+parseFloat(items[i].totalScore/items[0].totalScore*5).toFixed(2)+'</a></li>' ;
       var score1 = parseFloat(items[i].totalScore/items[0].totalScore*5).toFixed(2);
       
       console.log(score1);
@@ -74,7 +74,7 @@ function addItem() {
            
               $.each(data, function(key, value){
                  if (key == keylist[0] || key == keylist[1] ||key == keylist[2] ||key == keylist[3] ||key == keylist[4] 
-                 ||key == keylist[5] || key == "si" || key =="gu" || key =="dong" || key == "leasingPrice" || key == "salePrice" ) {
+                 ||key == keylist[5] || key == "si" || key =="gu" || key =="dong" || key == "leasingPrice" || key == "salePrice" || key == "totalScore" ) {
                   
                }else{
                   delete data[key];
@@ -233,59 +233,59 @@ function sendData1(){ //코드 및 동 리스트 가져오기
    var addList1 = [];
    var finalAddList=[];
    
-   for (var i = 0; i < 10; i++) {
+   for (var i = 0; i < 13; i++) {
       firstlist[i] = $(".decimal").find("a").eq(i).attr('class');
       addList1[i] = $(".decimal").find("a").eq(i).text();
    }
-   
-   console.log(firstlist.length);
-   
-      if (firstlist.length<5 && typeof firstlist[4] == undefined ||firstlist[4] == null ||typeof firstlist[2] == undefined ||firstlist[2] == null  ) {
+   console.log(firstlist);
+   console.log(addList1);
+      if (firstlist.length<12 && typeof firstlist[6] == undefined ||firstlist[6] == null||typeof firstlist[3] == undefined ||firstlist[3] == null ){
          sweetAlert({
             title: "이런!", 
              text: "최소 3개 이상 선택 해 주세요!", 
              type: "error"
          });
+         console.log(firstlist);
          return false;
       }
       else{
     	  
-      if (typeof firstlist[6] == undefined ||firstlist[6] == null ) {//3개
+      if (typeof firstlist[9] == undefined ||firstlist[9] == null ) {//3개
          var split1 = firstlist[0].split(',');
-         var split2 = firstlist[2].split(',');
-         var split3 = firstlist[4].split(',');
+         var split2 = firstlist[3].split(',');
+         var split3 = firstlist[6].split(',');
          var gustr = split1[0]+','+split2[0]+','+split3[0];
          var dongstr = split1[1]+','+ split2[1]+','+split3[1];
          finalAddList.push(addList1[0]);
-         finalAddList.push(addList1[2]);
-         finalAddList.push(addList1[4]);
+         finalAddList.push(addList1[3]);
+         finalAddList.push(addList1[6]);
          console.log(firstlist);
-      	}else if (typeof firstlist[8] == undefined ||firstlist[8] == null ) { //4개
+      	}else if (typeof firstlist[12] == undefined ||firstlist[12] == null ) { //4개
          var split1 = firstlist[0].split(',');
-         var split2 = firstlist[2].split(',');
-         var split3 = firstlist[4].split(',');
-         var split4 = firstlist[6].split(',');
+         var split2 = firstlist[3].split(',');
+         var split3 = firstlist[6].split(',');
+         var split4 = firstlist[9].split(',');
          var gustr = split1[0]+','+split2[0]+','+split3[0]+','+split4[0];
          var dongstr = split1[1]+','+ split2[1]+','+split3[1]+','+split4[1];
          finalAddList.push(addList1[0]);
-         finalAddList.push(addList1[2]);
-         finalAddList.push(addList1[4]);
+         finalAddList.push(addList1[3]);
          finalAddList.push(addList1[6]);
+         finalAddList.push(addList1[9]);
          console.log(firstlist);
       }
       else{
          var split1 = firstlist[0].split(',');
-         var split2 = firstlist[2].split(',');
-         var split3 = firstlist[4].split(',');
-         var split4 = firstlist[6].split(',');
-         var split5 = firstlist[8].split(',');
+         var split2 = firstlist[3].split(',');
+         var split3 = firstlist[6].split(',');
+         var split4 = firstlist[9].split(',');
+         var split5 = firstlist[12].split(',');
          var gustr = split1[0]+','+split2[0]+','+split3[0]+','+split4[0]+','+split5[0];
          var dongstr = split1[1]+','+ split2[1]+','+split3[1]+','+split4[1]+','+split5[1];
          finalAddList.push(addList1[0]);
-         finalAddList.push(addList1[2]);
-         finalAddList.push(addList1[4]);
+         finalAddList.push(addList1[3]);
          finalAddList.push(addList1[6]);
-         finalAddList.push(addList1[8]);
+         finalAddList.push(addList1[9]);
+         finalAddList.push(addList1[12]);
 
       	}
       result300 = [gustr, dongstr, finalAddList];
