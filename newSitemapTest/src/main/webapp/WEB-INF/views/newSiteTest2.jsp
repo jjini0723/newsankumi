@@ -210,7 +210,7 @@ function conditionSelect(){
 			arr.push(obj);
 			
 		}
-		/* else{
+		 else{
 			sweetAlert({
 				title: "이런!", 
 			    text: "최소 2개 이상 선택 해 주세요!", 
@@ -218,7 +218,7 @@ function conditionSelect(){
 			});
 			return false;
 			
-		} */ //2개 이상 선택할 수 있는 조건. 마지막에 푸르기!
+		}
 	})				
 	
 	$.ajax({
@@ -1175,28 +1175,29 @@ This variant is to be used when loading the separate styling modules -->
                       <span class = "popupimg"><img style = "width:90%;" src="./resources/images/bar3.png"></span>
                    <span class="popuptext" style = "margin-left:15px; margin-top:-5px;"> 
 				       	<h5 style="font-weight:bold;"> 생활권역 추가</h5>
-						&nbsp&nbsp최대 5개 선택 된 동들을 가지고 당신의 생활의 목적지를 추가합니다. 
+						&nbsp&nbsp최대 5개 선택 된 동들을 가지고 당신의 생활의 목적지를 추가합니다. <br><br>
 						<h5 style="font-weight:bold;">생활권역구성</h5>
-						&nbsp&nbsp당신의 생활권을 만들어 봅시다. 자주 다니는 곳들과 이동수단을 최대 5개 까지 선택할 수 있습니다. 
+						&nbsp&nbsp당신의 생활권을 만들어 봅시다. 자주 다니는 곳들과 이동수단을 최대 5개 까지 선택할 수 있습니다. <br><br>
 						<h5 style="font-weight:bold;">최적의 주거공간 찾기</h5>
 						&nbsp&nbsp당신의 생활권 내에서 최적의 주거공간을 찾습니다. 
 						</span>
 				 </div>
 				 
                     <div class="wizard-step">
-                       <span class = "popupimg"><img style = "width:90%;" src="./resources/images/lastview.jpg"></span>                   <span class="popuptext" style = "margin-left:15px; margin-top:-5px;"> 
+                       <span class = "popupimg"><img style = "width:90%;" src="./resources/images/lastview.jpg"></span>
+                       <span class="popuptext" style = "margin-left:15px; margin-top:-5px;"> 
 	                    <h5 style="font-weight:bold;">추천 아파트 리스트</h5> 
-							&nbsp&nbsp앞서 선택된 지역들의 점수와 생활 권역에 따른 아파트 별 합산 점수 순으로 보여줍니다.
+							&nbsp&nbsp앞서 선택된 지역들의 점수와 생활 권역에 따른 아파트 별 합산 점수 순으로 보여줍니다.<br><br>
 						<h5 style="font-weight:bold;">아파트 세부정보</h5>
-							&nbsp&nbsp아파트의 상세정보 및 아파트 명, 건축년도를 확인 할 수 있습니다.
+							&nbsp&nbsp아파트의 상세정보 및 아파트 명, 건축년도를 확인 할 수 있습니다.<br><br>
 						<h5 style="font-weight:bold;">아파트 거래정보</h5>
-							&nbsp&nbsp아파트 별 거래 정보가 있을 경우 확인이 가능합니다.
+							&nbsp&nbsp아파트 별 거래 정보가 있을 경우 확인이 가능합니다.<br><br>
 						<h5 style="font-weight:bold;">소요시간 비교</h5>
-							&nbsp&nbsp아파트 별 당신이 선택한 목적지까지의 소요시간과 지역 내 아파트의 평균 소요시간을 비교해 볼 수 있습니다.
+							&nbsp&nbsp아파트 별 당신이 선택한 목적지까지의 소요시간과 지역 내 아파트의 평균 소요시간을 비교해 볼 수 있습니다.<br><br>
 						<h5 style="font-weight:bold;">검색결과저장</h5>
-							&nbsp&nbsp이메일을 통해 고유코드를 발급받아서, 현재 결과 화면을 저장하여 다시 볼 수 있습니다.
+							&nbsp&nbsp이메일을 통해 고유코드를 발급받아서, 현재 결과 화면을 저장하여 다시 볼 수 있습니다.<br><br>
 						<h5 style="font-weight:bold;">희망목적지</h5>
-							&nbsp&nbsp앞서 선택한 목적지들을 확인 할 수 있습니다.
+							&nbsp&nbsp앞서 선택한 목적지들을 확인 할 수 있습니다.<br><br>
 						<h5 style="font-weight:bold;">필터링</h5>
 							&nbsp&nbsp준공년도와 평수의 조건을 선택 할 경우, 선택한 범위 내의 아파트만 볼 수 있습니다.
 							</span>

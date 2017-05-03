@@ -31,7 +31,7 @@ function buildList(list) {
       +items[i].citycode+'" class = "'+items[i].gu +','+ items[i].dong+'" onclick = '+
       '"initChart(); createChart1('+ i +'); setCircle('+items[i].leasingPrice+','+items[i].salePrice+','+i+'); moveMap('+i+');"'+
       'style="color:#333333";> ' 
-      + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + '<a href="#" onclick="initChart(); removeItem(' + i + ');" style = "color:red";>   x   </a> '+ '</li>' ;
+      + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + " "+Math.round(items[i].totalScore/items[0].totalScore*5,2)+ '<a href="#" onclick="initChart(); removeItem(' + i + ');" style = "color:red";>   x   </a> '+ '</li>' ;
       var score1 = parseFloat(items[i].totalScore/items[0].totalScore*5).toFixed(2);
       
       console.log(score1);

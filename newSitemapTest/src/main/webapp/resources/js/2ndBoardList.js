@@ -166,13 +166,13 @@ function showFilter(){
 function JSalert(){
 	var checknumber = null;
 	var checkemail = null;
-   swal({   title: "Require Email!",   
-    text: "Enter your email address:",   
+   swal({   title: "저장하기",   
+    text: "이메일 주소를 입력하세요:",   
     type: "input",   
     showCancelButton: true,   
     closeOnConfirm: false,   
     animation: "slide-from-top",   
-    inputPlaceholder: "Your Email address" }, 
+    inputPlaceholder: "이메일 주소" }, 
     
     function(inputValue){
 		var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
@@ -181,11 +181,11 @@ function JSalert(){
 	    }       	
 	         
 	    if (inputValue === "") {     
-	    	swal.showInputError("Please enter email!");     
+	    	swal.showInputError("이메일 주소를 입력해주세요");     
 	        return false   
 	    }   
 	    else if(regex.test(inputValue) == false){
-	    	swal.showInputError("Please input correct format email..");
+	    	swal.showInputError("올바른 이메일 주소를 입력해주세요");
 	  		return false;
 	  	}checkemail=inputValue;
 	    
@@ -209,5 +209,5 @@ function JSalert(){
 				console.log(e);
 			}
 		})
-		swal("Action Saved!", "You entered following email: " + inputValue, "success"); });
+		swal("저장이 완료되었습니다.", "다음 주소로 코드가 전송되었습니다 : " + inputValue, "success"); });
 }
