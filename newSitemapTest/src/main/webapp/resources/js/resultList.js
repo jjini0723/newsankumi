@@ -16,7 +16,7 @@ $(document).ready(function() {
     }
 });
 
-//리스트 뿌리기
+
 function buildList(list) {
    $("#dongitem").val(JSON.stringify(list));
  /*  for (var j = 0; j < 10; j++) {
@@ -38,8 +38,8 @@ function buildList(list) {
       +items[i].citycode+'" class = "'+items[i].gu +','+ items[i].dong+'" onclick = '+
       '"initChart(); createChart1('+ i +'); setCircle('+items[i].leasingPrice+','+items[i].salePrice+','+i+'); moveMap('+i+');"'+
       'style="color:#333333";> ' 
-      + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + " "+ '<a href="#" onclick="deletePrice(); initChart(); removeItem(' + i + ');" style = "color:red";>   x   </a><a style = "float:right;text-decoration: none;padding-right: 30px;">'+parseFloat(items[i].totalScore/top123*5).toFixed(2)+'</a></li>' ;
-      var score1 = parseFloat(items[i].totalScore/top123*5).toFixed(2);
+      + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + " "+ '<a href="#" onclick="deletePrice(); initChart(); removeItem(' + i + '); deleteArray1();" style = "color:red";>   x   </a><a style = "float:right;">'+parseFloat(items[i].totalScore/top123*5).toFixed(2)+'</a></li>' ;
+   //   var score1 = parseFloat(items[i].totalScore/top123*5).toFixed(2);
       
    }
    for (var j = 0; j < items.length; j++) {
@@ -86,7 +86,7 @@ function addItem() {
 			}
     		
     	});
-    	items.push(re);
+    		items.push(re);
 			
 			 initChart();
 	         console.log(items);

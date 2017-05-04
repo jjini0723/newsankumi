@@ -77,12 +77,12 @@ var conditionResultList = new Array();
 var top123 = 0; //..top?
 
 //자동 키값 변환기
-var tmapCarKey5='2bb28cd1-f268-3af6-8329-e6b49122331b';
-var tmapCarKey1='5466b076-3f62-3faf-ac9d-c3002f0fec2d';
+/* var tmapCarKey5='2bb28cd1-f268-3af6-8329-e6b49122331b'; */
+var tmapCarKey4='5466b076-3f62-3faf-ac9d-c3002f0fec2d';
 var tmapCarKey2='250b188d-21df-3751-a05f-225464a8462f';
 var tmapCarKey3='32b893de-a5dc-30c0-b49d-bfc3aab6a131';
-var tmapCarKey4='f6c0bf22-c93e-398a-9960-39df244edfc5';
-var tmapWalkKey5='1fb8283b-44f9-314b-8fa7-ce0b235a86d9';
+var tmapCarKey1='f6c0bf22-c93e-398a-9960-39df244edfc5';
+/* var tmapWalkKey5='1fb8283b-44f9-314b-8fa7-ce0b235a86d9'; */
 var tmapWalkKey4='b4e63eae-0a43-394e-b641-e38dfbb4f1b5';
 var tmapWalkKey3='360a72a6-2781-35ea-b877-98cd58c69b91';
 var tmapWalkKey2='f7e2ff7f-9451-3d04-8492-bbed4ab4e206';
@@ -91,7 +91,7 @@ var googleKey5='AIzaSyD1SXZMCJFk4dRd7MZCDWHk0jINUtI9v2Y';
 var googleKey1='AIzaSyBi_ry4zkLWVMMzETciWyu0JnCGbm7WQiQ';
 var googleKey3='AIzaSyBKWZBV932x9UcDs4ey8TVQ-oV8fiXxPpI';
 var googleKey4='AIzaSyD1SXZMCJFk4dRd7MZCDWHk0jINUtI9v2Y';
-var googleKey2='AIzaSyDcQztLBVLCFxG_SSYxR_BJAldkQMMe5PQ';
+/* var googleKey2='AIzaSyDcQztLBVLCFxG_SSYxR_BJAldkQMMe5PQ'; */
 var tmapCarKeyCount = 0;
 var tmapWalkKeyCount = 0;
 var googleKeyCount = 0;
@@ -103,6 +103,7 @@ var tradiusekey = '';
 var carNum = '';
 var walkNum = '';
 var tradiNum = '';
+
 
 
 loadKeyCount();
