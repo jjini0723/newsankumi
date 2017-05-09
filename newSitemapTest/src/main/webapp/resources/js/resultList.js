@@ -38,14 +38,15 @@ function buildList(list) {
       +items[i].citycode+'" class = "'+items[i].gu +','+ items[i].dong+'" onclick = '+
       '"initChart(); createChart1('+ i +'); setCircle('+items[i].leasingPrice+','+items[i].salePrice+','+i+'); moveMap('+i+');"'+
       'style="color:#333333";> ' 
-      + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + " "+ '<a href="#" onclick="deletePrice(); initChart(); removeItem(' + i + '); deleteArray1();" style = "color:red";>   x   </a><a style = "float:right;">'+parseFloat(items[i].totalScore/top123*5).toFixed(2)+'</a></li>' ;
+      + items[i].si+ " "+ items[i].gu +" "+ items[i].dong + " "+ '<a href="#" onclick="deleteArray1(); deletePrice(); initChart(); removeItem(' + i + ');" style = "color:red";>   x   </a><a style = "float:right;text-decoration: none;padding-right: 20px;cursor: none;">'+parseFloat(items[i].totalScore/top123*5).toFixed(2)+'</a></li>' ;
    //   var score1 = parseFloat(items[i].totalScore/top123*5).toFixed(2);
       
    }
    for (var j = 0; j < items.length; j++) {
 	  dongScore.push(parseFloat(items[j].totalScore/top123*5).toFixed(2));
    }
-   console.log("dongscore"+dongScore);
+   
+   console.log("dongscore   "+dongScore);
    
    html += '</ol>';
    $('#req_loc1').html(html);
@@ -87,7 +88,7 @@ function addItem() {
     		
     	});
     		items.push(re);
-			
+    		deleteArray1();
 			 initChart();
 	         console.log(items);
 	         buildList(items);
@@ -298,7 +299,7 @@ function sendData1(){ //코드 및 동 리스트 가져오기
 
 function deleteArray1(){
    if (dongScore.length != 0) {
-      dongScore.length = 0;
+	   dongScore.length = 0;
    }
 }
 
