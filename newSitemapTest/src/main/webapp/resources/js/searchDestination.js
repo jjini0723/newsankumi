@@ -31,6 +31,21 @@ var overlay = new daum.maps.CustomOverlay({
 
 function deleteL(paraparam1) {
     // 희망목적지에 등록된 목적지의 개수를 파악하기 위해, 삭제가 되면 배열에서 꺼낸다.
+	for(var i = 0; i < carArray.length; i++) {
+        if(title == carArray[i].title) {
+            carArray.splice(i,1);
+        }
+    }
+    for(var i = 0; i < walkArray.length; i++) {
+        if(title == walkArray[i].title) {
+            walkArray.splice(i,1);
+        }
+    }
+    for(var i = 0; i < tradiArray.length; i++) {
+        if(title == tradiArray[i].title) {
+            tradiArray.splice(i,1);
+        }
+    }
 	var title = $('#getItem>li>#'+paraparam1).attr('title');
     for(var i = 0; i < hopeList.length; i++) {
     	if(title == hopeList[i]) {
