@@ -6,7 +6,6 @@ public class aptcode {
 	private String yloc;
 	
 	public aptcode() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public aptcode(String goyucode, String xloc, String yloc) {

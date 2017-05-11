@@ -10,7 +10,6 @@ public class aptsale {
 	private String commitdate;
 	
 	public aptsale() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public aptsale(String goyucode, String salegubun, String aptsize, String sale, String wolse, String ploor,

@@ -4,9 +4,6 @@
 
 function call(sigunguName, ghName, finalAddList2){
     finalAddList = finalAddList2;
-    console.log(sigunguName);
-    console.log(ghName);
-    console.log(finalAddList2);
    
     // 지도 타입 변경 컨트롤을 생성한다
     var mapTypeControl = new daum.maps.MapTypeControl();
@@ -32,7 +29,7 @@ function call(sigunguName, ghName, finalAddList2){
         var message = '지도를 드래그 하고 있습니다. ' + '지도의 중심 좌표는 ' + map.getCenter().toString() +' 입니다.';
     });
     var emdNameArray = new Array();
-    console.log("check"+sigunguName+ ' '+ ghName+ ' ' +dongScore);
+    
     jQuery.ajaxSettings.traditional = true;
     $.ajax({
         type : "POST",
@@ -116,7 +113,6 @@ function call(sigunguName, ghName, finalAddList2){
                 var windowSet1 = {kaptAddr : data[i].kaptAddr,kaptName : data[i].kaptName};
                 windowSet.push(windowSet1);
                 dongScore.push(data[i].dongScore);
-                //alert('주소 : '+kaptAddr[i]+' 아파트이름 : '+kaptName[i]);
             }
             $.each(windowSet,function(index,item) {
                 geocoder.addr2coord(item.kaptAddr, function(status, result) {
@@ -213,7 +209,6 @@ function call(sigunguName, ghName, finalAddList2){
                     });
                 });
             });
-            //alert(coordsList.sample.kaptName);
         },  
         error : function(e) {
             console.log(e)

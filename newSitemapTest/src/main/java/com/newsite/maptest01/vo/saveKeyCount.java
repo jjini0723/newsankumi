@@ -6,7 +6,6 @@ public class saveKeyCount {
 	private String googleKeyCount;
 	
 	public saveKeyCount() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public saveKeyCount(String tmapCarKeyCount, String tmapWalkKeyCount, String googleKeyCount) {

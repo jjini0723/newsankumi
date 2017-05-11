@@ -4,77 +4,73 @@
 
 
 function boardList2(result) {
-   
-   call(result[0], result[1], result[2]);
-   $(document).ready(function() {
-      $.ajax({
-         type : "get",
-         success : function(data) {
-        	 
-             var html = "";
+	call(result[0], result[1], result[2]);
+    $(document).ready(function() {
+    	$.ajax({
+            type : "get",
+            success : function(data) {
+                var html = "";
             
-             //희망위치추가
-             html += '<div data-scrollable id="sidebar-map1">';
-             html += '<h4 class="ribbon-heading ribbon-primary">생활권역구성</h4>';
-             html += '<div class="panel-body text-center" id = "req_loc1">';
-             html += '<div data-toggle="gridalicious" data-width="400">';
+                //희망위치추가
+                html += '<div data-scrollable id="sidebar-map1">';
+                html += '<h4 class="ribbon-heading ribbon-primary">생활권역구성</h4>';
+                html += '<div class="panel-body text-center" id = "req_loc1">';
+                html += '<div data-toggle="gridalicious" data-width="400">';
             
-             /////// 희망목적지 검색 및 검색결과 리스트 출력부분
-             html += '<div class="map_wrap panel-body text-center" style="color:black">';
-             html += '<div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>';
-             html += '<div id="menu_wrap" class="bg_white">';
-             html += '<div class="option">';
+                /////// 희망목적지 검색 및 검색결과 리스트 출력부분
+                html += '<div class="map_wrap panel-body text-center" style="color:black">';
+                html += '<div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>';
+                html += '<div id="menu_wrap" class="bg_white">';
+                html += '<div class="option">';
              
-             //검색부분
-             html += '<form class="text-center panel-boby" onsubmit="searchPlaces(); return false;">';
-             html += '<div class="input-group">';
-             html += '<input type="text" class="form-control" placeholder="희망목적지를 입력해주세요." id="keyword">'; 
-             html += '<div class="input-group-btn">';
-             html += '<button class="btn btn-default" type="submit">검색</button>';
-             html += '</div>';
-             html += '</div>';
-             html += '</form>';
+                //검색부분
+                html += '<form class="text-center panel-boby" onsubmit="searchPlaces(); return false;">';
+                html += '<div class="input-group">';
+                html += '<input type="text" class="form-control" placeholder="희망목적지를 입력해주세요." id="keyword">'; 
+                html += '<div class="input-group-btn">';
+                html += '<button class="btn btn-default" type="submit">검색</button>';
+                html += '</div>';
+                html += '</div>';
+                html += '</form>';
 
-             html += '</div>';
-             html += '<ul id="placesList"></ul>';
-             html += '<ul class="pagination margin-none" id="pagination"></ul>';
-             html += '</div>';
-             html += '</div>';
+                html += '</div>';
+                html += '<ul id="placesList"></ul>';
+                html += '<ul class="pagination margin-none" id="pagination"></ul>';
+                html += '</div>';
+                html += '</div>';
             
-             /////////
+                /////////
              
-             //희망목적지      
-             html += '</div></div>';
-             html += '<h4 class="category">생활권역</h4>';
-             html += '<div class="text-center">';
-             html += '<div data-toggle="gridalicious" data-width="400">';
+                //희망목적지      
+                html += '</div></div>';
+                html += '<h4 class="category">생활권역</h4>';
+                html += '<div class="text-center">';
+                html += '<div data-toggle="gridalicious" data-width="400">';
              
-             ///////////// 등록된 희망목적지가 추가될 부분
-             html += '<div class="map_wrap text-center panel-boby" style="display: inline-flex;color:black;">';
-             html += '<ul id="getItem"></ul>';
-             html += '</div>';
-             /////////////
+                ///////////// 등록된 희망목적지가 추가될 부분
+                html += '<div class="map_wrap text-center panel-boby" style="display: inline-flex;color:black;">';
+                html += '<ul id="getItem"></ul>';
+                html += '</div>';
+                /////////////
             
-             html += '</div></div>';
+                html += '</div></div>';
 
-             //다음단계
-			 html += '<div class="sidebar-block text-center filter_commit">';
-			 html += '<a class="btn btn-primary btn-block" onclick = "hopeListSizeChk();"><strong style="color:white;">최적의 주거공간 찾기</strong></a>';
-			 html += '</div></div>';
-             $("#test123").html(html);
-         },
-         error : function(e) {
-            console.log(e);
-         }
-      });
-   });
-   
+                //다음단계
+			    html += '<div class="sidebar-block text-center filter_commit">';
+			    html += '<a class="btn btn-primary btn-block" onclick = "hopeListSizeChk();"><strong style="color:white;">최적의 주거공간 찾기</strong></a>';
+			    html += '</div></div>';
+                $("#test123").html(html);
+            },
+            error : function(e) {
+            	console.log(e);
+            }
+		});
+	});
 }
 
 function boardList3() {
 	var semo = null;
 	$(document).ready(function() {
-		console.log("여기까지333");
 		$.ajax({
 			type : "get",
 			success : function(data) {
@@ -113,51 +109,51 @@ function boardList3() {
 				html += '<a class="btn btn-primary btn-block" onclick = "JSalert();"><strong style="color:white;">검색결과저장</strong></a>';
 				html += '</div></div>';
 
-            $("#test123").html(html);
-            
-        	var height = document.getElementById("aptInfo");
-        	var tradewindow = document.getElementById("aptTradeInfo");
-        	var tradewindow2 = document.getElementById("aptTradeInfo2");
-//        	height.style.display="block";
-        	$("#info").mouseenter(function(){
-        		height.style.display="block";
-        	});
-        	$("#lll").mouseenter(function(){
-        		height.style.display="none";
-        	});
-        	$("#aptInfo").mouseleave(function(){
-        		height.style.display="none";
-        	})
-        	$("#tradeInfo").mouseenter(function(){
-        		tradewindow.style.display="block";
-        	//	tradewindow2.style.display="block";
-        	});
-        	$("#aptTradeInfo2").mouseenter(function(){
-        		tradewindow.style.display="block";
-        		tradewindow2.style.display="block";
-        	});
-        	$("#info").mouseenter(function(){
-        		tradewindow.style.display="none";
-        		tradewindow2.style.display="none";
-        	});
-        	$("#aptTradeInfo").mouseleave(function(){
-        		tradewindow.style.display="none";
-        		tradewindow2.style.display="none";
-        	})
-        	$("#timegraph").mouseenter(function(){
-        		tradewindow.style.display="none";
-        		tradewindow2.style.display="none";
-        	})
-        	
-            if (html != "") {
-            //   dfa();
-            }
-         },
-         error : function(e) {
-            console.log(e);
-         }
-      });
-   });
+	            $("#test123").html(html);
+	            
+	        	var height = document.getElementById("aptInfo");
+	        	var tradewindow = document.getElementById("aptTradeInfo");
+	        	var tradewindow2 = document.getElementById("aptTradeInfo2");
+	//        	height.style.display="block";
+	        	$("#info").mouseenter(function(){
+	        		height.style.display="block";
+	        	});
+	        	$("#lll").mouseenter(function(){
+	        		height.style.display="none";
+	        	});
+	        	$("#aptInfo").mouseleave(function(){
+	        		height.style.display="none";
+	        	})
+	        	$("#tradeInfo").mouseenter(function(){
+	        		tradewindow.style.display="block";
+	        	//	tradewindow2.style.display="block";
+	        	});
+	        	$("#aptTradeInfo2").mouseenter(function(){
+	        		tradewindow.style.display="block";
+	        		tradewindow2.style.display="block";
+	        	});
+	        	$("#info").mouseenter(function(){
+	        		tradewindow.style.display="none";
+	        		tradewindow2.style.display="none";
+	        	});
+	        	$("#aptTradeInfo").mouseleave(function(){
+	        		tradewindow.style.display="none";
+	        		tradewindow2.style.display="none";
+	        	})
+	        	$("#timegraph").mouseenter(function(){
+	        		tradewindow.style.display="none";
+	        		tradewindow2.style.display="none";
+	        	})
+	        	
+	            if (html != "") {
+	            //   dfa();
+	            }
+	         },
+	         error : function(e) {
+	            console.log(e);
+	         }
+		 });
+	 });
 }
 function showFilter(){
 	$("#filter").show();
@@ -166,20 +162,19 @@ function showFilter(){
 function JSalert(){
 	var checknumber = null;
 	var checkemail = null;
-   swal({   title: "저장하기",   
+    swal({   title: "저장하기",   
     text: "이메일 주소를 입력하세요:",   
     type: "input",   
     showCancelButton: true,   
     closeOnConfirm: false,   
     animation: "slide-from-top",   
     inputPlaceholder: "이메일 주소" }, 
-    
+
     function(inputValue){
 		var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
 	    if (inputValue === false){
 	    	return false; 
 	    }       	
-	         
 	    if (inputValue === "") {     
 	    	swal.showInputError("이메일 주소를 입력해주세요");     
 	        return false   
@@ -188,9 +183,8 @@ function JSalert(){
 	    	swal.showInputError("올바른 이메일 주소를 입력해주세요");
 	  		return false;
 	  	}checkemail=inputValue;
-	    
-	    $.ajax
-		({
+    
+	    $.ajax ({
 			type : "post",
 			url : "emailcheck",		
 			data : 
@@ -208,5 +202,5 @@ function JSalert(){
 				console.log(e);
 			}
 		})
-		swal("저장이 완료되었습니다.", "다음 주소로 코드가 전송되었습니다 : " + inputValue, "success"); });
+    swal("저장이 완료되었습니다.", "다음 주소로 코드가 전송되었습니다 : " + inputValue, "success"); });
 }

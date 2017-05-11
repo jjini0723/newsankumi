@@ -20,7 +20,6 @@ public class aptInfo {
 	
 	
 	public aptInfo() {
-		// TODO Auto-generated constructor stub
 	}
 
 

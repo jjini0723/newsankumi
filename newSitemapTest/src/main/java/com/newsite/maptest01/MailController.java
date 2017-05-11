@@ -40,7 +40,6 @@ public class MailController {
    @RequestMapping(value="emailcheck", method=RequestMethod.POST)
    public int emailcheck(String user, HttpSession session)
    {
-	  //System.out.println(user);
 	  
       SendMail mail = new SendMail("", null, null);
       
@@ -48,18 +47,14 @@ public class MailController {
       
       num = code;
       
-      System.out.println(code);
-      System.out.println(num);
       
       return code;
-      //System.out.println("메일 전송완료.");
    }
    
    @ResponseBody
    @RequestMapping(value = "checknum", method = RequestMethod.POST)
    public int checknum()
    {
-	   //System.out.println(num);
 	   return num;
    }
    
@@ -68,7 +63,6 @@ public class MailController {
    @ResponseBody
    @RequestMapping(value = "save" , method=RequestMethod.POST)
    public void save(@RequestBody saveData save){
-      System.out.println("컨트롤러"+save);
       try {
          dao.save(save);
       } catch (Exception e) {
@@ -78,15 +72,12 @@ public class MailController {
     @ResponseBody
     @RequestMapping(value="loadData", method=RequestMethod.POST)
     public ArrayList<saveData> loadData(String email, String number){
-       System.out.println(email);
-       System.out.println(number);
        ArrayList<saveData> result = new ArrayList<>();
        try {
          result = dao.loadData(email,number);
       } catch (Exception e) {
          e.printStackTrace();
       }
-       System.out.println("콘트롤러"+result);
        return result;
     }
     @ResponseBody
@@ -98,7 +89,6 @@ public class MailController {
       } catch (Exception e) {
          e.printStackTrace();
       }
-       System.out.println("콘트롤러"+result);
        return result;
     }
     

@@ -51,7 +51,6 @@ public class DataDAO {
 	public ConditionResult standardChart(String si, String gu) {
 		DataMapper mapper = sqlSession.getMapper(DataMapper.class);
 		ConditionResult result = mapper.standardChart(si,gu);
-		System.out.println("dao" + result);
 		
 		return result;
 	}

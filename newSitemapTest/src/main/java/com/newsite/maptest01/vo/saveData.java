@@ -24,7 +24,6 @@ public class saveData {
 	private String count;
 	
 	public saveData() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public saveData(String checknumber, String checkemail, String gu, String dong, String dongscore, String car1,

@@ -52,7 +52,6 @@ public class get {
     		}
     		event_type = xpp.next();
     	}
-    	System.out.println(list);
     }
     
     
@@ -61,8 +60,6 @@ public class get {
     public String getURL(String search){
     	String url = GET_URL+"?"+search+"&ServiceKey="+GET_KEY;
     	search = "loadCode=113504130298";
-    	System.out.println("22222222222222");
-    	System.out.println(url);
     	
     	return url;
     

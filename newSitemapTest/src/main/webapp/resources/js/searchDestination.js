@@ -32,7 +32,6 @@ var overlay = new daum.maps.CustomOverlay({
 function deleteL(paraparam1) {
     // 희망목적지에 등록된 목적지의 개수를 파악하기 위해, 삭제가 되면 배열에서 꺼낸다.
 	var title = $('#getItem>li>#'+paraparam1).attr('title');
-    console.log(title);
     for(var i = 0; i < hopeList.length; i++) {
     	if(title == hopeList[i]) {
             removeThisMarker(i);
@@ -40,16 +39,11 @@ function deleteL(paraparam1) {
             finalHopeList.splice(i,1);
             overlayList[i].olay.setMap(null);
 			overlayList.splice(i,1);
-			console.log(hopeList);
-			console.log(finalHopeList);
-			console.log(overlayList);
-			console.log(newMarkers);
-         }
+        }
     }
     $('#getItem>li>#'+paraparam1).parent().remove();
     return false;
 }
-
 
 // 키워드 검색을 요청하는 함수입니다
 function searchPlaces() {
@@ -75,15 +69,14 @@ function placesSearchCB(status, data, pagination) {
 
         // 페이지 번호를 표출합니다
         displayPagination(pagination);
-    } else if (status === daum.maps.services.Status.ZERO_RESULT) {
+    } else if(status === daum.maps.services.Status.ZERO_RESULT) {
         sweetAlert({
 			title: "삐비빗!", 
 		    text: "검색 결과가 존재하지 않습니다.", 
 		    type: "error"
 		});
 		return false;
-
-    } else if (status === daum.maps.services.Status.ERROR) {
+    } else if(status === daum.maps.services.Status.ERROR) {
         sweetAlert({
 			title: "삐비빗!", 
 		    text: "검색 결과 중 오류가 발생했습니다.", 
@@ -106,9 +99,7 @@ function displayPlaces(places) {
 
     // 지도에 표시되고 있는 마커를 제거합니다
     removeMarker();
-    
     for ( var i=0; i<places.length; i++ ) {
-
         // 마커를 생성하고 지도에 표시합니다
         var placePosition = new daum.maps.LatLng(places[i].latitude, places[i].longitude),
             marker = addMarker(placePosition, i),
@@ -164,14 +155,10 @@ function getListItem(index, places) {
         itemStr += ' <span class="jibun gray" style="font-size:12px">' +  places.address  + '</span><br> ';
     }
       itemStr += '  <span class="tel" style="font-size:12px">' + places.phone  + '</span><br>' ;
-      
       itemStr += '<select id="transport" name="transport"><option value="0">이동수단</option>' +
-                 '<option value="1">자동차</option>' +
-                 '<option value="2">도보</option><option value="3">대중교통</option></select>' +'&nbsp &nbsp'+
-
-                 '<input type="submit" value="등록" class="btn" style="padding: 4px; font-size:12px; width: inherit;" onclick="confirm('+places.latitude+','+places.longitude+','+index+');"></div>';
-
-    
+             '<option value="1">자동차</option>' +
+             '<option value="2">도보</option><option value="3">대중교통</option></select>' +'&nbsp &nbsp'+
+             '<input type="submit" value="등록" class="btn" style="padding: 4px; font-size:12px; width: inherit;" onclick="confirm('+places.latitude+','+places.longitude+','+index+');"></div>';
     el.innerHTML = itemStr;
     el.className = 'item';
     return el;
@@ -183,9 +170,7 @@ function displayPlace(index) {
     menuEl = document.getElementById('menu_wrap'),
     fragment = document.createDocumentFragment(), 
     listStr = '';
-    
     var itemEl = getItem(index); // 검색 결과 항목 Element를 생성합니다
-
     fragment.appendChild(itemEl);
 
     // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
@@ -199,13 +184,12 @@ function getItem(index) {
     $("#title").val(title);
     var paraparam = places[index].title+places[index].address;
     var paraparam1 = paraparam.replace(/ /gi, "");
-   
     var el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '" title="'+places[index].title+'"></span>' +
-                '   <a style="text-decoration:none" onclick="focuson('+places[index].longitude+','+places[index].latitude+')"><h5>' + places[index].title + '</h5></a>';
-	itemStr += '<a href="#" class="deletebtn" id="'+paraparam1+'" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL(\''+paraparam1+'\');" >'
-	+'<span class="glyphicon glyphicon-trash" style="color:red;"></span>'
-	+'</a><br>'; 
+    	'   <a style="text-decoration:none" onclick="focuson('+places[index].longitude+','+places[index].latitude+')"><h5>' + places[index].title + '</h5></a>';
+	itemStr += '<a href="#" class="deletebtn" id="'+paraparam1+'" title="'+places[index].title+'" style="text-decoration:none" onclick="deleteL(\''+paraparam1+'\');" >' +
+		'<span class="glyphicon glyphicon-trash" style="color:red;"></span>'
+		+'</a><br>'; 
 
     el.innerHTML = itemStr;
     el.className = 'item2';
@@ -224,7 +208,7 @@ function confirm(lat, lng, index) {
 		    type: "error"
 		});
 		return false;
-	} else {
+	}else {
 		// 희망목적지가 저장된 배열의 길이만큼 반복.
 		for(var k = 0; k < hopeList.length; k++) {
 			// 검색결과 리스트에 있는 이름과 희망목적지가 저장된 배열이 같은지 비교. 같으면 중복존재, 없으면 중복된 희망목적지 없음.
@@ -243,7 +227,6 @@ function confirm(lat, lng, index) {
 			}
 		}
 		// 중복된 희망목적지가 아닐 경우 배열에 해당 희망목적지의 이름을 저장한다.
-		console.log('hopeList.length : '+hopeList.length);
 		if(hopeList.length < 5) {
 			hopeList.push(places[index].title);
 			finalHopeList.push(places[index].address);
@@ -263,7 +246,6 @@ function confirm(lat, lng, index) {
 			return false;
 		}
 	}
-	console.log('hopeList.length : '+hopeList.length);
 }
 
 function resetMarker() {
@@ -319,7 +301,6 @@ function changeMarker(index2) {
 
 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다 
 function addMarker(position, idx, title) {
-	console.log(position);
     var imageSrc = './resources/images/yellow_marker.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
         imageSize = new daum.maps.Size(41, 40),  // 마커 이미지의 크기
         imgOptions =  {
@@ -332,10 +313,8 @@ function addMarker(position, idx, title) {
             position: position, // 마커의 위치
             image: markerImage
         });
-
     marker.setMap(map); // 지도 위에 마커를 표출합니다
     markers.push(marker);  // 배열에 생성된 마커를 추가합니다
-
     return marker;
 }
 
@@ -351,7 +330,7 @@ function removeMarker() {
 function removeOtherMarker(index) {
     for ( var i = 0; i < markers.length; i++) {
         if(index != i) {
-           markers[i].setMap(null);
+            markers[i].setMap(null);
         }
     }
     newMarkers.push(markers[index]); // 희망목적지로 등록된 마커를 새로운 배열에 추가합니다
@@ -436,9 +415,7 @@ function displayOverlay(index) {
 		//output : "json"                // JSONP type format json
 		//},
 		success : function(r){
-			console.log(r);
 			thumbnailAddr += r.channel.item[0].thumbnail;
-			console.log(thumbnailAddr);
 			searchImage(thumbnailAddr, index);
 		},
 		error : function(e) {
@@ -454,10 +431,8 @@ function searchImage(thumbnailAddr, index) {
     for(var i = 0; i < infoList.length; i++) {
 		infoList[i].close();
 	}
-	console.log(places[index].title);
     var content = '<div class="wrap">';
     content += 	      '<div class="info">';
-                  
     content += 	  	      '<div class="title">'+places[index].title+'<div class="" onclick="" title="닫기"></div></div>';
                   
     content += '<div class="body">';
@@ -473,7 +448,6 @@ function searchImage(thumbnailAddr, index) {
     content += '</div>';
     content +=        '</div>';
     content +=    '</div>';
-    
     
 	// 마커 위에 커스텀오버레이를 표시합니다
 	// 마커를 중심으로 커스텀 오버레이를 표시하기위해 CSS를 이용해 위치를 설정했습니다
@@ -515,7 +489,6 @@ function hoi(lat, lng, index) {
     var places = JSON.parse($("#places").val());
     var obj1 = document.getElementsByName("transport");
     var idx1 = obj1[index].options.selectedIndex; // 해당 selectbox index 구하기
-
     var transport = obj1[index].options[idx1].value; // 선택된 selectbox의 value값 가져오기
     // 각 이동수단의 배열에 x, y좌표와 해당 희망목적지의 이름을 저장한다.
     if(transport == 1) {
@@ -549,7 +522,6 @@ function listReset(index) {
 function focuson(x,y){
 	var moveLatLon = new daum.maps.LatLng(y, x);
 	map.setLevel(8);
-
 	// 지도 중심을 이동 시킵니다
 	map.setCenter(moveLatLon);
 }

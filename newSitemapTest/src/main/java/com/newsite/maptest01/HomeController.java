@@ -76,13 +76,11 @@ public class HomeController {
 	@ResponseBody
 	@RequestMapping(value = "test11", method=RequestMethod.POST)
 	public aptName test(@RequestBody String loadCode){
-		System.out.println("12x3123x");
 		aptName aN = new aptName();
 		
 		
 		try {
 			String juso = GET_URL+"?"+loadCode+"&ServiceKey="+GET_KEY;
-			//System.out.println(juso);
 			URL url = new URL(juso);
 			XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
 	    	factory.setNamespaceAware(true);
@@ -115,20 +113,14 @@ public class HomeController {
 	    		}
 	    		event_type = xpp.next();
 	    	}
-	    	System.out.println(list);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return aN;
 	}
 	@ResponseBody
 	@RequestMapping(value = "getDoroCD", method = RequestMethod.POST)
 	public ArrayList<aptInfo> getDoroCD(String sigunguName, String ghName, String dongScore) {
-		System.out.println("sigunguName : "+sigunguName);
-		System.out.println("ghName : "+ghName);
-		System.out.println("dongScore: "+dongScore);
 		ArrayList<aptInfo> aptInfoList = new ArrayList<>();
 		ArrayList<aptInfo> aptInfoList2 = new ArrayList<>();
 		ArrayList<aptInfo> aptInfoList3 = new ArrayList<>();
@@ -142,7 +134,6 @@ public class HomeController {
 				for(int j = 0; j < aptInfoList.size(); j++) {
 					aptInfoList2.add(aptInfoList.get(j));
 				}
-				System.out.println(gugh);
 			} catch(Exception e) {
 				e.printStackTrace();
 			}
@@ -176,7 +167,6 @@ public class HomeController {
 				aptInfoList3.get(i).setDongScore(scoreArray[4]);
 			}
 		}
-		System.out.println("aptInfoList : "+aptInfoList);
 		return aptInfoList3;
 	}
 	@ResponseBody
@@ -185,9 +175,7 @@ public class HomeController {
 		ArrayList<aptsale> result = new ArrayList<>();
 		xloc = xloc.substring(0, 9);
 		yloc = yloc.substring(0, 10);
-		System.out.println(xloc+","+yloc);
 		result = dao.getTradeInfo(xloc,yloc);
-		System.out.println(result);
 		return result;
 	}
 	/*

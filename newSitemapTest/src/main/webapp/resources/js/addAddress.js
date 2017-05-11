@@ -39,42 +39,39 @@ function addAddress(obj){
 			    type: "error"
 			});
 			return false;
-			
 		}
 	});
 }
 
 //지역추가
-	function addAddress2(obj){
-		var gungu = $(obj).find('option:selected').text();
-		console.log(gungu);
-		document.getElementById('selectThis4').value = $("#selectThis4").val();
-		
-		$.ajax({
-			url : "selectDong",
-			type : "post",
-			data : {
-				gungu : gungu
-			},
-			success : function(data){
-				console.log(data);
-				$("#selectThis5").children().remove(); 
-				for(var dong in data){
-					$("#selectThis5").append("<option value="+data[dong]+">"+data[dong]+"</option>");
-				}
-				
-			},
-			error : function(err){
-				sweetAlert({
-					title: "삐비빗!", 
-				    text: "처리 중 오류가 발생했습니다. 관리자에게 문의하세요.", 
-				    type: "error"
-				});
-				return false;
+function addAddress2(obj){
+	var gungu = $(obj).find('option:selected').text();
+	console.log(gungu);
+	document.getElementById('selectThis4').value = $("#selectThis4").val();
+	
+	$.ajax({
+		url : "selectDong",
+		type : "post",
+		data : {
+			gungu : gungu
+		},
+		success : function(data){
+			console.log(data);
+			$("#selectThis5").children().remove(); 
+			for(var dong in data){
+				$("#selectThis5").append("<option value="+data[dong]+">"+data[dong]+"</option>");
 			}
 			
-		});
-		
+		},
+		error : function(err){
+			sweetAlert({
+				title: "삐비빗!", 
+			    text: "처리 중 오류가 발생했습니다. 관리자에게 문의하세요.", 
+			    type: "error"
+			});
+			return false;
+		}
+	});
 }
 	
 	

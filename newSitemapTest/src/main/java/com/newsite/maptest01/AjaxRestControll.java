@@ -36,13 +36,12 @@ public class AjaxRestControll {
 		HashMap<String, Double> levelSettingMap = new HashMap<>();//가중치 먹이기 용
 		int recommendCount = 1012;//추천할 리스트 갯수(보여줄 도시개수 여기서 설정)
 		
-		for (int i=0; i < mapList.get("list").size(); i++){
+		for (int i=0; i < mapList.get("list").size(); i++) {
 			String condition = mapList.get("list").get(i).get("condition").toString();//넘어온 키값(조건이름)
 			double level = Double.parseDouble((String)mapList.get("list").get(i).get("level"));//넘어온 가중치
 			conditionList.add(condition);
 			levelSettingMap.put(condition, level);
 		}
-		System.out.println(conditionList);
 		resultList = dataDao.selectCondition(conditionList);
 		
 		for(ConditionResult c : resultList){
@@ -54,7 +53,6 @@ public class AjaxRestControll {
 					total += value;					
 				}	
 				c.setTotalScore(total);
-				//System.out.println(c);
 			}
 			catch (Exception e) {
 				e.printStackTrace();
@@ -67,11 +65,9 @@ public class AjaxRestControll {
 			for(int i = 0; i < recommendCount; i++){
 				finalList.add(resultList.get(i));
 			}
-			//System.out.println("전체결과 : "+resultList);			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}	
-		//System.out.println("count개 결과 : "+finalList);
 		return finalList;
 	}
 	
@@ -89,9 +85,7 @@ public class AjaxRestControll {
 	
 	@RequestMapping(value = "selectDong", method = RequestMethod.POST)
 	public ArrayList<String> selectDong(String gungu){
-		System.out.println(gungu);
 		ArrayList<String> dongList = dataDao.selectDong(gungu);
-		System.out.println(dongList);
 		int lastIndex = dongList.size()-1;
 		dongList.remove(lastIndex);
 		
@@ -101,7 +95,6 @@ public class AjaxRestControll {
 
 	@RequestMapping(value = "getAddress", method = RequestMethod.POST)
 	public ConditionResult getAddress(String dong){
-		System.out.println(dong);
 		ConditionResult result = dataDao.getAddress(dong);
 		
 		return result;
@@ -109,9 +102,7 @@ public class AjaxRestControll {
 	
 	@RequestMapping(value = "standardChart", method = RequestMethod.POST)
 	public ConditionResult standardChart(String si, String gu){
-		System.out.println(gu);
 		ConditionResult result = dataDao.standardChart(si,gu);
-		System.out.println("result" + result);
 		
 		return result;
 	}
@@ -120,13 +111,11 @@ public class AjaxRestControll {
 	public ConditionResult allStandardChart(){
 		ConditionResult result = dataDao.allStandard();
 		
-		
 		return result;
 	}
 	
 	@RequestMapping(value = "createData", method = RequestMethod.POST)
 	public ConditionResult createData(int citycode){
-		
 		ConditionResult result = dataDao.createData(citycode);
 		
 		return result;

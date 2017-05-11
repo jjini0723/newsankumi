@@ -5,7 +5,6 @@ public class kaptCode {
 	private String kaptcode;
 	
 	public kaptCode() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public kaptCode(String emd_nm, String kaptcode) {

@@ -1,5 +1,4 @@
 function boardList() {
-	//window.scroll(0,0);
 	$("#code").hide();
 	$(document).ready(function() {
 		console.log("boardlist1");

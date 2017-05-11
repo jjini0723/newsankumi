@@ -12,16 +12,15 @@ function saveKeyCount(tmapCarKeyCount,tmapWalkKeyCount,googleKeyCount){
 			tmapWalkKeyCount:tmapWalkKeyCount,
 			googleKeyCount:googleKeyCount
 		})
-		
-	})
+	});
 }
+
 function loadKeyCount(){
 	$.ajax({
 		url:"loadKeyCount",
 		type:"post",
 		//dataType: "JSON",
 		success:function(data){
-			console.log(data)
 			$.each(data,function(index,item){
 				tmapCarKeyCount += parseInt(item.tmapCarKeyCount),
 				tmapWalkKeyCount += parseInt(item.tmapWalkKeyCount),

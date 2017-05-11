@@ -17,21 +17,18 @@ public class saveDAO {
 	
 	public void save(saveData save){
 		saveMapper mapper = sqlSession.getMapper(saveMapper.class);
-		System.out.println("dao"+save);
 		mapper.save(save);
 	}
 	public ArrayList<saveData> loadData(String email, String number){
 		ArrayList<saveData> result = new ArrayList<>();
 		saveMapper mapper = sqlSession.getMapper(saveMapper.class);
 		result = mapper.loadData(email,number);
-		System.out.println("dao"+result);
 		return result;
 	}
 	public ArrayList<saveKeyCount> loadKeyCount(){
 		ArrayList<saveKeyCount> result = new ArrayList<>();
 		saveMapper mapper = sqlSession.getMapper(saveMapper.class);
 		result = mapper.loadKeyCount();
-		System.out.println("dao"+result);
 		return result;
 	}
 	

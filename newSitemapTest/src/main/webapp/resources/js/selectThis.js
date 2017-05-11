@@ -4,10 +4,7 @@
 
 function searchThis(obj){
 	var sido = $(obj).find('option:selected').text();
-	console.log(sido);
 	document.getElementById('mp_addcd_sido').value = $("#mp_addcd_sido").val();
-	
-	
 	
 	$.ajax({
 		url : "selectGungu",
@@ -16,7 +13,6 @@ function searchThis(obj){
 			sido:sido
 		},
 		success : function(data){
-			console.log(data);
 			$("#mp_addcd_gg").children().remove(); 
 			if(sido=='서울특별시'){
 				$("#mp_addcd_gg").append("<option value = ''>구</option>");
@@ -25,17 +21,13 @@ function searchThis(obj){
 			}else {
 				$("#mp_addcd_gg").append("<option value = ''>군/구</option>");
 			}
-			//var result = data['sigunList'];
 			for(var mp_addcd_gg in data){
-				//mc = data['mp_addcd_gg'+i+''];
 				$("#mp_addcd_gg").append("<option value="+data[mp_addcd_gg]+">"+data[mp_addcd_gg]+"</option>");
 			}
 			var si = $("#mp_addcd_sido").find('option:selected').text();
 			var gu = $("#mp_Addcd_gg").find('option:selected').text();
-			console.log(gu);
 			var sigu = [si,gu];
 			return sigu;
-			
 		},
 		error : function(err){
 			sweetAlert({
@@ -45,7 +37,5 @@ function searchThis(obj){
 			});
 			return false;
 		}
-		
 	});
-	
 }

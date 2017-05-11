@@ -19,10 +19,8 @@ public class mapDao {
 	
 	public ArrayList<String> getDoroCD(bjdName name){
 		ArrayList<String> result = new ArrayList<>();
-		System.out.println("dao"+name);
 		mapMapper mapper = sqlsession.getMapper(mapMapper.class);
 		result = mapper.getDoroCD(name);
-		System.out.println("dao"+result);
 		return result;
 		
 	}
@@ -68,11 +66,9 @@ public class mapDao {
 	}
 	
 	public ArrayList<aptInfo> getAptInfoList(GuGwanhal gugwanhal) {
-		System.out.println("Dao : "+gugwanhal);
 		ArrayList<aptInfo> result = new ArrayList<>();
 		mapMapper mapper = sqlsession.getMapper(mapMapper.class);
 		result = mapper.getAptInfoList(gugwanhal);
-		System.out.println("result : "+result);
 		return result;
 	}
 }
