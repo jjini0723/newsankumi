@@ -63,6 +63,15 @@ googleKeyCount varchar2(20),
 dayth date default sysdate
 )
 drop table savekeycount
+
+create table savekeycount(
+tmapcarkeycount varchar2(20),
+tmapwalkkeycount varchar2(20),
+googlekeycount varchar2(20),
+dayth date default sysdate
+)
+
+select * from SAVEKEYCOUNT where dayth like '2017-05-04'
 select * from SAVEKEYCOUNT
 select * from SAVEDATA
 drop table savedata
@@ -90,6 +99,7 @@ tradi4 varchar2(100),
 tradi5 varchar2(100),
 count varchar2(30)
 )
+select * from savekeycount;
 select sum(tmapcarkeycount) from savekeycount where dayth=sysdate
 select * from mp_Data_3 where gu = '부평구';
 ALTER TABLE mp_Data_3 RENAME COLUMN price_lease to leasingPrice;

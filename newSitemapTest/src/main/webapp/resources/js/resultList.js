@@ -69,6 +69,7 @@ function addItem() {
     		
     	});
 		items.push(re);
+		deleteArray1();
 		initChart();
         buildList(items);
         $("#selectThis3").empty().data('options');

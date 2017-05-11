@@ -16,7 +16,7 @@ function init(){
 	hopeDestinationArray = new Array();
 	circleArray = new Array();
 	finalAddList = new Array();
-	finalHopeList = new Array();
+   	finalHopeList = new Array();
 	result300 = []; // 저장 할꺼 1번
 	dongScore = [];
 	infoList = new Array(); // 인포윈도우를 저장할 배열
