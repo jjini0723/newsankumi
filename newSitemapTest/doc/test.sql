@@ -56,51 +56,7 @@ select
 			
 select distinct(bjd_cd), sigungu_nm, emd_nm, gwanhal from mp_loc_info where emd_nm in (select distinct(emd_nm) from mp_loc_info where gwanhal in(select distinct(gwanhal) from mp_loc_info));
 
-create table saveKeyCount(
-tmapCarKeyCount varchar2(20),
-tmapWalkKeyCount varchar2(20),
-googleKeyCount varchar2(20),
-dayth date default sysdate
-)
-drop table savekeycount
 
-create table savekeycount(
-tmapcarkeycount varchar2(20),
-tmapwalkkeycount varchar2(20),
-googlekeycount varchar2(20),
-dayth date default sysdate
-)
-
-select * from SAVEKEYCOUNT where dayth like '2017-05-04'
-select * from SAVEKEYCOUNT
-select * from SAVEDATA
-drop table savedata
-commit
-create table SAVEDATA(
-checknumber varchar2(30),
-checkemail varchar2(50),
-gu varchar2(100),
-dong varchar2(100),
-dongscore varchar2(30),
-car1 varchar2(100),
-car2 varchar2(100),
-car3 varchar2(100),
-car4 varchar2(100),
-car5 varchar2(100),
-walk1 varchar2(100),
-walk2 varchar2(100),
-walk3 varchar2(100),
-walk4 varchar2(100),
-walk5 varchar2(100),
-tradi1 varchar2(100),
-tradi2 varchar2(100),
-tradi3 varchar2(100),
-tradi4 varchar2(100),
-tradi5 varchar2(100),
-count varchar2(30)
-)
-select * from savekeycount;
-select sum(tmapcarkeycount) from savekeycount where dayth=sysdate
 select * from mp_Data_3 where gu = '부평구';
 ALTER TABLE mp_Data_3 RENAME COLUMN price_lease to leasingPrice;
 ALTER TABLE mp_Data_3 RENAME COLUMN price_buy to salePrice;

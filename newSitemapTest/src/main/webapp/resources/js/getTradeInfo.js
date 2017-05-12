@@ -24,6 +24,7 @@ function getTradeInfo(x){
            yloc : yloc
         },
         success : function(data){
+        	drawAptTradeInfo(data)
         },
         error : function(e){
            console.log(e)

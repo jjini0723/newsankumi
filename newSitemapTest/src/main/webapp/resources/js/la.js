@@ -6,39 +6,6 @@ carFlag = true;
 walkFlag = true;
 tradiFlag = true;
 function dfa(carArray, walkArray, tradiArray){
-	if(parseInt(tmapCarKeyCount) <= parseInt(tmapLine)) {
-		carusekey = tmapCarKey1;
-	} else if(parseInt(tmapLine)<parseInt(tmapCarKeyCount)&&parseInt(tmapCarKeyCount)<=parseInt(tmapLine)*2) {
-		carusekey = tmapCarKey2;
-	} else if(parseInt(tmapLine)*2<parseInt(tmapCarKeyCount)&&parseInt(tmapCarKeyCount)<=parseInt(tmapLine)*3) {
-		carusekey = tmapCarKey3;
-	} else if(parseInt(tmapLine)*3<parseInt(tmapCarKeyCount)&&parseInt(tmapCarKeyCount)<=parseInt(tmapLine)*4) {
-		carusekey = tmapCarKey4;
-	} else if(parseInt(tmapLine)*4<parseInt(tmapCarKeyCount)&&parseInt(tmapCarKeyCount)<=parseInt(tmapLine)*5) {
-		carusekey = tmapCarKey5;
-	}
-	if(parseInt(tmapWalkKeyCount) <= parseInt(tmapLine)) {
-		walkusekey = tmapWalkKey1;
-	} else if(parseInt(tmapLine)<parseInt(tmapWalkKeyCount)&&parseInt(tmapWalkKeyCount)<=parseInt(tmapLine)*2) {
-		walkusekey = tmapWalkKey2;
-	} else if(parseInt(tmapLine)*2<parseInt(tmapWalkKeyCount)&&parseInt(tmapWalkKeyCount)<=parseInt(tmapLine)*3) {
-		walkusekey = tmapWalkKey3;
-	} else if(parseInt(tmapLine)*3<parseInt(tmapWalkKeyCount)&&parseInt(tmapWalkKeyCount)<=parseInt(tmapLine)*4) {
-		walkusekey = tmapWalkKey4;
-	} else if(parseInt(tmapLine)*4<parseInt(tmapWalkKeyCount)&&parseInt(tmapWalkKeyCount)<=parseInt(tmapLine)*5) {
-		walkusekey = tmapWalkKey5;
-	}
-	if(parseInt(googleKeyCount) <= parseInt(googleLine)) {
-		tradiusekey = googleKey1;
-	} else if(parseInt(googleLine)<parseInt(googleKeyCount)&&parseInt(googleKeyCount)<=parseInt(googleLine)*2) {
-		tradiusekey = googleKey2;
-	} else if(parseInt(googleLine)*2<parseInt(googleKeyCount)&&parseInt(googleKeyCount)<=parseInt(googleLine)*3) {
-		tradiusekey = googleKey3;
-	} else if(parseInt(googleLine)*3<parseInt(googleKeyCount)&&parseInt(googleKeyCount)<=parseInt(googleLine)*4) {
-		tradiusekey = googleKey4;
-	}else if(parseInt(googleLine)*5<parseInt(googleKeyCount)&&parseInt(googleKeyCount)<=parseInt(googleLine)*5){
-		tradiusekey = googleKey5;
-	}
     //선택된 애들 false로 변경
 	carNum = carArray.length * perfect.length;
     walkNum = walkArray.length * perfect.length;
@@ -81,7 +48,7 @@ function dfa(carArray, walkArray, tradiArray){
             $.each(perfect,function(index,item1) { // 선택되어있는 아파트만큼 돈다
             	$.ajax({
 	                type : "POST",   
-	                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey="+carusekey,
+	                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey="+tmapCarKey1,
 	                success : function(data){//succes 안에서 길이만큼 반복 후 2번 돌아야 할시 2번돌고 true로 변경
 	                    yebi = data.features[0].properties.totalTime//시간만 빼온다
 	                    if(item1.car1=='') {//소요 시간을 1번부터 돌면서 빈곳에 집어넣음, 만약 자동차로 3개가 골라졌으면 1,2,3번 다 찬다
@@ -136,7 +103,6 @@ function dfa(carArray, walkArray, tradiArray){
 	                        }
 	                    }
 	                    flag1++;
-	                    tmapCarKeyCount++;
 	                    if(flag1==carNum) {
 	                        carFlag=true;
 	                    }
@@ -155,7 +121,7 @@ function dfa(carArray, walkArray, tradiArray){
             $.each(perfect,function(index,item1) {//아파트 개수만큼 돈다 ex)도보로 2개 설정 된상태에서 아파트가 200개 면 url400번 날린다
                 $.ajax({
                 	type : "POST",      
-                	url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey=32b893de-a5dc-30c0-b49d-bfc3aab6a131",
+                	url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey="+tmapWalkKey1,
                 	success : function(data){
                 		yebi = data.features[0].properties.totalTime//총 시간만 출력
                 		if(item1.walk1=='') {//빈곳 찾아 가기
@@ -210,7 +176,6 @@ function dfa(carArray, walkArray, tradiArray){
                 			}
                 		}
                 		flag2++;
-                		tmapWalkKeyCount++;
                 		if(flag2==walkNum) {
                 			walkFlag=true;
                 		}
@@ -233,7 +198,7 @@ function dfa(carArray, walkArray, tradiArray){
 	                type:"post",
 	                contentType : "application/json;charset=utf-8",
 	                dataType : "json",
-	                url:"https://maps.googleapis.com/maps/api/directions/json?origin="+item1.y+","+item1.x+"&destination="+item.x+","+item.y+"&mode=transit&key="+tradiusekey,
+	                url:"https://maps.googleapis.com/maps/api/directions/json?origin="+item1.y+","+item1.x+"&destination="+item.x+","+item.y+"&mode=transit&key="+googleKey1,
 	                success:function(data) {
 	                    yebi = data.routes[0].legs[0].duration.value;//소요시간만 뺀다
 	                    if(item1.tradi1==''){// 자리에 찾아 들어간다
@@ -288,7 +253,6 @@ function dfa(carArray, walkArray, tradiArray){
 	                        }
 	                    }
 	                    flag3++;
-	                    googleKeyCount++;
 	                    if(flag3==tradiNum){
 	                        tradiFlag=true;
 	                    }
@@ -305,7 +269,6 @@ function dfa(carArray, walkArray, tradiArray){
     	    sendArray();
     	    drawlist();
     	    clearInterval(setInt);
-    	    saveKeyCount(carNum,walkNum,tradiNum);
         }
     }, 1000);
     //다 돌고 모두 true가 되었을때 setinterval인터벌 플래그 확인 하다가 다 트루가 되면 다음 실행

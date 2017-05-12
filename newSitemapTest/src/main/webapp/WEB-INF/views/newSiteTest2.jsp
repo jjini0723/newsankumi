@@ -30,7 +30,6 @@
 <script src="./resources/js/save.js"></script><!-- 영석이 저장 로직 -->
 <script src="./resources/js/loadData.js"></script><!-- 영석이 불러오기 로직 -->
 <script src="./resources/js/init.js"></script><!-- 영석이 홈으로 돌아가는 초기화 로직 -->
-<script src="./resources/js/saveKeyCount.js"></script><!-- 영석이 키 자동 변경 로직 -->
 <script src="./resources/js/searchDestination.js"></script><!-- 희망목적지 관련 js -->
 <script src="./resources/js/sweetalert.min.js"></script><!-- sweetalert/email 보내기 팝업 관련 js -->
 <script src="./resources/js/js_plugin/jquery.blockUI.js"></script><!-- 데이터 로딩 표시 -->
@@ -92,21 +91,11 @@ var googleKey3='AIzaSyBi_ry4zkLWVMMzETciWyu0JnCGbm7WQiQ';
 var googleKey2='AIzaSyBKWZBV932x9UcDs4ey8TVQ-oV8fiXxPpI';
 var googleKey4='AIzaSyD1SXZMCJFk4dRd7MZCDWHk0jINUtI9v2Y';
 var googleKey1='AIzaSyDcQztLBVLCFxG_SSYxR_BJAldkQMMe5PQ'; 
-var tmapCarKeyCount = 0;
-var tmapWalkKeyCount = 0;
-var googleKeyCount = 0;
-var tmapLine = 850;
-var googleLine = 2350;
-var carusekey = '';
-var walkusekey = '';
-var tradiusekey = '';
 var carNum = '';
 var walkNum = '';
 var tradiNum = '';
 
 
-
-loadKeyCount();
 $(document).avgrund({
 	    openOnEvent: false
 	}); 
