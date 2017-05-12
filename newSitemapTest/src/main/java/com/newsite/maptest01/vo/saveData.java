@@ -28,7 +28,8 @@ public class saveData {
 
 	public saveData(String checknumber, String checkemail, String gu, String dong, String dongscore, String car1,
 			String car2, String car3, String car4, String car5, String walk1, String walk2, String walk3, String walk4,
-			String walk5, String tradi1, String tradi2, String tradi3, String tradi4, String tradi5, String count) {
+			String walk5, String tradi1, String tradi2, String tradi3, String tradi4, String tradi5, String count
+			) {
 		super();
 		this.checknumber = checknumber;
 		this.checkemail = checkemail;
@@ -230,5 +231,6 @@ public class saveData {
 				+ tradi4 + ", tradi5=" + tradi5 + ", count=" + count + "]";
 	}
 
+	
 	
 }

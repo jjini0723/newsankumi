@@ -14,6 +14,10 @@ MP_ADDCD_SIDO
 mp_addcd_gg
 
 
+
+
+
+
 select
 			mp_addcd_gg 
 			from MP_ADDCD where mp_addcd_sido = '서울특별시'
@@ -60,3 +64,31 @@ select distinct(bjd_cd), sigungu_nm, emd_nm, gwanhal from mp_loc_info where emd_
 select * from mp_Data_3 where gu = '부평구';
 ALTER TABLE mp_Data_3 RENAME COLUMN price_lease to leasingPrice;
 ALTER TABLE mp_Data_3 RENAME COLUMN price_buy to salePrice;
+commit
+select * from SAVEDATAFILE
+CREATE TABLE SAVEDATAFILE(
+   TOP123 VARCHAR2(30),
+   CHECKNUMBER VARCHAR2(30),
+   CHECKEMAIL VARCHAR2 (50),
+   GU VARCHAR2 (100),
+   DONG VARCHAR2 (100),
+   DONGSCORE VARCHAR2 (50),
+   CAR1 VARCHAR2 (100),
+   CAR2 VARCHAR2 (100),
+   CAR3 VARCHAR2 (100),
+   CAR4 VARCHAR2 (100),
+   CAR5 VARCHAR2 (100),
+   WALK1 VARCHAR2 (100),
+   WALK2 VARCHAR2 (100),
+   WALK3 VARCHAR2 (100),
+   WALK4 VARCHAR2 (100),
+   WALK5 VARCHAR2 (100),
+   TRADI1 VARCHAR2 (100),
+   TRADI2 VARCHAR2 (100),
+   TRADI3 VARCHAR2 (100),
+   TRADI4 VARCHAR2 (100),
+   TRADI5 VARCHAR2 (100),
+   COUNT VARCHAR2 (30)
+)
+
+

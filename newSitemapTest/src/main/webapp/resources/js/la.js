@@ -48,7 +48,7 @@ function dfa(carArray, walkArray, tradiArray){
             $.each(perfect,function(index,item1) { // 선택되어있는 아파트만큼 돈다
             	$.ajax({
 	                type : "POST",   
-	                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey="+tmapCarKey1,
+	                url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey="+tmapCarKey5,
 	                success : function(data){//succes 안에서 길이만큼 반복 후 2번 돌아야 할시 2번돌고 true로 변경
 	                    yebi = data.features[0].properties.totalTime//시간만 빼온다
 	                    if(item1.car1=='') {//소요 시간을 1번부터 돌면서 빈곳에 집어넣음, 만약 자동차로 3개가 골라졌으면 1,2,3번 다 찬다
@@ -121,7 +121,7 @@ function dfa(carArray, walkArray, tradiArray){
             $.each(perfect,function(index,item1) {//아파트 개수만큼 돈다 ex)도보로 2개 설정 된상태에서 아파트가 200개 면 url400번 날린다
                 $.ajax({
                 	type : "POST",      
-                	url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey="+tmapWalkKey1,
+                	url : "https://apis.skplanetx.com/tmap/routes?version=1&format=json&reqCoordType=WGS84GEO&resCoordType=WGS84GEO&startX="+item1.x+"&startY="+item1.y+"&startName=a&endName=b&endX="+item.y+"&endY="+item.x+"&appKey="+tmapWalkKey4,
                 	success : function(data){
                 		yebi = data.features[0].properties.totalTime//총 시간만 출력
                 		if(item1.walk1=='') {//빈곳 찾아 가기
@@ -278,7 +278,7 @@ function sendArray() {
     $.each(perfect, function(key, value) {
         if($.inArray(value, newperfect) === -1) newperfect.push(value);
     });
-	$.each(newperfect,function(index,item) {
+	$.each(perfect,function(index,item) {
 		item.totalpoint = parseFloat(item.car1point)+parseFloat(item.car2point)+parseFloat(item.car3point)+parseFloat(item.walk1point)+parseFloat(item.walk2point)+parseFloat(item.walk3point)+parseFloat(item.tradi1point)+parseFloat(item.tradi2point)+parseFloat(item.tradi3point);
 
 	});
@@ -342,7 +342,7 @@ function drawlist() {
     getTradeInfo(perfect[0].x);
     focusin(perfect[0].x,perfect[0].y);
     getChartData2(0);
-    var newperfect = new Array();
+  //  var newperfect = new Array();
     var html = "";
     var rank = 0;
     html += '<ul class = "category" data-width="400" id = "list2" style="padding-top: 0;"><table class="blueone" style="width: 270px;"><tr><td style="width: 80%;">아파트 명</td><td style="width: 20%;">평점</td></tr>';

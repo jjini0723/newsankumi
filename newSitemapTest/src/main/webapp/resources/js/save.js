@@ -47,13 +47,13 @@ function save(checknumber,checkemail) {
 	var	tradi3 = tradiArray[2].title+','+tradiArray[2].x+','+tradiArray[2].y;
 	var	tradi4 = tradiArray[3].title+','+tradiArray[3].x+','+tradiArray[3].y;
 	var	tradi5 = tradiArray[4].title+','+tradiArray[4].x+','+tradiArray[4].y;
-	
 	jQuery.ajaxSettings.traditional = true;
 	$.ajax({
 		type : "post",
 		url : "save",	
 		contentType : "application/json;charset=utf-8",
 		data : JSON.stringify({
+			top123:top123,
 			checknumber:checknumber,
 			checkemail:checkemail,
 			gu:gu,

@@ -5,7 +5,7 @@ loadFlag = true;
 function loadData(){
 	var email = document.getElementById("email").value;
 	var number = document.getElementById("number").value;
-	
+	top123 = 0;
 	$.ajax({
 		url: "loadData",
 		type: "post",

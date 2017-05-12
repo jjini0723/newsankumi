@@ -119,7 +119,6 @@ $(function() {
 });
 
 function hoit() {
-	console.log(finalAddList[0]);
 	if(typeof(finalAddList[0]) != 'undefined') {
 		var strRec = '<a href="#" class="dropdown-toggle" data-toggle="dropdown">';
 		strRec += '<i class="fa fa-fw fa-filter"></i> 추천지역</a>';
@@ -181,7 +180,6 @@ function conditionSelect(){
    }   
    else{   
       var radioCt = radioCheck();
-      console.log(radioCt);
       if(radioCt < 3){//라디오버튼 클릭수가 3개이하면
          $('#searchLocation').attr('href','#sidebar-mapNoooo');
          sweetAlert({
@@ -202,7 +200,6 @@ function conditionSelect(){
    
    $.each(hml, function(index,item){
       if($(this).children("input[type=radio]:checked").val() !=null){//여기 조건 찾기..
-         console.log($(this).children("input[type=radio]:checked").val());
          var flagValue = $(this).attr("id");
          var radioValue = $(this).children("input[type=radio]:checked").val();
          var obj = {
@@ -223,16 +220,11 @@ function conditionSelect(){
       success : function(data){
     	  var data2 =new Array();
     	 conditionResultList = data;
-    	 console.log(conditionResultList[0].si);
-    	 console.log(conditionResultList[0].gu);
-    	 console.log(conditionResultList[0].dong);
-    	 console.log(conditionResultList[0].totalScore);
     	 
     	 for (var i = 0; i < 10; i++) {
 			data2.push(conditionResultList[i]);
 		}
     	 top123 = conditionResultList[0].totalScore;
-    	 console.log(top123);
          buildList(data2);
       },
       error : function(e){
@@ -275,7 +267,6 @@ function moveMap2(checkIndex, index) {
 	var callback = function(status, result) {
 	    if (status === daum.maps.services.Status.OK) {
 	        var obj = result.addr[0];
-	        console.log(result.addr[0].lat, result.addr[0].lng);
 	        map.setLevel(8);
 	        setCenter(result.addr[0].lat, result.addr[0].lng);
 	    }

@@ -18,6 +18,7 @@ $(document).ready(function() {
 
 
 function buildList(list) {
+	
     $("#dongitem").val(JSON.stringify(list));
  
     items = list; //전역변수에 담기
